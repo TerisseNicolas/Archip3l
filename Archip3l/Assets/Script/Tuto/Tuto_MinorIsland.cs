@@ -7,8 +7,7 @@ using TouchScript.InputSources;
 using TouchScript.Gestures;
 using TouchScript.Hit;
 using TouchScript;
-
-
+using UnityEngine.SceneManagement;
 
 public class Tuto_MinorIsland : InputSource {
 
@@ -98,7 +97,7 @@ public class Tuto_MinorIsland : InputSource {
             color.a += 0.005f;
             sp.color = color;
         }
-        Application.LoadLevel("playingScene");
+        SceneManager.LoadScene("playingScene");
     }
 
     public void createTuto_ChallengeBuild(string buildingClicked)
