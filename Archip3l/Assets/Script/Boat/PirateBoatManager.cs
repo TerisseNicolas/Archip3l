@@ -4,7 +4,7 @@ using TouchScript.InputSources;
 
 public class PirateBoatManager : MonoBehaviour
 {
-    private float secondsBeforeFirstBoat = 10;
+    //private float secondsBeforeFirstBoat = 10;
     private float interval = 1f;
     private float raisingRate = 0.99f;
     private int boatId = 0;
@@ -43,7 +43,7 @@ public class PirateBoatManager : MonoBehaviour
     void Start()
     {
         launchBoats = true;
-        StartCoroutine("StartLaunchingPirateBoats");
+        //StartCoroutine("StartLaunchingPirateBoats");
         //StartCoroutine("wait");
     }
 

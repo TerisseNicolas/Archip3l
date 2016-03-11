@@ -59,6 +59,7 @@
      <Compile Include="Assets\Script\ChallengeBuild.cs" />
      <Compile Include="Assets\Script\ChallengeUpgrade.cs" />
      <Compile Include="Assets\Script\Game\Game.cs" />
+     <Compile Include="Assets\Script\Game\SoundPlayer.cs" />
      <Compile Include="Assets\Script\Islands\ListIslands.cs" />
      <Compile Include="Assets\Script\Islands\MinorIsland.cs" />
      <Compile Include="Assets\Script\Loading\Loading.cs" />
@@ -76,7 +77,6 @@
      <Compile Include="Assets\Script\Resources\Resource.cs" />
      <Compile Include="Assets\Script\Resources\ResourceManager.cs" />
      <Compile Include="Assets\Script\Resources\ResourceManagerBuilding.cs" />
-     <Compile Include="Assets\Script\SoundPlayer.cs" />
      <Compile Include="Assets\Script\TouchScript\Examples\Cube\Scripts\RedirectInput.cs" />
      <Compile Include="Assets\Script\TouchScript\Modules\TUIO\Scripts\InputSources\TuioInput.cs" />
      <Compile Include="Assets\Script\TouchScript\Scripts\Behaviors\TouchScriptInputModule.cs" />

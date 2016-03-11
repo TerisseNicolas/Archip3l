@@ -96,14 +96,14 @@ public class WheelIcon : InputSource
                     case "Build":
                         if (island.resourceManager.getResource(constructionResourceNeeded[0].First).Stock < constructionResourceNeeded[0].Second)
                         {
-                            imageInCanvas.sprite = Resources.Load<Sprite>("infoBatiments/boutonConstruireGrise");
+                            imageInCanvas.sprite = Resources.Load<Sprite>("infoBatiments/BuildGrise");
                             imageInCanvas.GetComponent<BoxCollider>().enabled = false;
                         }
                         else if (constructionResourceNeeded.Count == 2)
                         {
                             if (island.resourceManager.getResource(constructionResourceNeeded[1].First).Stock < constructionResourceNeeded[1].Second)
                             {
-                                imageInCanvas.sprite = Resources.Load<Sprite>("infoBatiments/boutonConstruireGrise");
+                                imageInCanvas.sprite = Resources.Load<Sprite>("infoBatiments/BuildGrise");
                                 imageInCanvas.GetComponent<BoxCollider>().enabled = false;
                             }
                         }

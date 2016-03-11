@@ -21,14 +21,17 @@ public class RegisterScene : InputSource {
 			SceneManager.LoadScene("tutoScene");
         else if (this.name == "PreviousScene")
             SceneManager.LoadScene("loading");
+        else if (this.name == "space")
+            RegisterScene.teamName.text += " ";
         else
             RegisterScene.teamName.text += this.name;
-        
+
+
     }
-	
-	// Use this for initialization
-	void Start () {
-        if (this.name == "0")   //to od it one time only
+
+    // Use this for initialization
+    void Start () {
+        if (this.name == "enter")   //to od it one time only
             RegisterScene.teamName = GameObject.Find("TeamNameValue").GetComponent<Text>();
 	}
 	
@@ -101,6 +104,7 @@ public class RegisterScene : InputSource {
         if (TouchTime == 0)
         {
             TouchTime = Time.time;
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("keyboard/" + this.name + "Clic");
         }
 
     }
@@ -132,6 +136,8 @@ public class RegisterScene : InputSource {
         {
             TouchTime = 0;
         }
+        this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("keyboard/" + this.name);
+
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
