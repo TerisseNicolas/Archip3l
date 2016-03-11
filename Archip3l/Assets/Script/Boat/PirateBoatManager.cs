@@ -43,7 +43,7 @@ public class PirateBoatManager : MonoBehaviour
     void Start()
     {
         launchBoats = true;
-        StartCoroutine("StartLaunchingPirateBoats");
+        //StartCoroutine("StartLaunchingPirateBoats");
         //StartCoroutine("wait");
     }
 

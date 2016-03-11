@@ -158,14 +158,14 @@ public class TouchBuilding : InputSource
                                 case 0:
                                     if (island.resourceManager.getResource(building.upgrade1ResourceNeeded[0].First).Stock < building.upgrade1ResourceNeeded[0].Second)
                                     {
-                                        sr.sprite = Resources.Load<Sprite>("infoBatiments/boutonAmeliorerGrise");
+                                        sr.sprite = Resources.Load<Sprite>("infoBatiments/UpgradeGrise");
                                         sr.GetComponent<BoxCollider>().enabled = false;
                                     }
                                     else if (building.upgrade1ResourceNeeded.Count == 2)
                                     {
                                         if (island.resourceManager.getResource(building.upgrade1ResourceNeeded[1].First).Stock < building.upgrade1ResourceNeeded[1].Second)
                                         {
-                                            sr.sprite = Resources.Load<Sprite>("infoBatiments/boutonAmeliorerGrise");
+                                            sr.sprite = Resources.Load<Sprite>("infoBatiments/UpgradeGrise");
                                             sr.GetComponent<BoxCollider>().enabled = false;
                                         }
                                     }
@@ -173,14 +173,14 @@ public class TouchBuilding : InputSource
                                 case 1:
                                     if (island.resourceManager.getResource(building.upgrade2ResourceNeeded[0].First).Stock < building.upgrade2ResourceNeeded[0].Second)
                                     {
-                                        sr.sprite = Resources.Load<Sprite>("infoBatiments/boutonAmeliorerGrise");
+                                        sr.sprite = Resources.Load<Sprite>("infoBatiments/UpgradeGrise");
                                         sr.GetComponent<BoxCollider>().enabled = false;
                                     }
                                     else if (building.upgrade2ResourceNeeded.Count == 2)
                                     {
                                         if (island.resourceManager.getResource(building.upgrade2ResourceNeeded[1].First).Stock < building.upgrade2ResourceNeeded[1].Second)
                                         {
-                                            sr.sprite = Resources.Load<Sprite>("infoBatiments/boutonAmeliorerGrise");
+                                            sr.sprite = Resources.Load<Sprite>("infoBatiments/UpgradeGrise");
                                             sr.GetComponent<BoxCollider>().enabled = false;
                                         }
                                     }
@@ -188,14 +188,14 @@ public class TouchBuilding : InputSource
                                 case 2:
                                     if (island.resourceManager.getResource(building.upgrade3ResourceNeeded[0].First).Stock < building.upgrade3ResourceNeeded[0].Second)
                                     {
-                                        sr.sprite = Resources.Load<Sprite>("infoBatiments/boutonAmeliorerGrise");
+                                        sr.sprite = Resources.Load<Sprite>("infoBatiments/UpgradeGrise");
                                         sr.GetComponent<BoxCollider>().enabled = false;
                                     }
                                     else if (building.upgrade3ResourceNeeded.Count == 2)
                                     {
                                         if (island.resourceManager.getResource(building.upgrade3ResourceNeeded[1].First).Stock < building.upgrade3ResourceNeeded[1].Second)
                                         {
-                                            sr.sprite = Resources.Load<Sprite>("infoBatiments/boutonAmeliorerGrise");
+                                            sr.sprite = Resources.Load<Sprite>("infoBatiments/UpgradeGrise");
                                             sr.GetComponent<BoxCollider>().enabled = false;
                                         }
                                     }

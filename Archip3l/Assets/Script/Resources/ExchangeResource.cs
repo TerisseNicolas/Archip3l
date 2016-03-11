@@ -230,7 +230,7 @@ public class ExchangeResource : InputSource
         }
         if ((island.resource != string.Empty) && (island.islandToSend != string.Empty) && (this.quantityValue.text != "0"))
         {
-            if (send.sprite.name != "boutonEnvoyer")
+            if (send.sprite.name != "boutonEnvoyer" && send.sprite.name != "boutonEnvoyerClic")
                 send.sprite = Resources.Load<Sprite>("fenetreEchange/boutonEnvoyer");
         }
         else
@@ -305,6 +305,10 @@ public class ExchangeResource : InputSource
         map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
         //this.OnMouseDownSimulation();
         TouchTime = Time.time;
+        if (this.name == "Send")
+            send.sprite = Resources.Load<Sprite>("fenetreEchange/boutonEnvoyerClic");
+        if (this.name == "Less" || this.name == "More")
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("fenetreEchange/" + this.name + "Clic");
     }
 
     private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
@@ -327,6 +331,10 @@ public class ExchangeResource : InputSource
         endTouch(id);
         if (Time.time - TouchTime < 1)
             this.OnMouseDownSimulation();
+        if (this.name == "Send")
+            send.sprite = Resources.Load<Sprite>("fenetreEchange/boutonEnvoyer");
+        if (this.name == "Less" || this.name == "More")
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("fenetreEchange/" + this.name);
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

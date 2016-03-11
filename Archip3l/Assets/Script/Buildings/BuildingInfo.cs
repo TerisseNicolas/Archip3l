@@ -106,6 +106,8 @@ public class BuildingInfo : InputSource
         map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
         //this.OnMouseDownSimulation();
         TouchTime = Time.time;
+        if (this.name == "Build")
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("infoBatiments/" + this.name + "Clic");
     }
 
     private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
@@ -126,6 +128,8 @@ public class BuildingInfo : InputSource
         if (touch.InputSource == this) return;
         if (!map.TryGetValue(touch.Id, out id)) return;
         endTouch(id);
+        if (this.name == "Build")
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("infoBatiments/" + this.name);
         if (Time.time - TouchTime < 1)
             this.OnMouseDownSimulation();
     }
