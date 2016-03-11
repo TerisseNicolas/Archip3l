@@ -251,7 +251,6 @@ public class BoatMoving : InputSource
         if (Time.time - TouchTime < 0.5)
         {
             TouchTime = 0;
-            //this.OnMouseDownSimulation();
         }
         else if (Time.time - TouchTime < 1.5)
         {
