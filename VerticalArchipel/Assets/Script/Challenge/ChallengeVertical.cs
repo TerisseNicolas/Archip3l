@@ -34,16 +34,8 @@ public class ChallengeVertical : InputSource
     void Awake()
     {
         this.client = GameObject.Find("Network").GetComponent<Client>();
-        this.client.MessageChallengeCompleteEvent += Client_MessageChallengeCompleteEvent;
     }
 
-    private void Client_MessageChallengeCompleteEvent(object sender, MessageEventArgs e)
-    {
-        Debug.Log(e.message);       
-        //split avec '@' ; le premier paramètre n'est pas important
-        //indice 1 : code
-        //indices > 1 : arguments
-    }
 
     public void init(TypeChallenge tc, string[] row)
     {
@@ -126,11 +118,13 @@ public class ChallengeVertical : InputSource
                 resultText.text = "Réponse correcte !";
                 goodAnswer = true;
                 main.addNotification("Vous venez de réussir un challenge !");
+                this.client.sendData("@35401@Challenge" + this.typeChallenge.ToString());
             }
             else {
                 resultText.text = "Réponse incorrecte !";
                 goodAnswer = false;
                 main.addNotification("Vous venez de rater un challenge ...");
+                this.client.sendData("@35402@Challenge" + this.typeChallenge.ToString());
             }
 
             //modify Propositions background
@@ -183,17 +177,6 @@ public class ChallengeVertical : InputSource
 
     }
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     //-------------- TUIO -----------------------------------------------------------------------
 

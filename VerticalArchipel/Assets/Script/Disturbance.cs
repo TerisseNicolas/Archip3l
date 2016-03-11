@@ -18,6 +18,7 @@ public class Disturbance : InputSource
     static public bool actionMade = false;  //not to repeat the final action as many times as there are scripts attached to objects
     public TypeDisturbance disturbanceType;
 
+    private Client Client;
 
     void OnMouseDownSimulation()
     {
@@ -28,6 +29,7 @@ public class Disturbance : InputSource
 
     void Awake()
     {
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.counter = GameObject.Find("DisturbanceCounter").GetComponent<Text>();
         this.disturbanceText = GameObject.Find("DisturbanceText").GetComponent<Text>();
         StartCoroutine(counterDecrement());
@@ -64,11 +66,13 @@ public class Disturbance : InputSource
         if (Disturbance.islandChosen == string.Empty)
         {
             this.disturbanceText.text = "Vous n'avez choisi aucune île !\n\nEn conséquence, la perturbation s'abattra \nsur toutes les îles !";
+            this.Client.sendData("@35770");
         }
         else
         {
             Debug.Log(Disturbance.islandChosen);
             string island = Disturbance.islandChosen.Split('-')[1];
+            this.Client.sendData("@3" + island.Split('_')[2] + "770");
             for (int i = 1; i <= 4; i++)
             {
                 if (("Disturbance-sous_ile_" + i.ToString()) != Disturbance.islandChosen)
@@ -79,19 +83,6 @@ public class Disturbance : InputSource
         }
 
         //TODO: 
-    }
-
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
 
