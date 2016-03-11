@@ -29,6 +29,7 @@ public class Building : InputSource
 
     public Transform buildingConstructionPrefab;
     public Transform buildingUpgradePrefab;
+    
 
     public void init(TypeBuilding TypeBuilding, MinorIsland island)
     {

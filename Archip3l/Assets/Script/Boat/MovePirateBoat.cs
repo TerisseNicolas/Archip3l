@@ -10,7 +10,7 @@ public class MovePirateBoat : InputSource
 {
     public Vector2 speed = new Vector2(0.2f, 0.2f);
     public Vector2 direction = new Vector2(0, 1);
-    private Vector2 movement;
+    private Vector3 movement;
 
 	private bool sinking;
 	private float x, y;
@@ -44,12 +44,13 @@ public class MovePirateBoat : InputSource
         this.direction = targetPosition - initPosition;
 
         transform.position = initPosition;
+        movement = initPosition;
 
         float alpha = -90 + (Mathf.Rad2Deg * Mathf.Atan2(targetPosition.y - initPosition.y, targetPosition.x - initPosition.x)); //, transform.position.y, targetPosition.x - transform.position.x));
         transform.rotation = Quaternion.Euler(0f, 0f, alpha);
 
-//        float boatSpeed = rnd.Next(1, 5) / 1000f;
-		float boatSpeed = 2 / 1000f;
+        float boatSpeed = rnd.Next(3, 6) / 1000f;
+		//float boatSpeed = 5 / 1000f;
         this.speed = new Vector2(boatSpeed, boatSpeed);
 
         float boatScale = 7 + rnd.Next(-1, 1);
@@ -60,16 +61,16 @@ public class MovePirateBoat : InputSource
 
     void Update()
     {
-        movement = new Vector2(transform.position.x + this.speed.x * direction.x, transform.position.y + this.speed.y * direction.y);
+        movement = new Vector3(transform.position.x + this.speed.x * direction.x, transform.position.y + this.speed.y * direction.y, -4);
         if (System.Math.Abs(this.transform.position.x) > 700 || System.Math.Abs(this.transform.position.y) > 500)
         {
             Destroy(gameObject);
         }
+
     }
 
     void FixedUpdate()
     {
-        //Debug.Log(transform.position.ToString());
 
 		x = transform.position.x;
 		y = transform.position.y;
@@ -80,6 +81,8 @@ public class MovePirateBoat : InputSource
 		}
 		else
 			this.transform.position = movement;
+
+
     }
     IEnumerator wait(float seconds)
     {
@@ -129,21 +132,19 @@ public class MovePirateBoat : InputSource
 
     public void destroyBoat(bool touched)
     {
-        //PROBLEM: animation makes island disappear
 
         if(touched)
         {
             SoundPlayer.Instance.playBoatSinkSound();
-            Instantiate(sinkEffect, transform.position, Quaternion.identity);
 			StartCoroutine(ShipSinking());
         }
         else
         {
             SoundPlayer.Instance.playExplosionOneSound();
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
-            
-        Destroy(gameObject);
+
     }
 
     void OnTriggerEnter(Collider collider)
@@ -154,7 +155,7 @@ public class MovePirateBoat : InputSource
         }
         if(collider.name.Contains("PirateBoat"))
         {
-            this.destroyBoat(true);
+            this.destroyBoat(false);
         }
     }
 

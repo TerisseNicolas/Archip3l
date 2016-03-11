@@ -21,6 +21,17 @@ public class PirateBoatManager : MonoBehaviour
 
     private static System.Random rnd;
 
+    private static bool launchBoats = false;
+
+    void Update()
+    {
+        if(GameObject.Find("Explosion1(Clone)") != null)
+            Destroy(GameObject.Find("Explosion1(Clone)"), 0.5f);
+        if (GameObject.Find("sinkingTrail(Clone)") != null)
+            Destroy(GameObject.Find("sinkingTrail(Clone)"), 0.5f);
+    }
+
+
     void Awake()
     {
         rnd = new System.Random();
@@ -31,19 +42,35 @@ public class PirateBoatManager : MonoBehaviour
     }
     void Start()
     {
+        launchBoats = true;
         StartCoroutine("StartLaunchingPirateBoats");
+        //StartCoroutine("wait");
     }
+
     IEnumerator StartLaunchingPirateBoats()
     {
-        for(;;)
-        {
-            launchPirateBoat();
+        yield return new WaitForSeconds(3);
 
-            this.boatId += 1;
-            this.interval *= raisingRate;
+        for (;;)
+        {
+            if (launchBoats)
+            {
+                launchPirateBoat();
+
+                this.boatId += 1;
+                this.interval *= raisingRate;
+            }
             yield return new WaitForSeconds(this.interval);
         }
     }
+
+    //to stop boats appearance
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(15);
+        launchBoats = false;
+    }
+
     private void launchPirateBoat()
     {
         switch (rnd.Next(1, 5))
@@ -67,21 +94,21 @@ public class PirateBoatManager : MonoBehaviour
         if (pirateBoat != null)
         {
             pirateBoat.init(this.initPosition, this.targetPosition);
-
         }
     }
+
     private Vector3 getNewBoatPosition()
     {
         switch (rnd.Next(1, 5))
         {
             case 1:
-                return new Vector3(rnd.Next(-500, -430), rnd.Next(0, 400), -7);
+                return new Vector3(rnd.Next(-500, -430), rnd.Next(0, 400), -4);
             case 2:
-                return new Vector3(rnd.Next(430, 500), rnd.Next(0, 400), -7);
+                return new Vector3(rnd.Next(430, 500), rnd.Next(0, 400), -4);
             case 4:
-                return new Vector3(rnd.Next(-500, -430), rnd.Next(-400, 0), -7);
+                return new Vector3(rnd.Next(-500, -430), rnd.Next(-400, 0), -4);
             case 3:
-                return new Vector3(rnd.Next(430, 500), rnd.Next(-400, 0), -7);
+                return new Vector3(rnd.Next(430, 500), rnd.Next(-400, 0), -4);
         }
         return new Vector3(0, 0);
     }

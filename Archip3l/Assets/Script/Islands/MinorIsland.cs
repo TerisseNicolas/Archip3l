@@ -375,6 +375,7 @@ public class MinorIsland : InputSource
 
     void OnMouseDownSimulation()
     {
+        Debug.Log("toto");
 
         //moving a building
         if (moveBuilding)
@@ -503,6 +504,7 @@ public class MinorIsland : InputSource
                 }
             }
             collider.gameObject.GetComponent<MovePirateBoat>().destroyBoat(false);
+            Debug.Log("collision with boat");
         }
     }
 
@@ -572,6 +574,7 @@ public class MinorIsland : InputSource
         {
             TouchTime = Time.time;
             this.positionTouched = touch.Position;
+            Debug.Log("ok");
         }
 
     }
