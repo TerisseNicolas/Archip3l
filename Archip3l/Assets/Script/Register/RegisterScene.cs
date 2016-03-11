@@ -18,15 +18,14 @@ public class RegisterScene : InputSource {
                 RegisterScene.teamName.text = RegisterScene.teamName.text.Substring(0, RegisterScene.teamName.text.Length - 1);
         }
         else if (this.name == "enter")  //change scene + send name to Vertical (store in file)
-            SceneManager.LoadScene("tutoScene");
+			SceneManager.LoadScene("tutoScene");
         else if (this.name == "PreviousScene")
             SceneManager.LoadScene("loading");
         else
             RegisterScene.teamName.text += this.name;
         
     }
-
-
+	
 	// Use this for initialization
 	void Start () {
         if (this.name == "0")   //to od it one time only
