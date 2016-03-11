@@ -155,7 +155,7 @@ public class MovePirateBoat : InputSource
         }
         if(collider.name.Contains("PirateBoat"))
         {
-            this.destroyBoat(true);
+            this.destroyBoat(false);
         }
     }
 

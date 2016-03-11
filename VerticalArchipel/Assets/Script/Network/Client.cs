@@ -30,6 +30,8 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageResourceTransfertEvent;
     public event EventHandler<MessageEventArgs> MessageChallengeArrival;
     public event EventHandler<MessageEventArgs> MessageChallengeCompleteEvent;
+    public event EventHandler<MessageEventArgs> MessageEnigmaCompleteEvent;
+    public event EventHandler<MessageEventArgs> MessageDisturbanceEvent;
     public event EventHandler<MessageEventArgs> MessageScoreUpdateEvent;
 
     public event EventHandler<MessageEventArgs> MessageSystemStartInitOfGameEvent;
@@ -180,6 +182,21 @@ public class Client : MonoBehaviour
             case 33505:
             case 34505:
                 MessageEvent += MessageScoreUpdateEvent;
+                break;
+            case 35401:
+            case 35402:
+                MessageEvent += MessageChallengeCompleteEvent;
+                break;
+            case 35601:
+            case 35602:
+                MessageEvent += MessageEnigmaCompleteEvent;
+                break;
+            case 31770:
+            case 32770:
+            case 33770:
+            case 34770:
+            case 35770:
+                MessageEvent += MessageDisturbanceEvent;
                 break;
         }
 

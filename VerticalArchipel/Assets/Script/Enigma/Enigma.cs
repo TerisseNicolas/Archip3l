@@ -22,6 +22,8 @@ public class Enigma : InputSource
 
     public TextAsset csv { get; private set; }
 
+    private Client client { get; set; }
+
 
     void OnMouseDownSimulation()
     {
@@ -51,6 +53,8 @@ public class Enigma : InputSource
 
     void Awake()
     {
+        this.client = GameObject.Find("Network").GetComponent<Client>();
+
         if (this.name == "Answer")
             Enigma.answerObject = this.GetComponent<Text>();
         if (this.name == "Result")
@@ -85,9 +89,16 @@ public class Enigma : InputSource
             GameObject.Find(i.ToString()).SetActive(false);
         GameObject.Find("Answer").SetActive(false);
         if (goodAnswer)
+        {
             Enigma.resultObject.text = "Bravo ! votre réponse permet ...";
+            this.client.sendData("@35601@" + this.name);
+        }
+            
         else
+        {
             Enigma.resultObject.text = "Votre mauvaise réponse ...";
+            this.client.sendData("@35602@" + this.name);
+        }
 
         //TODO: action of Enigma
 
@@ -96,18 +107,6 @@ public class Enigma : InputSource
 
         Enigma.enigmaWindowOpen = false;
         Destroy(GameObject.Find("Enigma"), 5);
-    }
-
-        // Use this for initialization
-        void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
 

@@ -14,6 +14,8 @@ public class InfoIsland : InputSource
 
     public string nameIsland;
 
+    private ResourceManager ResourceManager;
+
     void OnMouseDownSimulation()    //close button
     {
         Island.infoIslandPresent = false;
@@ -29,23 +31,15 @@ public class InfoIsland : InputSource
         this.nameIsland = nameSplitted[1] + "_" + nameSplitted[2] + "_" + nameSplitted[3];
         GameObject.Find("nameIsland").GetComponent<Text>().text = Island.getSpecialityNameIsland(this.nameIsland);
 
+        this.ResourceManager = GameObject.Find(this.nameIsland).GetComponent<ResourceManager>();
+
         string resource;
         foreach (TypeResource typeResource in Enum.GetValues(typeof(TypeResource)))
         {
             resource = typeResource.ToString();
-            //TODO
-            GameObject.Find(resource + "_Total").GetComponent<Text>().text = "tot";
-            GameObject.Find(resource + "_PerCycle").GetComponent<Text>().text = "pc";
-                
+            GameObject.Find(resource + "_Total").GetComponent<Text>().text = this.ResourceManager.getResource(typeResource).Stock.ToString(); ;
+            GameObject.Find(resource + "_PerCycle").GetComponent<Text>().text = this.ResourceManager.getResource(typeResource).Production.ToString();                
         }
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
         
