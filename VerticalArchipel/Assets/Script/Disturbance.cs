@@ -78,7 +78,9 @@ public class Disturbance : InputSource
             }
         }
 
-        //TODO: 
+        //TODO: consequences
+
+        Destroy(GameObject.Find("DisturbanceCanvas"), 3);
     }
 
 
