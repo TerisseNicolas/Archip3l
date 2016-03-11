@@ -33,6 +33,7 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageEnigmaCompleteEvent;
     public event EventHandler<MessageEventArgs> MessageDisturbanceEvent;
     public event EventHandler<MessageEventArgs> MessageScoreUpdateEvent;
+    public event EventHandler<MessageEventArgs> MessageSoundEvent;
 
     public event EventHandler<MessageEventArgs> MessageSystemStartInitOfGameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemStartInitOfGameAnswerEvent;
@@ -136,6 +137,10 @@ public class Client : MonoBehaviour
             case 22161:
             case 23161:
             case 24161:
+            case 21211:
+            case 22211:
+            case 23211:
+            case 24211:
                 MessageEvent += MessageBuildingDestructionEvent;
                 break;
             case 21331:
@@ -175,6 +180,9 @@ public class Client : MonoBehaviour
                 break;
             case 30306:
                 MessageEvent += MessageResourceInitEvent;
+                break;
+            case 30800:
+                MessageEvent += MessageSoundEvent;
                 break;
             case 30505:
             case 31505:

@@ -11,8 +11,6 @@ using TouchScript.InputSources;
 
 public class ChallengeUpgrade : InputSource
 {
-
-
     static public string question { get; private set; }
     static public string answer { get; private set; }
     static public string explainations { get; private set; }
@@ -27,9 +25,11 @@ public class ChallengeUpgrade : InputSource
     static public Canvas canvasChallenge { get; private set; }
 
     static public TextAsset csv { get; private set; }
+    private Client Client;
 
     public void init(TypeChallenge tc, MinorIsland island, Building myBuilding)
     {
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
 
         canvasChallenge = this.transform.parent.GetComponent<Canvas>();
 
@@ -198,6 +198,7 @@ public class ChallengeUpgrade : InputSource
                     building.changeProduction(-building.quantityProduced / 2);
                     building.quantityProduced /= 2;
                     minorIsland.displayPopup("Mauvaise réponse ! Votre bâtiment redescend au niveau " + building.level.ToString() + " ...", 3, explainations);
+                    this.Client.sendData("@2" + minorIsland.name.Split('_')[2] + "122@" + building.TypeBuilding.ToString()  + "@" + building.level.ToString());
                 }
                 else
                     minorIsland.displayPopup("Mauvaise réponse ! L'amélioration n'a donc pas pu se faire ...", 3, explainations);
@@ -209,18 +210,6 @@ public class ChallengeUpgrade : InputSource
         }
 
         Destroy(GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland));
-
-    }
-
-    // Use ChallengeUpgrade for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 
