@@ -119,7 +119,7 @@ public class Tuto_MinorIsland : InputSource {
         this.numPopup++;
         popupCanvas.name = "PopupCanvas" + this.numPopup.ToString() + "_" + this.nameTuto_MinorIsland;
         popupCanvas.transform.SetParent(GameObject.Find(this.nameTuto_MinorIsland).transform);
-        Vector3 vector3 = GameObject.Find(this.nameTuto_MinorIsland).transform.position;
+        Vector3 vector3 = GameObject.Find("Virtual_" + this.nameTuto_MinorIsland).transform.position;
         vector3.z = (-1) * numPopup;
         popupCanvas.transform.position = vector3;
         //popupCanvas.transform.position = GameObject.Find(this.nameMinorIsland).transform.position;
