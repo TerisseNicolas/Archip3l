@@ -16,7 +16,7 @@ public class MovePirateBoat : InputSource
 	private float x, y;
 
     private float lifeTime;
-//    public ParticleSystem explosionEffect;
+    public ParticleSystem explosionEffect;
 //    public ParticleSystem sinkEffect;
 	public GameObject sinkingTrail;
 
@@ -122,11 +122,12 @@ public class MovePirateBoat : InputSource
 		sinking = true;
 		Instantiate (sinkingTrail, transform.position, Quaternion.identity);
 		GetComponent<Animator> ().SetInteger ("animBoat", 1);
-		yield return new WaitForSeconds (1f);
-		Destroy (gameObject);
-		sinking = false;
-		yield return new WaitForSeconds (1f);
+		GetComponent<Animator> ().Play ("sinking");
+		yield return new WaitForSeconds (1.5f);
+		Destroy (this.gameObject);
+		yield return new WaitForSeconds (5f);
 		Destroy (sinkingTrail);
+		sinking = false;
 	}
 
 
@@ -135,13 +136,13 @@ public class MovePirateBoat : InputSource
 
         if(touched)
         {
-            SoundPlayer.Instance.playSinkingPirateShipSound();
+//            SoundPlayer.Instance.playSinkingPirateShipSound();
 			StartCoroutine(ShipSinking());
         }
         else
         {
-            SoundPlayer.Instance.playSinkingPirateShipSound();
-//            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+//            SoundPlayer.Instance.playSinkingPirateShipSound();
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
