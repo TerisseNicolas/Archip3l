@@ -11,6 +11,13 @@ public class RegisterScene : InputSource {
 
     static public Text teamName;
 
+    private Client Client;
+
+    void Awake()
+    {
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+    }
+
     void OnMouseDownSimulation(){
         if (this.name == "back")
         {
@@ -18,7 +25,11 @@ public class RegisterScene : InputSource {
                 RegisterScene.teamName.text = RegisterScene.teamName.text.Substring(0, RegisterScene.teamName.text.Length - 1);
         }
         else if (this.name == "enter")  //change scene + send name to Vertical (store in file)
-			SceneManager.LoadScene("tutoScene");
+        {
+            this.Client.sendData("@30004@" + RegisterScene.teamName.text);
+            this.Client.sendData("@30000@PlayingScene");
+            SceneManager.LoadScene("tutoScene");
+        } 
         else if (this.name == "PreviousScene")
             SceneManager.LoadScene("loading");
         else if (this.name == "space")

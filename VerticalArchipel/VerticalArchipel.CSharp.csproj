@@ -69,18 +69,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Challenge\ChallengeManager.cs" />
     <Compile Include="Assets\Script\Challenge\ChallengeVertical.cs" />
     <Compile Include="Assets\Script\Disturbance.cs" />
     <Compile Include="Assets\Script\Enigma\Enigma.cs" />
+    <Compile Include="Assets\Script\Enigma\EnigmaManager.cs" />
     <Compile Include="Assets\Script\Game\DisturbanceTimer.cs" />
     <Compile Include="Assets\Script\Game\DisturbanceTimerView.cs" />
     <Compile Include="Assets\Script\Game\Game.cs" />
+    <Compile Include="Assets\Script\Game\GlobalInfo.cs" />
     <Compile Include="Assets\Script\Game\Score.cs" />
     <Compile Include="Assets\Script\Game\SoundPlayer.cs" />
     <Compile Include="Assets\Script\Game\Timer.cs" />
     <Compile Include="Assets\Script\Game\TimerView.cs" />
     <Compile Include="Assets\Script\Island\InfoIsland.cs" />
     <Compile Include="Assets\Script\Island\Island.cs" />
+    <Compile Include="Assets\Script\Loading\Loading.cs" />
     <Compile Include="Assets\Script\Miscellaneous\CSV_reader.cs" />
     <Compile Include="Assets\Script\Miscellaneous\Tuple.cs" />
     <Compile Include="Assets\Script\Network\Client.cs" />
