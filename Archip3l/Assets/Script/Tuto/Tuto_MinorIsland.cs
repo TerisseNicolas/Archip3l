@@ -275,8 +275,7 @@ public class Tuto_MinorIsland : InputSource {
 
             if (GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameTuto_MinorIsland) != null)
             {
-                GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameTuto_MinorIsland).GetComponentInChildren<Popup>().touched = true;
-                //StartCoroutine(forceDestroyPopup("PopupCanvas" + i.ToString() + "_" + nameMinorIsland, 0));
+                GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameTuto_MinorIsland).GetComponentInChildren<Tuto_Popup>().touched = true;
                 Destroy(GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameTuto_MinorIsland));
             }
         }
