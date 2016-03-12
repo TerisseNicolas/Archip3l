@@ -69,19 +69,15 @@ public class Tuto_MinorIsland : InputSource {
 
     public IEnumerator startFade()
     {
-        SpriteRenderer[] sp = startCanvas.GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer sp = startCanvas.GetComponentInChildren<SpriteRenderer>();
         Color colorBlack;
-        Color colorLogo;
         yield return new WaitForSeconds(1);
         for (int i = 0; i < 200; i++)
         {
             yield return new WaitForSeconds(0.02f);
-            colorBlack = sp[1].color;
+            colorBlack = sp.color;
             colorBlack.a -= 0.005f;
-            sp[1].color = colorBlack;
-            colorLogo = sp[0].color;
-            colorLogo.a -= 0.005f;
-            sp[0].color = colorLogo;
+            sp.color = colorBlack;
         }
         Destroy(GameObject.Find("StartCanvas"));
     }
