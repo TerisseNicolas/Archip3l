@@ -1,14 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Boat/MovePirateBoat.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Tuto/Tuto_MinorIsland.cs">
     <Files>
       <File FileName="Assets/Script/Islands/MinorIsland.cs" Line="1" Column="1" />
       <File FileName="Assets/Script/Boat/MovePirateBoat.cs" Line="144" Column="31" />
       <File FileName="Assets/Script/Resources/BoatMoving.cs" Line="1" Column="1" />
       <File FileName="Assets/Script/Resources/ExchangeResource.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/Register/RegisterScene.cs" Line="35" Column="1" />
-      <File FileName="Assets/Script/Tuto/Tuto_MinorIsland.cs" Line="78" Column="28" />
-      <File FileName="Assets/Script/Boat/PirateBoatManager.cs" Line="46" Column="29" />
+      <File FileName="Assets/Script/Register/RegisterScene.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/Tuto/Tuto_MinorIsland.cs" Line="79" Column="36" />
+      <File FileName="Assets/Script/Boat/PirateBoatManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
