@@ -9,6 +9,9 @@ public class Game : MonoBehaviour
     private Client Client;
     private GlobalResourceManager GlobalResourceManager;
 
+    private Score Score;
+    private GlobalInfo GlobalInfo;
+
     void Awake()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
@@ -27,6 +30,10 @@ public class Game : MonoBehaviour
 
         this.GlobalResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
         this.GlobalResourceManager.MessageInitialized += GlobalResourceManager_MessageInitialized;
+
+        this.Score = gameObject.GetComponent<Score>();
+        //To be activated, the object come from the previous scene
+        //this.GlobalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
     }
 
     void Start()
@@ -51,7 +58,10 @@ public class Game : MonoBehaviour
     }
     private void Timer_FinalTick(object sender, System.EventArgs e)
     {
+        //End of the game
         this.Client.sendData("@30002");
+        //To be activated
+        //this.Score.addScore(this.GlobalInfo.teamName);
     }
     private void TimerDisturbance_FinalTick(object sender, System.EventArgs e)
     {
