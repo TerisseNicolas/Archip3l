@@ -80,24 +80,6 @@ public class main : MonoBehaviour
         GameObject.Find("Notif" + nbNotificationsMax).GetComponent<Text>().text = string.Empty;
     }
 
-
-    static public bool addDisturbance(/*TypeDisturbance disturbanceType*/)
-    {
-        if (!Disturbance.disturbanceWindowOpen)
-        {
-            Disturbance.disturbanceWindowOpen = true;
-            Canvas eventCanvasPrefab = Resources.Load<Canvas>("Prefab/DisturbanceCanvas");
-            Canvas eventCanvas = Instantiate(eventCanvasPrefab);
-            eventCanvas.name = "DisturbanceCanvas";
-            /*foreach (Disturbance e in eventCanvas.GetComponentsInChildren<Disturbance>())
-            {
-                e.disturbanceType = disturbanceType;
-            }*/
-               
-        }
-        return false;
-    }
-
     static public void addEnigma()
     {
         Canvas enigmaPrefab = Resources.Load<Canvas>("Prefab/Enigma");
@@ -122,13 +104,5 @@ public class main : MonoBehaviour
         addChallenge(r, TypeChallenge.VraiFaux);
 
         //addEnigma();
-        addDisturbance();
-
-        //--------------------------------------------------
-    }
-
-    void Update()
-    {
-        //when receive a challenge : addChallenge
     }
 }
