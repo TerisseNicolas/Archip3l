@@ -69,19 +69,15 @@ public class Tuto_MinorIsland : InputSource {
 
     public IEnumerator startFade()
     {
-        SpriteRenderer[] sp = startCanvas.GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer sp = startCanvas.GetComponentInChildren<SpriteRenderer>();
         Color colorBlack;
-        Color colorLogo;
         yield return new WaitForSeconds(1);
         for (int i = 0; i < 200; i++)
         {
             yield return new WaitForSeconds(0.02f);
-            colorBlack = sp[1].color;
+            colorBlack = sp.color;
             colorBlack.a -= 0.005f;
-            sp[1].color = colorBlack;
-            colorLogo = sp[0].color;
-            colorLogo.a -= 0.005f;
-            sp[0].color = colorLogo;
+            sp.color = colorBlack;
         }
         Destroy(GameObject.Find("StartCanvas"));
     }
@@ -112,7 +108,7 @@ public class Tuto_MinorIsland : InputSource {
         StartCoroutine(tuto_building.launchUpgradeAnimation());
     }
 
-        
+    /*    
     //returns the name of the Popup (GameObject) created
     public string createPopup(string popupText)
     {
@@ -123,7 +119,7 @@ public class Tuto_MinorIsland : InputSource {
         this.numPopup++;
         popupCanvas.name = "PopupCanvas" + this.numPopup.ToString() + "_" + this.nameTuto_MinorIsland;
         popupCanvas.transform.SetParent(GameObject.Find(this.nameTuto_MinorIsland).transform);
-        Vector3 vector3 = GameObject.Find(this.nameTuto_MinorIsland).transform.position;
+        Vector3 vector3 = GameObject.Find("Virtual_" + this.nameTuto_MinorIsland).transform.position;
         vector3.z = (-1) * numPopup;
         popupCanvas.transform.position = vector3;
         //popupCanvas.transform.position = GameObject.Find(this.nameMinorIsland).transform.position;
@@ -166,6 +162,120 @@ public class Tuto_MinorIsland : InputSource {
         {
             if (GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameTuto_MinorIsland) != null)
             {
+                Destroy(GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameTuto_MinorIsland));
+            }
+        }
+    }*/
+
+    public void displayPopup(string popupText, int time)
+    {
+        if (popupText != string.Empty)
+            StartCoroutine(destroyPopup(createPopup(popupText), time));
+    }
+
+    //surcharge: for building (explaination displayed at the end of previous popup)
+    public void displayPopup(string popupText, int time, string explaination)
+    {
+        if (popupText != string.Empty)
+            StartCoroutine(destroyPopup(createPopup(popupText), time, explaination));
+    }
+
+    //returns the name of the Popup (GameObject) created
+    public string createPopup(string popupText)
+    {
+        if (GameObject.Find("PopupCanvas" + "_" + this.nameTuto_MinorIsland) != null)
+        {
+            GameObject.Find("PopupCanvas" + "_" + this.nameTuto_MinorIsland).GetComponentInChildren<Tuto_Popup>().touched = true;
+            Destroy(GameObject.Find("PopupCanvas" + "_" + this.nameTuto_MinorIsland));
+        }
+
+        Canvas popupCanvasPrefab = Resources.Load<Canvas>("Prefab/Tuto/PopupCanvasTuto");
+        Canvas popupCanvas = Instantiate(popupCanvasPrefab);
+        popupCanvas.name = "PopupCanvas" + "_" + this.nameTuto_MinorIsland;
+        this.numPopup++;
+        popupCanvas.transform.SetParent(GameObject.Find(this.nameTuto_MinorIsland).transform);
+        Vector3 vector3 = GameObject.Find("sprite-" + this.nameTuto_MinorIsland).transform.position;
+        vector3.z = -2;
+        popupCanvas.transform.position = vector3;
+
+        //rotation of image according to the place of the island
+        char id = this.nameTuto_MinorIsland[this.nameTuto_MinorIsland.Length - 1];
+        if (id == '1' || id == '2')
+            popupCanvas.transform.Rotate(Vector3.forward * 180);
+
+        popupCanvas.GetComponentInChildren<Text>().text = popupText;
+
+        //name + island passed to get the Canvas to destroy
+        popupCanvas.GetComponentInChildren<Tuto_Popup>().namePopupCanvas = popupCanvas.name;
+        popupCanvas.GetComponentInChildren<Tuto_Popup>().island = this;
+
+        return popupCanvas.name;
+    }
+
+
+    //destroy popup after a certain time
+    public IEnumerator destroyPopup(string namePopup, int timer)
+    {
+        Tuto_Popup popup = GameObject.Find(namePopup).GetComponentInChildren<Tuto_Popup>();
+        SpriteRenderer popupImage = GameObject.Find(namePopup).GetComponentInChildren<SpriteRenderer>();
+
+        yield return new WaitForSeconds(timer);
+        Color color;
+        for (int i = 0; i < 100; i++)
+        {
+            yield return new WaitForSeconds(0.01f);
+            if (!popup.touched)
+            {
+                color = popupImage.color;
+                color.a -= 0.01f;
+                popupImage.color = color;
+            }
+            else
+                break;
+
+        }
+        if (!popup.touched)
+            Destroy(GameObject.Find(namePopup));
+    }
+
+    //surcharge: for buildings (display explaination after previous popup)
+    //destroy popup after a certain time
+    public IEnumerator destroyPopup(string namePopup, int timer, string explaination)
+    {
+        Tuto_Popup popup = GameObject.Find(namePopup).GetComponentInChildren<Tuto_Popup>();
+        SpriteRenderer popupImage = GameObject.Find(namePopup).GetComponentInChildren<SpriteRenderer>();
+
+        yield return new WaitForSeconds(timer);
+        Color color;
+        for (int i = 0; i < 100; i++)
+        {
+            yield return new WaitForSeconds(0.01f);
+            if (!popup.touched)
+            {
+                color = popupImage.color;
+                color.a -= 0.01f;
+                popupImage.color = color;
+            }
+            else
+                break;
+
+        }
+        if (!popup.touched)
+            Destroy(GameObject.Find(namePopup));
+
+        yield return new WaitForSeconds(0.5f);
+        displayPopup(explaination, timer);
+    }
+
+
+    public void removeAllPopups()
+    {
+        for (int i = 0; i < this.numPopup; i++)
+        {
+
+            if (GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameTuto_MinorIsland) != null)
+            {
+                GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameTuto_MinorIsland).GetComponentInChildren<Tuto_Popup>().touched = true;
                 Destroy(GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameTuto_MinorIsland));
             }
         }

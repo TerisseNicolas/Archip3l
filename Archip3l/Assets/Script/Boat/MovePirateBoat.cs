@@ -16,8 +16,8 @@ public class MovePirateBoat : InputSource
 	private float x, y;
 
     private float lifeTime;
-    public ParticleSystem explosionEffect;
-    public ParticleSystem sinkEffect;
+//    public ParticleSystem explosionEffect;
+//    public ParticleSystem sinkEffect;
 	public GameObject sinkingTrail;
 
     private Client Client;
@@ -141,7 +141,7 @@ public class MovePirateBoat : InputSource
         else
         {
             SoundPlayer.Instance.playSinkingPirateShipSound();
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+//            Instantiate(explosionEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
