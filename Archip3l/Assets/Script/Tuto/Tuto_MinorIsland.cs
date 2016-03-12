@@ -64,7 +64,8 @@ public class Tuto_MinorIsland : InputSource {
             startCanvas.name = "StartCanvas";
             StartCoroutine(this.startFade());
         }
-        StartCoroutine(this.destroyPopup(this.createPopup("Bienvenue dans le tutoriel. \nPour commencer, appuyez n'importe où puis créez le port."), 10));
+        displayPopup("Bienvenue dans le tutoriel. \nPour commencer, appuyez n'importe où puis créez le port.", 10);
+
     }
 
     public IEnumerator startFade()
@@ -108,64 +109,7 @@ public class Tuto_MinorIsland : InputSource {
         StartCoroutine(tuto_building.launchUpgradeAnimation());
     }
 
-    /*    
-    //returns the name of the Popup (GameObject) created
-    public string createPopup(string popupText)
-    {
-        this.removeAllPopups();
 
-        Canvas popupCanvasPrefab = Resources.Load<Canvas>("Prefab/Tuto/PopupCanvasTuto");
-        Canvas popupCanvas = Instantiate(popupCanvasPrefab);
-        this.numPopup++;
-        popupCanvas.name = "PopupCanvas" + this.numPopup.ToString() + "_" + this.nameTuto_MinorIsland;
-        popupCanvas.transform.SetParent(GameObject.Find(this.nameTuto_MinorIsland).transform);
-        Vector3 vector3 = GameObject.Find("Virtual_" + this.nameTuto_MinorIsland).transform.position;
-        vector3.z = (-1) * numPopup;
-        popupCanvas.transform.position = vector3;
-        //popupCanvas.transform.position = GameObject.Find(this.nameMinorIsland).transform.position;
-        //rotation of image according to the place of the island
-        char id = this.nameTuto_MinorIsland[this.nameTuto_MinorIsland.Length - 1];
-        if (id == '1' || id == '2')
-            popupCanvas.transform.Rotate(Vector3.forward * 180);
-
-        popupCanvas.GetComponentInChildren<Text>().text = popupText;
-
-        //name + island passed to get the Canvas to destroy
-        popupCanvas.GetComponentInChildren<Tuto_Popup>().namePopupCanvas = popupCanvas.name;
-        popupCanvas.GetComponentInChildren<Tuto_Popup>().island = this;
-
-        return popupCanvas.name;
-    }
-        
-
-    public IEnumerator destroyPopup(string namePopup, int timer)
-    {
-        SpriteRenderer popupImage = GameObject.Find(namePopup).GetComponentInChildren<SpriteRenderer>();
-
-        yield return new WaitForSeconds(timer);
-        Color color;
-        for (int i = 0; i < 100; i++)
-        {
-            yield return new WaitForSeconds(0.01f);
-
-            color = popupImage.color;
-            color.a -= 0.01f;
-            popupImage.color = color;
-
-        }
-        Destroy(GameObject.Find(namePopup));
-    }
-
-    public void removeAllPopups()
-    {
-        for (int i = this.numPopup; i > 0; i--)
-        {
-            if (GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameTuto_MinorIsland) != null)
-            {
-                Destroy(GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameTuto_MinorIsland));
-            }
-        }
-    }*/
 
     public void displayPopup(string popupText, int time)
     {
@@ -315,7 +259,7 @@ public class Tuto_MinorIsland : InputSource {
             Canvas exchangeWindowCanvas = Instantiate(exchangeWindowCanvasPrefab);
             exchangeWindowCanvas.transform.parent = GameObject.Find(this.nameTuto_MinorIsland).transform;
             exchangeWindowCanvas.name = "ExchangeWindowCanvas_" + this.nameTuto_MinorIsland;
-            Vector3 vector3 = GameObject.Find(this.nameTuto_MinorIsland).transform.position;
+            Vector3 vector3 = GameObject.Find("Virtual_" + this.nameTuto_MinorIsland).transform.position;
             vector3.z = -2;
             exchangeWindowCanvas.transform.position = vector3;
 
@@ -359,12 +303,13 @@ public class Tuto_MinorIsland : InputSource {
         if (moveBuilding)
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = -1;
+            pos.z = -5;
             GameObject.Find(this.nameBuildingTouchCanvas).transform.position = pos;
             this.moveBuilding = false;
             this.nameBuildingTouchCanvas = string.Empty;
             this.harborMoved = true;
-            StartCoroutine(this.destroyPopup(this.createPopup("Maintenant, améliorez le port."), 5));
+            displayPopup("Maintenant, améliorez le port.", 5);
+
         }
         else
         {
@@ -515,7 +460,7 @@ public class Tuto_MinorIsland : InputSource {
             TouchTime = 0;
             if (this.harborUpgraded && !this.exchangeResourceOpened)
             {
-                StartCoroutine(destroyPopup(createPopup("Voici la fenêtre d'échange de ressources. Vous pouvez y accéder à n'importe quel moment grâce à un appui long."), 5));
+                displayPopup("Voici la fenêtre d'échange de ressources. Vous pouvez y accéder à n'importe quel moment grâce à un appui long.", 5);
                 this.createExchangeWindowTuto();
             }
         }

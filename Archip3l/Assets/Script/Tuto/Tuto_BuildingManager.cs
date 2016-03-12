@@ -27,14 +27,14 @@ public class Tuto_BuildingManager : MonoBehaviour
             tuto_building = building;
 
             Vector3 newPosition = Camera.main.ScreenToWorldPoint(position);
-            newPosition.z = -1;
+            newPosition.z = -5;
             building.transform.position = newPosition;
             //rotation of image according to the place of the island
             char id = tuto_minorIsland.nameTuto_MinorIsland[tuto_minorIsland.nameTuto_MinorIsland.Length - 1];
             if (id == '1' || id == '2')
                 building.transform.Rotate(Vector3.forward * 180);
             tuto_minorIsland.harborBuilt = true;
-            StartCoroutine(tuto_minorIsland.destroyPopup(tuto_minorIsland.createPopup("Bien ! Une fois le port construit, appuyez sur le port et déplacez-le où vous le souhaitez sur l'île."), 5));
+            tuto_minorIsland.displayPopup("Bien ! Une fois le port construit, appuyez sur le port et déplacez-le où vous le souhaitez sur l'île.", 5);
             return true;
         }
         return false;
@@ -58,8 +58,7 @@ public class Tuto_BuildingManager : MonoBehaviour
         }
         Destroy(obj);
         tuto_minorIsland.harborRemoved = true;
-        tuto_minorIsland.removeAllPopups();
-        StartCoroutine(tuto_minorIsland.destroyPopup(tuto_minorIsland.createPopup("Vous avez fini le tutoriel.\n Veuillez attendre que tous les joueurs de la table soient prêts avant de démarrer."), 30));
+        tuto_minorIsland.displayPopup("Vous avez fini le tutoriel.\n Veuillez attendre que tous les joueurs de la table soient prêts avant de démarrer.", 30);
 
     }
 }

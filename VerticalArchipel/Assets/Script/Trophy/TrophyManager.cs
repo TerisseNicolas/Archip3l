@@ -57,7 +57,7 @@ public class TrophyManager : MonoBehaviour
     }
     private void Client_MessageTrophyWonEvent(object sender, MessageEventArgs e)
     {
-        string trophyName = (string)e.message.Split('@').GetValue(2);
+        //string trophyName = (string)e.message.Split('@').GetValue(2);
 
         //inifite loop if change to obtain because the network message is send by this instance
         //changeTrophyToObtained(this.getTrophy(trophyName));

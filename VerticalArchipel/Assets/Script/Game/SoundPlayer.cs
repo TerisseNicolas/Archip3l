@@ -38,7 +38,7 @@ public class SoundPlayer : MonoBehaviour {
             Debug.LogError("Multiple instances of SoundManager!");
         }
         Instance = this;
-        this.Client = GameObject.Find("NetWork").GetComponent<Client>();
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSoundEvent += Client_MessageSoundEvent;
     }
 

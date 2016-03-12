@@ -20,7 +20,7 @@ public class Tuto_ExchangeResource : InputSource
         Destroy(GameObject.Find(this.transform.parent.parent.name));
         island.exchangeWindowPresent = false;
         island.exchangeResourceOpened = true;
-        StartCoroutine(island.destroyPopup(island.createPopup("Pour finir le tutoriel, supprimez le port."), 5));
+        island.displayPopup("Pour finir le tutoriel, supprimez le port.", 5);
         GameObject.Find(island.nameTuto_MinorIsland + "_Harbor").GetComponent<BoxCollider>().enabled = true;
 
     }
