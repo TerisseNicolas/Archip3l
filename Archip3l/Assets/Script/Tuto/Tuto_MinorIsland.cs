@@ -69,19 +69,15 @@ public class Tuto_MinorIsland : InputSource {
 
     public IEnumerator startFade()
     {
-        SpriteRenderer[] sp = startCanvas.GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer sp = startCanvas.GetComponentInChildren<SpriteRenderer>();
         Color colorBlack;
-        Color colorLogo;
         yield return new WaitForSeconds(1);
         for (int i = 0; i < 200; i++)
         {
             yield return new WaitForSeconds(0.02f);
-            colorBlack = sp[1].color;
+            colorBlack = sp.color;
             colorBlack.a -= 0.005f;
-            sp[1].color = colorBlack;
-            colorLogo = sp[0].color;
-            colorLogo.a -= 0.005f;
-            sp[0].color = colorLogo;
+            sp.color = colorBlack;
         }
         Destroy(GameObject.Find("StartCanvas"));
     }
@@ -123,7 +119,7 @@ public class Tuto_MinorIsland : InputSource {
         this.numPopup++;
         popupCanvas.name = "PopupCanvas" + this.numPopup.ToString() + "_" + this.nameTuto_MinorIsland;
         popupCanvas.transform.SetParent(GameObject.Find(this.nameTuto_MinorIsland).transform);
-        Vector3 vector3 = GameObject.Find(this.nameTuto_MinorIsland).transform.position;
+        Vector3 vector3 = GameObject.Find("Virtual_" + this.nameTuto_MinorIsland).transform.position;
         vector3.z = (-1) * numPopup;
         popupCanvas.transform.position = vector3;
         //popupCanvas.transform.position = GameObject.Find(this.nameMinorIsland).transform.position;
