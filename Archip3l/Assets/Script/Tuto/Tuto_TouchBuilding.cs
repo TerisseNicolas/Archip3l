@@ -31,7 +31,7 @@ public class Tuto_TouchBuilding : InputSource
                     Canvas upgradeTuto_BuildingWindowCanvas = Instantiate(upgradeTuto_BuildingWindowCanvasPrefab);
                     upgradeTuto_BuildingWindowCanvas.name = "UpgradeBuildingWindowCanvas_" + building.name;
                     upgradeTuto_BuildingWindowCanvas.transform.SetParent(this.transform.parent.parent.parent);  //parent : sous_ile
-                    pos = island.transform.position;
+                    pos = GameObject.Find("Virtual_" + island.nameTuto_MinorIsland).transform.position;
                     pos.z = -2;
                     upgradeTuto_BuildingWindowCanvas.transform.position = pos;
                     //rotation of image according to the place of the island
@@ -77,7 +77,7 @@ public class Tuto_TouchBuilding : InputSource
                 }
                 else
                 {
-                    StartCoroutine(island.destroyPopup(island.createPopup("Commencez par déplacer le port."), 5));
+                    island.displayPopup("Commencez par déplacer le port.", 5);
                 }
                 break;
             case "Remove":
@@ -89,24 +89,25 @@ public class Tuto_TouchBuilding : InputSource
                 else
                 {
                     if (island.harborMoved)
-                        StartCoroutine(island.destroyPopup(island.createPopup("Maintenant, améliorez le port."), 5));
+                        island.displayPopup("Maintenant, améliorez le port.", 5);
                     else
-                        StartCoroutine(island.destroyPopup(island.createPopup("Commencez par déplacer le port."), 5));
+                        island.displayPopup("Commencez par déplacer le port.", 5);
                 }
+
                 break;
             case "Move":
                 if (!island.harborMoved)
                 {
                     Destroy(GameObject.Find(this.transform.parent.parent.name));
-                    StartCoroutine(island.destroyPopup(island.createPopup("Appuyez sur l'endroit où placer le batiment"), 3));
+                    island.displayPopup("Appuyez sur l'endroit où placer le batiment", 3);
                     island.moveBuilding = true;
                 }
                 else
                 {
                     if (island.harborUpgraded)
-                        StartCoroutine(island.destroyPopup(island.createPopup("Affichez ensuite la fenêtre d'échange de ressources (appui long sur la table)."), 5));
+                        island.displayPopup("Affichez ensuite la fenêtre d'échange de ressources (appui long sur la table).", 5);
                     else
-                        StartCoroutine(island.destroyPopup(island.createPopup("Maintenant, améliorez le port."), 5));
+                        island.displayPopup("Maintenant, améliorez le port.", 5);
                 }
                 break;
         }

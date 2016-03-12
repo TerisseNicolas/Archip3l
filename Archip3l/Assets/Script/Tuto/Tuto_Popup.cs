@@ -22,9 +22,12 @@ public class Tuto_Popup : InputSource
         this.namePopupCanvas = name;
         string[] nameSplitted = name.Split('_');
         this.island = GameObject.Find(nameSplitted[1] + "_" + nameSplitted[2] + "_" + nameSplitted[3]).GetComponent<Tuto_MinorIsland>();
-        StartCoroutine(island.destroyPopup(namePopupCanvas, 0));
+        this.touched = true;
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        Destroy(GameObject.Find(namePopupCanvas));
+
     }
+
 
 
     //-------------- TUIO -----------------------------------------------------------------------

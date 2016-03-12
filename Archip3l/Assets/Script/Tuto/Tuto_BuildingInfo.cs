@@ -100,10 +100,9 @@ public class Tuto_BuildingInfo : InputSource {
         var touch = metaGestureEventArgs.Touch;
         if (touch.InputSource == this) return;
         map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
-        if (TouchTime == 0)
-        {
-            TouchTime = Time.time;
-        }
+        TouchTime = Time.time;
+        if (this.name == "Build")
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("infoBatiments/" + this.name + "Clic");
 
     }
 
@@ -125,11 +124,10 @@ public class Tuto_BuildingInfo : InputSource {
         if (touch.InputSource == this) return;
         if (!map.TryGetValue(touch.Id, out id)) return;
         endTouch(id);
-        if (Time.time - TouchTime < 0.5)
-        {
-            TouchTime = 0;
+        if (this.name == "Build")
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("infoBatiments/" + this.name);
+        if (Time.time - TouchTime < 1)
             this.OnMouseDownSimulation();
-        }
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

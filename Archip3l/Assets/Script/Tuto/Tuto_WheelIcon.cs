@@ -36,7 +36,7 @@ public class Tuto_WheelIcon : InputSource
 
             buildingInfo.name = "BuildingInfo_" + this.name;
             buildingInfo.transform.SetParent(this.transform.parent.parent.parent);  //parent : minorIsland
-            Vector3 pos = island.transform.position;
+            Vector3 pos = GameObject.Find("Virtual_" + island.nameTuto_MinorIsland).transform.position;
             pos.z = -2;
             buildingInfo.transform.position = pos;
 
