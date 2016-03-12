@@ -13,7 +13,9 @@ public class Tuto_Popup : InputSource
 
     public string namePopupCanvas;
     public Tuto_MinorIsland island;
-        
+    public bool touched = false;
+
+
     void OnMouseDownSimulation()
     {
         string name = this.gameObject.transform.parent.name;
