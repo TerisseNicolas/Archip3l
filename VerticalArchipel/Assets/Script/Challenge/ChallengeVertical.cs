@@ -51,6 +51,7 @@ public class ChallengeVertical : InputSource
             
 
         this.question = row[0];
+        addLineBreaks();
         this.answer = row[1];
         this.explainations = row[2];
         this.propositions = new string[nbPropositions];
@@ -88,6 +89,31 @@ public class ChallengeVertical : InputSource
                 this.background = sp;
         }
 
+    }
+
+    void addLineBreaks()
+    {
+        const int maxChar = 40;
+        List<int> spaces = new List<int>();
+        int i = 0;
+        foreach (char c in ChallengeVertical.question)
+        {
+            if (c == ' ')
+                spaces.Add(i);
+            i++;
+        }
+
+        int j = 0;
+        i = 1;
+        int nbLineBreakAdded = 0;
+        while (maxChar * i <= ChallengeVertical.question.Length)
+        {
+            while (j < spaces.Count && spaces[j] < maxChar * i)
+                j++;
+            ChallengeVertical.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) + "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
+            i++;
+            nbLineBreakAdded++;
+        }
     }
 
 

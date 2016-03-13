@@ -3,13 +3,13 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 using TouchScript.InputSources;
-
+using System.Collections.Generic;
 
 public class main : MonoBehaviour
 {
 
     public const int nbChallengesMax = 3;
-    public const int nbNotificationsMax = 10;
+    public const int nbNotificationsMax = 8;
 
     void Awake()
     {
@@ -19,6 +19,7 @@ public class main : MonoBehaviour
             GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled = false;
             GameObject.Find("Challenge" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
         }
+
         for (int i = 0; i < nbNotificationsMax; i++)
         {
             GameObject.Find("Notif" + i.ToString()).GetComponent<Text>().text = string.Empty;
@@ -59,7 +60,7 @@ public class main : MonoBehaviour
         for (int i = 0; i < nbNotificationsMax; i++)
             if (GameObject.Find("Notif" + i.ToString()).GetComponent<Text>().text == string.Empty)
             {
-                GameObject.Find("Notif" + i.ToString()).GetComponent<Text>().text = text;
+                GameObject.Find("Notif" + i.ToString()).GetComponent<Text>().text = addLineBreaks(text);
                 GameObject.Find("Notif" + i.ToString()).GetComponent<BoxCollider>().enabled = true;
                 return;
             }
@@ -89,6 +90,31 @@ public class main : MonoBehaviour
     }
 
 
+    static string addLineBreaks(string text)
+    {
+        const int maxChar = 35;
+        List<int> spaces = new List<int>();
+        int i = 0;
+        foreach (char c in text)
+        {
+            if (c == ' ')
+                spaces.Add(i);
+            i++;
+        }
+
+        int j = 0;
+        i = 1;
+        while (maxChar * i <= text.Length)
+        {
+            while (spaces[j] < maxChar * i && j < spaces.Count)
+                j++;
+            text = text.Substring(0, spaces[j - 1]) + "\n" + text.Substring(spaces[j - 1]);
+            i++;
+        }
+        return text;
+    }
+
+
 
     void Start()
     {
@@ -101,7 +127,8 @@ public class main : MonoBehaviour
 
         string toto = "Répondre VRAI;Proposition0;;VRAI;FAUX";
         string[] r = toto.Split(';');
-        addChallenge(r, TypeChallenge.VraiFaux);
+        if (!addChallenge(r, TypeChallenge.VraiFaux))
+            Debug.Log("challenge returned false");
 
         //addEnigma();
     }

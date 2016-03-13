@@ -71,8 +71,7 @@ public class Enigma : InputSource
             string[] row = CSV_reader.GetRandomLine(csv.text);
 
             Enigma.question = row[0].Replace('*', '\n');
-            //addition of '*' for line breaks
-            //addLineBreaks();
+            addLineBreaks();
             Enigma.answer = row[1];
             Enigma.explainations = row[2].Replace('*', '\n');
 
@@ -107,6 +106,32 @@ public class Enigma : InputSource
 
         Enigma.enigmaWindowOpen = false;
         Destroy(GameObject.Find("Enigma"), 5);
+    }
+
+
+    void addLineBreaks()
+    {
+        const int maxChar = 40;
+        List<int> spaces = new List<int>();
+        int i = 0;
+        foreach (char c in Enigma.question)
+        {
+            if (c == ' ')
+                spaces.Add(i);
+            i++;
+        }
+
+        int j = 0;
+        i = 1;
+        int nbLineBreakAdded = 0;
+        while (maxChar * i <= Enigma.question.Length)
+        {
+            while (j < spaces.Count && spaces[j] < maxChar * i)
+                j++;
+            Enigma.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) + "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
+            i++;
+            nbLineBreakAdded++;
+        }
     }
 
 

@@ -102,13 +102,13 @@ public class PirateBoatManager : MonoBehaviour
         switch (rnd.Next(1, 5))
         {
             case 1:
-                return new Vector3(rnd.Next(-500, -430), rnd.Next(0, 400), -4);
+                return new Vector3(rnd.Next(-500, -430), rnd.Next(0, 400), -2);
             case 2:
-                return new Vector3(rnd.Next(430, 500), rnd.Next(0, 400), -4);
+                return new Vector3(rnd.Next(430, 500), rnd.Next(0, 400), -2);
             case 4:
-                return new Vector3(rnd.Next(-500, -430), rnd.Next(-400, 0), -4);
+                return new Vector3(rnd.Next(-500, -430), rnd.Next(-400, 0), -2);
             case 3:
-                return new Vector3(rnd.Next(430, 500), rnd.Next(-400, 0), -4);
+                return new Vector3(rnd.Next(430, 500), rnd.Next(-400, 0), -2);
         }
         return new Vector3(0, 0);
     }

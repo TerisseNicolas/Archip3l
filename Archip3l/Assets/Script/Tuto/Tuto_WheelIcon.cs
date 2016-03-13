@@ -47,6 +47,7 @@ public class Tuto_WheelIcon : InputSource
 
             island.buildingInfoPresent = true;
         }
+        Destroy(GameObject.Find("WheelCanvas_" + island.nameTuto_MinorIsland));
 
     }
 

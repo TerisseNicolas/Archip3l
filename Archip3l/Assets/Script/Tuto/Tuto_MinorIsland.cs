@@ -263,6 +263,11 @@ public class Tuto_MinorIsland : InputSource {
             vector3.z = -2;
             exchangeWindowCanvas.transform.position = vector3;
 
+            //rotation of image according to the place of the island
+            char id = this.nameTuto_MinorIsland[this.nameTuto_MinorIsland.Length - 1];
+            if (id == '1' || id == '2')
+                exchangeWindowCanvas.transform.Rotate(Vector3.forward * 180);
+
             this.exchangeWindowPresent = true;
         }
     }
