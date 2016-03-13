@@ -50,7 +50,6 @@ public class ChallengeBuild : InputSource
         //csv = Resources.Load<TextAsset>("Challenges/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_Tests");
 
         string[] row = CSV_reader.GetRandomLine(csv.text);
-        Debug.Log(row[0]);
         ChallengeBuild.question = row[0];
         addLineBreaks();
         ChallengeBuild.answer = row[1];
@@ -113,7 +112,7 @@ public class ChallengeBuild : InputSource
         {
             while (spaces[j] < maxChar * i)
                 j++;
-            ChallengeBuild.question = question.Substring(0, spaces[j - 1]) +  "\n" + question.Substring(spaces[j - 1] + 1);
+            ChallengeBuild.question = question.Substring(0, spaces[j - 1]) +  "\n" + question.Substring(spaces[j - 1]);
             i++;
         }
     }

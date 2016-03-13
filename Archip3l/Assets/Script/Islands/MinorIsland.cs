@@ -305,7 +305,7 @@ public class MinorIsland : InputSource
         touchBuildingCanvas.transform.SetParent(this.transform);
         touchBuildingCanvas.name = "touchBuilding_" + this.nameBuildingTouchCanvas;
         Vector3 pos = GameObject.Find(this.nameBuildingTouchCanvas).transform.position;
-        pos.z = -2;
+        pos.z = -4;
         touchBuildingCanvas.transform.position = pos;
 
         //Exception: moving and removing are impossible for Harbor
@@ -375,7 +375,6 @@ public class MinorIsland : InputSource
 
     void OnMouseDownSimulation()
     {
-        Debug.Log("toto");
 
         //moving a building
         if (moveBuilding)
@@ -504,7 +503,7 @@ public class MinorIsland : InputSource
                 }
             }
             collider.gameObject.GetComponent<MovePirateBoat>().destroyBoat(false);
-            Debug.Log("collision with boat");
+
         }
     }
 
@@ -574,7 +573,7 @@ public class MinorIsland : InputSource
         {
             TouchTime = Time.time;
             this.positionTouched = touch.Position;
-            Debug.Log("ok");
+
         }
 
     }

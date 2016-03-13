@@ -114,7 +114,7 @@ public class ChallengeUpgrade : InputSource
         {
             while (spaces[j] < maxChar * i)
                 j++;
-            ChallengeUpgrade.question = question.Substring(0, spaces[j - 1]) + "\n" + question.Substring(spaces[j - 1] + 1);
+            ChallengeUpgrade.question = question.Substring(0, spaces[j - 1]) + "\n" + question.Substring(spaces[j - 1]);
             i++;
         }
     }

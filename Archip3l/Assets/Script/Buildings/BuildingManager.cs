@@ -45,7 +45,7 @@ public class BuildingManager : MonoBehaviour
                 if (buildingType != TypeBuilding.Harbor)
                 {
                     newPosition = Camera.main.ScreenToWorldPoint(position);
-                    newPosition.z = -1;
+                    newPosition.z = -3;
                 }
                 else
                     newPosition = position;

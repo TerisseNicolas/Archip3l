@@ -120,7 +120,6 @@ public class TouchBuilding : InputSource
                                         imageInCanvas.sprite = Resources.Load<Sprite>("infoBatiments/ResourcesIcons/" + building.upgrade1ResourceNeeded[1].First.ToString() + "Icon");
                                     else
                                         imageInCanvas.sprite = null;
-                                    Debug.Log(building.upgrade1ResourceNeeded.Count.ToString());
                                     break;
                                 case 1:
                                     if (building.upgrade2ResourceNeeded.Count == 2)

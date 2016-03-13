@@ -116,6 +116,8 @@ public class WheelIcon : InputSource
                 buildingInfo.transform.Rotate(Vector3.forward * 180);
 
             island.buildingInfoPresent = true;
+            island.wheelPresent = false;
+            Destroy(GameObject.Find("WheelCanvas_" + island.nameMinorIsland));
         }
 
     }
