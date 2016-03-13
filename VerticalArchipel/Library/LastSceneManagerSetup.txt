@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/endScene.unity
+=======
+- path: Assets/Scenes/verticalPlayingScene.unity
+>>>>>>> f74433fa6df48d2f2590b47d4014f0c965a31c18
   isLoaded: 1
   isActive: 1

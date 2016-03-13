@@ -19,7 +19,7 @@ public class main : MonoBehaviour
             GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled = false;
             GameObject.Find("Challenge" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
         }
-        for (int i = 1; i <= nbNotificationsMax; i++)
+        for (int i = 0; i < nbNotificationsMax; i++)
         {
             GameObject.Find("Notif" + i.ToString()).GetComponent<Text>().text = string.Empty;
             GameObject.Find("Notif" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
@@ -56,7 +56,7 @@ public class main : MonoBehaviour
 
     static public void addNotification(string text)
     {
-        for (int i = 1; i <= nbNotificationsMax; i++)
+        for (int i = 0; i < nbNotificationsMax; i++)
             if (GameObject.Find("Notif" + i.ToString()).GetComponent<Text>().text == string.Empty)
             {
                 GameObject.Find("Notif" + i.ToString()).GetComponent<Text>().text = text;
@@ -65,19 +65,19 @@ public class main : MonoBehaviour
             }
         //no place --> make some place to add this notification
         removeNotification(GameObject.Find("Notif1"));
-        GameObject.Find("Notif" + nbNotificationsMax).GetComponent<Text>().text = text;
-        GameObject.Find("Notif" + +nbNotificationsMax).GetComponent<BoxCollider>().enabled = true;
+        GameObject.Find("Notif" + (nbNotificationsMax-1).ToString()).GetComponent<Text>().text = text;
+        GameObject.Find("Notif" + (nbNotificationsMax - 1).ToString()).GetComponent<BoxCollider>().enabled = true;
     }
 
     static public void removeNotification(GameObject go)  //id : last character of the notification's name
     {
             
         //each notification below the removed one goes up
-        for (int i = int.Parse(go.name[go.name.Length - 1].ToString()); i < nbNotificationsMax; i++)
+        for (int i = int.Parse(go.name[go.name.Length - 1].ToString()); i < nbNotificationsMax - 1; i++)
         {
             GameObject.Find("Notif" + i.ToString()).GetComponent<Text>().text = GameObject.Find("Notif" + (i + 1).ToString()).GetComponent<Text>().text;
         }
-        GameObject.Find("Notif" + nbNotificationsMax).GetComponent<Text>().text = string.Empty;
+        GameObject.Find("Notif" + (nbNotificationsMax - 1).ToString()).GetComponent<Text>().text = string.Empty;
     }
 
     static public void addEnigma()
