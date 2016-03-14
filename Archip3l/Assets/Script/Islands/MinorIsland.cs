@@ -278,7 +278,7 @@ public class MinorIsland : InputSource
             Destroy(GameObject.Find(namePopup));
 
         yield return new WaitForSeconds(0.5f);
-        displayPopup(explaination, timer);
+        displayPopup(explaination, 10);
     }
         
 
@@ -394,7 +394,7 @@ public class MinorIsland : InputSource
             }
             else
             {
-                if (!challengePresent && !exchangeWindowPresent)
+                if (!challengePresent && !exchangeWindowPresent && !buildingInfoPresent)
                 {
                     if (!wheelPresent)  //if the wheel is not on the island
                     {

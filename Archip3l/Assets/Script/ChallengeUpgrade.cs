@@ -97,10 +97,10 @@ public class ChallengeUpgrade : InputSource
 
     void addLineBreaks()
     {
-        const int maxChar = 35;
+        const int maxChar = 40;
         List<int> spaces = new List<int>();
         int i = 0;
-        foreach (char c in ChallengeBuild.question)
+        foreach (char c in ChallengeUpgrade.question)
         {
             if (c == ' ')
                 spaces.Add(i);
@@ -109,13 +109,14 @@ public class ChallengeUpgrade : InputSource
 
         int j = 0;
         i = 1;
-        string toto = ChallengeBuild.question;
-        while (maxChar * i <= ChallengeBuild.question.Length && j < spaces.Count)
+        int nbLineBreakAdded = 0;
+        while (maxChar * i <= ChallengeUpgrade.question.Length)
         {
-            while (spaces[j] < maxChar * i)
+            while (j < spaces.Count && spaces[j] < maxChar * i)
                 j++;
-            ChallengeUpgrade.question = question.Substring(0, spaces[j - 1]) + "\n" + question.Substring(spaces[j - 1]);
+            ChallengeUpgrade.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) + "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
             i++;
+            nbLineBreakAdded++;
         }
     }
 

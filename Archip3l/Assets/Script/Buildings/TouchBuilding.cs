@@ -216,7 +216,7 @@ public class TouchBuilding : InputSource
                     Canvas removeBuildingWindowCanvas = Instantiate(removeBuildingWindowCanvasPrefab);
                     removeBuildingWindowCanvas.name = "RemoveBuildingWindowCanvas_" + building.name;
                     removeBuildingWindowCanvas.transform.SetParent(this.transform.parent.parent.parent);  //parent : sous_ile
-                    pos = island.transform.position;
+                    pos = GameObject.Find("sprite-" + island.nameMinorIsland).transform.position;
                     pos.z = -2;
                     removeBuildingWindowCanvas.transform.position = pos;
                     //rotation of image according to the place of the island
