@@ -14,10 +14,9 @@ public class Island : InputSource
 
     void OnMouseDownSimulation()
     {
-        if (!Enigma.enigmaWindowOpen && !Disturbance.disturbanceWindowOpen && !Trophy.infoWindowPresent && !Island.infoIslandPresent && !ChallengeVertical.challengeWindowPresent)
+        if (!ChallengeWon.challengeWonWindowPresent && !Enigma.enigmaWindowOpen && !Disturbance.disturbanceWindowOpen && !Trophy.infoWindowPresent && !Island.infoIslandPresent && !ChallengeVertical.challengeWindowPresent)
         {
             infoIslandPresent = true;
-            Debug.Log("Clic on " + this.name);
             Canvas infoInslandCanvasPrefab = Resources.Load<Canvas>("Prefab/infoIslandCanvas");
             Canvas infoInslandCanvas = Instantiate(infoInslandCanvasPrefab);
             infoInslandCanvas.name = "infoInslandCanvas_" + this.name;

@@ -58,12 +58,11 @@ public class Trophy : InputSource
 
     void OnMouseDownSimulation()
     {
-        if (!Enigma.enigmaWindowOpen && !Disturbance.disturbanceWindowOpen && !Island.infoIslandPresent && !ChallengeVertical.challengeWindowPresent)
+        if (!ChallengeWon.challengeWonWindowPresent && !Enigma.enigmaWindowOpen && !Disturbance.disturbanceWindowOpen && !Island.infoIslandPresent && !ChallengeVertical.challengeWindowPresent)
         {
             if (!Trophy.infoWindowPresent)
             {
                 Trophy.infoWindowPresent = true;
-                Debug.Log("Clic on " + this.name);
                 switch (this.name)
                 {
                     case "AirportMedal":

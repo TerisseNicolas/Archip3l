@@ -15,17 +15,19 @@ public class ChallengeVertical : InputSource
 {
     static public bool challengeWindowPresent = false;
 
-    public string[] rowSent { get; set; }    //initialized at the reception
-    public string question { get; private set; }
-    public string answer { get; private set; }
-    public string explainations { get; private set; }
-    public string[] propositions { get; private set; }
-    public int nbPropositions { get; private set; }
-    public TypeChallenge typeChallenge { get; set; }
-    public SpriteRenderer background { get; private set; }
-    public Text resultText { get; private set; }
-    public bool goodAnswer { get; private set; }
-    public Canvas canvasChallenge { get; private set; }
+    static public string[] rowSent { get; set; }    //initialized at the reception
+    static public string resourceToWin { get; set; }
+    static public int quantityToWin { get; set; }
+    static public string question { get; private set; }
+    static public string answer { get; private set; }
+    static public string explainations { get; private set; }
+    static public string[] propositions { get; private set; }
+    static public int nbPropositions { get; private set; }
+    static public TypeChallenge typeChallenge { get; set; }
+    static public SpriteRenderer background { get; private set; }
+    static public Text resultText { get; private set; }
+    static public bool goodAnswer { get; private set; }
+    static public Canvas canvasChallenge { get; private set; }
 
     public TextAsset csv { get; private set; }
 
@@ -37,28 +39,75 @@ public class ChallengeVertical : InputSource
     }
 
 
-    public void init(TypeChallenge tc, string[] row)
+    //initialize typeChallenge, rowSent, resourceToWin, quantityToWin
+    private void getInitParameters()
+    {
+        //random type of ChallengeVertical
+        TypeChallenge tc;
+        System.Random ran = new System.Random();
+        int aleat = ran.Next(0, 2);
+        if (aleat == 0)
+            tc = TypeChallenge.VraiFaux;
+        else
+            tc = TypeChallenge.QCM;
+
+        int quantityToWin = ran.Next(0, 50);
+
+        //random type of Building
+        TypeBuilding tb;
+        aleat = ran.Next(0, Enum.GetNames(typeof(TypeBuilding)).Length);
+        tb = (TypeBuilding)Enum.Parse(typeof(TypeBuilding), Enum.GetNames(typeof(TypeBuilding))[aleat], true);
+        //here we only use building with material resources
+        while (Enum.IsDefined(typeof(TypeBuildingStat), tb.ToString()))
+        {
+            aleat = ran.Next(0, Enum.GetNames(typeof(TypeBuilding)).Length);
+            tb = (TypeBuilding)Enum.Parse(typeof(TypeBuilding), Enum.GetNames(typeof(TypeBuilding))[aleat], true);
+        }
+
+        string resourceToWin = main.getNameResourceOrStatProduced(tb.ToString());
+
+
+        //CSV part
+        //row[0] : question ; row[1] : answer ; row[2] : explainations ; after : propositions
+        //VraiFaux : answer = Proposition0 ou answer = Proposition1
+        //QCM : answer = Proposition0 ou answer = Proposition1 ou answer = Proposition2
+
+        //ENCODAGE : UTF8-16-LE
+        //last line of file usually blank --> to be removed!
+        csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + tc.ToString() + "/" + tc.ToString() + "_" + tb.ToString());
+        Debug.Log("Challenges/ChallengesFiles/" + tc.ToString() + "/" + tc.ToString() + "_" + tb.ToString());
+        string[] row = CSV_reader.GetRandomLine(csv.text);
+
+        init(tc, row, resourceToWin, quantityToWin);
+
+
+    }
+
+
+    public void init(TypeChallenge tc, string[] row, string resourceToWin, int quantityToWin)
     {
 
         canvasChallenge = this.transform.parent.GetComponent<Canvas>();
 
-        this.rowSent = row;
-        this.typeChallenge = tc;
+        ChallengeVertical.rowSent = row;
+        ChallengeVertical.resourceToWin = resourceToWin;
+        ChallengeVertical.quantityToWin = quantityToWin;
+        ChallengeVertical.typeChallenge = tc;
         if (typeChallenge == TypeChallenge.QCM)
-            this.nbPropositions = 3;
+            ChallengeVertical.nbPropositions = 3;
         else
-            this.nbPropositions = 2;
-            
+            ChallengeVertical.nbPropositions = 2;
 
-        this.question = row[0];
+
+        ChallengeVertical.question = row[0];
         addLineBreaks();
-        this.answer = row[1];
-        this.explainations = row[2];
-        this.propositions = new string[nbPropositions];
-        this.propositions[0] = row[3];
-        this.propositions[1] = row[4];
-        if (this.nbPropositions == 3)
-            this.propositions[2] = row[5];
+        ChallengeVertical.answer = row[1];
+        ChallengeVertical.explainations = row[2];
+        ChallengeVertical.propositions = new string[nbPropositions];
+        ChallengeVertical.propositions[0] = row[3];
+        ChallengeVertical.propositions[1] = row[4];
+        if (ChallengeVertical.nbPropositions == 3)
+            ChallengeVertical.propositions[2] = row[5];
 
 
         foreach (Text text in canvasChallenge.GetComponentsInChildren<Text>())
@@ -66,19 +115,19 @@ public class ChallengeVertical : InputSource
             switch (text.name)
             {
                 case "Question":
-                    text.text = this.question.Replace('*', '\n');        //in CSV: '*' replace a line break ('\n')
+                    text.text = ChallengeVertical.question.Replace('*', '\n');        //in CSV: '*' replace a line break ('\n')
                     break;
                 case "Result":
                     resultText = text;
                     break;
                 case "Proposition0":
-                    text.text = this.propositions[0];
+                    text.text = ChallengeVertical.propositions[0];
                     break;
                 case "Proposition1":
-                    text.text = this.propositions[1];
+                    text.text = ChallengeVertical.propositions[1];
                     break;
                 case "Proposition2":
-                    text.text = this.propositions[2];
+                    text.text = ChallengeVertical.propositions[2];
                     break;
             }
         }
@@ -86,7 +135,7 @@ public class ChallengeVertical : InputSource
         foreach (SpriteRenderer sp in canvasChallenge.GetComponentsInChildren<SpriteRenderer>())
         {
             if (sp.name == "background")
-                this.background = sp;
+                ChallengeVertical.background = sp;
         }
 
     }
@@ -96,7 +145,7 @@ public class ChallengeVertical : InputSource
         const int maxChar = 40;
         List<int> spaces = new List<int>();
         int i = 0;
-        foreach (char c in this.question)
+        foreach (char c in ChallengeVertical.question)
         {
             if (c == ' ')
                 spaces.Add(i);
@@ -106,11 +155,11 @@ public class ChallengeVertical : InputSource
         int j = 0;
         i = 1;
         int nbLineBreakAdded = 0;
-        while (maxChar * i <= this.question.Length)
+        while (maxChar * i <= ChallengeVertical.question.Length)
         {
             while (j < spaces.Count && spaces[j] < maxChar * i)
                 j++;
-            this.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) + "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
+            ChallengeVertical.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) + "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
             i++;
             nbLineBreakAdded++;
         }
@@ -124,13 +173,10 @@ public class ChallengeVertical : InputSource
             if (!ChallengeVertical.challengeWindowPresent && !Trophy.infoWindowPresent && !Enigma.enigmaWindowOpen && !Disturbance.disturbanceWindowOpen && !Island.infoIslandPresent)
             {
                 ChallengeVertical.challengeWindowPresent = true;
-                Canvas challengePrefab = Resources.Load<Canvas>("Prefab/Challenge_" + this.typeChallenge.ToString());
+                Canvas challengePrefab = Resources.Load<Canvas>("Prefab/Challenge_" + ChallengeVertical.typeChallenge.ToString());
                 Canvas canvasChallenge = Instantiate(challengePrefab);
-                canvasChallenge.name = "Challenge_" + this.typeChallenge.ToString();
-                foreach (ChallengeVertical cb in canvasChallenge.GetComponentsInChildren<ChallengeVertical>())
-                {
-                    cb.init(this.typeChallenge, this.rowSent);
-                }
+                canvasChallenge.name = "Challenge_" + ChallengeVertical.typeChallenge.ToString();
+                canvasChallenge.GetComponentInChildren<ChallengeVertical>().getInitParameters();
                 main.removeChallenge(GameObject.Find(this.name));
             }
         }
@@ -144,13 +190,13 @@ public class ChallengeVertical : InputSource
                 resultText.text = "Réponse correcte !";
                 goodAnswer = true;
                 main.addNotification("Vous venez de réussir un challenge !");
-                this.client.sendData("@35401@Challenge" + this.typeChallenge.ToString());
+                //this.client.sendData("@35401@Challenge" + this.typeChallenge.ToString());
             }
             else {
                 resultText.text = "Réponse incorrecte !";
                 goodAnswer = false;
                 main.addNotification("Vous venez de rater un challenge ...");
-                this.client.sendData("@35402@Challenge" + this.typeChallenge.ToString());
+                //this.client.sendData("@35402@Challenge" + this.typeChallenge.ToString());
             }
 
             //modify Propositions background
@@ -193,9 +239,15 @@ public class ChallengeVertical : InputSource
             background.material.color = color;
         }
 
-        //TODO: actions
+        
+        if (goodAnswer)
+        {
+            Canvas challengeWonPrefab = Resources.Load<Canvas>("Prefab/challengeWonCanvas");
+            Canvas challengeWon = Instantiate(challengeWonPrefab);
+            challengeWon.name = "challengeWonCanvas";
+            GameObject.Find("challengeWon-sous_ile_1").GetComponent<ChallengeWon>().init(resourceToWin, quantityToWin);
+        }
 
-        Debug.Log("do sth");
 
         ChallengeVertical.challengeWindowPresent = false;
 
