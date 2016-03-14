@@ -96,7 +96,7 @@ public class ChallengeVertical : InputSource
         const int maxChar = 40;
         List<int> spaces = new List<int>();
         int i = 0;
-        foreach (char c in ChallengeVertical.question)
+        foreach (char c in this.question)
         {
             if (c == ' ')
                 spaces.Add(i);
@@ -106,11 +106,11 @@ public class ChallengeVertical : InputSource
         int j = 0;
         i = 1;
         int nbLineBreakAdded = 0;
-        while (maxChar * i <= ChallengeVertical.question.Length)
+        while (maxChar * i <= this.question.Length)
         {
             while (j < spaces.Count && spaces[j] < maxChar * i)
                 j++;
-            ChallengeVertical.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) + "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
+            this.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) + "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
             i++;
             nbLineBreakAdded++;
         }
