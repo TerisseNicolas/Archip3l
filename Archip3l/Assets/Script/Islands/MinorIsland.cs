@@ -25,6 +25,7 @@ public class MinorIsland : InputSource
     public Vector2 placeOfBuildingConstruction;
     public bool wheelPresent = false;                   //wheel present on the island
     public bool buildingInfoPresent = false;            //buildingInfo present on the island
+    public bool upgradeBuildingInfoPresent = false;     //upgradeBuildingInfo present on the island
     public bool challengePresent = false;               //challenge present on the island
     public bool moveBuilding = false;                   //moving a building
     public bool exchangeWindowPresent = false;          //exchangeWindow present on the island
@@ -358,10 +359,10 @@ public class MinorIsland : InputSource
         {
             Canvas exchangeWindowCanvasPrefab = Resources.Load<Canvas>("Prefab/exchangeWindowCanvas");
             Canvas exchangeWindowCanvas = Instantiate(exchangeWindowCanvasPrefab);
-            exchangeWindowCanvas.transform.parent = GameObject.Find(this.nameMinorIsland).transform;
+            exchangeWindowCanvas.transform.SetParent(GameObject.Find(this.nameMinorIsland).transform);
             exchangeWindowCanvas.name = "ExchangeWindowCanvas_" + this.nameMinorIsland;
             Vector3 vector3 = GameObject.Find("sprite-" + this.nameMinorIsland).transform.position;
-            vector3.z = -5;
+            vector3.z = -2;
             exchangeWindowCanvas.transform.position = vector3;
 
             //rotation of image according to the place of the island
@@ -389,12 +390,15 @@ public class MinorIsland : InputSource
         {
             if (this.nameBuildingTouchCanvas != String.Empty)
             {
-                Destroy(GameObject.Find("touchBuilding_" + this.nameBuildingTouchCanvas));
-                this.nameBuildingTouchCanvas = String.Empty;
+                if (!upgradeBuildingInfoPresent)
+                {
+                    Destroy(GameObject.Find("touchBuilding_" + this.nameBuildingTouchCanvas));
+                    this.nameBuildingTouchCanvas = String.Empty;
+                }
             }
             else
             {
-                if (!challengePresent && !exchangeWindowPresent && !buildingInfoPresent)
+                if (!challengePresent && !exchangeWindowPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent)
                 {
                     if (!wheelPresent)  //if the wheel is not on the island
                     {
@@ -604,7 +608,8 @@ public class MinorIsland : InputSource
         else if(Time.time - TouchTime < 1.5)
         {
             TouchTime = 0;
-            this.createExchangeWindow();
+            if(!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
+                this.createExchangeWindow();
         }
     }
 
