@@ -75,7 +75,7 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    public bool addResource(TypeResource resourceType, int quantity, int production)
+    public bool addResource(TypeResource resourceType, float quantity, int production)
     {
         bool flag = false;
         foreach (Resource item in this.Resources)
@@ -97,13 +97,13 @@ public class ResourceManager : MonoBehaviour
             return true;
         }
     }
-    public bool changeResourceProduction(TypeResource resourceType, int value)
+    public bool changeResourceProduction(TypeResource resourceType, float value)
     {
         Resource resource = this.getResource(resourceType);
         bool result = resource.changeProduction(value);
         return result;
     }
-    public bool changeResourceStock(TypeResource resourceType, int value)
+    public bool changeResourceStock(TypeResource resourceType, float value)
     {
         Resource resource = this.getResource(resourceType);
         bool result = false;

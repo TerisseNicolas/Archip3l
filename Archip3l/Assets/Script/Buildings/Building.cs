@@ -297,7 +297,7 @@ public class Building : InputSource
         return this.resourceProduced.changeProduction(value);
 
     }
-    public bool changeStock(int value)
+    public bool changeStock(float value)
     {
         return this.minorIsland.resourceManager.changeResourceStock(this.resourceProduced.TypeResource, value);
     }

@@ -75,7 +75,7 @@ public class ExchangeResource : InputSource
             else
             {
                 resourceName = Resource.getResourceFromIconName(resource_sp.GetComponent<SpriteRenderer>().sprite.name);
-                resourceQuantity = this.island.resourceManager.getResource((TypeResource)System.Enum.Parse(typeof(TypeResource), resourceName)).Stock;
+                resourceQuantity = (int) this.island.resourceManager.getResource((TypeResource)System.Enum.Parse(typeof(TypeResource), resourceName)).Stock;
             }
 
             Vector3 vector3;
