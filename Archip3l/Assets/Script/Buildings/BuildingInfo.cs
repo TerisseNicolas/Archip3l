@@ -20,10 +20,10 @@ public class BuildingInfo : InputSource
         buildingClicked = island.buildingClickedWheel;
         if (this.name == "Build")
         {
-            Destroy(GameObject.Find("WheelCanvas_" + this.transform.parent.parent.parent.name));
             island.wheelPresent = false;
             island.createChallengeBuild(buildingClicked);
             island.challengePresent = true;
+            Destroy(GameObject.Find("WheelCanvas_" + this.transform.parent.parent.parent.name));
         }
 
         Destroy(GameObject.Find(this.transform.parent.parent.name));

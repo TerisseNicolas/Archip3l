@@ -67,8 +67,9 @@ public class UpgradeBuilding : InputSource
             }
         }
 
-        Destroy(GameObject.Find(this.transform.parent.parent.name));
+        island.upgradeBuildingInfoPresent = false;
         island.nameBuildingTouchCanvas = string.Empty;
+        Destroy(GameObject.Find(this.transform.parent.parent.name));
     }
 
 

@@ -108,10 +108,11 @@ public class GameMenu : InputSource
         var touch = metaGestureEventArgs.Touch;
         if (touch.InputSource == this) return;
         map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
-        if (TouchTime == 0 && !MinorIsland.exchangePerforming)
+        if (TouchTime == 0)
         {
             TouchTime = Time.time;
-
+            if (this.name == "Jouer" || this.name == "Credits" || this.name == "Classement" || this.name == "Quitter")
+                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("menu/" + this.name + "Clic");
         }
 
     }
@@ -142,6 +143,8 @@ public class GameMenu : InputSource
         else if (Time.time - TouchTime < 1.5)
         {
             TouchTime = 0;
+            if (this.name == "Jouer" || this.name == "Credits" || this.name == "Classement" || this.name == "Quitter")
+                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("menu/" + this.name);
         }
     }
 

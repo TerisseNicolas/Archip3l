@@ -26,7 +26,6 @@ public class TouchBuilding : InputSource
         switch (this.name)
         {
             case "Upgrade":
-                Destroy(GameObject.Find(this.transform.parent.parent.name));
                 Canvas upgradeBuildingWindowCanvasPrefab = Resources.Load<Canvas>("Prefab/UpgradeBuildingWindowCanvas");
                 Canvas upgradeBuildingWindowCanvas = Instantiate(upgradeBuildingWindowCanvasPrefab);
                 upgradeBuildingWindowCanvas.name = "UpgradeBuildingWindowCanvas_" + building.name;
@@ -37,6 +36,7 @@ public class TouchBuilding : InputSource
                 //rotation of image according to the place of the island
                 if (id == '1' || id == '2')
                     upgradeBuildingWindowCanvas.transform.Rotate(Vector3.forward * 180);
+                island.upgradeBuildingInfoPresent = true;
                 //modification of the content of the different Text Children of the Canvas
                 foreach (Text textInCanvas in upgradeBuildingWindowCanvas.GetComponent<Canvas>().GetComponentsInChildren<Text>())
                 {
@@ -203,6 +203,7 @@ public class TouchBuilding : InputSource
                         }
                     }
                 }
+                Destroy(GameObject.Find(this.transform.parent.parent.name));
 
                 break;
             case "Remove":
