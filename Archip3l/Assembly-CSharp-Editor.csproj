@@ -76,6 +76,7 @@
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_OilPlant.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_PowerPlant.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Hotel.txt" />
+     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Sawmill.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Church.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Harbor.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_School.txt" />
@@ -99,6 +100,7 @@
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Airport.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_PowerPlant.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Farm.txt" />
+     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Lab.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_WindTurbine.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Hotel.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Factory.txt" />
