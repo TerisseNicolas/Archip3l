@@ -172,6 +172,7 @@
     <Compile Include="Assets\Script\Types\TypeResource.cs" />
     <Compile Include="Assets\Script\Types\TypeStat.cs" />
     <Compile Include="Assets\Script\main.cs" />
+    <Compile Include="Assets\Script\verticalTuto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Airport.txt" />

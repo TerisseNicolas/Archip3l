@@ -10,7 +10,7 @@ public class Loading : InputSource {
 
     void OnMouseDownSimulation()
     {
-        SceneManager.LoadScene("registerScene");
+        SceneManager.LoadScene("menuScene");
     }
 
     // Use this for initialization

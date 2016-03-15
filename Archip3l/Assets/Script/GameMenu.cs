@@ -11,20 +11,23 @@ public class GameMenu : InputSource
 
     void OnMouseDownSimulation()
     {
-        //SceneManager.LoadScene("playingScene");
-        Debug.Log(this.name);
         switch(this.name)
         {
-            case "Play":
+            case "Jouer":
                 SceneManager.LoadScene("tutoScene");
                 //set Vertical to Loading
                 break;
             case "Credits":
-                //place mask on current scene
+                SceneManager.LoadScene("waitForVerticalScene");
                 //set Vertical to Credits
                 break;
-            case "Results":
-                //place mask on current scene
+            case "Classement":
+                SceneManager.LoadScene("waitForVerticalScene");
+                //set Vertical to Results
+                break;
+            case "returnArrow":
+            case "Quitter":
+                SceneManager.LoadScene("loading");
                 //set Vertical to Results
                 break;
         }
