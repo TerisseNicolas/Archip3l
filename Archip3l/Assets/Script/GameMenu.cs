@@ -1,100 +1,48 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using TouchScript.InputSources;
 using TouchScript.Gestures;
 using TouchScript.Hit;
-using UnityEngine.UI;
-using System.Collections;
 using TouchScript;
+using TouchScript.InputSources;
+using UnityEngine.SceneManagement;
 
-
-
-public class Disturbance : InputSource
+public class GameMenu : InputSource
 {
-    static public bool disturbanceWindowOpen = false;
-    public Text counter;
-    public Text disturbanceText;
-    static public string islandChosen = string.Empty;
-    static public bool actionMade = false;  //not to repeat the final action as many times as there are scripts attached to objects
-    public TypeDisturbance disturbanceType;
-
-    private Client Client;
 
     void OnMouseDownSimulation()
     {
-        Disturbance.islandChosen = this.name;
-        finalAction();
-    }
-
-
-    void Awake()
-    {
-        this.Client = GameObject.Find("Network").GetComponent<Client>();
-        this.counter = GameObject.Find("DisturbanceCounter").GetComponent<Text>();
-        this.disturbanceText = GameObject.Find("DisturbanceText").GetComponent<Text>();
-        StartCoroutine(counterDecrement());
-    }
-
-    IEnumerator counterDecrement()
-    {
-        for (int i = 10; i >= 0; i--)
+        //SceneManager.LoadScene("playingScene");
+        Debug.Log(this.name);
+        switch(this.name)
         {
-            if (Disturbance.islandChosen == string.Empty)
-            {
-                this.counter.text = i.ToString();
-                yield return new WaitForSeconds(1);
-            }
-            else
-            {
-                this.counter.text = string.Empty;
+            case "Play":
+                SceneManager.LoadScene("tutoScene");
+                //set Vertical to Loading
                 break;
-            }
-        }
-
-        if (!Disturbance.actionMade)
-        {
-            finalAction();
+            case "Credits":
+                //place mask on current scene
+                //set Vertical to Credits
+                break;
+            case "Results":
+                //place mask on current scene
+                //set Vertical to Results
+                break;
         }
     }
 
-    void finalAction()
-    {
-        Disturbance.actionMade = true;
-        for (int i = 1; i <= 4; i++)
-            GameObject.Find("Disturbance-sous_ile_" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
 
-        if (Disturbance.islandChosen == string.Empty)
-        {
-            this.disturbanceText.text = "Vous n'avez choisi aucune île !\n\nEn conséquence, la perturbation s'abattra \nsur toutes les îles !";
-            this.Client.sendData("@35770");
-        }
-        else
-        {
-            Debug.Log(Disturbance.islandChosen);
-            string island = Disturbance.islandChosen.Split('-')[1];
-            this.Client.sendData("@3" + island.Split('_')[2] + "770");
-            for (int i = 1; i <= 4; i++)
-            {
-                if (("Disturbance-sous_ile_" + i.ToString()) != Disturbance.islandChosen)
-                {
-                    GameObject.Find("Disturbance-sous_ile_" + i.ToString()).SetActive(false);
-                }
-            }
-        }
+	// Use this for initialization
+	void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
 
-        //TODO: consequences on table
 
-        StartCoroutine(wait());
 
-        Destroy(GameObject.Find("Disturbance"), 3.1f);
-    }
-
-    IEnumerator wait()
-    {
-        yield return new WaitForSeconds(3);
-        Enigma.enimgasToBeDone = 2;
-        main.addEnigma();
-    }
 
 
     //-------------- TUIO -----------------------------------------------------------------------
@@ -157,8 +105,12 @@ public class Disturbance : InputSource
         var touch = metaGestureEventArgs.Touch;
         if (touch.InputSource == this) return;
         map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
-        //this.OnMouseDownSimulation();
-        TouchTime = Time.time;
+        if (TouchTime == 0 && !MinorIsland.exchangePerforming)
+        {
+            TouchTime = Time.time;
+
+        }
+
     }
 
     private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
@@ -179,8 +131,15 @@ public class Disturbance : InputSource
         if (touch.InputSource == this) return;
         if (!map.TryGetValue(touch.Id, out id)) return;
         endTouch(id);
-        if (Time.time - TouchTime < 1)
+        if (Time.time - TouchTime < 0.5)
+        {
+            TouchTime = 0;
             this.OnMouseDownSimulation();
+        }
+        else if (Time.time - TouchTime < 1.5)
+        {
+            TouchTime = 0;
+        }
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
@@ -193,4 +152,3 @@ public class Disturbance : InputSource
     }
 
 }
-

@@ -279,8 +279,9 @@ public class Tuto_MinorIsland : InputSource {
 
         if (!ended)
         {
-            //when all islands have finished the tuto, change scene
+            //when all islands have finished the tuto + Vertical tuto finished, change scene
 
+            //TODO: add condition on Vertical finishing tuto
             if (GameObject.Find("sous_ile_1").GetComponent<Tuto_MinorIsland>().harborRemoved &&
                 GameObject.Find("sous_ile_2").GetComponent<Tuto_MinorIsland>().harborRemoved &&
                 GameObject.Find("sous_ile_3").GetComponent<Tuto_MinorIsland>().harborRemoved &&

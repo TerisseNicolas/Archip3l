@@ -183,8 +183,10 @@
     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_GoldMine.txt" />
     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Harbor.txt" />
     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Hotel.txt" />
+    <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Lab.txt" />
     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_OilPlant.txt" />
     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_PowerPlant.txt" />
+    <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Sawmill.txt" />
     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_School.txt" />
     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_StoneMine.txt" />
     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_WindTurbine.txt" />

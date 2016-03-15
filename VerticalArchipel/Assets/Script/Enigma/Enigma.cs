@@ -11,6 +11,7 @@ using TouchScript;
 public class Enigma : InputSource
 {
     static public bool enigmaWindowOpen = false;
+    static public int enimgasToBeDone = 0;
 
     static public Text questionObject { get; private set; }
     static public Text resultObject { get; private set; }
@@ -61,6 +62,7 @@ public class Enigma : InputSource
             Enigma.resultObject = this.GetComponent<Text>();
         if (this.name == "Question")
         {
+            Enigma.enimgasToBeDone--;   //doing it just one time
             Enigma.questionObject = this.GetComponent<Text>();
             //CSV part
             //row[0] : question ; row[1] : answer ; row[2] : explainations
@@ -70,10 +72,10 @@ public class Enigma : InputSource
 
             string[] row = CSV_reader.GetRandomLine(csv.text);
 
-            Enigma.question = row[0].Replace('*', '\n');
-            addLineBreaks();
+            Enigma.question = row[0];
             Enigma.answer = row[1];
-            Enigma.explainations = row[2].Replace('*', '\n');
+            Enigma.explainations = row[2];
+            addLineBreaks();    //for question + explainations
 
             this.GetComponent<Text>().text = Enigma.question;
         }
@@ -89,23 +91,33 @@ public class Enigma : InputSource
         GameObject.Find("Answer").SetActive(false);
         if (goodAnswer)
         {
+            //TODO: finish message
             Enigma.resultObject.text = "Bravo ! votre réponse permet ...";
             this.client.sendData("@35601@" + this.name);
         }
             
         else
         {
+            //TODO: finish message
             Enigma.resultObject.text = "Votre mauvaise réponse ...";
             this.client.sendData("@35602@" + this.name);
         }
 
+
         //TODO: action of Enigma
 
+        
 
-
-
-        Enigma.enigmaWindowOpen = false;
-        Destroy(GameObject.Find("Enigma"), 5);
+        if (Enigma.enimgasToBeDone > 0)
+        {
+            main.addEnigma();
+            Destroy(GameObject.Find("Enigma"));
+        }
+        else
+        {
+            Enigma.enigmaWindowOpen = false;
+            Destroy(GameObject.Find("Enigma"), 5);
+        }
     }
 
 
@@ -129,6 +141,28 @@ public class Enigma : InputSource
             while (j < spaces.Count && spaces[j] < maxChar * i)
                 j++;
             Enigma.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) + "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
+            i++;
+            nbLineBreakAdded++;
+        }
+
+
+        spaces = new List<int>();
+        i = 0;
+        foreach (char c in Enigma.explainations)
+        {
+            if (c == ' ')
+                spaces.Add(i);
+            i++;
+        }
+
+        j = 0;
+        i = 1;
+        nbLineBreakAdded = 0;
+        while (maxChar * i <= Enigma.explainations.Length)
+        {
+            while (j < spaces.Count && spaces[j] < maxChar * i)
+                j++;
+            Enigma.explainations = explainations.Substring(0, spaces[j - 1] + nbLineBreakAdded) + "\n" + explainations.Substring(spaces[j - 1] + nbLineBreakAdded);
             i++;
             nbLineBreakAdded++;
         }
