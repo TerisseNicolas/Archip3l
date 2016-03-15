@@ -150,6 +150,7 @@
      <Compile Include="Assets\Script\Types\TypeResource.cs" />
      <Compile Include="Assets\Script\Types\TypeStat.cs" />
      <Compile Include="Assets\Script\main.cs" />
+     <Compile Include="Assets\Script\verticalTuto.cs" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_StoneMine.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Cinema.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_OilPlant.txt" />
