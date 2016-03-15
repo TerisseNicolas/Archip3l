@@ -88,7 +88,9 @@
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Harbor.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Lab.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Church.txt" />
+     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Lab.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_School.txt" />
+     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Sawmill.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Airport.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Airport.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_PowerPlant.txt" />
