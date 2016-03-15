@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Resource : ScriptableObject {
 
     public TypeResource TypeResource { get; private set; }
-    public int Stock { get; private set; }
-    public int Production { get; private set; }
+    public float Stock { get; private set; }
+    public float Production { get; private set; }
 
     public void init(TypeResource TypeResource)
     {
@@ -13,7 +14,7 @@ public class Resource : ScriptableObject {
         this.Stock = 0;
         this.Production = 0;
     }
-    public void init(TypeResource TypeResource, int quantity)
+    public void init(TypeResource TypeResource, float quantity)
     {
         init(TypeResource);
         if (quantity > 0)
@@ -22,7 +23,7 @@ public class Resource : ScriptableObject {
         }
         this.Production = 0;
     }
-    public void init(TypeResource TypeResource, int quantity, int production)
+    public void init(TypeResource TypeResource, float quantity, float production)
     {
         init(TypeResource, quantity);
         if(production > 0)
@@ -30,9 +31,33 @@ public class Resource : ScriptableObject {
             this.Production = production;
         }
     }
-    public bool changeStock(int value)
+    public bool changeStock(float value)
     {
 
+        //Stat resource
+        if (Enum.IsDefined(typeof(TypeStat), this.TypeResource))
+        {
+            float estimated = this.Production + value * 0.01f;
+            if (estimated >= 0 && estimated <= 1)
+            {
+                this.Production = estimated;
+                return true;
+            }
+            else
+            {
+                estimated = this.Production + value * 0.0001f;
+                if (estimated >= 0 && estimated <= 1)
+                {
+                    this.Production = estimated;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        //Concrete resource
         if (this.Stock + value >= 0)
         {
             this.Stock += value;
@@ -43,11 +68,25 @@ public class Resource : ScriptableObject {
             return false;
         }
     }
-    public bool changeProduction(int value)
+    public bool changeProduction(float valueToAdd)
     {
-        if(this.Production + value > 0)
+        //Stat resource
+        if (Enum.IsDefined(typeof(TypeStat), this.TypeResource))
         {
-            this.Production += value;
+            if (this.Production + valueToAdd >= 0)
+            {
+                this.Production += valueToAdd / 1000;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //Concrete resource
+        if (this.Production + valueToAdd >= 0)
+        {
+            this.Production += valueToAdd;
             return true;
         }
         else
