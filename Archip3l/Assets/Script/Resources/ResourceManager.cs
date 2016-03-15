@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-
-
+using System.Linq;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -17,6 +16,7 @@ public class ResourceManager : MonoBehaviour
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageResourceInitEvent += Client_MessageResourceInitEvent;
+        this.Client.MessageResourceStockReceivedEvent += Client_MessageResourceStockReceivedEvent;
 
         this.minorIsland = island;
         this.Resources = new List<Resource>();
@@ -56,9 +56,23 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+
     void Start()
     {
         StartCoroutine("updateStocks");
+    }
+
+    private void Client_MessageResourceStockReceivedEvent(object sender, MessageEventArgs e)
+    {
+        //If it concern my island
+        char islandNumber = (char)e.message.Split('@')[1][1];
+        if (this.minorIsland.nameMinorIsland.Contains(islandNumber) || islandNumber=='5')
+        {
+            TypeResource resourceType = (TypeResource) Enum.Parse(typeof(TypeResource), (string) e.message.Split('@')[2]);
+            int quantity = Int32.Parse(e.message.Split('@')[3]);
+
+            this.changeResourceStock(resourceType, quantity);
+        }
     }
 
     public bool addResource(TypeResource resourceType, int quantity, int production)
