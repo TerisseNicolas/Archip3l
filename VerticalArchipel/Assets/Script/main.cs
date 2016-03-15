@@ -87,6 +87,14 @@ public class main : MonoBehaviour
         Enigma.enigmaWindowOpen = true;
     }
 
+    static public void addDisturbance()
+    {
+        Canvas disturbancePrefab = Resources.Load<Canvas>("Prefab/DisturbanceCanvas");
+        Canvas disturbance = Instantiate(disturbancePrefab);
+        disturbance.name = "Disturbance";
+        Disturbance.disturbanceWindowOpen = true;
+    }
+
 
     static string addLineBreaks(string text)
     {
@@ -118,15 +126,17 @@ public class main : MonoBehaviour
     {
         //tests ---------------------------------
 
-        /*for (int i = 0; i < main.nbNotificationsMax; i++)
+        for (int i = 0; i < 5; i++)
         {
             addNotification("gaga " + i.ToString());
-        }*/
+        }
 
         addChallenge();
         addChallenge();
+        //addDisturbance();
 
-        //addEnigma();
+        
+
     }
 
 
