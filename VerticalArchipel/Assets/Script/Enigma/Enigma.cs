@@ -56,12 +56,18 @@ public class Enigma : InputSource
     {
         this.client = GameObject.Find("Network").GetComponent<Client>();
 
+
         if (this.name == "Answer")
+        {
             Enigma.answerObject = this.GetComponent<Text>();
+        }
         if (this.name == "Result")
+        {
             Enigma.resultObject = this.GetComponent<Text>();
+        }
         if (this.name == "Question")
         {
+            Enigma.nbAnswers = 0;
             Enigma.enimgasToBeDone--;   //doing it just one time
             Enigma.questionObject = this.GetComponent<Text>();
             //CSV part
@@ -85,10 +91,14 @@ public class Enigma : InputSource
     IEnumerator wait(bool goodAnswer)
     {
         yield return new WaitForSeconds(3);
-
+        
         for (int i = 0; i < 10; i++)
-            GameObject.Find(i.ToString()).SetActive(false);
+        {
+            GameObject.Find(i.ToString()).GetComponent<SpriteRenderer>().enabled = false;
+            GameObject.Find(i.ToString()).GetComponent<BoxCollider>().enabled = false;
+        }
         GameObject.Find("Answer").SetActive(false);
+
         if (goodAnswer)
         {
             //TODO: finish message
@@ -106,7 +116,8 @@ public class Enigma : InputSource
 
         //TODO: action of Enigma
 
-        
+
+        yield return new WaitForSeconds(5);
 
         if (Enigma.enimgasToBeDone > 0)
         {
@@ -115,10 +126,13 @@ public class Enigma : InputSource
         }
         else
         {
+            Destroy(GameObject.Find("Enigma"), 4.1f);
+            yield return new WaitForSeconds(4);
             Enigma.enigmaWindowOpen = false;
-            Destroy(GameObject.Find("Enigma"), 5);
         }
     }
+
+   
 
 
     void addLineBreaks()

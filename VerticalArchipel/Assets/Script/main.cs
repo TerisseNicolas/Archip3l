@@ -133,7 +133,7 @@ public class main : MonoBehaviour
 
         addChallenge();
         addChallenge();
-        //addDisturbance();
+        addDisturbance();
 
         
 

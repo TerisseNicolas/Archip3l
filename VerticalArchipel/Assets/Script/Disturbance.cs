@@ -84,6 +84,8 @@ public class Disturbance : InputSource
 
         //TODO: consequences on table
 
+
+
         StartCoroutine(wait());
 
         Destroy(GameObject.Find("Disturbance"), 3.1f);
@@ -92,6 +94,7 @@ public class Disturbance : InputSource
     IEnumerator wait()
     {
         yield return new WaitForSeconds(3);
+        Disturbance.disturbanceWindowOpen = false;
         Enigma.enimgasToBeDone = 2;
         main.addEnigma();
     }
