@@ -92,13 +92,10 @@ public class Game : MonoBehaviour
         if (!Disturbance.disturbanceWindowOpen)
         {
             Disturbance.disturbanceWindowOpen = true;
-            Canvas eventCanvasPrefab = Resources.Load<Canvas>("Prefab/DisturbanceCanvas");
-            Canvas eventCanvas = Instantiate(eventCanvasPrefab);
-            eventCanvas.name = "DisturbanceCanvas";
-            /*foreach (Disturbance e in eventCanvas.GetComponentsInChildren<Disturbance>())
-            {
-                e.disturbanceType = disturbanceType;
-            }*/
+            Canvas disturbancePrefab = Resources.Load<Canvas>("Prefab/DisturbanceCanvas");
+            Canvas disturbance = Instantiate(disturbancePrefab);
+            disturbance.name = "Disturbance";
+            
 
             this.DisturbanceCount += 1;
             switch (this.DisturbanceCount)

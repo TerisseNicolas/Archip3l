@@ -32,6 +32,7 @@ public class verticalTuto : InputSource
                 if (this.name == "NotificationsTuto")
                 {
                     verticalTuto.challengesTuto.SetActive(true);
+                    verticalTuto.notificationsTuto.SetActive(false);
                     verticalTuto.steps++;
                 }
             break;
@@ -39,6 +40,7 @@ public class verticalTuto : InputSource
                 if (this.name == "ChallengesTuto")
                 {
                     verticalTuto.trophiesTuto.SetActive(true);
+                    verticalTuto.challengesTuto.SetActive(false);
                     verticalTuto.steps++;
                 }
                     break;
@@ -46,6 +48,7 @@ public class verticalTuto : InputSource
                 if (this.name == "TrophiesTuto")
                 {
                     verticalTuto.timeTuto.SetActive(true);
+                    verticalTuto.trophiesTuto.SetActive(false);
                     verticalTuto.steps++;
                 }
                     break;
@@ -53,6 +56,7 @@ public class verticalTuto : InputSource
                 if (this.name == "TimeTuto")
                 {
                     verticalTuto.resourcesTuto.SetActive(true);
+                    verticalTuto.timeTuto.SetActive(false);
                     verticalTuto.steps++;
                 }
                     break;
@@ -60,10 +64,12 @@ public class verticalTuto : InputSource
                 if (this.name == "ResourcesTuto")
                 {
                     verticalTuto.islandsTuto.SetActive(true);
+                    verticalTuto.resourcesTuto.SetActive(false);
                     verticalTuto.steps++;
                 }
                 break;
             case 6:
+                verticalTuto.islandsTuto.SetActive(false);
                 //TODO: send event to table to say verticalTuto is finished
                 break;
         }
