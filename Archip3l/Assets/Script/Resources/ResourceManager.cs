@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-
-
+using System.Linq;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -17,6 +16,7 @@ public class ResourceManager : MonoBehaviour
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageResourceInitEvent += Client_MessageResourceInitEvent;
+        this.Client.MessageResourceStockReceivedEvent += Client_MessageResourceStockReceivedEvent;
 
         this.minorIsland = island;
         this.Resources = new List<Resource>();
@@ -25,11 +25,9 @@ public class ResourceManager : MonoBehaviour
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
             //this.addResource(resourceType, 0, 0);
-
             //TESTS
             this.addResource(resourceType, 200, 0);
         }
-
 
         switch (this.minorIsland.nameMinorIsland)
         {
@@ -56,12 +54,26 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+
     void Start()
     {
         StartCoroutine("updateStocks");
     }
 
-    public bool addResource(TypeResource resourceType, int quantity, int production)
+    private void Client_MessageResourceStockReceivedEvent(object sender, MessageEventArgs e)
+    {
+        //If it concern my island
+        char islandNumber = (char)e.message.Split('@')[1][1];
+        if (this.minorIsland.nameMinorIsland.Contains(islandNumber) || islandNumber=='5')
+        {
+            TypeResource resourceType = (TypeResource) Enum.Parse(typeof(TypeResource), (string) e.message.Split('@')[2]);
+            int quantity = Int32.Parse(e.message.Split('@')[3]);
+
+            this.changeResourceStock(resourceType, quantity);
+        }
+    }
+
+    public bool addResource(TypeResource resourceType, float quantity, int production)
     {
         bool flag = false;
         foreach (Resource item in this.Resources)
@@ -83,13 +95,13 @@ public class ResourceManager : MonoBehaviour
             return true;
         }
     }
-    public bool changeResourceProduction(TypeResource resourceType, int value)
+    public bool changeResourceProduction(TypeResource resourceType, float value)
     {
         Resource resource = this.getResource(resourceType);
         bool result = resource.changeProduction(value);
         return result;
     }
-    public bool changeResourceStock(TypeResource resourceType, int value)
+    public bool changeResourceStock(TypeResource resourceType, float value)
     {
         Resource resource = this.getResource(resourceType);
         bool result = false;

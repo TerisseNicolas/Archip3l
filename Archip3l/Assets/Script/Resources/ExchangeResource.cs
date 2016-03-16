@@ -75,7 +75,7 @@ public class ExchangeResource : InputSource
             else
             {
                 resourceName = Resource.getResourceFromIconName(resource_sp.GetComponent<SpriteRenderer>().sprite.name);
-                resourceQuantity = this.island.resourceManager.getResource((TypeResource)System.Enum.Parse(typeof(TypeResource), resourceName)).Stock;
+                resourceQuantity = (int) this.island.resourceManager.getResource((TypeResource)System.Enum.Parse(typeof(TypeResource), resourceName)).Stock;
             }
 
             Vector3 vector3;
@@ -207,6 +207,9 @@ public class ExchangeResource : InputSource
     // Use this for initialization
     void Start()
     {
+        Vector3 pos = this.transform.localPosition;
+        pos.z = -3;
+        this.transform.localPosition = pos;
         island = GameObject.Find(this.transform.parent.parent.parent.name).GetComponent<MinorIsland>();
         refresh();
     }

@@ -9,8 +9,8 @@ public class GlobalResourceManager : MonoBehaviour
     public List<Resource> Resources;
     public List<ResourceManager> ResourceManagers;
 
-    private int resourceCountForScoreInit;
-    private int resourceCountForScoreCurrent;
+    private float resourceCountForScoreInit;
+    private float resourceCountForScoreCurrent;
 
     private Client Client;
 
@@ -80,7 +80,7 @@ public class GlobalResourceManager : MonoBehaviour
             }
         }
     }
-    public bool addResource(TypeResource resourceType, int quantity, int production = 0)
+    public bool addResource(TypeResource resourceType, float quantity, float production = 0)
     {
         bool flag = false;
         foreach (Resource item in this.Resources)

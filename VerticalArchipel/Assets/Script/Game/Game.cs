@@ -5,12 +5,15 @@ public class Game : MonoBehaviour
 {
     private Timer Timer;
     private DisturbanceTimer TimerDisturbance;
+    private ChallengeTimer ChallengerTimer;
     private int DisturbanceCount;
     private Client Client;
     private GlobalResourceManager GlobalResourceManager;
 
     private Score Score;
     private GlobalInfo GlobalInfo;
+
+    public const int nbChallengesMax = 3;
 
     void Awake()
     {
@@ -28,6 +31,11 @@ public class Game : MonoBehaviour
         this.TimerDisturbance.FinalTick += TimerDisturbance_FinalTick;
         this.DisturbanceCount = 0;
 
+        this.ChallengerTimer = gameObject.GetComponent<ChallengeTimer>();
+        //this.ChallengerTimer.Init(30f);
+        this.ChallengerTimer.Init(5f);
+        this.ChallengerTimer.FinalTick += ChallengerTimer_FinalTick;
+
         this.GlobalResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
         this.GlobalResourceManager.MessageInitialized += GlobalResourceManager_MessageInitialized;
 
@@ -38,7 +46,7 @@ public class Game : MonoBehaviour
 
     void Start()
     {
-        //Client_MessageSystemStartOfGame(this, null);
+        Client_MessageSystemStartOfGame(this, null);
     }
 
     private void Client_MessageSystemStartOfGame(object sender, MessageEventArgs e)
@@ -46,6 +54,7 @@ public class Game : MonoBehaviour
         Debug.Log("Starting game");
         this.Timer.StartTimer();
         this.TimerDisturbance.StartTimer();
+        this.ChallengerTimer.StartTimer();
     }
     private void Client_MessageSystemStartInitOfGame(object sender, MessageEventArgs e)
     {
@@ -63,18 +72,30 @@ public class Game : MonoBehaviour
         //To be activated
         //this.Score.addScore(this.GlobalInfo.teamName);
     }
+    private void ChallengerTimer_FinalTick(object sender, System.EventArgs e)
+    {
+        for (int i = 1; i <= nbChallengesMax; i++)
+        {
+            if (GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled == false)
+            {
+                GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled = true;
+                GameObject.Find("Challenge" + i.ToString()).GetComponent<BoxCollider>().enabled = true;
+            }
+        }
+
+        this.ChallengerTimer.Init(30f);
+        this.ChallengerTimer.StartTimer();
+    }
+
     private void TimerDisturbance_FinalTick(object sender, System.EventArgs e)
     {
         if (!Disturbance.disturbanceWindowOpen)
         {
             Disturbance.disturbanceWindowOpen = true;
-            Canvas eventCanvasPrefab = Resources.Load<Canvas>("Prefab/DisturbanceCanvas");
-            Canvas eventCanvas = Instantiate(eventCanvasPrefab);
-            eventCanvas.name = "DisturbanceCanvas";
-            /*foreach (Disturbance e in eventCanvas.GetComponentsInChildren<Disturbance>())
-            {
-                e.disturbanceType = disturbanceType;
-            }*/
+            Canvas disturbancePrefab = Resources.Load<Canvas>("Prefab/DisturbanceCanvas");
+            Canvas disturbance = Instantiate(disturbancePrefab);
+            disturbance.name = "Disturbance";
+            
 
             this.DisturbanceCount += 1;
             switch (this.DisturbanceCount)

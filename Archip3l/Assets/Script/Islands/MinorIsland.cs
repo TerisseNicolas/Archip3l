@@ -361,7 +361,7 @@ public class MinorIsland : InputSource
             Canvas exchangeWindowCanvas = Instantiate(exchangeWindowCanvasPrefab);
             exchangeWindowCanvas.transform.SetParent(GameObject.Find(this.nameMinorIsland).transform);
             exchangeWindowCanvas.name = "ExchangeWindowCanvas_" + this.nameMinorIsland;
-            Vector3 vector3 = GameObject.Find("sprite-" + this.nameMinorIsland).transform.position;
+            Vector3 vector3 = GameObject.Find("Virtual_" + this.nameMinorIsland).transform.position;
             vector3.z = -2;
             exchangeWindowCanvas.transform.position = vector3;
 
@@ -381,7 +381,7 @@ public class MinorIsland : InputSource
         if (moveBuilding)
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(positionTouched.x, positionTouched.y, 0));
-            pos.z = -1;
+            pos.z = -3;
             GameObject.Find(this.nameBuildingTouchCanvas).transform.position = pos;
             this.moveBuilding = false;
             this.nameBuildingTouchCanvas = string.Empty;

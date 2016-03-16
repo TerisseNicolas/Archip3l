@@ -15,37 +15,23 @@ public class GameMenu : InputSource
         {
             case "Jouer":
                 SceneManager.LoadScene("tutoScene");
-                //set Vertical to Loading
+                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@tutoScene");
                 break;
             case "Credits":
                 SceneManager.LoadScene("waitForVerticalScene");
-                //set Vertical to Credits
+                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@creditsScene");
                 break;
             case "Classement":
                 SceneManager.LoadScene("waitForVerticalScene");
-                //set Vertical to Results
+                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@ResultScene");
                 break;
             case "returnArrow":
             case "Quitter":
                 SceneManager.LoadScene("loading");
-                //set Vertical to Results
+                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@loadingScene");
                 break;
         }
     }
-
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-
-
 
 
     //-------------- TUIO -----------------------------------------------------------------------

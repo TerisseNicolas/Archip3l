@@ -132,10 +132,10 @@ public class ResourceManager : MonoBehaviour
 public class ChangeResourceStockEventArgs : EventArgs
 {
     public TypeResource resourceType;
-    public int stock;
+    public float stock;
 }
 public class ChangeResourceProductionEventArgs : EventArgs
 {
     public TypeResource resourceType;
-    public int production;
+    public float production;
 }

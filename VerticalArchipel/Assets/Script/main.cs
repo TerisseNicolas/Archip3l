@@ -29,23 +29,23 @@ public class main : MonoBehaviour
     }
 
     //trophy = trophies + medals + AirportMedal
-    static public void unlockTrophy(string nameTrophyGameObject)
-    {
-        GameObject.Find(nameTrophyGameObject).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Trophies/" + nameTrophyGameObject);
-    }
+    //static public void unlockTrophy(string nameTrophyGameObject)
+    //{
+    //    GameObject.Find(nameTrophyGameObject).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Trophies/" + nameTrophyGameObject);
+    //}
 
 
-    static public bool addChallenge()
-    {
-        for (int i = 1; i <= nbChallengesMax; i++)
-            if (GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled == false)
-            {
-                GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled = true;
-                GameObject.Find("Challenge" + i.ToString()).GetComponent<BoxCollider>().enabled = true;
-                return true;
-            }
-        return false;
-    }
+    //static public bool addChallenge()
+    //{
+    //    for (int i = 1; i <= nbChallengesMax; i++)
+    //        if (GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled == false)
+    //        {
+    //            GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled = true;
+    //            GameObject.Find("Challenge" + i.ToString()).GetComponent<BoxCollider>().enabled = true;
+    //            return true;
+    //        }
+    //    return false;
+    //}
 
     static public void removeChallenge(GameObject go)
     {
@@ -87,13 +87,13 @@ public class main : MonoBehaviour
         Enigma.enigmaWindowOpen = true;
     }
 
-    static public void addDisturbance()
-    {
-        Canvas disturbancePrefab = Resources.Load<Canvas>("Prefab/DisturbanceCanvas");
-        Canvas disturbance = Instantiate(disturbancePrefab);
-        disturbance.name = "Disturbance";
-        Disturbance.disturbanceWindowOpen = true;
-    }
+    //static public void addDisturbance()
+    //{
+    //    Canvas disturbancePrefab = Resources.Load<Canvas>("Prefab/DisturbanceCanvas");
+    //    Canvas disturbance = Instantiate(disturbancePrefab);
+    //    disturbance.name = "Disturbance";
+    //    Disturbance.disturbanceWindowOpen = true;
+    //}
 
 
     static string addLineBreaks(string text)
@@ -131,9 +131,9 @@ public class main : MonoBehaviour
             addNotification("gaga " + i.ToString());
         }
 
-        addChallenge();
-        addChallenge();
-        addDisturbance();
+        //addChallenge();
+        //addChallenge();
+        //addDisturbance();
 
         
 
