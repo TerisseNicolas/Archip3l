@@ -34,7 +34,7 @@ public class Resource : ScriptableObject{
     public bool changeProduction(float valueToAdd)
     {
         //Stat resource
-        if (Enum.IsDefined(typeof(TypeStat), this.TypeResource))
+        if (Enum.IsDefined(typeof(TypeStat), this.TypeResource.ToString()))
         {
             if (this.Production + valueToAdd >= 0)
             {
@@ -60,7 +60,7 @@ public class Resource : ScriptableObject{
     public bool changeStock(float value)
     {
         //Stat resource
-        if (Enum.IsDefined(typeof(TypeStat), this.TypeResource))
+        if (Enum.IsDefined(typeof(TypeStat), this.TypeResource.ToString()))
         {
             float estimated = this.Production + value * 0.01f;
             if (estimated>= 0 && estimated<=1)

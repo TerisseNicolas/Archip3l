@@ -40,6 +40,7 @@ public class Tuto_WheelIcon : InputSource
             pos.z = -2;
             buildingInfo.transform.position = pos;
 
+
             //rotation of image according to the place of the island
             char id = island.nameTuto_MinorIsland[island.nameTuto_MinorIsland.Length - 1];
             if (id == '1' || id == '2')

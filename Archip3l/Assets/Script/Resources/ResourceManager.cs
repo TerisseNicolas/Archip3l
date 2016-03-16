@@ -25,11 +25,9 @@ public class ResourceManager : MonoBehaviour
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
             //this.addResource(resourceType, 0, 0);
-
             //TESTS
             this.addResource(resourceType, 200, 0);
         }
-
 
         switch (this.minorIsland.nameMinorIsland)
         {

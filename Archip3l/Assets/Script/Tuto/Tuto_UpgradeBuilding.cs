@@ -15,6 +15,7 @@ public class Tuto_UpgradeBuilding : InputSource {
     void OnMouseDownSimulation()
     {
         island = GameObject.Find(this.transform.parent.parent.parent.name).GetComponent<Tuto_MinorIsland>();
+        Debug.Log(island.nameBuildingTouchCanvas);
         building = GameObject.Find(island.nameBuildingTouchCanvas).GetComponent<Tuto_Building>();
 
         if (this.name == "Upgrade")
@@ -30,7 +31,12 @@ public class Tuto_UpgradeBuilding : InputSource {
 
     // Use this for initialization
     void Start() {
-
+        if (this.name == "Upgrade")
+        {
+            Vector3 pos = this.transform.localPosition;
+            pos.z = -4;
+            this.transform.localPosition = pos;
+        }
     }
 
     // Update is called once per frame

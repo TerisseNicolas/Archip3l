@@ -207,6 +207,9 @@ public class ExchangeResource : InputSource
     // Use this for initialization
     void Start()
     {
+        Vector3 pos = this.transform.localPosition;
+        pos.z = -3;
+        this.transform.localPosition = pos;
         island = GameObject.Find(this.transform.parent.parent.parent.name).GetComponent<MinorIsland>();
         refresh();
     }

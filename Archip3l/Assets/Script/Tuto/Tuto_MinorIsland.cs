@@ -59,6 +59,7 @@ public class Tuto_MinorIsland : InputSource {
     {
         if (nameTuto_MinorIsland == "sous_ile_1")
         {
+
             Canvas startCanvasPrefab = Resources.Load<Canvas>("Prefab/Tuto/StartCanvas");
             startCanvas = Instantiate(startCanvasPrefab);
             startCanvas.name = "StartCanvas";
@@ -75,7 +76,7 @@ public class Tuto_MinorIsland : InputSource {
         yield return new WaitForSeconds(1);
         for (int i = 0; i < 200; i++)
         {
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.01f);
             colorBlack = sp.color;
             colorBlack.a -= 0.005f;
             sp.color = colorBlack;
@@ -339,17 +340,18 @@ public class Tuto_MinorIsland : InputSource {
                     SpriteRenderer wheelImage = wheelCanvas.GetComponentInChildren<SpriteRenderer>();
                     //position of wheel where it was clicked on
                     Vector3 pos = Camera.main.ScreenToWorldPoint(this.positionTouched);
-                    pos.z = -1;
+                    pos.z = -2;
+                    
                     wheelImage.transform.position = pos;
                     //rotation of image according to the place of the island
                     char id = this.nameTuto_MinorIsland[this.nameTuto_MinorIsland.Length - 1];
                     if (id == '1' || id == '2')
                         wheelImage.transform.Rotate(Vector3.forward * 180);
-
+                    
                     //disable specific buildings
                     foreach (SpriteRenderer sr in wheelImage.GetComponentsInChildren<SpriteRenderer>())
                     {
-                        if (sr.name != "wheelIcon_Harbor")
+                        if (sr.name != "wheelIcon_Harbor" && sr.name != "WheelImage")
                         {
                             sr.sprite = Resources.Load<Sprite>("Building/Icons_Disabled/" + sr.name + "_disabled");
                         }

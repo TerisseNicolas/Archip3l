@@ -31,7 +31,12 @@ public class Tuto_BuildingInfo : InputSource {
 
     // Use this for initialization
     void Start() {
-
+        if (this.name == "Build")
+        {
+            Vector3 pos = this.transform.localPosition;
+            pos.z = -4;
+            this.transform.localPosition = pos;
+        }
     }
 
     // Update is called once per frame
