@@ -46,9 +46,7 @@ public class Client : MonoBehaviour
 
     void Awake()
     {
-
-        //Maybe a good idea (network must be deleted in the playing scene)
-        //DontDestroyOnLoad(transform.gameObject);
+        DontDestroyOnLoad(transform.gameObject);
 
         _client = new UdpClient();
         //_client.Connect("172.18.136.49", 1523);

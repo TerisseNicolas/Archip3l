@@ -25,6 +25,7 @@ public class Loading : InputSource
         }
     }
 
+    //Todo : to be deleted, it comes from the network
     void OnMouseDownSimulation()
     {
         //SceneManager.LoadScene("verticalPlayingScene");
