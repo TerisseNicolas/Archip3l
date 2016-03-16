@@ -18,19 +18,22 @@ public class SceneSupervisor : MonoBehaviour {
 
         switch(sceneName)
         {
-            case "tutoScene":
+           case "BoardUnlockingTutoScene":
+                SceneManager.LoadScene("verticalUnlockingTuto");
+                break;
+            case "BoardTutoScene":
                 SceneManager.LoadScene("verticalTuto");
                 break;
-            case "creditScene":
+            case "BoardCreditScene":
                 SceneManager.LoadScene("creditsScene");
                 break;
-            case "resultScene":
+            case "BoardResultScene":
                 SceneManager.LoadScene("ResultScene");
                 break;
-            case "playingScene":
+            case "BoardPlayingScene":
                 SceneManager.LoadScene("verticalPlayingScene");
                 break;
-            case "loadingScene":
+            case "BoardLoadingScene":
                 SceneManager.LoadScene("loading");
                 break;
         }

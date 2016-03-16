@@ -27,8 +27,7 @@ public class RegisterScene : InputSource {
         else if (this.name == "enter")  //change scene + send name to Vertical (store in file)
         {
             this.Client.sendData("@30004@" + RegisterScene.teamName.text);
-            this.Client.sendData("@30000@PlayingScene");
-            SceneManager.LoadScene("tutoScene");
+            this.Client.sendData("@30000@BoardUnlokingTutoScene");
         } 
         else if (this.name == "PreviousScene")
             SceneManager.LoadScene("loading");
@@ -44,11 +43,6 @@ public class RegisterScene : InputSource {
     void Start () {
         if (this.name == "enter")   //to od it one time only
             RegisterScene.teamName = GameObject.Find("TeamNameValue").GetComponent<Text>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
 

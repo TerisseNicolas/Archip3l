@@ -9,6 +9,7 @@ public class SoundPlayer : MonoBehaviour {
 
     void Awake()
     {
+        DontDestroyOnLoad(transform.gameObject);
         if (Instance != null)
         {
             Debug.LogError("Multiple instances of SoundManager!");

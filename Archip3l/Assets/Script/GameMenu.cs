@@ -14,21 +14,23 @@ public class GameMenu : InputSource
         switch(this.name)
         {
             case "Jouer":
-                SceneManager.LoadScene("tutoScene");
-                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@tutoScene");
+                SceneManager.LoadScene("registerScene");
+                //The board does nothing
+                //GameObject.Find("Network").GetComponent<Client>().sendData("@30000@BoardTutoScene");
                 break;
             case "Credits":
                 SceneManager.LoadScene("waitForVerticalScene");
-                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@creditsScene");
+                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@BoardCreditsScene");
                 break;
             case "Classement":
                 SceneManager.LoadScene("waitForVerticalScene");
-                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@ResultScene");
+                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@BoardResultScene");
                 break;
             case "returnArrow":
             case "Quitter":
                 SceneManager.LoadScene("loading");
-                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@loadingScene");
+                //NO need but we never know
+                //GameObject.Find("Network").GetComponent<Client>().sendData("@30000@BoardLoadingScene");
                 break;
         }
     }
