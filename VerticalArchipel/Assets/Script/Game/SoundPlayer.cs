@@ -2,7 +2,8 @@
 using System.Collections;
 using System;
 
-public class SoundPlayer : MonoBehaviour {
+public class SoundPlayer : MonoBehaviour
+{
 
     public static SoundPlayer Instance;
     private Client Client;
@@ -33,6 +34,7 @@ public class SoundPlayer : MonoBehaviour {
 
     void Awake()
     {
+        DontDestroyOnLoad(transform.gameObject);
         if (Instance != null)
         {
             Debug.LogError("Multiple instances of SoundManager!");
