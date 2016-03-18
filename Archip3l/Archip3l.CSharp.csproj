@@ -173,6 +173,7 @@
     <Compile Include="Assets\Script\TouchScript\Scripts\Utils\TimedSequence.cs" />
     <Compile Include="Assets\Script\TouchScript\Scripts\Utils\TouchUtils.cs" />
     <Compile Include="Assets\Script\TouchScript\Scripts\Utils\TransformUtils.cs" />
+    <Compile Include="Assets\Script\TouchScript\TouchScriptAdd.cs" />
     <Compile Include="Assets\Script\Tuto\Tuto_Building.cs" />
     <Compile Include="Assets\Script\Tuto\Tuto_BuildingInfo.cs" />
     <Compile Include="Assets\Script\Tuto\Tuto_BuildingManager.cs" />

@@ -13,6 +13,7 @@ public class SoundPlayer : MonoBehaviour {
         if (Instance != null)
         {
             Debug.LogError("Multiple instances of SoundManager!");
+            Destroy(gameObject);
         }
         Instance = this;
         if (GameObject.Find("Network") != null)
