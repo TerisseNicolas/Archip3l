@@ -23,18 +23,24 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageBuildingConstructionEvent;
     public event EventHandler<MessageEventArgs> MessageBuildingUpgradeEvent;
     public event EventHandler<MessageEventArgs> MessageBuildingDestructionEvent;
+
     public event EventHandler<MessageEventArgs> MessageTrophyWonEvent;
+
     public event EventHandler<MessageEventArgs> MessageResourceInitEvent;
     public event EventHandler<MessageEventArgs> MessageResourceProductionUpdateEvent;
     public event EventHandler<MessageEventArgs> MessageResourceStockUpdateEvent;
     public event EventHandler<MessageEventArgs> MessageResourceStockReceivedEvent;
     public event EventHandler<MessageEventArgs> MessageResourceTransfertEvent;
+
     public event EventHandler<MessageEventArgs> MessageChallengeArrival;
     public event EventHandler<MessageEventArgs> MessageChallengeCompleteEvent;
     public event EventHandler<MessageEventArgs> MessageEnigmaCompleteEvent;
     public event EventHandler<MessageEventArgs> MessageDisturbanceEvent;
+
     public event EventHandler<MessageEventArgs> MessageScoreUpdateEvent;
     public event EventHandler<MessageEventArgs> MessageSoundEvent;
+
+    public event EventHandler<MessageEventArgs> MessageUnlockTutoEvent;
 
     public event EventHandler<MessageEventArgs> MessageSystemChangeSceneEvent;
     public event EventHandler<MessageEventArgs> MessageSystemStartInitOfGameEvent;
@@ -46,8 +52,6 @@ public class Client : MonoBehaviour
 
     void Awake()
     {
-
-        //Maybe a good idea (network must be deleted in the playing scene)
         DontDestroyOnLoad(transform.gameObject);
 
         _client = new UdpClient();
@@ -203,6 +207,9 @@ public class Client : MonoBehaviour
                 break;
             case 30800:
                 MessageEvent += MessageSoundEvent;
+                break;
+            case 30921:
+                MessageEvent += MessageUnlockTutoEvent;
                 break;
             case 30505:
             case 31505:

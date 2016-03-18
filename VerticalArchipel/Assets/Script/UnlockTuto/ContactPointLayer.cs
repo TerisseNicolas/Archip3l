@@ -43,7 +43,7 @@ public class ContactPointLayer : MonoBehaviour
         if(this.ActualContactActivated == this.NumberOfContact && !this.Completed)
         {
             GameObject.Find("WonLayer").GetComponent<FinalFireWork>().StartFire();
-            this.Client.SendMessage("30921");
+            this.Client.sendData("@30921");
         }
     }
 
