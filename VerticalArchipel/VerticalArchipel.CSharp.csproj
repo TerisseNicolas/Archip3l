@@ -56,12 +56,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -180,6 +174,10 @@
     <Compile Include="Assets\Script\Types\TypeDisturbance.cs" />
     <Compile Include="Assets\Script\Types\TypeResource.cs" />
     <Compile Include="Assets\Script\Types\TypeStat.cs" />
+    <Compile Include="Assets\Script\UnlockTuto\ContactPoint.cs" />
+    <Compile Include="Assets\Script\UnlockTuto\ContactPointLayer.cs" />
+    <Compile Include="Assets\Script\UnlockTuto\Emitter.cs" />
+    <Compile Include="Assets\Script\UnlockTuto\FinalFireWork.cs" />
     <Compile Include="Assets\Script\main.cs" />
     <Compile Include="Assets\Script\verticalTuto.cs" />
   </ItemGroup>
