@@ -22,19 +22,20 @@ public class SceneSupervisor : MonoBehaviour {
 
     private void Client_MessageSystemChangeSceneEvent(object sender, MessageEventArgs e)
     {
-        string sceneName = (string)e.message.Split('@')[2];
+        //All scene change request in the specific code (event)
 
-        switch(sceneName)
-        {
-            case "TableTutoScene":
-                //Todo to be deleted
-                //Do not load scene unitl the board didn't completed the unlock
-                //SceneManager.LoadScene("tutoScene");
-                break;
-            case "TableLoadingScene":
-                SceneManager.LoadScene("loading");
-                break;
-        }
+        //string sceneName = (string)e.message.Split('@')[2];
+        //switch(sceneName)
+        //{
+        //    case "TableTutoScene":
+        //        //Todo to be deleted
+        //        //Do not load scene unitl the board didn't completed the unlock
+        //        //SceneManager.LoadScene("tutoScene");
+        //        break;
+        //    case "TableLoadingScene":
+        //        SceneManager.LoadScene("loading");
+        //        break;
+        //}
     }
     public void loadLoadingScene()
     {
@@ -59,5 +60,20 @@ public class SceneSupervisor : MonoBehaviour {
     {
         this.Client.sendData("@30000@BoardPlayingScene");
         SceneManager.LoadScene("playingScene");
+    }
+    public void loadEndScenes()
+    {
+        //this.Client.sendData("@30000@BoardEndScene");
+        //SceneManager.LoadScene("EndScene"); //TODO create waiting specialized scene
+    }
+    public void loadResultScenes()
+    {
+        //this.Client.sendData("@30000@BoardResultScene");
+        //SceneManager.LoadScene("ResultScene"); //TODO create waiting specialized scene
+    }
+    public void loadCreditScene()
+    {
+        //this.Client.sendData("@30000@BoardCreditScene");
+        //SceneManager.LoadScene("CreditScene"); //TODO create waiting specialized scene
     }
 }

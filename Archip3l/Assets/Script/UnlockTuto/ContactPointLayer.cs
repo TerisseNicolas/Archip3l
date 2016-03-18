@@ -67,7 +67,7 @@ public class ContactPointLayer : MonoBehaviour
 
     IEnumerator holdAndChangeScene()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         SceneSupervisor.Instance.loadTutoScenes();
     }
     //void Update()
