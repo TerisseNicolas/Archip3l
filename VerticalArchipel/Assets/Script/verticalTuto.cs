@@ -28,7 +28,6 @@ public class verticalTuto : InputSource
 
     void OnMouseDownSimulation()
     {
-        Debug.Log(this.name);
         switch(verticalTuto.steps)
         {
             case 0:

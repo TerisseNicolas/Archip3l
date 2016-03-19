@@ -12,6 +12,7 @@ using TouchScript;
 public class Disturbance : InputSource
 {
     static public bool disturbanceWindowOpen = false;
+
     public Text counter;
     public Text disturbanceText;
     static public string islandChosen = string.Empty;
@@ -32,19 +33,30 @@ public class Disturbance : InputSource
         //close other windows
         if (ChallengeVertical.challengeWindowPresent)
         {
-            //TODO: Destroy challengeWindow
+            Destroy(GameObject.Find(ChallengeVertical.challengeWindowName));
             ChallengeVertical.challengeWindowPresent = false;
         }
         if (Trophy.infoWindowPresent)
         {
-            //TODO: Destroy trophyWindow
+            Destroy(GameObject.Find(Trophy.infoWindowName));            
             Trophy.infoWindowPresent = false;
         }
         if (Island.infoIslandPresent)
         {
-            //TODO: Destroy islandWindow
+            Destroy(GameObject.Find(Island.infoIslandName));
             Island.infoIslandPresent = false;
         }
+        if (ChallengeWon.challengeWonWindowPresent)
+        {
+            Destroy(GameObject.Find(ChallengeWon.challengeWonWindowName));
+            ChallengeWon.challengeWonWindowPresent = false;
+        }
+        if (Enigma.enigmaWindowOpen)
+        {
+            //TODO: Destroy Enigma.enigmaWindow
+            Enigma.enigmaWindowOpen = false;
+        }
+        
 
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.counter = GameObject.Find("DisturbanceCounter").GetComponent<Text>();
@@ -87,7 +99,6 @@ public class Disturbance : InputSource
         }
         else
         {
-            Debug.Log(Disturbance.islandChosen);
             string island = Disturbance.islandChosen.Split('-')[1];
             this.Client.sendData("@3" + island.Split('_')[2] + "770");
             for (int i = 1; i <= 4; i++)

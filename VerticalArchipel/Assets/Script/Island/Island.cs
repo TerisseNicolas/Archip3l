@@ -11,6 +11,7 @@ public class Island : InputSource
 {
 
     static public bool infoIslandPresent = false;
+    static public string infoIslandName = string.Empty;
 
     void OnMouseDownSimulation()
     {
@@ -20,6 +21,7 @@ public class Island : InputSource
             Canvas infoInslandCanvasPrefab = Resources.Load<Canvas>("Prefab/infoIslandCanvas");
             Canvas infoInslandCanvas = Instantiate(infoInslandCanvasPrefab);
             infoInslandCanvas.name = "infoInslandCanvas_" + this.name;
+            Island.infoIslandName = infoInslandCanvas.name;
         }
     }
 

@@ -1,4 +1,5 @@
 ﻿Question;Answer;Explanation;Proposition0;Proposition1;Proposition2
 
 Quel est aujourd'hui le record de hauteur atteinte par des vagues scélérates ?;Proposition2;;10m;20m;30m
+
 En quelle année le paquebot Titanic a-t-il été achevé ?;Proposition2;Sa construction débuta en 1909 à Belfast et se termina en 1912.;1785;1882;1912

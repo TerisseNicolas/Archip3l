@@ -84,6 +84,7 @@ public class main : MonoBehaviour
         Canvas enigmaPrefab = Resources.Load<Canvas>("Prefab/Enigma");
         Canvas enigma = Instantiate(enigmaPrefab);
         enigma.name = "Enigma";
+        Enigma.enigmaWindowName = enigma.name;
         Enigma.enigmaWindowOpen = true;
     }
 

@@ -14,6 +14,8 @@ using TouchScript;
 public class ChallengeWon : InputSource
 {
     static public bool challengeWonWindowPresent = false;
+    static public string challengeWonWindowName = string.Empty;
+
 
     static public string resourceWon;
     static public int quantityWon;
@@ -34,7 +36,6 @@ public class ChallengeWon : InputSource
         GameObject.Find("RewardValue").GetComponent<Text>().text = quantityWon.ToString();
         GameObject.Find("RewardSprite").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Resource/" + resourceWon + "Icon");
 
-        Debug.Log(resourceWon.ToString());
     }
 
     

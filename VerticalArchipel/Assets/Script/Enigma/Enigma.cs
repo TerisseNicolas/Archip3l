@@ -11,6 +11,7 @@ using TouchScript;
 public class Enigma : InputSource
 {
     static public bool enigmaWindowOpen = false;
+    static public string enigmaWindowName = string.Empty;
     static public int enimgasToBeDone = 0;
 
     static public Text questionObject { get; private set; }

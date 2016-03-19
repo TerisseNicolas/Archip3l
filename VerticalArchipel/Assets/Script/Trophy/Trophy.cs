@@ -13,6 +13,7 @@ using TouchScript;
 public class Trophy : InputSource
 {
     static public bool infoWindowPresent = false;
+    static public string infoWindowName = string.Empty;
 
     public bool active = false;     //true if trophy unlocked
     public bool toBeActivated = false;
@@ -69,16 +70,19 @@ public class Trophy : InputSource
                         Canvas infoAirportCanvasPrefab = Resources.Load<Canvas>("Prefab/infoAirportCanvas");
                         Canvas infoAirportCanvas = Instantiate(infoAirportCanvasPrefab);
                         infoAirportCanvas.name = "infoAirportCanvas";
+                        Trophy.infoWindowName = infoAirportCanvas.name;
                         break;
                     case "MedalsCollider":
                         Canvas infoMedalsCanvasPrefab = Resources.Load<Canvas>("Prefab/infoMedalsCanvas");
                         Canvas infoMedalsCanvas = Instantiate(infoMedalsCanvasPrefab);
                         infoMedalsCanvas.name = "infoMedalsCanvas";
+                        Trophy.infoWindowName = infoMedalsCanvas.name;
                         break;
                     case "TrophiesCollider":
                         Canvas infoTrophiesCanvasPrefab = Resources.Load<Canvas>("Prefab/infoTrophiesCanvas");
                         Canvas infoTrophiesCanvas = Instantiate(infoTrophiesCanvasPrefab);
                         infoTrophiesCanvas.name = "infoTrophiesCanvas";
+                        Trophy.infoWindowName = infoTrophiesCanvas.name;
                         break;
                 }
             }

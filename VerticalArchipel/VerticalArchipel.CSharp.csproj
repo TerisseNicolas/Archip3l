@@ -56,12 +56,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -76,6 +70,7 @@
     <Compile Include="Assets\Script\Challenge\ChallengeManager.cs" />
     <Compile Include="Assets\Script\Challenge\ChallengeTimer.cs" />
     <Compile Include="Assets\Script\Challenge\ChallengeVertical.cs" />
+    <Compile Include="Assets\Script\Challenge\ChallengeVerticalClick.cs" />
     <Compile Include="Assets\Script\Challenge\ChallengeWon.cs" />
     <Compile Include="Assets\Script\Disturbance\Disturbance.cs" />
     <Compile Include="Assets\Script\Disturbance\DisturbanceTimer.cs" />
