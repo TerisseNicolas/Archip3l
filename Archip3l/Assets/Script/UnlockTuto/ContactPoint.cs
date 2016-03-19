@@ -7,12 +7,6 @@ using TouchScript;
 using TouchScript.InputSources;
 using TouchScript.Hit;
 
-
-/*
-    TODO
-    Add tuio support
-    */
-
 public class ContactPoint : InputSource {
 
     private ParticleSystem ParticleSystem;
