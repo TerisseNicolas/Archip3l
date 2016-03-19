@@ -7,12 +7,6 @@ using TouchScript;
 using TouchScript.InputSources;
 using TouchScript.Hit;
 
-
-/*
-    TODO
-    Add tuio support
-    */
-
 public class ContactPoint : InputSource {
 
     private ParticleSystem ParticleSystem;
@@ -24,16 +18,22 @@ public class ContactPoint : InputSource {
     public event ContactPointTouchedEvent ContactTouched;
     public event ContactPointTouchedEvent ContactReleased;
 
+    private Sprite SpriteRed;
+    private Sprite SpriteGreen;
+
     void Awake()
     {
         this.ParticleSystem = gameObject.GetComponentInChildren<ParticleSystem>();
         this.ParticleSystemEmit = this.ParticleSystem.emission;
         this.ContactPointLayer = GameObject.Find("ContactPointLayer").GetComponent<ContactPointLayer>();
+
+        this.SpriteRed = Resources.Load<Sprite>("unlock/boutonStart");
+        this.SpriteGreen = Resources.Load<Sprite>("unlock/boutonStartClic");
     }
 
-
-    void OnMouseEnter()
+    void EnterContactZone()
     {
+        GetComponent<SpriteRenderer>().sprite = this.SpriteGreen;
         if (!ParticleSystem.isPlaying)
         {
             ParticleSystem.Simulate(0.0f, true, true);
@@ -45,8 +45,10 @@ public class ContactPoint : InputSource {
             this.ContactTouched(this, null);
         }
     }
-    void OnMouseExit()
+
+    void ExitContactZone()
     {
+        GetComponent<SpriteRenderer>().sprite = this.SpriteRed;
         if (this.ParticleSystem.isPlaying)
         {
             this.ParticleSystem.Stop();
@@ -122,6 +124,7 @@ public class ContactPoint : InputSource {
         {
             TouchTime = Time.time;
         }
+        this.EnterContactZone();
 
     }
 
@@ -152,6 +155,7 @@ public class ContactPoint : InputSource {
         {
             TouchTime = 0;
         }
+        this.ExitContactZone();
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

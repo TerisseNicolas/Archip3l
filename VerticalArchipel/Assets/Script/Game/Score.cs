@@ -8,6 +8,8 @@ public class Score : MonoBehaviour {
 
     private Client Client;
     public int ScoreCount;
+    public int BuildingCount;
+    public int MedalCount;
 
     private string filePath;
     private List<Tuple<int, string, int>> scores;
@@ -18,6 +20,8 @@ public class Score : MonoBehaviour {
         DontDestroyOnLoad(transform.gameObject);
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageScoreUpdateEvent += Client_MessageScoreUpdateEvent;
+        this.Client.MessageBuildingConstructionEvent += Client_MessageBuildingConstructionEvent;
+        this.Client.MessageTrophyWonEvent += Client_MessageTrophyWonEvent;
 
         this.ScoreCount = 0;
         this.filePath = "scores.txt"; // C:/tempConcours/scores.txt";
@@ -25,12 +29,15 @@ public class Score : MonoBehaviour {
         this.scores = new List<Tuple<int, string, int>>();
         //this.size = 0;
         loadPreviousScores();
+
+        this.BuildingCount = 0;
+        this.MedalCount = 0;
     }
 
     private void Client_MessageScoreUpdateEvent(object sender, MessageEventArgs e)
     {
         int scoreToAdd = Int32.Parse((string)e.message.Split('@').GetValue(2));
-        if(scoreToAdd > 0)
+        if (scoreToAdd > 0)
         {
             this.ScoreCount += scoreToAdd;
         }
@@ -135,5 +142,14 @@ public class Score : MonoBehaviour {
             file.WriteLine(line);
         }
         file.Close();
+    }
+
+    private void Client_MessageTrophyWonEvent(object sender, MessageEventArgs e)
+    {
+        this.MedalCount += 1;
+    }
+    private void Client_MessageBuildingConstructionEvent(object sender, MessageEventArgs e)
+    {
+        this.BuildingCount += 1;
     }
 }
