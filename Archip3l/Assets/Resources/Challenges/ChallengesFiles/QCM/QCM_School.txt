@@ -1,4 +1,3 @@
 ﻿Question;Answer;Explanation;Proposition0;Proposition1;Proposition2
 
-Laquelle de ces 3 propositions est fausse ?;Proposition1;Il y en a bien une nommée "Walt Disney" mais située aux Etats-Unis;Il existe une école de sorcellerie à Salem (Massachussets);Il existe une école centrée sur l'étude du monde elfique en Islande;Il existe une école nommée "Walt Disney" en France
-Comment appelle-t-on deux mots qui se prononcent de la même façon mais qui ont une orthographe différente ?;Proposition2;;Des synonymes;Des antonymes;Des homonymes
+Comment appelle-t-on deux mots qui se prononcent de la même façon mais qui ont une orthographe différente ?;Proposition2;;Synonymes;Antonymes;Homonymes

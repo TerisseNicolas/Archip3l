@@ -142,8 +142,11 @@ public class MinorIsland : InputSource
         if (id == '1' || id == '2')
             canvasChallenge.transform.Rotate(Vector3.forward * 180);
 
-        canvasChallenge.GetComponentInChildren<ChallengeBuild>().init(type, this, (TypeBuilding)System.Enum.Parse(typeof(TypeBuilding), buildingClicked));
-            
+
+        GameObject background = canvasChallenge.transform.Find("background").gameObject;
+        background.GetComponent<ChallengeBuild>().init(type, this, (TypeBuilding)System.Enum.Parse(typeof(TypeBuilding), buildingClicked));
+        
+
 
         GameObject.Find(nameMinorIsland).GetComponent<MeshCollider>().enabled = true;
     }
@@ -177,7 +180,10 @@ public class MinorIsland : InputSource
         if (id == '1' || id == '2')
             challengeUpgrade.transform.Rotate(Vector3.forward * 180);
 
-        challengeUpgrade.GetComponentInChildren<ChallengeUpgrade>().init(type, this, building);
+        GameObject background = challengeUpgrade.transform.Find("background").gameObject;
+        background.GetComponent<ChallengeUpgrade>().init(type, this, building);
+
+
 
         GameObject.Find(nameMinorIsland).GetComponent<MeshCollider>().enabled = true;
     }

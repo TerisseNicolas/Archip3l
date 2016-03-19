@@ -11,20 +11,20 @@ using TouchScript.InputSources;
 
 public class ChallengeUpgrade : InputSource
 {
-    static public string question { get; private set; }
-    static public string answer { get; private set; }
-    static public string explainations { get; private set; }
-    static public string[] propositions { get; private set; }
-    static public int nbPropositions { get; private set; }
-    static public bool goodAnswer { get; private set; }
-    static public TypeChallenge typeChallenge { get; private set; }
-    static public SpriteRenderer background { get; private set; }
-    static public Text resultText { get; private set; }
-    static public MinorIsland minorIsland { get; private set; }
-    static public Building building { get; private set; }
-    static public Canvas canvasChallenge { get; private set; }
+    public string question { get; private set; }
+    public string answer { get; private set; }
+    public string explainations { get; private set; }
+    public string[] propositions { get; private set; }
+    public int nbPropositions { get; private set; }
+    public bool goodAnswer { get; private set; }
+    public TypeChallenge typeChallenge { get; private set; }
+    public SpriteRenderer background { get; private set; }
+    public Text resultText { get; private set; }
+    public MinorIsland minorIsland { get; private set; }
+    public Building building { get; private set; }
+    public Canvas canvasChallenge { get; private set; }
 
-    static public TextAsset csv { get; private set; }
+    public TextAsset csv { get; private set; }
     private Client Client;
 
     public void init(TypeChallenge tc, MinorIsland island, Building myBuilding)
@@ -33,13 +33,13 @@ public class ChallengeUpgrade : InputSource
 
         canvasChallenge = this.transform.parent.GetComponent<Canvas>();
 
-        ChallengeUpgrade.building = myBuilding;
-        ChallengeUpgrade.minorIsland = island;
-        ChallengeUpgrade.typeChallenge = tc;
+        this.building = myBuilding;
+        this.minorIsland = island;
+        this.typeChallenge = tc;
         if (typeChallenge == TypeChallenge.QCM)
-            ChallengeUpgrade.nbPropositions = 3;
+            this.nbPropositions = 3;
         else
-            ChallengeUpgrade.nbPropositions = 2;
+            this.nbPropositions = 2;
 
 
         //CSV part
@@ -50,20 +50,19 @@ public class ChallengeUpgrade : InputSource
         //ENCODAGE : UTF8-16-LE
         //last line of file usually blank --> to be removed!
         csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
-        //csv = Resources.Load<TextAsset>("Challenges/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_Tests");
 
 
         string[] row = CSV_reader.GetRandomLine(csv.text);
 
-        ChallengeUpgrade.question = row[0];
+        this.question = row[0];
         addLineBreaks();
-        ChallengeUpgrade.answer = row[1];
-        ChallengeUpgrade.explainations = row[2];
-        ChallengeUpgrade.propositions = new string[nbPropositions];
-        ChallengeUpgrade.propositions[0] = row[3];
-        ChallengeUpgrade.propositions[1] = row[4];
-        if (ChallengeUpgrade.nbPropositions == 3)
-            ChallengeUpgrade.propositions[2] = row[5];
+        this.answer = row[1];
+        this.explainations = row[2];
+        this.propositions = new string[nbPropositions];
+        this.propositions[0] = row[3];
+        this.propositions[1] = row[4];
+        if (this.nbPropositions == 3)
+            this.propositions[2] = row[5];
 
 
         foreach (Text text in canvasChallenge.GetComponentsInChildren<Text>())
@@ -71,19 +70,19 @@ public class ChallengeUpgrade : InputSource
             switch (text.name)
             {
                 case "Question":
-                    text.text = ChallengeUpgrade.question;
+                    text.text = this.question;
                     break;
                 case "Result":
                     resultText = text;
                     break;
                 case "Proposition0":
-                    text.text = ChallengeUpgrade.propositions[0];
+                    text.text = this.propositions[0];
                     break;
                 case "Proposition1":
-                    text.text = ChallengeUpgrade.propositions[1];
+                    text.text = this.propositions[1];
                     break;
                 case "Proposition2":
-                    text.text = ChallengeUpgrade.propositions[2];
+                    text.text = this.propositions[2];
                     break;
             }
         }
@@ -91,16 +90,16 @@ public class ChallengeUpgrade : InputSource
         foreach (SpriteRenderer sp in canvasChallenge.GetComponentsInChildren<SpriteRenderer>())
         {
             if (sp.name == "background")
-                ChallengeUpgrade.background = sp;
+                this.background = sp;
         }
     }
 
     void addLineBreaks()
     {
-        const int maxChar = 40;
+        const int maxChar = 37;
         List<int> spaces = new List<int>();
         int i = 0;
-        foreach (char c in ChallengeUpgrade.question)
+        foreach (char c in this.question)
         {
             if (c == ' ')
                 spaces.Add(i);
@@ -110,19 +109,37 @@ public class ChallengeUpgrade : InputSource
         int j = 0;
         i = 1;
         int nbLineBreakAdded = 0;
-        while (maxChar * i <= ChallengeUpgrade.question.Length)
+        while (maxChar * i <= this.question.Length)
         {
             while (j < spaces.Count && spaces[j] < maxChar * i)
                 j++;
-            ChallengeUpgrade.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) + "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
+            this.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) + "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
             i++;
             nbLineBreakAdded++;
         }
     }
 
+    private void refreshAttributes()    //for objects (expect background) which have not been initialized
+    {
+        background = this.transform.parent.Find("background").gameObject.GetComponent<SpriteRenderer>();
+        ChallengeUpgrade backgroundChallengeUpgrade = this.transform.parent.Find("background").gameObject.GetComponent<ChallengeUpgrade>();
+        this.question = backgroundChallengeUpgrade.question;
+        this.answer = backgroundChallengeUpgrade.answer;
+        this.explainations = backgroundChallengeUpgrade.explainations;
+        this.propositions = backgroundChallengeUpgrade.propositions;
+        this.nbPropositions = backgroundChallengeUpgrade.nbPropositions;
+        this.typeChallenge = backgroundChallengeUpgrade.typeChallenge;
+        this.resultText = backgroundChallengeUpgrade.resultText;
+        this.minorIsland = backgroundChallengeUpgrade.minorIsland;
+        this.goodAnswer = backgroundChallengeUpgrade.goodAnswer;
+        this.canvasChallenge = backgroundChallengeUpgrade.canvasChallenge;
+        this.building = backgroundChallengeUpgrade.building;
+    }
+
 
     void OnMouseDownSimulation()
     {
+        refreshAttributes();
         string clickedText = this.name.Split('_')[0];
 
         //modify Result.text     
@@ -178,7 +195,7 @@ public class ChallengeUpgrade : InputSource
         minorIsland.challengePresent = false;
 
         //ChallengeUpgrade.building.name is a string --> conversion necessary + split (name like: "sous_ile_X_nameBuilding")
-        if (Enum.IsDefined(typeof(TypeBuilding), ChallengeUpgrade.building.name.Split('_')[3]))
+        if (Enum.IsDefined(typeof(TypeBuilding), this.building.name.Split('_')[3]))
         {
             //TypeBuilding typeBuilding = (TypeBuilding)Enum.Parse(typeof(TypeBuilding), minorIsland.buildingClicked, true);
 
