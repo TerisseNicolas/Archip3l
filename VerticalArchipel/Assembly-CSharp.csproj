@@ -46,15 +46,18 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Challenge\ChallengeManager.cs" />
+     <Compile Include="Assets\Script\Challenge\ChallengeTimer.cs" />
      <Compile Include="Assets\Script\Challenge\ChallengeVertical.cs" />
      <Compile Include="Assets\Script\Challenge\ChallengeWon.cs" />
-     <Compile Include="Assets\Script\Disturbance.cs" />
+     <Compile Include="Assets\Script\Disturbance\Disturbance.cs" />
+     <Compile Include="Assets\Script\Disturbance\DisturbanceTimer.cs" />
+     <Compile Include="Assets\Script\Disturbance\DisturbanceTimerView.cs" />
      <Compile Include="Assets\Script\Enigma\Enigma.cs" />
      <Compile Include="Assets\Script\Enigma\EnigmaManager.cs" />
-     <Compile Include="Assets\Script\Game\DisturbanceTimer.cs" />
-     <Compile Include="Assets\Script\Game\DisturbanceTimerView.cs" />
      <Compile Include="Assets\Script\Game\Game.cs" />
      <Compile Include="Assets\Script\Game\GlobalInfo.cs" />
+     <Compile Include="Assets\Script\Game\InitScene.cs" />
+     <Compile Include="Assets\Script\Game\SceneSupervisor.cs" />
      <Compile Include="Assets\Script\Game\Score.cs" />
      <Compile Include="Assets\Script\Game\SoundPlayer.cs" />
      <Compile Include="Assets\Script\Game\Timer.cs" />
@@ -149,6 +152,10 @@
      <Compile Include="Assets\Script\Types\TypeDisturbance.cs" />
      <Compile Include="Assets\Script\Types\TypeResource.cs" />
      <Compile Include="Assets\Script\Types\TypeStat.cs" />
+     <Compile Include="Assets\Script\UnlockTuto\ContactPoint.cs" />
+     <Compile Include="Assets\Script\UnlockTuto\ContactPointLayer.cs" />
+     <Compile Include="Assets\Script\UnlockTuto\Emitter.cs" />
+     <Compile Include="Assets\Script\UnlockTuto\FinalFireWork.cs" />
      <Compile Include="Assets\Script\main.cs" />
      <Compile Include="Assets\Script\verticalTuto.cs" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_StoneMine.txt" />
@@ -156,6 +163,7 @@
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_OilPlant.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_PowerPlant.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Hotel.txt" />
+     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Sawmill.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Church.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Harbor.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_School.txt" />
@@ -169,13 +177,12 @@
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Harbor.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Lab.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Church.txt" />
-     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Lab.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_School.txt" />
-     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Sawmill.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Airport.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Airport.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_PowerPlant.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Farm.txt" />
+     <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_Lab.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_WindTurbine.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Hotel.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Factory.txt" />

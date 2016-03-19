@@ -59,6 +59,9 @@
      <Compile Include="Assets\Script\ChallengeBuild.cs" />
      <Compile Include="Assets\Script\ChallengeUpgrade.cs" />
      <Compile Include="Assets\Script\Game\Game.cs" />
+     <Compile Include="Assets\Script\Game\GlobalInfo.cs" />
+     <Compile Include="Assets\Script\Game\InitScene.cs" />
+     <Compile Include="Assets\Script\Game\SceneSupervisor.cs" />
      <Compile Include="Assets\Script\Game\SoundPlayer.cs" />
      <Compile Include="Assets\Script\GameMenu.cs" />
      <Compile Include="Assets\Script\Islands\ListIslands.cs" />
@@ -148,6 +151,7 @@
      <Compile Include="Assets\Script\TouchScript\Scripts\Utils\TimedSequence.cs" />
      <Compile Include="Assets\Script\TouchScript\Scripts\Utils\TouchUtils.cs" />
      <Compile Include="Assets\Script\TouchScript\Scripts\Utils\TransformUtils.cs" />
+     <Compile Include="Assets\Script\TouchScript\TouchScriptAdd.cs" />
      <Compile Include="Assets\Script\Tuto\Tuto_Building.cs" />
      <Compile Include="Assets\Script\Tuto\Tuto_BuildingInfo.cs" />
      <Compile Include="Assets\Script\Tuto\Tuto_BuildingManager.cs" />
@@ -162,6 +166,10 @@
      <Compile Include="Assets\Script\Types\TypeChallenge.cs" />
      <Compile Include="Assets\Script\Types\TypeResource.cs" />
      <Compile Include="Assets\Script\Types\TypeStat.cs" />
+     <Compile Include="Assets\Script\UnlockTuto\ContactPoint.cs" />
+     <Compile Include="Assets\Script\UnlockTuto\ContactPointLayer.cs" />
+     <Compile Include="Assets\Script\UnlockTuto\Emitter.cs" />
+     <Compile Include="Assets\Script\UnlockTuto\FinalFireWork.cs" />
      <None Include="Assets\Resources\Challenges\QCM\QCM_GoldMine.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\QCM\QCM_StoneMine.txt" />
      <None Include="Assets\Resources\Challenges\ChallengesFiles\VraiFaux\VraiFaux_Cinema.txt" />
