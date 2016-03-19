@@ -24,16 +24,23 @@ public class ContactPoint : InputSource {
     public event ContactPointTouchedEvent ContactTouched;
     public event ContactPointTouchedEvent ContactReleased;
 
+    private Sprite SpriteRed;
+    private Sprite SpriteGreen;
+
     void Awake()
     {
         this.ParticleSystem = gameObject.GetComponentInChildren<ParticleSystem>();
         this.ParticleSystemEmit = this.ParticleSystem.emission;
         this.ContactPointLayer = GameObject.Find("ContactPointLayer").GetComponent<ContactPointLayer>();
+
+        this.SpriteRed = Resources.Load<Sprite>("unlock/boutonStart");
+        this.SpriteGreen = Resources.Load<Sprite>("unlock/boutonStartClic");
     }
 
 
     void OnMouseEnter()
     {
+        GetComponent<SpriteRenderer>().sprite = this.SpriteGreen;
         if (!ParticleSystem.isPlaying)
         {
             ParticleSystem.Simulate(0.0f, true, true);
@@ -47,6 +54,7 @@ public class ContactPoint : InputSource {
     }
     void OnMouseExit()
     {
+        GetComponent<SpriteRenderer>().sprite = this.SpriteRed;
         if (this.ParticleSystem.isPlaying)
         {
             this.ParticleSystem.Stop();
