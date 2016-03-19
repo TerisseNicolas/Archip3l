@@ -62,13 +62,12 @@ public class ResourceManager : MonoBehaviour
 
     private void Client_MessageResourceStockReceivedEvent(object sender, MessageEventArgs e)
     {
-        //If it concern my island
+        //If it concerns my island
         char islandNumber = (char)e.message.Split('@')[1][1];
         if (this.minorIsland.nameMinorIsland.Contains(islandNumber) || islandNumber=='5')
         {
             TypeResource resourceType = (TypeResource) Enum.Parse(typeof(TypeResource), (string) e.message.Split('@')[2]);
             int quantity = Int32.Parse(e.message.Split('@')[3]);
-
             this.changeResourceStock(resourceType, quantity);
         }
     }

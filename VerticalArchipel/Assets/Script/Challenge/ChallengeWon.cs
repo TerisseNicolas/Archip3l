@@ -43,19 +43,12 @@ public class ChallengeWon : InputSource
     public void OnMouseDownSimulation()
     {
         string islandToSend = this.name.Split('-')[1];
-        //TODO: send to Archip3l islandToSend, resourceWon, quantityWon
-        //Need the island name
-        GameObject.Find("Network").GetComponent<Client>().sendData("@2" + islandToSend.Split('_')[2] + "394@" + "ResourceName" + "@" + ChallengeWon.quantityWon.ToString());
-
         string resource = char.ToUpper(resourceWon[0]).ToString() + resourceWon.Substring(1);
+        GameObject.Find("Network").GetComponent<Client>().sendData("@2" + islandToSend.Split('_')[2] + "394@" + resource + "@" + ChallengeWon.quantityWon.ToString());
         //main.addNotification(ChallengeWon.quantityWon.ToString() + " " + main.translateResourceName(resource) + " envoyés !");
 
         Destroy(GameObject.Find("challengeWonCanvas"));
     }
-
-
-
-
 
 
     //-------------- TUIO -----------------------------------------------------------------------
