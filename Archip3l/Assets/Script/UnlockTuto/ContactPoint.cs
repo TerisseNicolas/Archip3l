@@ -37,8 +37,7 @@ public class ContactPoint : InputSource {
         this.SpriteGreen = Resources.Load<Sprite>("unlock/boutonStartClic");
     }
 
-
-    void OnMouseEnter()
+    void EnterContactZone()
     {
         GetComponent<SpriteRenderer>().sprite = this.SpriteGreen;
         if (!ParticleSystem.isPlaying)
@@ -52,7 +51,8 @@ public class ContactPoint : InputSource {
             this.ContactTouched(this, null);
         }
     }
-    void OnMouseExit()
+
+    void ExitContactZone()
     {
         GetComponent<SpriteRenderer>().sprite = this.SpriteRed;
         if (this.ParticleSystem.isPlaying)
@@ -130,6 +130,7 @@ public class ContactPoint : InputSource {
         {
             TouchTime = Time.time;
         }
+        this.EnterContactZone();
 
     }
 
@@ -160,6 +161,7 @@ public class ContactPoint : InputSource {
         {
             TouchTime = 0;
         }
+        this.ExitContactZone();
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
