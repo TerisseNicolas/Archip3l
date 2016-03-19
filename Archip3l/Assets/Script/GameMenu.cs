@@ -32,6 +32,12 @@ public class GameMenu : InputSource
                 //NO need but we never know
                 //GameObject.Find("Network").GetComponent<Client>().sendData("@30000@BoardLoadingScene");
                 break;
+            //waitForVertical scene --> return to menu
+            case "endWindowBackground":
+                SceneManager.LoadScene("menuScene");
+                //TODO : close windows (credits or classements)
+
+                break;
         }
     }
 

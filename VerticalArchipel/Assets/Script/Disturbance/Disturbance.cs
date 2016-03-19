@@ -29,6 +29,23 @@ public class Disturbance : InputSource
 
     void Awake()
     {
+        //close other windows
+        if (ChallengeVertical.challengeWindowPresent)
+        {
+            //TODO: Destroy challengeWindow
+            ChallengeVertical.challengeWindowPresent = false;
+        }
+        if (Trophy.infoWindowPresent)
+        {
+            //TODO: Destroy trophyWindow
+            Trophy.infoWindowPresent = false;
+        }
+        if (Island.infoIslandPresent)
+        {
+            //TODO: Destroy islandWindow
+            Island.infoIslandPresent = false;
+        }
+
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.counter = GameObject.Find("DisturbanceCounter").GetComponent<Text>();
         this.disturbanceText = GameObject.Find("DisturbanceText").GetComponent<Text>();

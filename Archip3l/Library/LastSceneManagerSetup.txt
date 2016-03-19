@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/unlockingTutoScene.unity
-=======
-- path: Assets/Scenes/playingScene.unity
->>>>>>> 8a697a3bb41e7f9cc44550486b04ff087d453116
+- path: Assets/Scenes/waitForVerticalScene.unity
   isLoaded: 1
   isActive: 1
