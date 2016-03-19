@@ -26,7 +26,8 @@ public class BuildingInfo : InputSource
             Destroy(GameObject.Find("WheelCanvas_" + this.transform.parent.parent.parent.name));
         }
 
-        Destroy(GameObject.Find(this.transform.parent.parent.name));
+        //Destroy(GameObject.Find(this.transform.parent.parent.name));
+        Destroy(this.transform.parent.parent.gameObject);
         island.buildingInfoPresent = false;
     }
 

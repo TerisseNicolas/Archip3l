@@ -12,17 +12,17 @@ using TouchScript.InputSources;
 public class ChallengeBuild : InputSource
 {
 
-    static public string question { get; private set; }
-    static public string answer { get; private set; }
-    static public string explainations { get; private set; }
-    static public string[] propositions { get; private set; }
-    static public int nbPropositions { get; private set; }
-    static public TypeChallenge typeChallenge { get; private set; }
-    static public SpriteRenderer background { get; private set; }
-    static public Text resultText { get; private set; }
-    static public MinorIsland minorIsland { get; private set; }
-    static public bool goodAnswer { get; private set; }
-    static public Canvas canvasChallenge { get; private set; }
+    public string question { get; private set; }
+    public string answer { get; private set; }
+    public string explainations { get; private set; }
+    public string[] propositions { get; private set; }
+    public int nbPropositions { get; private set; }
+    public TypeChallenge typeChallenge { get; private set; }
+    public SpriteRenderer background { get; private set; }
+    public Text resultText { get; private set; }
+    public MinorIsland minorIsland { get; private set; }
+    public bool goodAnswer { get; private set; }
+    public Canvas canvasChallenge { get; private set; }
 
     static public TextAsset csv { get; private set; }
 
@@ -31,12 +31,12 @@ public class ChallengeBuild : InputSource
 
         canvasChallenge = this.transform.parent.GetComponent<Canvas>();
 
-        ChallengeBuild.minorIsland = island;
-        ChallengeBuild.typeChallenge = tc;
+        this.minorIsland = island;
+        this.typeChallenge = tc;
         if (typeChallenge == TypeChallenge.QCM)
-            ChallengeBuild.nbPropositions = 3;
+            this.nbPropositions = 3;
         else
-            ChallengeBuild.nbPropositions = 2;
+            this.nbPropositions = 2;
 
 
         //CSV part
@@ -47,58 +47,54 @@ public class ChallengeBuild : InputSource
         //ENCODAGE : UTF8-16-LE
         //last line of file usually blank --> to be removed!
         csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + typeBuilding.ToString());
-        //csv = Resources.Load<TextAsset>("Challenges/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_Tests");
 
         string[] row = CSV_reader.GetRandomLine(csv.text);
-        ChallengeBuild.question = row[0];
+        this.question = row[0];
         addLineBreaks();
-        ChallengeBuild.answer = row[1];
-        ChallengeBuild.explainations = row[2];
-        ChallengeBuild.propositions = new string[nbPropositions];
-        ChallengeBuild.propositions[0] = row[3];
-        ChallengeBuild.propositions[1] = row[4];
-        if (ChallengeBuild.nbPropositions == 3)
-            ChallengeBuild.propositions[2] = row[5];
+        this.answer = row[1];
+        this.explainations = row[2];
+        this.propositions = new string[nbPropositions];
+        this.propositions[0] = row[3];
+        this.propositions[1] = row[4];
+        if (this.nbPropositions == 3)
+            this.propositions[2] = row[5];
 
         //graphic part
-            
+        
         foreach (Text text in canvasChallenge.GetComponentsInChildren<Text>())
         {
             switch (text.name)
             {
                 case "Question":
-                    text.text = ChallengeBuild.question;
+                    text.text = this.question;
                     break;
                 case "Result":
                     resultText = text;
                     break;
                 case "Proposition0":
-                    text.text = ChallengeBuild.propositions[0];
+                    text.text = this.propositions[0];
                     break;
                 case "Proposition1":
-                    text.text = ChallengeBuild.propositions[1];
+                    text.text = this.propositions[1];
                     break;
                 case "Proposition2":
-                    text.text = ChallengeBuild.propositions[2];
+                    text.text = this.propositions[2];
                     break;
             }
         }
 
-        foreach (SpriteRenderer sp in canvasChallenge.GetComponentsInChildren<SpriteRenderer>())
-        {
-            if (sp.name == "background")
-                ChallengeBuild.background = sp;
-        }
-            
+
+        this.background = this.GetComponent<SpriteRenderer>();
+
     }
 
 
     void addLineBreaks()
     {
-        const int maxChar = 40;
+        const int maxChar = 37;
         List<int> spaces = new List<int>();
         int i = 0;
-        foreach(char c in ChallengeBuild.question)
+        foreach(char c in this.question)
         {
             if (c == ' ')
                 spaces.Add(i);
@@ -108,19 +104,37 @@ public class ChallengeBuild : InputSource
         int j = 0;
         i = 1;
         int nbLineBreakAdded = 0;
-        while (maxChar * i <= ChallengeBuild.question.Length)
+        while (maxChar * i <= this.question.Length)
         {
             while (j < spaces.Count && spaces[j] < maxChar * i)
                 j++;
-            ChallengeBuild.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) +  "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
+            this.question = question.Substring(0, spaces[j - 1] + nbLineBreakAdded) +  "\n" + question.Substring(spaces[j - 1] + nbLineBreakAdded);
             i++;
             nbLineBreakAdded++;
         }
     }
 
+    private void refreshAttributes()    //for objects (expect background) which have not been initialized
+    {
+        background = this.transform.parent.Find("background").gameObject.GetComponent<SpriteRenderer>();
+        ChallengeBuild backgroundChallengeBuild = this.transform.parent.Find("background").gameObject.GetComponent<ChallengeBuild>();
+        this.question = backgroundChallengeBuild.question;
+        this.answer = backgroundChallengeBuild.answer;
+        this.explainations = backgroundChallengeBuild.explainations;
+        this.propositions = backgroundChallengeBuild.propositions;
+        this.nbPropositions = backgroundChallengeBuild.nbPropositions;
+        this.typeChallenge = backgroundChallengeBuild.typeChallenge;
+        this.resultText = backgroundChallengeBuild.resultText;
+        this.minorIsland = backgroundChallengeBuild.minorIsland;
+        this.goodAnswer = backgroundChallengeBuild.goodAnswer;
+        this.canvasChallenge = backgroundChallengeBuild.canvasChallenge;
+    }
+
 
     void OnMouseDownSimulation()
     {
+        refreshAttributes();
+        Debug.Log(this.question + "---" + this.answer + "---");
         string clickedText = this.name.Split('_')[0];
 
         //modify Result.text     
