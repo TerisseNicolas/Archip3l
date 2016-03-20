@@ -25,6 +25,8 @@ public class Game : MonoBehaviour
         //this.Timer.Init(0.1f * 60f);
         this.Timer.Init(13f * 60f);
         this.Timer.FinalTick += Timer_FinalTick;
+        this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
+        this.Timer.PirateBoatsIncreaseTick += Timer_PirateBoatsIncreaseTick;
 
         this.TimerDisturbance = gameObject.GetComponent<DisturbanceTimer>();
         this.TimerDisturbance.Init(10f);
@@ -85,6 +87,16 @@ public class Game : MonoBehaviour
 
         this.ChallengerTimer.Init(30f);
         this.ChallengerTimer.StartTimer();
+    }
+
+    private void Timer_PirateBoatsIncreaseTick(object sender, System.EventArgs e)
+    {
+        this.Client.sendData("@40001");
+    }
+
+    private void Timer_PirateBoatsStartTick(object sender, System.EventArgs e)
+    {
+        this.Client.sendData("@40002");
     }
 
     private void TimerDisturbance_FinalTick(object sender, System.EventArgs e)

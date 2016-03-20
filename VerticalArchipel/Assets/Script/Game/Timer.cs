@@ -10,6 +10,11 @@ public class Timer : MonoBehaviour
     public float TimeLeft {get; private set;}
     public event EventHandler<EventArgs> FinalTick;
 
+    public event EventHandler<EventArgs> PirateBoatsStartTick;
+    public event EventHandler<EventArgs> PirateBoatsIncreaseTick;
+    private float startPirateBoats = 7 * 60f;
+    private float increasePirateBoats = 10 * 60f;
+
     public void Init(float seconds)
     {
         this.InitTime = seconds;
@@ -38,6 +43,14 @@ public class Timer : MonoBehaviour
             if (this.TimeLeft < 0)
             {
                 this.StopTimer();
+            }
+            if(this.TimeLeft == this.startPirateBoats && this.PirateBoatsStartTick != null)
+            {
+                this.PirateBoatsStartTick(this, null);
+            }
+            if(this.TimeLeft == this.increasePirateBoats && this.PirateBoatsIncreaseTick != null)
+            {
+                this.PirateBoatsIncreaseTick(this, null);
             }
         }
     }

@@ -40,6 +40,8 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageScoreUpdateEvent;
     public event EventHandler<MessageEventArgs> MessageSoundEvent;
 
+    public event EventHandler<MessageEventArgs> MessagePiratesStartArrivalEvent;
+    public event EventHandler<MessageEventArgs> MessagePiratesIncreaseRateEvent;
     public event EventHandler<MessageEventArgs> MessageUnlockTutoEvent;
 
     public event EventHandler<MessageEventArgs> MessageSystemChangeSceneEvent;
@@ -232,6 +234,12 @@ public class Client : MonoBehaviour
             case 34770:
             case 35770:
                 MessageEvent += MessageDisturbanceEvent;
+                break;
+            case 40001:
+                MessageEvent += MessagePiratesStartArrivalEvent;
+                break;
+            case 40002:
+                MessageEvent += MessagePiratesIncreaseRateEvent;
                 break;
         }
 

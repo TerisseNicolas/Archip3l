@@ -4,12 +4,13 @@ using TouchScript.InputSources;
 
 public class PirateBoatManager : MonoBehaviour
 {
-    //private float secondsBeforeFirstBoat = 10;
-    private float interval = 1f;
-    private float raisingRate = 0.99f;
+    private float initInterval = 1f;
+    private float interval;
+    private float raisingRate = 0.999f;
     private int boatId = 0;
 
     public Transform pirateBoatPrefab;
+    private Client Client; 
 
     private MinorIsland island1;
     private MinorIsland island2;
@@ -21,16 +22,8 @@ public class PirateBoatManager : MonoBehaviour
 
     private static System.Random rnd;
 
-    private static bool launchBoats = false;
-
-    void Update()
-    {
-        if(GameObject.Find("Explosion1(Clone)") != null)
-            Destroy(GameObject.Find("Explosion1(Clone)"), 0.5f);
-        if (GameObject.Find("sinkingTrail(Clone)") != null)
-            Destroy(GameObject.Find("sinkingTrail(Clone)"), 0.5f);
-    }
-
+    private bool launchBoats = false;
+    private bool raisingFlag = false;
 
     void Awake()
     {
@@ -39,12 +32,31 @@ public class PirateBoatManager : MonoBehaviour
         this.island2 = GameObject.Find("sous_ile_2").GetComponent<MinorIsland>();
         this.island3 = GameObject.Find("sous_ile_3").GetComponent<MinorIsland>();
         this.island4 = GameObject.Find("sous_ile_4").GetComponent<MinorIsland>();
+
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+        this.Client.MessagePiratesStartArrivalEvent += Client_MessagePiratesStartArrivalEvent;
+        this.Client.MessagePiratesIncreaseRateEvent += Client_MessagePiratesIncreaseRateEvent;
+
+        this.interval = this.initInterval;
     }
-    void Start()
+    void Update()
+    {
+        //TODO find another way to do this
+        if (GameObject.Find("Explosion1(Clone)") != null)
+            Destroy(GameObject.Find("Explosion1(Clone)"), 0.5f);
+        if (GameObject.Find("sinkingTrail(Clone)") != null)
+            Destroy(GameObject.Find("sinkingTrail(Clone)"), 0.5f);
+    }
+
+    private void Client_MessagePiratesIncreaseRateEvent(object sender, MessageEventArgs e)
     {
         launchBoats = true;
         StartCoroutine("StartLaunchingPirateBoats");
-        StartCoroutine("wait");
+    }
+
+    private void Client_MessagePiratesStartArrivalEvent(object sender, MessageEventArgs e)
+    {
+        this.raisingFlag = true;
     }
 
     IEnumerator StartLaunchingPirateBoats()
@@ -58,13 +70,16 @@ public class PirateBoatManager : MonoBehaviour
                 launchPirateBoat();
 
                 this.boatId += 1;
-                this.interval *= raisingRate;
+                if(this.raisingFlag)
+                {
+                    this.interval *= raisingRate;
+                }
             }
             yield return new WaitForSeconds(this.interval);
         }
     }
 
-    //to stop boats appearance
+    //To stop boats appearance
     IEnumerator wait()
     {
         yield return new WaitForSeconds(15);
