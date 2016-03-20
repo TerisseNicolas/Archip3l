@@ -50,6 +50,7 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemStartOfGameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemEndOfGameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemTeamNameEvent;
+    public event EventHandler<MessageEventArgs> MessageSystemVerticalTutoCompletedEvent;
 
 
     void Awake()
@@ -200,6 +201,9 @@ public class Client : MonoBehaviour
                 break;
             case 30006:
                 MessageEvent += MessageSystemStartInitOfGameEvent;
+                break;
+            case 30010:
+                MessageEvent += MessageSystemVerticalTutoCompletedEvent;
                 break;
             case 30087:
                 MessageEvent += MessageSystemStartInitOfGameAnswerEvent;

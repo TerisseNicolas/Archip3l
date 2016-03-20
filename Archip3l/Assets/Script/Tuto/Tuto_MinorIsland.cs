@@ -12,7 +12,6 @@ using UnityEngine.SceneManagement;
 public class Tuto_MinorIsland : InputSource {
 
     public Tuto_BuildingManager tuto_buildingManager { get; private set; }
-
     public Transform tuto_buildingManagerPrefab;
 
     Canvas startCanvas;
@@ -40,6 +39,9 @@ public class Tuto_MinorIsland : InputSource {
     public Canvas endCanvas;
     public bool ended = false;
 
+    private Client Client;
+    private bool verticalTutoCompleted;
+
 
     void Awake()
     {
@@ -52,6 +54,10 @@ public class Tuto_MinorIsland : InputSource {
             mytuto_buildingManager.name = "BuildingManager_" + this.nameTuto_MinorIsland;
             this.tuto_buildingManager = mytuto_buildingManager;
         }
+
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+        this.Client.MessageSystemVerticalTutoCompletedEvent += Client_MessageSystemVerticalTutoCompletedEvent;
+        this.verticalTutoCompleted = false;
 
     }
 
@@ -95,7 +101,15 @@ public class Tuto_MinorIsland : InputSource {
             color.a += 0.005f;
             sp.color = color;
         }
-        SceneManager.LoadScene("playingScene");
+        while(true)
+        {
+            if(this.verticalTutoCompleted)
+            {
+                SceneSupervisor.Instance.loadPalyingScenes();
+                break;
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     public void createTuto_ChallengeBuild(string buildingClicked)
@@ -298,6 +312,7 @@ public class Tuto_MinorIsland : InputSource {
                     endCanvas.GetComponentInChildren<SpriteRenderer>().color = color;
                     StartCoroutine(this.endFade());
                 }
+
             }
         }
     }
@@ -370,6 +385,11 @@ public class Tuto_MinorIsland : InputSource {
                 }
             }
         }
+    }
+
+    private void Client_MessageSystemVerticalTutoCompletedEvent(object sender, MessageEventArgs e)
+    {
+        this.verticalTutoCompleted = true;
     }
 
     //-------------- TUIO -----------------------------------------------------------------------
