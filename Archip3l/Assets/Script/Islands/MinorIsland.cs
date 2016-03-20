@@ -126,7 +126,10 @@ public class MinorIsland : InputSource
             type = TypeChallenge.VraiFaux;
         else
             type = TypeChallenge.QCM;
-            
+
+        //TEST : TODO --> remove it
+        //type = TypeChallenge.VraiFaux;
+
 
         Canvas challengePrefab = Resources.Load<Canvas>("Prefab/Challenges/Build_Challenge_" + type.ToString());
         Canvas canvasChallenge = Instantiate(challengePrefab);

@@ -47,6 +47,14 @@ public class ChallengeBuild : InputSource
         //ENCODAGE : UTF8-16-LE
         //last line of file usually blank --> to be removed!
         csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + typeBuilding.ToString());
+        //TEST: TODO --> remove
+        //csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/VraiFaux/VraiFaux_StoneMine");
+        //this.typeChallenge = TypeChallenge.VraiFaux;
+        //this.nbPropositions = 2;
+
+        //----------END TEST
+
+        Debug.Log("File : " + typeChallenge.ToString() + "_" + typeBuilding.ToString());
 
         string[] row = CSV_reader.GetRandomLine(csv.text);
         this.question = row[0];
@@ -59,8 +67,14 @@ public class ChallengeBuild : InputSource
         if (this.nbPropositions == 3)
             this.propositions[2] = row[5];
 
+        //Debug.Log("Question : " + this.question);
+        //Debug.Log("Answer : " + this.answer);
+        //Debug.Log("Explainations : " + this.explainations);
+        //Debug.Log("Proposition0 : " + this.propositions[0]);
+        //Debug.Log("Proposition1 : " + this.propositions[1]);
+
         //graphic part
-        
+
         foreach (Text text in canvasChallenge.GetComponentsInChildren<Text>())
         {
             switch (text.name)
@@ -91,7 +105,7 @@ public class ChallengeBuild : InputSource
 
     void addLineBreaks()
     {
-        const int maxChar = 37;
+        const int maxChar = 45;
         List<int> spaces = new List<int>();
         int i = 0;
         foreach(char c in this.question)
@@ -134,7 +148,6 @@ public class ChallengeBuild : InputSource
     void OnMouseDownSimulation()
     {
         refreshAttributes();
-        Debug.Log(this.question + "---" + this.answer + "---");
         string clickedText = this.name.Split('_')[0];
 
         //modify Result.text     

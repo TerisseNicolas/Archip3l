@@ -50,6 +50,7 @@ public class ChallengeUpgrade : InputSource
         //ENCODAGE : UTF8-16-LE
         //last line of file usually blank --> to be removed!
         csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
+        Debug.Log("File : " + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
 
 
         string[] row = CSV_reader.GetRandomLine(csv.text);
@@ -96,7 +97,7 @@ public class ChallengeUpgrade : InputSource
 
     void addLineBreaks()
     {
-        const int maxChar = 37;
+        const int maxChar = 45;
         List<int> spaces = new List<int>();
         int i = 0;
         foreach (char c in this.question)
