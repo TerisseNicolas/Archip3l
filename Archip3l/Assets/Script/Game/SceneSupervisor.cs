@@ -13,6 +13,7 @@ public class SceneSupervisor : MonoBehaviour {
         if (Instance != null)
         {
             Debug.LogError("Multiple instances of SceneSupervisor!");
+            Destroy(gameObject);
         }
         Instance = this;
 
@@ -41,6 +42,18 @@ public class SceneSupervisor : MonoBehaviour {
     {
         SceneManager.LoadScene("loading");
     }
+    public void loadMenuScenes(bool loadingSceneVertical)
+    {
+        SceneManager.LoadScene("menuScene");
+        if(loadingSceneVertical)
+        {
+            this.Client.sendData("@30000@BoardLoadingScene");
+        }
+    }
+    public void loadRegisterScene()
+    {
+        SceneManager.LoadScene("registerScene");
+    }
     public void loadLoadingScences()
     {
         this.Client.sendData("@30000@BoardLoadingScene");
@@ -63,17 +76,17 @@ public class SceneSupervisor : MonoBehaviour {
     }
     public void loadEndScenes()
     {
-        //this.Client.sendData("@30000@BoardEndScene");
-        //SceneManager.LoadScene("EndScene"); //TODO create waiting specialized scene
+        this.Client.sendData("@30000@BoardEndScene");
+        SceneManager.LoadScene("waitForVerticalSceneEnd");
     }
     public void loadResultScenes()
     {
-        //this.Client.sendData("@30000@BoardResultScene");
-        //SceneManager.LoadScene("ResultScene"); //TODO create waiting specialized scene
+        this.Client.sendData("@30000@BoardResultScene");
+        SceneManager.LoadScene("waitForVerticalSceneResult");
     }
-    public void loadCreditScene()
+    public void loadCreditScenes()
     {
-        //this.Client.sendData("@30000@BoardCreditScene");
-        //SceneManager.LoadScene("CreditScene"); //TODO create waiting specialized scene
+        this.Client.sendData("@30000@BoardCreditScene");
+        SceneManager.LoadScene("waitForVerticalSceneMenu");
     }
 }

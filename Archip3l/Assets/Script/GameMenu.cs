@@ -14,27 +14,37 @@ public class GameMenu : InputSource
         switch(this.name)
         {
             case "Jouer":
-                SceneManager.LoadScene("registerScene");
-                //The board does nothing
-                //GameObject.Find("Network").GetComponent<Client>().sendData("@30000@BoardTutoScene");
+                SceneSupervisor.Instance.loadRegisterScene();
                 break;
             case "Credits":
-                SceneManager.LoadScene("waitForVerticalScene");
-                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@BoardCreditsScene");
+                SceneSupervisor.Instance.loadCreditScenes();
                 break;
             case "Classement":
-                SceneManager.LoadScene("waitForVerticalScene");
-                GameObject.Find("Network").GetComponent<Client>().sendData("@30000@BoardResultScene");
+                SceneSupervisor.Instance.loadResultScenes();
                 break;
             case "returnArrow":
             case "Quitter":
-                SceneManager.LoadScene("loading");
-                //NO need but we never know
-                //GameObject.Find("Network").GetComponent<Client>().sendData("@30000@BoardLoadingScene");
+                SceneSupervisor.Instance.loadLoadingScene();
                 break;
             //waitForVertical scene --> return to menu
             case "endWindowBackground":
-                SceneManager.LoadScene("menuScene");
+                switch(SceneManager.GetActiveScene().name)
+                {
+                    //from the menu, access to the result or credit scene
+                    case "waitForVerticalSceneMenu":
+                        SceneSupervisor.Instance.loadMenuScenes(true);
+                        break;
+                    //when end scene is on vertical
+                    case "waitForVerticalSceneEnd":
+                        SceneSupervisor.Instance.loadResultScenes();
+                        break;
+                    //when result scene is on vertical(at the end of the game)
+                    case "waitForVerticalSceneResult":
+                        SceneSupervisor.Instance.loadCreditScenes();
+                        break;
+                    //case credit at the end of a game : same case as from the menu
+                }
+                
                 //TODO : close windows (credits or classements)
 
                 break;
