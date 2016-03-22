@@ -86,13 +86,16 @@ public class ChallengeBuild : InputSource
                     resultText = text;
                     break;
                 case "Proposition0":
-                    text.text = this.propositions[0];
+                    if (typeChallenge == TypeChallenge.QCM)
+                        text.text = this.propositions[0];
                     break;
                 case "Proposition1":
-                    text.text = this.propositions[1];
+                    if (typeChallenge == TypeChallenge.QCM)
+                        text.text = this.propositions[1];
                     break;
                 case "Proposition2":
-                    text.text = this.propositions[2];
+                    if (typeChallenge == TypeChallenge.QCM)
+                        text.text = this.propositions[2];
                     break;
             }
         }
