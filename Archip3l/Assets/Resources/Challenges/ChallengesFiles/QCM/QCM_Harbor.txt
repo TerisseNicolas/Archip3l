@@ -1,5 +1,6 @@
 ﻿Question;Answer;Explanation;Proposition0;Proposition1;Proposition2
-
 Quel est aujourd'hui le record de hauteur atteinte par des vagues scélérates ?;Proposition2;;10m;20m;30m
-
 En quelle année le paquebot Titanic a-t-il été achevé ?;Proposition2;Sa construction débuta en 1909 à Belfast et se termina en 1912.;1785;1882;1912
+Qu'est-ce-qu'un bateau viking?;Proposition1;Aussi appelé drakkar en français, c'est un navire d'origine scandinave, d'aspect et de tailles variés.;Une pure invention d'Astérix et Obélix;Un navire utilisé pour la conquête ou le commerce;Un paquebot de croisière
+Qui a déclaré les pirates de l'Antiquité ennemis communs à tous ?;Proposition0;;Cicéron;Sénèque;Aristote
+Au Moyen-âge, en quoi consiste le droit de représaille ?;Proposition0;Les armateurs ont obtenu ce droit de la part des suzerains de l'époque.;S'emparer d'une quantité de biens identique à celle dérobée;Attaquer en retour les premiers offenseurs;Ce droit n'a jamais existé
