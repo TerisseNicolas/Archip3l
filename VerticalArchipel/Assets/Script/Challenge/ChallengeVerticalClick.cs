@@ -97,22 +97,22 @@ public class ChallengeVerticalClick : InputSource
             switch (text.name)
             {
                 case "Question":
-                    text.text = this.question;
+                    text.text = ChallengeVerticalClick.question;
                     break;
                 case "Result":
                     resultText = text;
                     break;
                 case "Proposition0":
                     if (typeChallenge == TypeChallenge.QCM)
-                        text.text = this.propositions[0];
+                        text.text = ChallengeVerticalClick.propositions[0];
                     break;
                 case "Proposition1":
                     if (typeChallenge == TypeChallenge.QCM)
-                        text.text = this.propositions[1];
+                        text.text = ChallengeVerticalClick.propositions[1];
                     break;
                 case "Proposition2":
                     if (typeChallenge == TypeChallenge.QCM)
-                        text.text = this.propositions[2];
+                        text.text = ChallengeVerticalClick.propositions[2];
                     break;
             }
         }
