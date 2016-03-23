@@ -123,9 +123,8 @@ public class ContactPoint : InputSource {
         if (TouchTime == 0)
         {
             TouchTime = Time.time;
+            this.EnterContactZone();
         }
-        this.EnterContactZone();
-
     }
 
     private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
@@ -149,13 +148,13 @@ public class ContactPoint : InputSource {
         if (Time.time - TouchTime < 0.5)
         {
             TouchTime = 0;
+            this.ExitContactZone();
             //this.OnMouseDownSimulation();
         }
         else if (Time.time - TouchTime < 1.5)
         {
             TouchTime = 0;
         }
-        this.ExitContactZone();
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

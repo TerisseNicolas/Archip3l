@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class ContactPointLayer : MonoBehaviour
 {
@@ -17,9 +18,11 @@ public class ContactPointLayer : MonoBehaviour
     void Awake()
     {
         //TODO update this value with the number of contact point
-        this.NumberOfContact = 4;
+        this.NumberOfContact = 1;
         this.ActualContactActivated = 0;
         this.Completed = false;
+        //TODO put the false to false
+        //this.BoardCompleted = true;
 
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.ListContactPoint = new List<ContactPoint>();
@@ -40,15 +43,10 @@ public class ContactPointLayer : MonoBehaviour
     private void ContactPoint_ContactTouched(object sender, System.EventArgs e)
     {
         this.ActualContactActivated += 1;
-        if(this.ActualContactActivated == this.NumberOfContact && !this.Completed)
+        if (this.ActualContactActivated == this.NumberOfContact && !this.Completed)
         {
             GameObject.Find("WonLayer").GetComponent<FinalFireWork>().StartFire();
             this.Client.sendData("@30921");
         }
     }
-
-    //void Update()
-    //{
-    //    transform.Rotate(Vector3.down * Time.deltaTime*360);
-    //}
 }
