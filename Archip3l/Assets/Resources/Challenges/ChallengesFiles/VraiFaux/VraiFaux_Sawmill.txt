@@ -2,7 +2,7 @@ Question;Answer;Explanation;Proposition0;Proposition1
 Les premières scies mécaniques possédaient des moteurs hydrauliques;Proposition0;C’est pourquoi les scieries étaient traditionnellement situées à côté des cours d’eau.;Proposition0;Proposition1
 Le métier de bûcheron est l'un des métiers statistiquement les plus risqués quant aux accidents corporels.;Proposition0;;Proposition0;Proposition1
 Une grume peut désigner à la fois: un grain de raisin, l'écorce qui reste sur le bois coupé ou encore une pièce de bois.;Proposition0;La définition de ce terme varie suivant les zones géographiques et les époques.;Proposition0;Proposition1
-Le débardoire est la zone dangereuse dans laquelle un arbre prêt à être abattu est prévu de tomber.;Proposition1;Le débardoire est une activité qui consiste à transporter des arbres abattus du lieu de coupe vers un lieu de dépôt.;Proposition0;Proposition1
+Le débardoire est la zone dangereuse dans laquelle un arbre prêt à être abattu est prévu de tomber.;Proposition1;Le débardoire est une activité qui consiste à transporter des arbres abattus du lieu de coupe vers un lieu de dépôt.;Proposition0;Proposition1
 Un chargeoir est le nom donné au lieu de dépôt des arbres coupés.;Proposition0;;Proposition0;Proposition1
 Un débardeur peut également désigner une personne dont le travail consiste à transporter des arbres, du lieu d'abattage au lieu de dépôt.;Proposition0;;Proposition0;Proposition1
 Encrouer se dit d'un arbre qui, en tombant, se prend dans les branches d'un autre.;Proposition0;;Proposition0;Proposition1

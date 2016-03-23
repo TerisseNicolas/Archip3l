@@ -1,12 +1,9 @@
 Question;Answer;Explanation;Proposition0;Proposition1
 En 2013, la Norvège a un taux d’alphabétisation supérieur à celui du Liechtenstein.;Proposition1;Le taux d’alphabétisation est de 95% en Norvège contre 100% au Liechtenstein.;Proposition0;Proposition1
 Durant l’Antiquité, le collège désignait une assemblée composée de plusieurs magistrats ou notables.;Proposition0;L’assemblée prenait d’ailleurs un nom différent en fonction du nombre de participants.;Proposition0;Proposition1
-Au XIIème siècle, on appelait les étudiants de faculté d’art les artois;Proposition1;On les appelait les artiens.;Proposition0;Proposition1
 Un maître ou une maîtresse est une personne qui domine un art et est susceptible de l'enseigner.;Proposition0;Cet art peut prendre des formes très diverses telles que la peinture, sculpture, musique, spiritualité, art martial,…;Proposition0;Proposition1
-Maître international est un titre décerné aux meilleurs joueurs de tarot.;Proposition1;Il s'agit d'un titre accordé depuis 1950 par la Fédération Internationale des Echecs à d'excellents joueurs et joueuses d'échecs.;Proposition0;Proposition1
-En France, l'âge de début d'instruction obligatoire est de 6 ans.;Proposition0;C'est également le cas au Canada par exemple. En Finlande, il est de 7 ans.;Proposition0;Proposition1
 L'apparition de l'écriture distingue la Préhistoire de l'Histoire, car elle permet de conserver la trace des événements passés.;Proposition0;;Proposition0;Proposition1
-Un(e) apprenant(e) est une personne qui enseigne un savoir.;Proposition1;Un apprenant est la personne qui suit un enseignement.;Proposition0;Proposition1
 Il n’existe pas des gènes directement liés à la capacité d'apprentissage.;Proposition1;;Proposition0;Proposition1
 Des gènes liés aux comportements répétitifs mobilisés dans l'apprentissage seraient aussi liés aux phénomènes de dépendance.;Proposition0;;Proposition0;Proposition1
-L’Edupunk est une méthode d'enseignement et d'apprentissage.;Proposition0;Cette méthode évite les outils classiques tels que les PowerPoint et le tableau noir, et met l'accent sur un comportement Do it yourself inspirés des groupes punks.;Proposition0;Proposition1
+Dans un établissement scolaire privé hors contrat, le contenu des enseignements dispensés est libre.;Proposition0;;Proposition0;Proposition1
+En 2014, l'origine sociale des étudiants français la plus représentée était les professions intermédiaires.;Proposition1;L’effectif des professions libérales-cadres supérieurs représentait le double de l’effectif des professions intermédiaires.;Proposition0;Proposition1

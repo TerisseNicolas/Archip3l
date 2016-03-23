@@ -6,5 +6,4 @@ L’aquaponie est une activité consistant à faire se baigner des poneys.;Propo
 Le fermage est l'activité consistant à nourrir des animaux dans une ferme.;Proposition1;Le fermage est une entente entre un propriétaire et un locataire (le fermier) consistant à laisser au second la possibilité de cultiver une terre, en échange d'un loyer.;Proposition0;Proposition1
 Le métayage est un bail permettant à un agriculteur de cultiver une terre en échange d'une partie de sa récolte.;Proposition0;;Proposition0;Proposition1
 Le vêlage des bovins est le nom donné à leur cri.;Proposition1;Le vêlage est la mise bas chez les bovins.;Proposition0;Proposition1
-A la chasse, un petit sanglier est appelé une bête rousse, et un sanglier adulte, une bête noire.;Proposition0;On appelle aussi un sanglier âgé d'un an, une bête de compagnie.;Proposition0;Proposition1
 L'espèce-ingénieur est une des espèces biologiques existantes.;Proposition0;Cela désigne les espèces qui, par leur présence et activité, modifient significativement leur environnement.;Proposition0;Proposition1
