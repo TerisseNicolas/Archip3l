@@ -1,5 +1,5 @@
 Question;Answer;Explanation;Proposition0;Proposition1
-Le cinéma est aussi couramment désigné comme le sixième art.;Proposition1; Il est couramment désigné comme le septième art », d'après l'expression du critique Ricciotto Canudo, dans les années 1920.;Proposition0;Proposition1
+Le cinéma est aussi couramment désigné comme le sixième art.;Proposition1; Il est couramment désigné comme le septième art, d'après l'expression du critique Ricciotto Canudo, dans les années 1920.;Proposition0;Proposition1
 Le terme cinéma est l’abréviation de cinématographe.;Proposition0;Signifiant art d'écrire, écriture en grec, le cinématographe est le nom donné par Léon Bouly à l’appareil de projection, dont il dépose le brevet en 1892.;Proposition0;Proposition1
 Le terme de précinéma fait référence à la portion d'un film qui est visionnée avant le film lui-même.;Proposition1;Le terme précinéma désigne l'ensemble des procédés de recherches du XIXème siècle, ayant menés à l'invention du cinéma.;Proposition0;Proposition1
 Les premières illusions d'images en mouvement furent produites par le biais de fentes ou de miroirs en rotation.;Proposition0;Au début du XIXème siècle, ces objets, qu’affectionnait un riche public, visaient à développer la curiosité scientifique des enfants de bonne famille.;Proposition0;Proposition1
