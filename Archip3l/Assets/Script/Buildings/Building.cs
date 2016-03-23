@@ -222,14 +222,16 @@ public class Building : InputSource
         //Animation
         var buildingUpgradeTransform = Instantiate(buildingUpgradePrefab) as Transform;
         buildingUpgradeTransform.name = "BuildingUpgradeAnimation_" + minorIsland.nameMinorIsland;
-        Anim_BuildingConstruction anim_BuildingConstruction = buildingUpgradeTransform.GetComponent<Anim_BuildingConstruction>();
+        Anim_BuildingUpgrade anim_BuildingConstruction = buildingUpgradeTransform.GetComponent<Anim_BuildingUpgrade>();
         if (anim_BuildingConstruction != null)
         {
             anim_BuildingConstruction.transform.SetParent(this.transform);
             Vector3 vector3 = anim_BuildingConstruction.transform.parent.position;
-            vector3.z = -2;
+            vector3.z = -6;
             anim_BuildingConstruction.transform.position = vector3;
         }
+        else
+            Debug.Log("toto");
         yield return new WaitForSeconds(this.constructionTime);
         this.buildState = 1;
         Destroy(buildingUpgradeTransform.gameObject);
