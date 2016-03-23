@@ -1,16 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/verticalUnlockingTuto.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/verticalPlayingScene.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/verticalUnlockingTuto.unity
-=======
-- path: Assets/Scenes/creditsScene.unity
->>>>>>> 570c0136fa4c5dc2b4a129538e94f269672dbffd
->>>>>>> e0abef95c65975949df444164d1a8f6dd2c65e8d
->>>>>>> 192be327cc855ab21c63b5010b4c169b0525e954
+- path: Assets/Scenes/endScene.unity
   isLoaded: 1
   isActive: 1
