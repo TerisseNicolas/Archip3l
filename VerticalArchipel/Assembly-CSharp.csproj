@@ -48,10 +48,12 @@
      <Compile Include="Assets\Script\Challenge\ChallengeManager.cs" />
      <Compile Include="Assets\Script\Challenge\ChallengeTimer.cs" />
      <Compile Include="Assets\Script\Challenge\ChallengeVertical.cs" />
+     <Compile Include="Assets\Script\Challenge\ChallengeVerticalClick.cs" />
      <Compile Include="Assets\Script\Challenge\ChallengeWon.cs" />
      <Compile Include="Assets\Script\Disturbance\Disturbance.cs" />
      <Compile Include="Assets\Script\Disturbance\DisturbanceTimer.cs" />
      <Compile Include="Assets\Script\Disturbance\DisturbanceTimerView.cs" />
+     <Compile Include="Assets\Script\EndScene\ResourcesFilling.cs" />
      <Compile Include="Assets\Script\Enigma\Enigma.cs" />
      <Compile Include="Assets\Script\Enigma\EnigmaManager.cs" />
      <Compile Include="Assets\Script\Game\Game.cs" />
@@ -60,6 +62,7 @@
      <Compile Include="Assets\Script\Game\SceneSupervisor.cs" />
      <Compile Include="Assets\Script\Game\Score.cs" />
      <Compile Include="Assets\Script\Game\SoundPlayer.cs" />
+     <Compile Include="Assets\Script\Game\SurvivorScript.cs" />
      <Compile Include="Assets\Script\Game\Timer.cs" />
      <Compile Include="Assets\Script\Game\TimerView.cs" />
      <Compile Include="Assets\Script\Island\InfoIsland.cs" />

@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/ChallengeUpgrade.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/ChallengeBuild.cs">
     <Files>
       <File FileName="Assets/Script/ChallengeUpgrade.cs" Line="76" Column="31" />
+      <File FileName="Assets/Script/ChallengeBuild.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
