@@ -20,6 +20,9 @@ public class MinorIsland : InputSource
 
     public string nameMinorIsland;
 
+    public int nbGoodAnswersChallenges = 0;
+    public int nbAnswersChallenges = 0;
+
     //communication with WheelIcon, BuildingInfo & ChallengeBuild scripts + Popups & TouchBuilding
     public Vector2 positionTouched;
     public Vector2 placeOfBuildingConstruction;
