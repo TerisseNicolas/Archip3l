@@ -7,7 +7,8 @@ using TouchScript;
 using TouchScript.InputSources;
 using TouchScript.Hit;
 
-public class ContactPoint : InputSource {
+public class ContactPoint : InputSource
+{
 
     private ParticleSystem ParticleSystem;
     private ParticleSystem.EmissionModule ParticleSystemEmit;
@@ -40,7 +41,7 @@ public class ContactPoint : InputSource {
             this.ParticleSystemEmit.enabled = true;
         }
         ParticleSystem.Play(true);
-        if(this.ContactTouched != null)
+        if (this.ContactTouched != null)
         {
             this.ContactTouched(this, null);
         }
@@ -53,7 +54,7 @@ public class ContactPoint : InputSource {
         {
             this.ParticleSystem.Stop();
         }
-        if(this.ContactReleased != null)
+        if (this.ContactReleased != null)
         {
             this.ContactReleased(this, null);
         }
@@ -145,16 +146,18 @@ public class ContactPoint : InputSource {
         if (touch.InputSource == this) return;
         if (!map.TryGetValue(touch.Id, out id)) return;
         endTouch(id);
-        if (Time.time - TouchTime < 0.5)
-        {
-            TouchTime = 0;
-            this.ExitContactZone();
-            //this.OnMouseDownSimulation();
-        }
-        else if (Time.time - TouchTime < 1.5)
-        {
-            TouchTime = 0;
-        }
+        //if (Time.time - TouchTime < 0.5)
+        //{
+        //    TouchTime = 0;
+        //    this.ExitContactZone();
+        //    //this.ExitContactZone();
+        //}
+        //else if (Time.time - TouchTime < 1.5)
+        //{
+        //    TouchTime = 0;
+        //}
+        TouchTime = 0;
+        this.ExitContactZone();
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
