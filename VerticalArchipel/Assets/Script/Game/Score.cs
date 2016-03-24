@@ -11,6 +11,8 @@ public class Score : MonoBehaviour {
     public int BuildingCount;
     public int MedalCount;
 
+    public List<int> ChallengeSuccessRate;
+
     private string filePath;
     private List<Tuple<int, string, int>> scores;
     //private int size;
@@ -22,16 +24,29 @@ public class Score : MonoBehaviour {
         this.Client.MessageScoreUpdateEvent += Client_MessageScoreUpdateEvent;
         this.Client.MessageBuildingConstructionEvent += Client_MessageBuildingConstructionEvent;
         this.Client.MessageTrophyWonEvent += Client_MessageTrophyWonEvent;
+        this.Client.MessageChallengeFinalSuccessRateEvent += Client_MessageChallengeFinalSuccessRateEvent;
 
         this.ScoreCount = 0;
         this.filePath = "scores.txt"; // C:/tempConcours/scores.txt";
 
         this.scores = new List<Tuple<int, string, int>>();
+        this.ChallengeSuccessRate = new List<int>();
+        for(int i = 0; i<4; i++)
+        {
+            this.ChallengeSuccessRate.Add(0);
+        }
         //this.size = 0;
         loadPreviousScores();
 
         this.BuildingCount = 0;
         this.MedalCount = 0;
+    }
+
+    private void Client_MessageChallengeFinalSuccessRateEvent(object sender, MessageEventArgs e)
+    {
+        int islandNumber = Int32.Parse(e.message.Split('@')[1][1].ToString());
+        int rate = Int32.Parse((string)e.message.Split('@').GetValue(2));
+        this.ChallengeSuccessRate[islandNumber - 1] = rate;
     }
 
     private void Client_MessageScoreUpdateEvent(object sender, MessageEventArgs e)

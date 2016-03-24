@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Boat\MovePirateBoat.cs" />
     <Compile Include="Assets\Script\Boat\PirateBoatManager.cs" />
+    <Compile Include="Assets\Script\Briefing\Briefing.cs" />
     <Compile Include="Assets\Script\Buildings\Anim_BuildingConstruction.cs" />
     <Compile Include="Assets\Script\Buildings\Anim_BuildingUpgrade.cs" />
     <Compile Include="Assets\Script\Buildings\Building.cs" />

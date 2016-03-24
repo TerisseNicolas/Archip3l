@@ -24,7 +24,6 @@ public class ContactPointLayer : MonoBehaviour
         this.Completed = false;
         //TODO put the false to false
         this.BoardCompleted = true;
-        //this.BoardCompleted = true;
 
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageUnlockTutoEvent += Client_MessageUnlockTutoEvent;
@@ -68,7 +67,7 @@ public class ContactPointLayer : MonoBehaviour
     IEnumerator holdAndChangeScene()
     {
         yield return new WaitForSeconds(5f);
-        SceneSupervisor.Instance.loadTutoScenes();
+        SceneSupervisor.Instance.loadBriefingScenes();
     }
     //void Update()
     //{

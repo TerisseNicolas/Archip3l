@@ -35,6 +35,7 @@ public class Client : MonoBehaviour
 
     public event EventHandler<MessageEventArgs> MessageChallengeArrival;
     public event EventHandler<MessageEventArgs> MessageChallengeCompleteEvent;
+    public event EventHandler<MessageEventArgs> MessageChallengeFinalSuccessRateEvent;
     public event EventHandler<MessageEventArgs> MessageEnigmaCompleteEvent;
     public event EventHandler<MessageEventArgs> MessageDisturbanceEvent;
 
@@ -223,6 +224,12 @@ public class Client : MonoBehaviour
             case 35401:
             case 35402:
                 MessageEvent += MessageChallengeCompleteEvent;
+                break;
+            case 31441:
+            case 32441:
+            case 33441:
+            case 34441:
+                MessageEvent += MessageChallengeFinalSuccessRateEvent;
                 break;
             case 35601:
             case 35602:
