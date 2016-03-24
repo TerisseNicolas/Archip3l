@@ -16,6 +16,7 @@ public class RegisterScene : InputSource {
     void Awake()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
+        teamName.text = string.Empty;
     }
 
     void OnMouseDownSimulation(){
@@ -26,8 +27,11 @@ public class RegisterScene : InputSource {
         }
         else if (this.name == "enter")  //change scene + send name to Vertical (store in file)
         {
-            this.Client.sendData("@30004@" + RegisterScene.teamName.text);
-            SceneSupervisor.Instance.loadUnlockingScenes();
+            if (teamName.text != string.Empty)
+            {
+                this.Client.sendData("@30004@" + RegisterScene.teamName.text);
+                SceneSupervisor.Instance.loadUnlockingScenes();
+            }
         }
         else if (this.name == "PreviousScene")
             SceneSupervisor.Instance.loadLoadingScene();

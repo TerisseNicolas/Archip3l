@@ -127,15 +127,16 @@ public class main : MonoBehaviour
     {
         //tests ---------------------------------
 
-        for (int i = 0; i < 5; i++)
+        /*for (int i = 0; i < 5; i++)
         {
             addNotification("gaga " + i.ToString());
-        }
+        }*/
 
         //addChallenge();
         //addChallenge();
         //addDisturbance();
 
+        //-----------------------------------
         
 
     }
