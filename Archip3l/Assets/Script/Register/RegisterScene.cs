@@ -16,6 +16,8 @@ public class RegisterScene : InputSource {
     void Awake()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
+        if (this.name == "enter")   //to do it one time only
+            RegisterScene.teamName = GameObject.Find("TeamNameValue").GetComponent<Text>();
         teamName.text = string.Empty;
     }
 
@@ -45,8 +47,6 @@ public class RegisterScene : InputSource {
 
     // Use this for initialization
     void Start () {
-        if (this.name == "enter")   //to od it one time only
-            RegisterScene.teamName = GameObject.Find("TeamNameValue").GetComponent<Text>();
 	}
 
 
