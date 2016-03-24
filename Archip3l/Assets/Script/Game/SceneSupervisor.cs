@@ -61,7 +61,7 @@ public class SceneSupervisor : MonoBehaviour {
     }
     public void loadUnlockingScenes()
     {
-        this.Client.sendData("@30000@BoardUnlokingTutoScene");
+        this.Client.sendData("@30000@BoardUnlockingTutoScene");
         SceneManager.LoadScene("unlockingTutoScene");
     }
     public void loadTutoScenes()

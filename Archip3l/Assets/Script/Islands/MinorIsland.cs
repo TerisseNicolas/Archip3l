@@ -10,10 +10,14 @@ using TouchScript.InputSources;
 
 public class MinorIsland : InputSource
 {
-        
-
     public BuildingManager buildingManager { get; private set; }
     public ResourceManager resourceManager { get; private set; }
+
+    private Client Client;
+
+    public Transform grassHopperPrefab;
+    public Transform hurricanePrefab;
+    static int DisturbanceCount = 0;
 
     public Transform buildingManagerPrefab;
     public Transform resourceManagerPrefab;
@@ -66,6 +70,9 @@ public class MinorIsland : InputSource
             resourceManager.transform.SetParent(this.transform);
             this.resourceManager = resourceManager;
         }
+
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+        this.Client.MessageDisturbanceEvent += Client_MessageDisturbanceEvent;
 
         Vector3 harborPosition;
         switch (this.nameMinorIsland)
@@ -386,9 +393,41 @@ public class MinorIsland : InputSource
         }
     }
 
+    private void Client_MessageDisturbanceEvent(object sender, MessageEventArgs e)
+    {
+        MinorIsland.DisturbanceCount += 1;
+        char islandNumber = (char)e.message.Split('@')[1][1];
+
+        if (this.nameMinorIsland.Contains(islandNumber.ToString()) || islandNumber == '5')
+        {
+            StartCoroutine(disturbanceAnimation());
+        }
+    }
+    private IEnumerator disturbanceAnimation()
+    {
+        //TODO block the touch
+        Transform animationTransform;
+        if (MinorIsland.DisturbanceCount%2 == 0)
+        {
+            animationTransform = Instantiate(grassHopperPrefab) as Transform;
+        }
+        else
+        {
+            animationTransform = Instantiate(hurricanePrefab) as Transform;
+        }
+
+        animationTransform.name = "Disturbance_" + nameMinorIsland;
+        animationTransform.transform.SetParent(this.transform);
+        yield return new WaitForSeconds(10);
+
+        //todo unlock the touch
+        Destroy(animationTransform.gameObject);
+
+
+    }
+
     void OnMouseDownSimulation()
     {
-
         //moving a building
         if (moveBuilding)
         {

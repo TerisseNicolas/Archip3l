@@ -87,8 +87,8 @@
     <Compile Include="Assets\Script\Game\SoundPlayer.cs" />
     <Compile Include="Assets\Script\GameMenu.cs" />
     <Compile Include="Assets\Script\Islands\ListIslands.cs" />
+    <Compile Include="Assets\Script\Islands\Loading\Loading.cs" />
     <Compile Include="Assets\Script\Islands\MinorIsland.cs" />
-    <Compile Include="Assets\Script\Loading\Loading.cs" />
     <Compile Include="Assets\Script\Miscellaneous\CSV_reader.cs" />
     <Compile Include="Assets\Script\Miscellaneous\Tuple.cs" />
     <Compile Include="Assets\Script\Network\Client.cs" />
