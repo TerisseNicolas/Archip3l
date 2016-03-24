@@ -33,11 +33,11 @@ public class Tuto_TouchBuilding : InputSource
                     upgradeTuto_BuildingWindowCanvas.transform.SetParent(this.transform.parent.parent.parent);  //parent : sous_ile
                     pos = GameObject.Find("Virtual_" + island.nameTuto_MinorIsland).transform.position;
                     pos.z = -2;
-                    upgradeTuto_BuildingWindowCanvas.transform.position = pos;
+                    upgradeTuto_BuildingWindowCanvas.GetComponentInChildren<Image>().transform.position = pos;
                     //rotation of image according to the place of the island
                     char id = island.nameTuto_MinorIsland[island.nameTuto_MinorIsland.Length - 1];
                     if (id == '1' || id == '2')
-                        upgradeTuto_BuildingWindowCanvas.transform.Rotate(Vector3.forward * 180);
+                        upgradeTuto_BuildingWindowCanvas.GetComponentInChildren<Image>().transform.Rotate(Vector3.forward * 180);
                     //modification of the content of the different Text Children of the Canvas
                     foreach (Text textInCanvas in upgradeTuto_BuildingWindowCanvas.GetComponent<Canvas>().GetComponentsInChildren<Text>())
                     {

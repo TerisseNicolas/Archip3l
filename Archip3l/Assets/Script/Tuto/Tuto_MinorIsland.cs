@@ -55,8 +55,8 @@ public class Tuto_MinorIsland : InputSource {
             this.tuto_buildingManager = mytuto_buildingManager;
         }
 
-        this.Client = GameObject.Find("Network").GetComponent<Client>();
-        this.Client.MessageSystemVerticalTutoCompletedEvent += Client_MessageSystemVerticalTutoCompletedEvent;
+        //this.Client = GameObject.Find("Network").GetComponent<Client>();
+        //this.Client.MessageSystemVerticalTutoCompletedEvent += Client_MessageSystemVerticalTutoCompletedEvent;
         this.verticalTutoCompleted = false;
 
     }
@@ -276,12 +276,11 @@ public class Tuto_MinorIsland : InputSource {
             exchangeWindowCanvas.name = "ExchangeWindowCanvas_" + this.nameTuto_MinorIsland;
             Vector3 vector3 = GameObject.Find("Virtual_" + this.nameTuto_MinorIsland).transform.position;
             vector3.z = -2;
-            exchangeWindowCanvas.transform.position = vector3;
-
+            exchangeWindowCanvas.GetComponentInChildren<Image>().transform.position = vector3;
             //rotation of image according to the place of the island
             char id = this.nameTuto_MinorIsland[this.nameTuto_MinorIsland.Length - 1];
             if (id == '1' || id == '2')
-                exchangeWindowCanvas.transform.Rotate(Vector3.forward * 180);
+                exchangeWindowCanvas.GetComponentInChildren<Image>().transform.Rotate(Vector3.forward * 180);
 
             this.exchangeWindowPresent = true;
         }
