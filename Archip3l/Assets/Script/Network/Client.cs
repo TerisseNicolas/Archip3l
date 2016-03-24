@@ -14,7 +14,8 @@ public class Client : MonoBehaviour
 
     private int sendingPort = 1523;
     private int listeningPort = 5054;
-    private string serverIP = "192.168.1.91";
+    private string serverIP = "172.18.136.49"; // "192.168.1.91";
+    //_client.Connect("172.18.136.49", 1523);
 
     //All events raised
     private delegate void DelegateEvent(object send, EventArgs e);
@@ -34,6 +35,7 @@ public class Client : MonoBehaviour
 
     public event EventHandler<MessageEventArgs> MessageChallengeArrival;
     public event EventHandler<MessageEventArgs> MessageChallengeCompleteEvent;
+    public event EventHandler<MessageEventArgs> MessageChallengeFinalSuccessRateEvent;
     public event EventHandler<MessageEventArgs> MessageEnigmaCompleteEvent;
     public event EventHandler<MessageEventArgs> MessageDisturbanceEvent;
 
@@ -50,7 +52,6 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemStartOfGameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemEndOfGameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemTeamNameEvent;
-    public event EventHandler<MessageEventArgs> MessageSystemVerticalTutoCompletedEvent;
 
 
     void Awake()
@@ -58,7 +59,6 @@ public class Client : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
 
         _client = new UdpClient();
-        //_client.Connect("172.18.136.49", 1523);
         _client.Connect(this.serverIP, this.sendingPort);
         Debug.Log("Starting client...");
 
@@ -202,9 +202,6 @@ public class Client : MonoBehaviour
             case 30006:
                 MessageEvent += MessageSystemStartInitOfGameEvent;
                 break;
-            case 30010:
-                MessageEvent += MessageSystemVerticalTutoCompletedEvent;
-                break;
             case 30087:
                 MessageEvent += MessageSystemStartInitOfGameAnswerEvent;
                 break;
@@ -227,6 +224,12 @@ public class Client : MonoBehaviour
             case 35401:
             case 35402:
                 MessageEvent += MessageChallengeCompleteEvent;
+                break;
+            case 31441:
+            case 32441:
+            case 33441:
+            case 34441:
+                MessageEvent += MessageChallengeFinalSuccessRateEvent;
                 break;
             case 35601:
             case 35602:

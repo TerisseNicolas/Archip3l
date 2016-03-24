@@ -28,13 +28,26 @@ public class ResourcesFilling : MonoBehaviour
             GameObject.Find(resource.TypeResource.ToString().ToLower() + "5").GetComponent<Text>().text = resource.Stock.ToString();
         }
 
+        //fill challenge success rate
+        GameObject game = GameObject.Find("Game");
+        int totalSuccessRate = 0;
+        int value = 0;
+        for(int i = 0; i <game.GetComponent<Score>().ChallengeSuccessRate.Count; i++)
+        {
+            value = game.GetComponent<Score>().ChallengeSuccessRate[i];
+            totalSuccessRate += value;
+            GameObject.Find("goodAnswersValue" + (i + 1).ToString()).GetComponent<Text>().text = value.ToString();
+        }
+        GameObject.Find("goodAnswersValue5").GetComponent<Text>().text = (totalSuccessRate / 4).ToString();
+
         //fill buildings
-        GameObject.Find("buildingScoreValue").GetComponent<Text>().text = GameObject.Find("Game").GetComponent<Score>().BuildingCount.ToString();
+
+        GameObject.Find("buildingScoreValue").GetComponent<Text>().text = game.GetComponent<Score>().BuildingCount.ToString();
 
         //fill Medals
-        GameObject.Find("medalScoreValue").GetComponent<Text>().text = GameObject.Find("Game").GetComponent<Score>().MedalCount.ToString();
+        GameObject.Find("medalScoreValue").GetComponent<Text>().text = game.GetComponent<Score>().MedalCount.ToString();
 
         //fill score
-        GameObject.Find("totalScoreValue").GetComponent<Text>().text = GameObject.Find("Game").GetComponent<Score>().ScoreCount.ToString();
+        GameObject.Find("totalScoreValue").GetComponent<Text>().text = game.GetComponent<Score>().ScoreCount.ToString();
 	}
 }

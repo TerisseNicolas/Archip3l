@@ -73,6 +73,7 @@ public class MinorIsland : InputSource
 
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageDisturbanceEvent += Client_MessageDisturbanceEvent;
+        this.Client.MessageSystemEndOfGameEvent += Client_MessageSystemEndOfGameEvent;
 
         Vector3 harborPosition;
         switch (this.nameMinorIsland)
@@ -424,6 +425,11 @@ public class MinorIsland : InputSource
         Destroy(animationTransform.gameObject);
 
 
+    }
+
+    private void Client_MessageSystemEndOfGameEvent(object sender, MessageEventArgs e)
+    {
+        this.Client.sendData("@3" + this.nameMinorIsland.Split('_')[2] + "441@" + (this.nbGoodAnswersChallenges / this.nbAnswersChallenges).ToString());
     }
 
     void OnMouseDownSimulation()
