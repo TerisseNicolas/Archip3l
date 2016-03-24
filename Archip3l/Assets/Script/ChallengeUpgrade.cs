@@ -151,13 +151,13 @@ public class ChallengeUpgrade : InputSource
         {
             resultText.text = "Réponse correcte !";
             goodAnswer = true;
-            minorIsland.nbGoodAnswers++;
+            minorIsland.nbGoodAnswersChallenges++;
         }
         else {
             resultText.text = "Réponse incorrecte !";
             goodAnswer = false;
         }
-        minorIsland.nbAnswers++;
+        minorIsland.nbAnswersChallenges++;
 
         //modify Propositions background
         if (typeChallenge == TypeChallenge.VraiFaux)
