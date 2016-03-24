@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/loading.unity
+=======
+- path: Assets/Scenes/briefingScene.unity
+>>>>>>> 172b6b2212c87a571e3a976c7e77d516266d81df
   isLoaded: 1
   isActive: 1
