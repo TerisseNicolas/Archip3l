@@ -21,6 +21,9 @@ public class Island : InputSource
             Canvas infoInslandCanvasPrefab = Resources.Load<Canvas>("Prefab/infoIslandCanvas");
             Canvas infoInslandCanvas = Instantiate(infoInslandCanvasPrefab);
             infoInslandCanvas.name = "infoInslandCanvas_" + this.name;
+            Vector3 pos = infoInslandCanvas.transform.position;
+            pos.z = -2;
+            infoInslandCanvas.transform.position = pos;
             Island.infoIslandName = infoInslandCanvas.name;
         }
     }

@@ -59,6 +59,7 @@ public class Trophy : InputSource
 
     void OnMouseDownSimulation()
     {
+        Vector3 pos;
         if (!ChallengeWon.challengeWonWindowPresent && !Enigma.enigmaWindowOpen && !Disturbance.disturbanceWindowOpen && !Island.infoIslandPresent && !ChallengeVertical.challengeWindowPresent)
         {
             if (!Trophy.infoWindowPresent)
@@ -70,18 +71,27 @@ public class Trophy : InputSource
                         Canvas infoAirportCanvasPrefab = Resources.Load<Canvas>("Prefab/infoAirportCanvas");
                         Canvas infoAirportCanvas = Instantiate(infoAirportCanvasPrefab);
                         infoAirportCanvas.name = "infoAirportCanvas";
+                        pos = infoAirportCanvas.transform.position;
+                        pos.z = -2;
+                        infoAirportCanvas.transform.position = pos;
                         Trophy.infoWindowName = infoAirportCanvas.name;
                         break;
                     case "MedalsCollider":
                         Canvas infoMedalsCanvasPrefab = Resources.Load<Canvas>("Prefab/infoMedalsCanvas");
                         Canvas infoMedalsCanvas = Instantiate(infoMedalsCanvasPrefab);
                         infoMedalsCanvas.name = "infoMedalsCanvas";
+                        pos = infoMedalsCanvas.transform.position;
+                        pos.z = -2;
+                        infoMedalsCanvas.transform.position = pos;
                         Trophy.infoWindowName = infoMedalsCanvas.name;
                         break;
                     case "TrophiesCollider":
                         Canvas infoTrophiesCanvasPrefab = Resources.Load<Canvas>("Prefab/infoTrophiesCanvas");
                         Canvas infoTrophiesCanvas = Instantiate(infoTrophiesCanvasPrefab);
                         infoTrophiesCanvas.name = "infoTrophiesCanvas";
+                        pos = infoTrophiesCanvas.transform.position;
+                        pos.z = -2;
+                        infoTrophiesCanvas.transform.position = pos;
                         Trophy.infoWindowName = infoTrophiesCanvas.name;
                         break;
                 }
