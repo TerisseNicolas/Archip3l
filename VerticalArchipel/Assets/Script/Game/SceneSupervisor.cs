@@ -19,6 +19,9 @@ public class SceneSupervisor : MonoBehaviour {
         {
             switch (sceneName)
             {
+                case "BoardBriefingScene":
+                    SceneManager.LoadScene("briefingScene");
+                    break;
                 case "BoardUnlockingTutoScene":
                     SceneManager.LoadScene("verticalUnlockingTuto");
                     break;
