@@ -34,7 +34,7 @@ public class Tuto_WheelIcon : InputSource
             Canvas buildingInfoPrefab = Resources.Load<Canvas>("Prefab/Tuto/BuildingInfoWindowCanvasTuto");
             Canvas buildingInfo = Instantiate(buildingInfoPrefab);
 
-            buildingInfo.name = "BuildingInfo_" + this.name;
+            buildingInfo.name = "BuildingInfo_" + island.nameTuto_MinorIsland + "_" + this.name;
             buildingInfo.transform.SetParent(this.transform.parent.parent.parent);  //parent : minorIsland
             Vector3 pos = GameObject.Find("Virtual_" + island.nameTuto_MinorIsland).transform.position;
             pos.z = -2;

@@ -275,12 +275,12 @@ public class Tuto_MinorIsland : InputSource {
             exchangeWindowCanvas.transform.parent = GameObject.Find(this.nameTuto_MinorIsland).transform;
             exchangeWindowCanvas.name = "ExchangeWindowCanvas_" + this.nameTuto_MinorIsland;
             Vector3 vector3 = GameObject.Find("Virtual_" + this.nameTuto_MinorIsland).transform.position;
-            vector3.z = -2;
-            exchangeWindowCanvas.GetComponentInChildren<Image>().transform.position = vector3;
+            vector3.z = -5.1f;
+            exchangeWindowCanvas.GetComponentInChildren<SpriteRenderer>().transform.position = vector3;
             //rotation of image according to the place of the island
             char id = this.nameTuto_MinorIsland[this.nameTuto_MinorIsland.Length - 1];
             if (id == '1' || id == '2')
-                exchangeWindowCanvas.GetComponentInChildren<Image>().transform.Rotate(Vector3.forward * 180);
+                exchangeWindowCanvas.GetComponentInChildren<SpriteRenderer>().transform.Rotate(Vector3.forward * 180);
 
             this.exchangeWindowPresent = true;
         }
