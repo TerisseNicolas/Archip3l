@@ -62,7 +62,6 @@ public class ResultFilling : MonoBehaviour {
                 string[] words = line.Split('@');
                 scores.Add(new Tuple<int, string, int, int, int, int>(Int32.Parse(words[0]), words[1], Int32.Parse(words[2]),
                                                                       Int32.Parse(words[3]), Int32.Parse(words[4]), Int32.Parse(words[5])));
-                //this.size++;
             }
             file.Close();
         }
