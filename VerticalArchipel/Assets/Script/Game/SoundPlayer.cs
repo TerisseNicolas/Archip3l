@@ -29,6 +29,8 @@ public class SoundPlayer : MonoBehaviour
     public AudioClip upgradeSound;
     public AudioClip windTurbineSound;
 
+    public AudioClip briefingLetterSound;
+
     public AudioClip startGameSound;
     public AudioClip endGameSound;
 
@@ -106,6 +108,9 @@ public class SoundPlayer : MonoBehaviour
                 break;
             case 19:
                 playConstructionSound();
+                break;
+            case 20:
+                playBriefingLetterSound();
                 break;
         }
     }
@@ -190,5 +195,9 @@ public class SoundPlayer : MonoBehaviour
     public void playWindTurbineSound()
     {
         MakeSound(windTurbineSound);
+    }
+    public void playBriefingLetterSound()
+    {
+        MakeSound(briefingLetterSound);
     }
 }

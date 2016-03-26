@@ -4,12 +4,46 @@ using System.Collections.Generic;
 using TouchScript.Gestures;
 using TouchScript.Hit;
 using TouchScript;
+using System.Collections;
 
 public class Briefing : InputSource
 {
+    private GameObject logoSprite;
+    private List<Vector3> scales;
+    private Vector3 changeScale;
+    private Vector3 initScale;
 
+    void Awake()
+    {
+        SoundPlayer.Instance.playBriefingLetterSound();
+        this.logoSprite = GameObject.Find("Logo");
+
+        this.initScale = this.logoSprite.transform.localScale; // new Vector3(1.491848f, 1.495401f, 1f);
+        this.changeScale = new Vector3(1.05f, 1.05f, 1);
+        this.scales = new List<Vector3>();
+
+        Vector3 newScale = initScale;
+        for(int i = 0; i < 30; i++)
+        {
+            this.scales.Add(newScale);
+            newScale = Vector3.Scale(this.changeScale, newScale);
+        }
+        this.logoSprite.gameObject.transform.localScale = newScale;
+    }
     private void OnMouseDownSimulation()
     {
+        StartCoroutine(endAnimation());
+    }
+
+    IEnumerator endAnimation()
+    {
+        for (int i = 30; i>0; i--)
+        {
+            this.logoSprite.gameObject.transform.Translate(new Vector3(0, 0, 0.3f));
+            this.logoSprite.gameObject.transform.localScale = this.scales[i-1];
+            yield return new WaitForSeconds(0.01f);
+        }
+        yield return new WaitForSeconds(3);
         SceneSupervisor.Instance.loadTutoScenes();
     }
 
