@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Script\Boat\MovePirateBoat.cs" />
      <Compile Include="Assets\Script\Boat\PirateBoatManager.cs" />
+     <Compile Include="Assets\Script\Briefing\Briefing.cs" />
      <Compile Include="Assets\Script\Buildings\Anim_BuildingConstruction.cs" />
      <Compile Include="Assets\Script\Buildings\Anim_BuildingUpgrade.cs" />
      <Compile Include="Assets\Script\Buildings\Building.cs" />
@@ -59,14 +60,14 @@
      <Compile Include="Assets\Script\ChallengeBuild.cs" />
      <Compile Include="Assets\Script\ChallengeUpgrade.cs" />
      <Compile Include="Assets\Script\Game\Game.cs" />
+     <Compile Include="Assets\Script\Game\GameMenu.cs" />
      <Compile Include="Assets\Script\Game\GlobalInfo.cs" />
      <Compile Include="Assets\Script\Game\InitScene.cs" />
      <Compile Include="Assets\Script\Game\SceneSupervisor.cs" />
      <Compile Include="Assets\Script\Game\SoundPlayer.cs" />
-     <Compile Include="Assets\Script\GameMenu.cs" />
      <Compile Include="Assets\Script\Islands\ListIslands.cs" />
-     <Compile Include="Assets\Script\Islands\Loading\Loading.cs" />
      <Compile Include="Assets\Script\Islands\MinorIsland.cs" />
+     <Compile Include="Assets\Script\Loading\Loading.cs" />
      <Compile Include="Assets\Script\Miscellaneous\CSV_reader.cs" />
      <Compile Include="Assets\Script\Miscellaneous\Tuple.cs" />
      <Compile Include="Assets\Script\Network\Client.cs" />
