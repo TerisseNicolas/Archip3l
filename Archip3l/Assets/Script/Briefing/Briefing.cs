@@ -13,6 +13,9 @@ public class Briefing : InputSource
     private Vector3 changeScale;
     private Vector3 initScale;
 
+    private bool animationFlag;
+    private bool animationLaunchedFlag;
+
     void Awake()
     {
         SoundPlayer.Instance.playBriefingLetterSound();
@@ -29,10 +32,23 @@ public class Briefing : InputSource
             newScale = Vector3.Scale(this.changeScale, newScale);
         }
         this.logoSprite.gameObject.transform.localScale = newScale;
+
+        this.animationFlag = false;
+        this.animationLaunchedFlag = false;
+    }
+
+    void Update()
+    {
+        if(this.animationFlag && !this.animationLaunchedFlag)
+        {
+            StartCoroutine(endAnimation());
+            this.animationFlag = false;
+            this.animationLaunchedFlag = true;
+        }
     }
     private void OnMouseDownSimulation()
     {
-        StartCoroutine(endAnimation());
+        this.animationFlag = true;
     }
 
     IEnumerator endAnimation()
