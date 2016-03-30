@@ -17,8 +17,10 @@ public class RegisterScene : InputSource {
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         if (this.name == "enter")   //to do it one time only
+        {   
             RegisterScene.teamName = GameObject.Find("TeamNameValue").GetComponent<Text>();
-        teamName.text = string.Empty;
+            teamName.text = string.Empty;
+        }
     }
 
     void OnMouseDownSimulation(){

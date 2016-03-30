@@ -330,7 +330,6 @@ public class Tuto_MinorIsland : InputSource {
             this.nameBuildingTouchCanvas = string.Empty;
             this.harborMoved = true;
             displayPopup("Maintenant, améliorez le port.", 5);
-
         }
         else
         {
@@ -395,7 +394,7 @@ public class Tuto_MinorIsland : InputSource {
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime;
+    float TouchTime = 0;
 
     private MetaGesture gesture;
     private Dictionary<int, int> map = new Dictionary<int, int>();
@@ -477,12 +476,12 @@ public class Tuto_MinorIsland : InputSource {
         if (touch.InputSource == this) return;
         if (!map.TryGetValue(touch.Id, out id)) return;
         endTouch(id);
-        if (Time.time - TouchTime < 0.5)
+        if (Time.time - TouchTime < 1)
         {
             TouchTime = 0;
             this.OnMouseDownSimulation();
         }
-        else if (Time.time - TouchTime < 1.5)
+        else if (Time.time - TouchTime < 3)
         {
             TouchTime = 0;
             if (this.harborUpgraded && !this.exchangeResourceOpened)

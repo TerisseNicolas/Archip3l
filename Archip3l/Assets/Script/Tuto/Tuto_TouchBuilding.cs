@@ -99,7 +99,7 @@ public class Tuto_TouchBuilding : InputSource
                 if (!island.harborMoved)
                 {
                     Destroy(GameObject.Find(this.transform.parent.parent.name));
-                    island.displayPopup("Appuyez sur l'endroit où placer le batiment", 3);
+                    island.displayPopup("Appuyez sur l'endroit où placer le bâtiment", 3);
                     island.moveBuilding = true;
                 }
                 else
