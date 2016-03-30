@@ -45,7 +45,6 @@ public class GameMenu : InputSource
                     //case credit at the end of a game : same case as from the menu
                 }
                 
-                //TODO : close windows (credits or classements)
 
                 break;
         }
@@ -139,16 +138,16 @@ public class GameMenu : InputSource
         if (touch.InputSource == this) return;
         if (!map.TryGetValue(touch.Id, out id)) return;
         endTouch(id);
-        if (Time.time - TouchTime < 0.5)
-        {
-            TouchTime = 0;
-            this.OnMouseDownSimulation();
-        }
-        else if (Time.time - TouchTime < 1.5)
+        if (Time.time - TouchTime < 1.5)
         {
             TouchTime = 0;
             if (this.name == "Jouer" || this.name == "Credits" || this.name == "Classement" || this.name == "Quitter")
                 this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("menu/" + this.name);
+            this.OnMouseDownSimulation();
+        }
+        else if (Time.time - TouchTime < 3)
+        {
+            TouchTime = 0;            
         }
     }
 
