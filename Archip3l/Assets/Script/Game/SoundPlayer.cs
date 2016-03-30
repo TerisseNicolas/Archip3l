@@ -101,4 +101,8 @@ public class SoundPlayer : MonoBehaviour {
     {
         this.Client.sendData("@30800@18");
     }
+    public void playBriefingLetterSound()
+    {
+        this.Client.sendData("@30800@20");
+    }
 }

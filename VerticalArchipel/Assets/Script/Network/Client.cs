@@ -13,9 +13,9 @@ public class Client : MonoBehaviour
     private Thread _thListener;
 
     private int sendingPort = 1523;
-    private int listeningPort = 5054;
-    private string serverIP = "172.18.136.49"; // "192.168.1.91";
-    //_client.Connect("172.18.136.49", 1523);
+    private int listeningPort = 5053;
+    //private string serverIP = "172.18.136.49";
+    private string serverIP = "192.168.1.91";
 
     //All events raised
     private delegate void DelegateEvent(object send, EventArgs e);
