@@ -56,12 +56,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -88,14 +82,14 @@
     <Compile Include="Assets\Script\ChallengeBuild.cs" />
     <Compile Include="Assets\Script\ChallengeUpgrade.cs" />
     <Compile Include="Assets\Script\Game\Game.cs" />
+    <Compile Include="Assets\Script\Game\GameMenu.cs" />
     <Compile Include="Assets\Script\Game\GlobalInfo.cs" />
     <Compile Include="Assets\Script\Game\InitScene.cs" />
     <Compile Include="Assets\Script\Game\SceneSupervisor.cs" />
     <Compile Include="Assets\Script\Game\SoundPlayer.cs" />
-    <Compile Include="Assets\Script\GameMenu.cs" />
     <Compile Include="Assets\Script\Islands\ListIslands.cs" />
-    <Compile Include="Assets\Script\Islands\Loading\Loading.cs" />
     <Compile Include="Assets\Script\Islands\MinorIsland.cs" />
+    <Compile Include="Assets\Script\Loading\Loading.cs" />
     <Compile Include="Assets\Script\Miscellaneous\CSV_reader.cs" />
     <Compile Include="Assets\Script\Miscellaneous\Tuple.cs" />
     <Compile Include="Assets\Script\Network\Client.cs" />

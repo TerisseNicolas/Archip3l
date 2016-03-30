@@ -29,7 +29,7 @@ public class RegisterScene : InputSource {
         }
         else if (this.name == "enter")  //change scene + send name to Vertical (store in file)
         {
-            if (teamName.text != string.Empty)
+            if ((teamName.text != string.Empty) && (teamName.text[0] != ' '))
             {
                 this.Client.sendData("@30004@" + RegisterScene.teamName.text);
                 SceneSupervisor.Instance.loadUnlockingScenes();
