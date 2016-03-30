@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/briefingScene.unity
+- path: Assets/Scenes/waitForVerticalSceneResult.unity
   isLoaded: 1
   isActive: 1

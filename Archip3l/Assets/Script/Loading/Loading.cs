@@ -1,58 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using TouchScript.InputSources;
 using TouchScript.Gestures;
 using TouchScript.Hit;
 using TouchScript;
-using TouchScript.InputSources;
 using UnityEngine.SceneManagement;
 
-public class GameMenu : InputSource
-{
+public class Loading : InputSource {
 
     void OnMouseDownSimulation()
     {
-        switch(this.name)
-        {
-            case "Jouer":
-                SceneSupervisor.Instance.loadRegisterScene();
-                break;
-            case "Credits":
-                SceneSupervisor.Instance.loadCreditScenes();
-                break;
-            case "Classement":
-                SceneSupervisor.Instance.loadResultScenes();
-                break;
-            case "returnArrow":
-            case "Quitter":
-                SceneSupervisor.Instance.loadLoadingScene();
-                break;
-            //waitForVertical scene --> return to menu
-            case "endWindowBackground":
-                switch(SceneManager.GetActiveScene().name)
-                {
-                    //from the menu, access to the result or credit scene
-                    case "waitForVerticalSceneMenu":
-                        SceneSupervisor.Instance.loadMenuScenes(true);
-                        break;
-                    //when end scene is on vertical
-                    case "waitForVerticalSceneEnd":
-                        SceneSupervisor.Instance.loadResultScenes();
-                        break;
-                    //when result scene is on vertical(at the end of the game)
-                    case "waitForVerticalSceneResult":
-                        SceneSupervisor.Instance.loadCreditScenes();
-                        break;
-                    case "waitForVerticalIndependentSceneResult":
-                        SceneSupervisor.Instance.loadMenuScenes(true);
-                        break;
-                    //case credit at the end of a game : same case as from the menu
-                }
-                
-                //TODO : close windows (credits or classements)
-
-                break;
-        }
+        SceneManager.LoadScene("menuScene");
     }
+
+    // Use this for initialization
+    void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+
 
 
     //-------------- TUIO -----------------------------------------------------------------------
@@ -118,8 +88,6 @@ public class GameMenu : InputSource
         if (TouchTime == 0)
         {
             TouchTime = Time.time;
-            if (this.name == "Jouer" || this.name == "Credits" || this.name == "Classement" || this.name == "Quitter")
-                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("menu/" + this.name + "Clic");
         }
 
     }
@@ -133,6 +101,7 @@ public class GameMenu : InputSource
         if (!map.TryGetValue(touch.Id, out id)) return;
         if (!gesture.GetTargetHitResult(touch.Position, out hit)) return;
         moveTouch(id, processCoords(hit.RaycastHit.textureCoord));
+        
     }
 
     private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
@@ -142,16 +111,14 @@ public class GameMenu : InputSource
         if (touch.InputSource == this) return;
         if (!map.TryGetValue(touch.Id, out id)) return;
         endTouch(id);
-        if (Time.time - TouchTime < 0.5)
+        if (Time.time - TouchTime < 1.5)
         {
             TouchTime = 0;
-            this.OnMouseDownSimulation();
+            OnMouseDownSimulation();
         }
-        else if (Time.time - TouchTime < 1.5)
+        else if (Time.time - TouchTime < 3)
         {
             TouchTime = 0;
-            if (this.name == "Jouer" || this.name == "Credits" || this.name == "Classement" || this.name == "Quitter")
-                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("menu/" + this.name);
         }
     }
 
