@@ -16,6 +16,8 @@ public class Tuto_MinorIsland : InputSource {
 
     Canvas startCanvas;
 
+    private bool begun = false;
+
     public string nameTuto_MinorIsland;
 
     //communication with WheelIcon, BuildingInfo & Tuto_ChallengeBuild scripts + Popups & TouchBuilding
@@ -314,6 +316,21 @@ public class Tuto_MinorIsland : InputSource {
 
             }
         }
+
+        /*------- open exchangeWindow after 1 sec --------*/
+
+        if (this.begun)
+        {
+            if ((Time.time - TouchTime > 1) && (Time.time - TouchTime < 1.5))
+            {
+                TouchTime = 0;
+                if (this.harborUpgraded && !this.exchangeResourceOpened)
+                {
+                    displayPopup("Voici la fenêtre d'échange de ressources. Vous pouvez y accéder à n'importe quel moment grâce à un appui long.", 5);
+                    this.createExchangeWindowTuto();
+                }
+            }
+        }
     }
 
 
@@ -454,6 +471,7 @@ public class Tuto_MinorIsland : InputSource {
         {
             TouchTime = Time.time;
             this.positionTouched = touch.Position;
+            this.begun = true;
         }
 
     }
@@ -476,6 +494,7 @@ public class Tuto_MinorIsland : InputSource {
         if (touch.InputSource == this) return;
         if (!map.TryGetValue(touch.Id, out id)) return;
         endTouch(id);
+        this.begun = false;
         if (Time.time - TouchTime < 1)
         {
             TouchTime = 0;
