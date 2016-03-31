@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/playingScene.unity
+=======
+- path: Assets/Scenes/tutoScene.unity
+>>>>>>> a99d4aface81cb54746ce37fca9fdfc652959ec5
   isLoaded: 1
   isActive: 1
