@@ -55,9 +55,10 @@ public class Tuto_MinorIsland : InputSource {
             this.tuto_buildingManager = mytuto_buildingManager;
         }
 
-        //this.Client = GameObject.Find("Network").GetComponent<Client>();
-        //this.Client.MessageSystemVerticalTutoCompletedEvent += Client_MessageSystemVerticalTutoCompletedEvent;
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+        this.Client.MessageTutoCompleteEvent += Client_MessageTutoCompleteEvent;
         this.verticalTutoCompleted = false;
+
 
     }
 
@@ -385,7 +386,7 @@ public class Tuto_MinorIsland : InputSource {
         }
     }
 
-    private void Client_MessageSystemVerticalTutoCompletedEvent(object sender, MessageEventArgs e)
+    private void Client_MessageTutoCompleteEvent(object sender, MessageEventArgs e)
     {
         this.verticalTutoCompleted = true;
     }

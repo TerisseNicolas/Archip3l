@@ -257,7 +257,7 @@ namespace TouchScript.Behaviors
             if (newPressed == null)
                 newPressed = ExecuteEvents.GetEventHandler<IPointerClickHandler>(currentOverGo);
 
-            // TODO: double-tap
+            // double-tap
             pointerEvent.clickCount = 1;
             pointerEvent.pointerPress = newPressed;
             pointerEvent.rawPointerPress = currentOverGo;

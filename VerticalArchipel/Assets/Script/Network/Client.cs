@@ -45,6 +45,7 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessagePiratesStartArrivalEvent;
     public event EventHandler<MessageEventArgs> MessagePiratesIncreaseRateEvent;
     public event EventHandler<MessageEventArgs> MessageUnlockTutoEvent;
+    public event EventHandler<MessageEventArgs> MessageTutoCompleteEvent;
 
     public event EventHandler<MessageEventArgs> MessageSystemChangeSceneEvent;
     public event EventHandler<MessageEventArgs> MessageSystemStartInitOfGameEvent;
@@ -247,6 +248,9 @@ public class Client : MonoBehaviour
                 break;
             case 40002:
                 MessageEvent += MessagePiratesIncreaseRateEvent;
+                break;
+            case 40003:
+                MessageEvent += MessageTutoCompleteEvent;
                 break;
         }
 

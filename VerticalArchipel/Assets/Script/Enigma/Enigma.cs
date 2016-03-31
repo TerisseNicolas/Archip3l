@@ -115,9 +115,6 @@ public class Enigma : InputSource
         }
 
 
-        //TODO: action of Enigma
-
-
         yield return new WaitForSeconds(5);
 
         if (Enigma.enimgasToBeDone > 0)

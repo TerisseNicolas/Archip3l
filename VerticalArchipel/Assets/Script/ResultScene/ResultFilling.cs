@@ -33,7 +33,6 @@ public class ResultFilling : MonoBehaviour {
         int count = 1;
         foreach(Tuple<int, string, int, int, int, int> item in getFinalResult(this.teamName))
         {
-            //Todo complete
             GameObject.Find(count.ToString()).GetComponent<Text>().text = item.First.ToString();
             //fill team name
             GameObject.Find("team" + count.ToString()).GetComponent<Text>().text = item.Second;

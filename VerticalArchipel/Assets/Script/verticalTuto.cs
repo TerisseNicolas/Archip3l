@@ -26,6 +26,8 @@ public class verticalTuto : InputSource
 
     static public int steps = 0;
 
+    private Client Client;
+
     void OnMouseDownSimulation()
     {
         switch(verticalTuto.steps)
@@ -90,7 +92,7 @@ public class verticalTuto : InputSource
                 verticalTuto.islandsTuto.SetActive(false);
                 verticalTuto.islandsTutoText.SetActive(false);
                 verticalTuto.tutoTermine.SetActive(true);
-                //TODO: send event to table to say verticalTuto is finished
+                this.Client.sendData("@40003");
 
                 break;
         }
@@ -129,18 +131,9 @@ public class verticalTuto : InputSource
             verticalTuto.tutoTermine = GameObject.Find("tutoTermine");
             verticalTuto.tutoTermine.SetActive(false);
         }
+
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
     }
-
-
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 
 

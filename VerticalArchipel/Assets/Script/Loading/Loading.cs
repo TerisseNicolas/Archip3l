@@ -25,13 +25,6 @@ public class Loading : InputSource
         }
     }
 
-    //Todo : to be deleted, it comes from the network
-    void OnMouseDownSimulation()
-    {
-        //SceneManager.LoadScene("verticalPlayingScene");
-    }
-
-
     //-------------- TUIO -----------------------------------------------------------------------
 
     public int Width = 512;
@@ -121,7 +114,6 @@ public class Loading : InputSource
         if (Time.time - TouchTime < 0.5)
         {
             TouchTime = 0;
-            OnMouseDownSimulation();
         }
         else if (Time.time - TouchTime < 1.5)
         {

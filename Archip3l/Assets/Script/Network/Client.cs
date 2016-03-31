@@ -14,8 +14,8 @@ public class Client : MonoBehaviour
 
     private int sendingPort = 1523;
     private int listeningPort = 5053;
-    private string serverIP = "172.18.136.49";
-    //private string serverIP = "192.168.1.91";
+    //private string serverIP = "172.18.136.49";
+    private string serverIP = "192.168.1.91";
 
     //All events raised
     private delegate void DelegateEvent(object send, EventArgs e);
@@ -45,6 +45,7 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessagePiratesStartArrivalEvent;
     public event EventHandler<MessageEventArgs> MessagePiratesIncreaseRateEvent;
     public event EventHandler<MessageEventArgs> MessageUnlockTutoEvent;
+    public event EventHandler<MessageEventArgs> MessageTutoCompleteEvent;
 
     public event EventHandler<MessageEventArgs> MessageSystemChangeSceneEvent;
     public event EventHandler<MessageEventArgs> MessageSystemStartInitOfGameEvent;
@@ -247,6 +248,9 @@ public class Client : MonoBehaviour
                 break;
             case 40002:
                 MessageEvent += MessagePiratesIncreaseRateEvent;
+                break;
+            case 40003:
+                MessageEvent += MessageTutoCompleteEvent;
                 break;
         }
 

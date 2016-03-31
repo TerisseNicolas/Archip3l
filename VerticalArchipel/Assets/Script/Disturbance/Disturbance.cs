@@ -110,7 +110,8 @@ public class Disturbance : InputSource
             }
         }
 
-        //TODO: consequences on table
+        //TODO : popup for the impact over the island(s)
+
 
 
 

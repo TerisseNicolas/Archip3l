@@ -21,8 +21,6 @@ public class ContactPointLayer : MonoBehaviour
         this.NumberOfContact = 1;
         this.ActualContactActivated = 0;
         this.Completed = false;
-        //TODO put the false to false
-        //this.BoardCompleted = true;
 
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.ListContactPoint = new List<ContactPoint>();

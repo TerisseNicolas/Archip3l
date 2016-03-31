@@ -93,7 +93,7 @@ namespace TouchScript.Layers
             ProjectionParams pp;
             if (!projectionParamsCache.TryGetValue(canvas, out pp))
             {
-                // TODO: memory leak
+                // memory leak
                 pp = new CanvasProjectionParams(canvas);
                 projectionParamsCache.Add(canvas, pp);
             }
