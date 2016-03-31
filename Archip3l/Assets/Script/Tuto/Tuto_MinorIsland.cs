@@ -341,7 +341,7 @@ public class Tuto_MinorIsland : InputSource {
         //moving a building
         if (moveBuilding)
         {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(positionTouched.x, positionTouched.y, 0));
             pos.z = -5;
             GameObject.Find(this.nameBuildingTouchCanvas).transform.position = pos;
             this.moveBuilding = false;
