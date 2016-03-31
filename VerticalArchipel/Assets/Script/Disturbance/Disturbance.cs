@@ -53,7 +53,7 @@ public class Disturbance : InputSource
         }
         if (Enigma.enigmaWindowOpen)
         {
-            //TODO: Destroy Enigma.enigmaWindow
+            Destroy(GameObject.Find(Enigma.enigmaWindowName));
             Enigma.enigmaWindowOpen = false;
         }
         
