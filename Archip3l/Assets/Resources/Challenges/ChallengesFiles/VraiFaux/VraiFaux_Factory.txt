@@ -1,10 +1,9 @@
 Question;Answer;Explanation;Proposition0;Proposition1
 Usiner signifie travailler dans une usine mais également travailler dur.;Proposition0;Il s'agit d'une expression popularisée au début du XXème siècle.;Proposition0;Proposition1
-La passementerie est une activité consistant à fabriquer des manteaux ou autres vêtements d’hiver.;Proposition1;La passementerie regroupe l'ensemble des productions en fil de toute nature (végétal, animal, métallique...) utilisées pour des vêtements ou en architecture d’intérieure.;Proposition0;Proposition1
+La passementerie est une activité consistant à fabriquer des manteaux ou autres vêtements d’hiver.;Proposition1;La passementerie regroupe l'ensemble des productions en fil de toute nature (végétal, animal, métallique...).;Proposition0;Proposition1
 Le charbon se forme durant des millions d'années à partir de nombreux débris végétaux dans des conditions précises de température et de pression.;Proposition0;;Proposition0;Proposition1
 Les premières motivations à exploiter du charbon furent la lutte contre le déboisement massif lors de la 1ère révolution industrielle.;Proposition0;;Proposition0;Proposition1
 Un charbonnier est un homme travaillant dans une mine de charbon.;Proposition1; Un charbonnier est un navire destiné à transporter exclusivement du charbon.;Proposition0;Proposition1
 Durant la période féodale, l'exode rural de nombreux ouvriers créa une peur sociale importante, notamment parmi les bourgeois.;Proposition0;Ce phénomène a été si marquant que les ouvriers ont été désignés comme la classe dangereuse.;Proposition0;Proposition1
 Un manœuvre désigne un ouvrier spécialisé ?;Proposition1;Un manoeuvre désigne un ouvrier peu qualifié;Proposition0;Proposition1
-Dans les débuts de l'industrialisation, l'appellation nègres blancs était destinée aux patrons d’entreprise.;Proposition1;L’appellation nègres blancs était destinée aux ouvriers les plus miséreux;Proposition0;Proposition1
-Certains aciers peuvent être qualifiés de doux ou encore mi-doux.;Proposition0;Quand leur teneur en carbone est peu élevée, ces aciers restent encore assez malléables d'où ces appellations.;Proposition0;Proposition1
+Certains aciers peuvent être qualifiés de doux ou encore mi-doux.;Proposition0;Quand leur teneur en carbone est peu élevée, ces aciers restent encore assez malléables.;Proposition0;Proposition1
