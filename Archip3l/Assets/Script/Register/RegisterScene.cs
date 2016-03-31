@@ -31,7 +31,7 @@ public class RegisterScene : InputSource {
         }
         else if (this.name == "enter")  //change scene + send name to Vertical (store in file)
         {
-            if ((teamName.text != string.Empty) && (teamName.text[0] != ' '))
+            if (teamName.text != string.Empty)
             {
                 this.Client.sendData("@30004@" + RegisterScene.teamName.text);
                 SceneSupervisor.Instance.loadUnlockingScenes();
@@ -40,7 +40,10 @@ public class RegisterScene : InputSource {
         else if (this.name == "PreviousScene")
             SceneSupervisor.Instance.loadLoadingScene();
         else if (this.name == "space")
-            RegisterScene.teamName.text += " ";
+        {
+            if (teamName.text != string.Empty)
+                RegisterScene.teamName.text += " ";
+        }
         else
             RegisterScene.teamName.text += this.name;
 
