@@ -23,7 +23,7 @@ public class ContactPointLayer : MonoBehaviour
         this.ActualContactActivated = 0;
         this.Completed = false;
         //TODO put the false to false
-        this.BoardCompleted = false;
+        this.BoardCompleted = true;//false;
 
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageUnlockTutoEvent += Client_MessageUnlockTutoEvent;

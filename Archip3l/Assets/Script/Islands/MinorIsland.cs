@@ -23,6 +23,7 @@ public class MinorIsland : InputSource
     public Transform resourceManagerPrefab;
 
     public string nameMinorIsland;
+    private bool begun = false;
 
     public int nbGoodAnswersChallenges = 0;
     public int nbAnswersChallenges = 0;
@@ -568,6 +569,19 @@ public class MinorIsland : InputSource
         }
     }
 
+    void Update()
+    {
+        if (this.begun)
+        {
+            if ((Time.time - TouchTime > 1) && (Time.time - TouchTime < 1.5))
+            {
+                TouchTime = 0;
+                if (!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
+                    this.createExchangeWindow();
+            }
+        }
+    }
+
     
 
     //-------------- TUIO -----------------------------------------------------------------------
@@ -634,7 +648,7 @@ public class MinorIsland : InputSource
         {
             TouchTime = Time.time;
             this.positionTouched = touch.Position;
-
+            this.begun = true;
         }
 
     }
@@ -657,6 +671,7 @@ public class MinorIsland : InputSource
         if (touch.InputSource == this) return;
         if (!map.TryGetValue(touch.Id, out id)) return;
         endTouch(id);
+        this.begun = false;
         if (Time.time - TouchTime < 0.5)
         {
             TouchTime = 0;
