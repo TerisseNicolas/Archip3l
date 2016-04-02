@@ -158,6 +158,10 @@ public class MovePirateBoat : InputSource
         {
             this.destroyBoat(false);
         }
+        if (collider.name.Contains("Harbor"))
+        {
+            this.destroyBoat(false);
+        }
     }
 
 
