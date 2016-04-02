@@ -43,6 +43,7 @@ public class Tuto_MinorIsland : InputSource {
 
     private Client Client;
     private bool verticalTutoCompleted;
+    private bool startEndAnimationFlag;
 
 
     void Awake()
@@ -61,7 +62,7 @@ public class Tuto_MinorIsland : InputSource {
         this.Client.MessageTutoCompleteEvent += Client_MessageTutoCompleteEvent;
         this.verticalTutoCompleted = false;
 
-
+        this.startEndAnimationFlag = false;
     }
 
     public void Start()
@@ -104,15 +105,7 @@ public class Tuto_MinorIsland : InputSource {
             color.a += 0.005f;
             sp.color = color;
         }
-        while(true)
-        {
-            if(this.verticalTutoCompleted)
-            {
-                SceneSupervisor.Instance.loadPalyingScenes();
-                break;
-            }
-            yield return new WaitForSeconds(0.5f);
-        }
+        SceneSupervisor.Instance.loadPalyingScenes();
     }
 
     public void createTuto_ChallengeBuild(string buildingClicked)
@@ -289,16 +282,10 @@ public class Tuto_MinorIsland : InputSource {
         }
     }
 
-
-
-    // Update is called once per frame
-    void Update() {
-
+    void Update()
+    {
         if (!ended)
         {
-            //when all islands have finished the tuto + Vertical tuto finished, change scene
-
-            //TODO: add condition on Vertical finishing tuto
             if (GameObject.Find("sous_ile_1").GetComponent<Tuto_MinorIsland>().harborRemoved &&
                 GameObject.Find("sous_ile_2").GetComponent<Tuto_MinorIsland>().harborRemoved &&
                 GameObject.Find("sous_ile_3").GetComponent<Tuto_MinorIsland>().harborRemoved &&
@@ -312,10 +299,14 @@ public class Tuto_MinorIsland : InputSource {
                     Color color = endCanvas.GetComponentInChildren<SpriteRenderer>().color;
                     color.a = 0;
                     endCanvas.GetComponentInChildren<SpriteRenderer>().color = color;
-                    StartCoroutine(this.endFade());
                 }
 
             }
+        }
+        if(ended && this.verticalTutoCompleted && !this.startEndAnimationFlag)
+        {
+            StartCoroutine(this.endFade());
+            this.startEndAnimationFlag = true;
         }
 
         /*------- open exchangeWindow after 1 sec --------*/
@@ -341,7 +332,7 @@ public class Tuto_MinorIsland : InputSource {
         //moving a building
         if (moveBuilding)
         {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(positionTouched.x, positionTouched.y, 0));
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = -5;
             GameObject.Find(this.nameBuildingTouchCanvas).transform.position = pos;
             this.moveBuilding = false;
@@ -521,5 +512,3 @@ public class Tuto_MinorIsland : InputSource {
         cancelTouch(id);
     }
 }
-
-

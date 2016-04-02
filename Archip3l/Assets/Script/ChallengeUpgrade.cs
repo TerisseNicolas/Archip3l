@@ -233,6 +233,10 @@ public class ChallengeUpgrade : InputSource
                 StartCoroutine(building.launchUpgradeAnimation());
         }
 
+        //To fix bug with infinite animation
+        GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland).GetComponent<Transform>().position = new Vector3(0, 0, -15);
+        yield return new WaitForSeconds(building.constructionTime + 2);
+
         Destroy(GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland));
 
     }
