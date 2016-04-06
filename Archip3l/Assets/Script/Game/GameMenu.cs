@@ -45,7 +45,10 @@ public class GameMenu : InputSource
                     case "waitForVerticalIndependentSceneResult":
                         SceneSupervisor.Instance.loadMenuScenes(true);
                         break;
-                    //case credit at the end of a game : same case as from the menu
+                    case "waitForVerticalIndependentSceneCredits":
+                        SceneSupervisor.Instance.loadMenuScenes(true);
+                        break;
+                        //case credit at the end of a game : same case as from the menu
                 }
                 
 
