@@ -24,7 +24,7 @@ public class Server : MonoBehaviour
     private bool _continue = true;
     private Thread _thListener;
 
-    private int connectionPort = 5053;
+    private int connectionPort = 5054;
     private int listeningPort = 1523;
 
     void Awake()
