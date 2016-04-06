@@ -67,8 +67,5 @@ public class ContactPointLayer : MonoBehaviour
         yield return new WaitForSeconds(5f);
         SceneSupervisor.Instance.loadBriefingScenes();
     }
-    //void Update()
-    //{
-    //    transform.Rotate(Vector3.down * Time.deltaTime*360);
-    //}
+
 }
