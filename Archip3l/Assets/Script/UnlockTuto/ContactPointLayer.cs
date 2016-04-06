@@ -18,12 +18,10 @@ public class ContactPointLayer : MonoBehaviour
 
     void Awake()
     {
-        //TODO update this value with the number of contact point
-        this.NumberOfContact = 1;
+        this.NumberOfContact = 8;
         this.ActualContactActivated = 0;
         this.Completed = false;
-        //TODO put the false to false
-        this.BoardCompleted = true;//false;
+        this.BoardCompleted = false;
 
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageUnlockTutoEvent += Client_MessageUnlockTutoEvent;
@@ -69,8 +67,5 @@ public class ContactPointLayer : MonoBehaviour
         yield return new WaitForSeconds(5f);
         SceneSupervisor.Instance.loadBriefingScenes();
     }
-    //void Update()
-    //{
-    //    transform.Rotate(Vector3.down * Time.deltaTime*360);
-    //}
+
 }

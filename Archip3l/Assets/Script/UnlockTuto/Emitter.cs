@@ -7,8 +7,5 @@ public class Emitter : MonoBehaviour {
     {
         gameObject.GetComponent<ParticleSystem>().Stop();
     }
-    //void start()
-    //{
-    //    gameObject.GetComponent<ParticleSystem>().Stop();
-    //}
+
 }
