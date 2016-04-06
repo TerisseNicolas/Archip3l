@@ -37,6 +37,7 @@ public class MinorIsland : InputSource
     public bool challengePresent = false;               //challenge present on the island
     public bool moveBuilding = false;                   //moving a building
     public bool exchangeWindowPresent = false;          //exchangeWindow present on the island
+    public bool disturbancePresent = false;
     public string nameBuildingTouchCanvas;
     public string buildingClickedWheel;
 
@@ -138,9 +139,6 @@ public class MinorIsland : InputSource
             type = TypeChallenge.VraiFaux;
         else
             type = TypeChallenge.QCM;
-
-        //TEST : TODO --> remove it
-        //type = TypeChallenge.VraiFaux;
 
 
         Canvas challengePrefab = Resources.Load<Canvas>("Prefab/Challenges/Build_Challenge_" + type.ToString());
@@ -407,7 +405,7 @@ public class MinorIsland : InputSource
     }
     private IEnumerator disturbanceAnimation()
     {
-        //TODO block the touch
+        disturbancePresent = true;
         Transform animationTransform;
         if (MinorIsland.DisturbanceCount%2 == 0)
         {
@@ -422,7 +420,7 @@ public class MinorIsland : InputSource
         animationTransform.transform.SetParent(this.transform);
         yield return new WaitForSeconds(10);
 
-        //todo unlock the touch
+        disturbancePresent = false;
         Destroy(animationTransform.gameObject);
 
 
@@ -456,7 +454,7 @@ public class MinorIsland : InputSource
             }
             else
             {
-                if (!challengePresent && !exchangeWindowPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent)
+                if (!challengePresent && !exchangeWindowPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !disturbancePresent)
                 {
                     if (!wheelPresent)  //if the wheel is not on the island
                     {

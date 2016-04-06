@@ -47,12 +47,7 @@ public class ChallengeBuild : InputSource
         //ENCODAGE : UTF8-16-LE
         //last line of file usually blank --> to be removed!
         csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + typeBuilding.ToString());
-        //TEST: TODO --> remove
-        //csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/VraiFaux/VraiFaux_StoneMine");
-        //this.typeChallenge = TypeChallenge.VraiFaux;
-        //this.nbPropositions = 2;
-
-        //----------END TEST
+      
 
         Debug.Log("File : " + typeChallenge.ToString() + "_" + typeBuilding.ToString());
 

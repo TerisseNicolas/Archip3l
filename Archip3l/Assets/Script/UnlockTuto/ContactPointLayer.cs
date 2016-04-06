@@ -18,11 +18,9 @@ public class ContactPointLayer : MonoBehaviour
 
     void Awake()
     {
-        //TODO update this value with the number of contact point
         this.NumberOfContact = 8;
         this.ActualContactActivated = 0;
         this.Completed = false;
-        //TODO put the false to false
         this.BoardCompleted = false;
 
         this.Client = GameObject.Find("Network").GetComponent<Client>();

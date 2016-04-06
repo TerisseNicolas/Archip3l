@@ -44,7 +44,6 @@ public class PirateBoatManager : MonoBehaviour
     }
     void Update()
     {
-        //TODO find another way to do this
         if (GameObject.Find("Explosion1(Clone)") != null)
             Destroy(GameObject.Find("Explosion1(Clone)"), 0.5f);
         if (GameObject.Find("sinkingTrail(Clone)") != null)
