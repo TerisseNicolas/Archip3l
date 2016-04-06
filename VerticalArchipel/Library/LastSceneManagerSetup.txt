@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/verticalPlayingScene.unity
+- path: Assets/Scenes/verticalTuto.unity
   isLoaded: 1
   isActive: 1

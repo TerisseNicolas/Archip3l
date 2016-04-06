@@ -38,10 +38,12 @@ public class PirateBoatManager : MonoBehaviour
         this.Client.MessagePiratesIncreaseRateEvent += Client_MessagePiratesIncreaseRateEvent;
 
         this.interval = this.initInterval;
+
+        //For tests
+        //this.Client_MessagePiratesIncreaseRateEvent(this, null);
     }
     void Update()
     {
-        //TODO find another way to do this
         if (GameObject.Find("Explosion1(Clone)") != null)
             Destroy(GameObject.Find("Explosion1(Clone)"), 0.5f);
         if (GameObject.Find("sinkingTrail(Clone)") != null)
@@ -117,13 +119,13 @@ public class PirateBoatManager : MonoBehaviour
         switch (rnd.Next(1, 5))
         {
             case 1:
-                return new Vector3(rnd.Next(-500, -430), rnd.Next(0, 400), -2);
+                return new Vector3(rnd.Next(-700, -600), rnd.Next(0, 300), -2);
             case 2:
-                return new Vector3(rnd.Next(430, 500), rnd.Next(0, 400), -2);
+                return new Vector3(rnd.Next(600, 700), rnd.Next(0, 300), -2);
             case 4:
-                return new Vector3(rnd.Next(-500, -430), rnd.Next(-400, 0), -2);
+                return new Vector3(rnd.Next(-700, -600), rnd.Next(-300, 0), -2);
             case 3:
-                return new Vector3(rnd.Next(430, 500), rnd.Next(-400, 0), -2);
+                return new Vector3(rnd.Next(600, 700), rnd.Next(-300, 0), -2);
         }
         return new Vector3(0, 0);
     }
