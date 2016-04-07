@@ -103,14 +103,14 @@ public class Enigma : InputSource
         if (goodAnswer)
         {
             //TODO: finish message
-            Enigma.resultObject.text = "Bravo ! votre réponse permet ...";
+            Enigma.resultObject.text = "Bonne réponse !";
             this.client.sendData("@35601@" + this.name);
         }
             
         else
         {
             //TODO: finish message
-            Enigma.resultObject.text = "Votre mauvaise réponse ...";
+            Enigma.resultObject.text = "Mauvaise réponse !";
             this.client.sendData("@35602@" + this.name);
         }
 
