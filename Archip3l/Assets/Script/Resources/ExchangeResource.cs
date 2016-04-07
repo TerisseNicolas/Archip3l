@@ -68,7 +68,7 @@ public class ExchangeResource : InputSource
         {
             string resourceName;
             int resourceQuantity;
-            if (resource_sp.GetComponent<SpriteRenderer>().sprite.name == "Knob"){  //default sprite
+            if (resource_sp.GetComponent<SpriteRenderer>().sprite.name == "cercleChoixRessource"){  //default sprite
                 resourceName = string.Empty;
                 resourceQuantity = 0;
             }

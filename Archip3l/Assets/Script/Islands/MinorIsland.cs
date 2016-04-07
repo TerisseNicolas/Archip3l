@@ -81,16 +81,16 @@ public class MinorIsland : InputSource
         switch (this.nameMinorIsland)
         {
             case "sous_ile_1":
-                harborPosition = new Vector3(-84, 88, -1);
+                harborPosition = new Vector3(-84, 88, -3);
                 break;
             case "sous_ile_2":
-                harborPosition = new Vector3(132, 111, -1);
+                harborPosition = new Vector3(132, 111, -3);
                 break;
             case "sous_ile_3":
-                harborPosition = new Vector3(-107, -71, -1);
+                harborPosition = new Vector3(-107, -71, -3);
                 break;
             default:
-                harborPosition = new Vector3(111, -77, -1);
+                harborPosition = new Vector3(111, -77, -3);
                 break;
         }
         buildingManager.createBuilding(TypeBuilding.Harbor, harborPosition);
