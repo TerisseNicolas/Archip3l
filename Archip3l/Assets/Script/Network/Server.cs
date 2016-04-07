@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 
 public class Server : MonoBehaviour
 {
@@ -24,16 +28,41 @@ public class Server : MonoBehaviour
     private bool _continue = true;
     private Thread _thListener;
 
-    private int connectionPort = 5054;
+    private string filePath;
+
+    private int connectionPort = 5050;
     private int listeningPort = 1523;
 
     void Awake()
     {
+        this.filePath = "port.txt";
+        loadPort();
+        Debug.Log(connectionPort);
+
         _broadcaster = new UdpClient();
         _broadcaster.EnableBroadcast = true;
         _broadcaster.Connect(new IPEndPoint(IPAddress.Broadcast, this.connectionPort));
 
         this.StartServer();
+    }
+
+    public void loadPort()
+    {
+        string line;
+        if (File.Exists(this.filePath))
+        {
+            StreamReader file = new StreamReader(this.filePath);
+            while ((line = file.ReadLine()) != null)
+            {
+                connectionPort = Int32.Parse(line);
+            }
+            file.Close();
+        }
+        else
+        {
+            StreamWriter file = new StreamWriter(this.filePath);
+            file.Close();
+        }
     }
 
     private void StartServer()
