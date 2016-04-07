@@ -14,8 +14,6 @@ public class ContactPointLayer : MonoBehaviour
 
     private List<ContactPoint> ListContactPoint;
 
-    private ContactPoint ContactPoint1;
-
     void Awake()
     {
         this.NumberOfContact = 8;
@@ -27,11 +25,11 @@ public class ContactPointLayer : MonoBehaviour
         this.Client.MessageUnlockTutoEvent += Client_MessageUnlockTutoEvent;
         this.ListContactPoint = new List<ContactPoint>();
 
-        for(int i = 1; i<=NumberOfContact; i++)
+        for(int i = 1; i <= NumberOfContact; i++)
         {
             this.ListContactPoint.Add(GameObject.Find("ContactPoint_" + i.ToString()).GetComponent<ContactPoint>());
-            this.ListContactPoint[this.ListContactPoint.Count -1].ContactTouched += ContactPoint_ContactTouched;
-            this.ListContactPoint[this.ListContactPoint.Count -1].ContactReleased += ContactPoint_ContactReleased;
+            this.ListContactPoint[i - 1].ContactTouched += ContactPoint_ContactTouched;
+            this.ListContactPoint[i - 1].ContactReleased += ContactPoint_ContactReleased;
         }
     }
 
@@ -55,6 +53,7 @@ public class ContactPointLayer : MonoBehaviour
         if((this.ActualContactActivated == this.NumberOfContact) && !this.Completed)
         {
             GameObject.Find("WonLayer").GetComponent<FinalFireWork>().StartFire();
+            this.Completed = true;
             if(this.BoardCompleted)
             {
                 StartCoroutine(holdAndChangeScene());

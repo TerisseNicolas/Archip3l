@@ -17,7 +17,7 @@ public class ListResources : InputSource
             island.resource = this.name;
         }
         island.otherWindowOpen = false;
-        Destroy(GameObject.Find(this.transform.parent.name));
+        Destroy(GameObject.Find(this.transform.parent.parent.name));
     }
 
 

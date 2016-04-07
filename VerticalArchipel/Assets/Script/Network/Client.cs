@@ -5,6 +5,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 
 public class Client : MonoBehaviour
 {
@@ -12,10 +15,12 @@ public class Client : MonoBehaviour
     private bool _continue;
     private Thread _thListener;
 
+    private string filePath;
+
     private int sendingPort = 1523;
-    private int listeningPort = 5053;
-    //private string serverIP = "172.18.136.49";
-    private string serverIP = "192.168.1.91";
+    private int listeningPort = 5050;
+    private string serverIP = "172.18.136.49";
+    //private string serverIP = "192.168.1.91";
 
     //All events raised
     private delegate void DelegateEvent(object send, EventArgs e);
@@ -57,6 +62,10 @@ public class Client : MonoBehaviour
 
     void Awake()
     {
+
+        this.filePath = "port.txt";
+        loadPort();
+        Debug.Log(listeningPort);
         DontDestroyOnLoad(transform.gameObject);
 
         _client = new UdpClient();
@@ -66,6 +75,26 @@ public class Client : MonoBehaviour
         _continue = true;
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
+
+    }
+
+ public void loadPort()
+    {
+        string line;
+        if (File.Exists(this.filePath))
+        {
+            StreamReader file = new StreamReader(this.filePath);
+            while ((line = file.ReadLine()) != null)
+            {
+                listeningPort = Int32.Parse(line);
+            }
+            file.Close();
+        }
+        else
+        {
+            StreamWriter file = new StreamWriter(this.filePath);
+            file.Close();
+        }
     }
 
     public void sendData(string dataToSend)

@@ -69,10 +69,8 @@ public class Game : MonoBehaviour
     }
     private void Timer_FinalTick(object sender, System.EventArgs e)
     {
-        //End of the game
         this.Client.sendData("@30002");
-        //To be activated
-        //this.Score.addScore(this.GlobalInfo.teamName);
+        this.Score.addScore(this.GlobalInfo.teamName);
     }
     private void ChallengerTimer_FinalTick(object sender, System.EventArgs e)
     {
