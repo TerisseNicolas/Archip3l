@@ -7,7 +7,8 @@ using TouchScript;
 using TouchScript.InputSources;
 using TouchScript.Hit;
 
-public class ContactPoint : InputSource {
+public class ContactPoint : InputSource
+{
 
     private ParticleSystem ParticleSystem;
     private ParticleSystem.EmissionModule ParticleSystemEmit;
@@ -21,6 +22,8 @@ public class ContactPoint : InputSource {
     private Sprite SpriteRed;
     private Sprite SpriteGreen;
 
+    public bool touched = false;
+
     void Awake()
     {
         this.ParticleSystem = gameObject.GetComponentInChildren<ParticleSystem>();
@@ -33,29 +36,37 @@ public class ContactPoint : InputSource {
 
     void EnterContactZone()
     {
-        GetComponent<SpriteRenderer>().sprite = this.SpriteGreen;
-        if (!ParticleSystem.isPlaying)
+        if (!touched)
         {
-            ParticleSystem.Simulate(0.0f, true, true);
-            this.ParticleSystemEmit.enabled = true;
-        }
-        ParticleSystem.Play(true);
-        if(this.ContactTouched != null)
-        {
-            this.ContactTouched(this, null);
+            touched = true;
+            GetComponent<SpriteRenderer>().sprite = this.SpriteGreen;
+            if (!ParticleSystem.isPlaying)
+            {
+                ParticleSystem.Simulate(0.0f, true, true);
+                this.ParticleSystemEmit.enabled = true;
+            }
+            ParticleSystem.Play(true);
+            if (this.ContactTouched != null)
+            {
+                this.ContactTouched(this, null);
+            }
         }
     }
 
     void ExitContactZone()
     {
-        GetComponent<SpriteRenderer>().sprite = this.SpriteRed;
-        if (this.ParticleSystem.isPlaying)
+        if (touched)
         {
-            this.ParticleSystem.Stop();
-        }
-        if(this.ContactReleased != null)
-        {
-            this.ContactReleased(this, null);
+            touched = false;
+            GetComponent<SpriteRenderer>().sprite = this.SpriteRed;
+            if (this.ParticleSystem.isPlaying)
+            {
+                this.ParticleSystem.Stop();
+            }
+            if (this.ContactReleased != null)
+            {
+                this.ContactReleased(this, null);
+            }
         }
     }
 
