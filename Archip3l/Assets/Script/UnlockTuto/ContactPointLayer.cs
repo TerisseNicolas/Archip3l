@@ -14,8 +14,6 @@ public class ContactPointLayer : MonoBehaviour
 
     private List<ContactPoint> ListContactPoint;
 
-    private ContactPoint ContactPoint1;
-
     void Awake()
     {
         this.NumberOfContact = 8;

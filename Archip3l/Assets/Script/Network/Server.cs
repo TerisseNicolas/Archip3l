@@ -36,7 +36,6 @@ public class Server : MonoBehaviour
     {
         this.filePath = "port.txt";
         loadPort();
-        Debug.Log(connectionPort);
 
         _broadcaster = new UdpClient();
         _broadcaster.EnableBroadcast = true;

@@ -14,7 +14,15 @@ public class ResourceView : MonoBehaviour {
     {
         foreach(Resource res in this.resourceManager.Resources)
         {
-            GameObject.Find(res.TypeResource.ToString()).GetComponent<RectTransform>().transform.FindChild("Value").gameObject.GetComponent<Text>().text = res.Stock.ToString();
+            //Debug.Log()
+            //GameObject.Find(res.TypeResource.ToString()).GetComponent<RectTransform>().transform.FindChild("Value").gameObject.GetComponent<Text>().text = res.Stock.ToString();
+            foreach(Text t in GameObject.Find(res.TypeResource.ToString()).GetComponentsInChildren<Text>()){
+                if (t.name == "Value"){
+                    t.text = res.Stock.ToString();
+                    Debug.Log("ok");
+                } 
+
+            }
         }
     }
 }

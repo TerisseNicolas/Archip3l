@@ -68,10 +68,17 @@ public class SceneSupervisor : MonoBehaviour {
         this.Client.sendData("@30000@BoardEndScene");
         SceneManager.LoadScene("waitForVerticalSceneEnd");
     }
-    public void loadResultScenes()
+    public void loadResultScenes(bool independent)
     {
         this.Client.sendData("@30000@BoardResultScene");
-        SceneManager.LoadScene("waitForVerticalSceneResult");
+        if(independent)
+        {
+            SceneManager.LoadScene("waitForVerticalIndependentSceneResult");
+        }
+        else
+        {
+            SceneManager.LoadScene("waitForVerticalSceneResult");
+        }
     }
     public void loadCreditScenes()
     {

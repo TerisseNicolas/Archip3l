@@ -20,7 +20,7 @@ public class GameMenu : InputSource
                 SceneSupervisor.Instance.loadCreditScenes();
                 break;
             case "Classement":
-                SceneSupervisor.Instance.loadResultScenes();
+                SceneSupervisor.Instance.loadResultScenes(true);
                 break;
             case "returnArrow":
             case "Quitter":
@@ -36,22 +36,17 @@ public class GameMenu : InputSource
                         break;
                     //when end scene is on vertical
                     case "waitForVerticalSceneEnd":
-                        SceneSupervisor.Instance.loadResultScenes();
+                        SceneSupervisor.Instance.loadResultScenes(false);
                         break;
                     //when result scene is on vertical(at the end of the game)
                     case "waitForVerticalSceneResult":
                         SceneSupervisor.Instance.loadCreditScenes();
                         break;
                     case "waitForVerticalIndependentSceneResult":
+                        Debug.Log("in");
                         SceneSupervisor.Instance.loadMenuScenes(true);
                         break;
-                    case "waitForVerticalIndependentSceneCredits":
-                        SceneSupervisor.Instance.loadMenuScenes(true);
-                        break;
-                        //case credit at the end of a game : same case as from the menu
                 }
-                
-
                 break;
         }
     }
