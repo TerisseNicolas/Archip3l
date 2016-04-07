@@ -54,6 +54,7 @@ public class ContactPointLayer : MonoBehaviour
         this.ActualContactActivated += 1;
         if((this.ActualContactActivated == this.NumberOfContact) && !this.Completed)
         {
+            this.Completed = true;
             GameObject.Find("WonLayer").GetComponent<FinalFireWork>().StartFire();
             if(this.BoardCompleted)
             {
