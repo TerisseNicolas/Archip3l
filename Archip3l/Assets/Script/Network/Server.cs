@@ -28,9 +28,13 @@ public class Server : MonoBehaviour
     private bool _continue = true;
     private Thread _thListener;
 
+<<<<<<< HEAD
     private string filePath;
 
     private int connectionPort = 5050;
+=======
+    private int connectionPort = 5053;
+>>>>>>> 02d50a02ee106f8861f0282f38b6023ae2f2288e
     private int listeningPort = 1523;
 
     void Awake()

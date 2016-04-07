@@ -18,7 +18,11 @@ public class Client : MonoBehaviour
     private string filePath;
 
     private int sendingPort = 1523;
+<<<<<<< HEAD
     private int listeningPort = 5050;
+=======
+    private int listeningPort = 5053;
+>>>>>>> 02d50a02ee106f8861f0282f38b6023ae2f2288e
     private string serverIP = "172.18.136.49";
     //private string serverIP = "192.168.1.91";
 
