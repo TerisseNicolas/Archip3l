@@ -33,13 +33,17 @@ public class ContactPointLayer : MonoBehaviour
         }
     }
 
-    private void Client_MessageUnlockTutoEvent(object sender, MessageEventArgs e)
+    void Update()
     {
-        this.BoardCompleted = true;
-        if(this.Completed)
+        if(this.BoardCompleted && this.Completed)
         {
             StartCoroutine(holdAndChangeScene());
         }
+    }
+
+    private void Client_MessageUnlockTutoEvent(object sender, MessageEventArgs e)
+    {
+        this.BoardCompleted = true;
     }
 
     private void ContactPoint_ContactReleased(object sender, System.EventArgs e)
@@ -54,10 +58,6 @@ public class ContactPointLayer : MonoBehaviour
         {
             this.Completed = true;
             GameObject.Find("WonLayer").GetComponent<FinalFireWork>().StartFire();
-            if(this.BoardCompleted)
-            {
-                StartCoroutine(holdAndChangeScene());
-            }
         }
     }
 
@@ -66,5 +66,4 @@ public class ContactPointLayer : MonoBehaviour
         yield return new WaitForSeconds(5f);
         SceneSupervisor.Instance.loadBriefingScenes();
     }
-
 }
