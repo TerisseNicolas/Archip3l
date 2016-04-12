@@ -16,9 +16,7 @@ public class SceneSupervisor : MonoBehaviour {
             Destroy(gameObject);
         }
         Instance = this;
-        Debug.Log("before network");
         this.Client = GameObject.Find("Network").GetComponent<Client>();
-        Debug.Log("after network");
         //this.Client.MessageSystemChangeSceneEvent += Client_MessageSystemChangeSceneEvent;
     }
 

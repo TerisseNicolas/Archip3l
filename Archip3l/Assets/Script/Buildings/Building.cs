@@ -285,7 +285,7 @@ public class Building : InputSource
             StartCoroutine("updateStocks");
             Destroy(buildingConstructionTransform.gameObject);
 
-            //Score to add must be checked
+            //Todo : score to add must be checked
             this.Client.sendData("@30505@" + 100.ToString());
         }
         else

@@ -61,6 +61,10 @@ public class Disturbance : InputSource
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.counter = GameObject.Find("DisturbanceCounter").GetComponent<Text>();
         this.disturbanceText = GameObject.Find("DisturbanceText").GetComponent<Text>();
+    }
+
+    void Start()
+    {
         StartCoroutine(counterDecrement());
     }
 

@@ -422,8 +422,6 @@ public class MinorIsland : InputSource
 
         disturbancePresent = false;
         Destroy(animationTransform.gameObject);
-
-
     }
 
     private void Client_MessageSystemEndOfGameEvent(object sender, MessageEventArgs e)
