@@ -19,7 +19,6 @@ public class ResourceView : MonoBehaviour {
             foreach(Text t in GameObject.Find(res.TypeResource.ToString()).GetComponentsInChildren<Text>()){
                 if (t.name == "Value"){
                     t.text = res.Stock.ToString();
-                    Debug.Log("ok");
                 } 
 
             }

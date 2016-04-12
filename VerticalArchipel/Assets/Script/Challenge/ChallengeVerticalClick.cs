@@ -216,6 +216,9 @@ public class ChallengeVerticalClick : InputSource
             Canvas challengeWon = Instantiate(challengeWonPrefab);
             challengeWon.name = "challengeWonCanvas";
             ChallengeWon.challengeWonWindowName = challengeWon.name;
+            Vector3 z = challengeWon.GetComponentInChildren<SpriteRenderer>().gameObject.transform.position;
+            z.z = -1;
+            challengeWon.GetComponentInChildren<SpriteRenderer>().gameObject.transform.position = z;
             GameObject.Find("challengeWon-sous_ile_1").GetComponent<ChallengeWon>().init(resourceToWin, quantityToWin);
         }
 
