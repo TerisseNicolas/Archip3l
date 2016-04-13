@@ -303,7 +303,7 @@ public class Tuto_MinorIsland : InputSource {
 
             }
         }
-        if(ended && this.verticalTutoCompleted && !this.startEndAnimationFlag)
+        if(ended && this.verticalTutoCompleted && !this.startEndAnimationFlag && this.nameTuto_MinorIsland == "sous_ile_1")
         {
             StartCoroutine(this.endFade());
             this.startEndAnimationFlag = true;

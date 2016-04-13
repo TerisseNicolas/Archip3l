@@ -162,7 +162,9 @@ public class ResourceManager : MonoBehaviour
                 res.changeStock(res.Production);
                 if (res.Production != 0)
                 {
-                    //Debug.Log("Island : " + this.minorIsland + "\tProduction : " + res.Production + "\tStock  : " + res.Name + " : " + res.Stock);
+                    //Debug.Log("Island : " + this.minorIsland + "\tProduction : " + res.Production + "\tStock  : " + res.TypeResource.ToString() + " : " + res.Stock);
+                    this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + res.Stock);
+                    this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "345@" + res.TypeResource.ToString() + "@" + res.Production);
                 }
             }
             yield return new WaitForSeconds(1f);
