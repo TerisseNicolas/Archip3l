@@ -52,6 +52,9 @@ public class MinorIsland : InputSource
     public Canvas startCanvas;
     public int numPopup = 0;
 
+    //fixes coroutine bug
+    private bool coroutineDisturbance = false;
+
     void Awake()
     {
 
@@ -400,7 +403,7 @@ public class MinorIsland : InputSource
 
         if (this.nameMinorIsland.Contains(islandNumber.ToString()) || islandNumber == '5')
         {
-            StartCoroutine(disturbanceAnimation());
+            this.coroutineDisturbance = true;
         }
     }
     private IEnumerator disturbanceAnimation()
@@ -575,6 +578,12 @@ public class MinorIsland : InputSource
                 if (!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
                     this.createExchangeWindow();
             }
+        }
+
+        if(this.coroutineDisturbance)
+        {
+            StartCoroutine(disturbanceAnimation());
+            this.coroutineDisturbance = false;
         }
     }
 

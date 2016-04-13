@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/verticalPlayingScene.unity
-=======
-- path: Assets/Scenes/verticalTuto.unity
->>>>>>> 4117591a463dba31af869fbda7780a288fd660e3
   isLoaded: 1
   isActive: 1
