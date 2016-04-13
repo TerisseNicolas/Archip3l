@@ -15,6 +15,8 @@ public class Game : MonoBehaviour
 
     public const int nbChallengesMax = 3;
 
+    private bool CoroutineInitOfGame = false;
+
     void Awake()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
@@ -50,6 +52,14 @@ public class Game : MonoBehaviour
     {
         Client_MessageSystemStartOfGame(this, null);
     }
+    void Update()
+    {
+        if(this.CoroutineInitOfGame)
+        {
+            StartCoroutine(this.GlobalResourceManager.initResources());
+            this.CoroutineInitOfGame = false;
+        }
+    }
 
     private void Client_MessageSystemStartOfGame(object sender, MessageEventArgs e)
     {
@@ -61,7 +71,7 @@ public class Game : MonoBehaviour
     private void Client_MessageSystemStartInitOfGame(object sender, MessageEventArgs e)
     {
         Debug.Log("Start initializing game");
-        StartCoroutine(this.GlobalResourceManager.initResources());
+        this.CoroutineInitOfGame = true;
     }
     private void GlobalResourceManager_MessageInitialized(object sender, System.EventArgs e)
     {

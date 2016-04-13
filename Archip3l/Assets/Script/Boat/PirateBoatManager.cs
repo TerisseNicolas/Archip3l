@@ -25,6 +25,9 @@ public class PirateBoatManager : MonoBehaviour
     private bool launchBoats = false;
     private bool raisingFlag = false;
 
+    //Fixes coroutine bug
+    private bool CoroutineBoat = false;
+
     void Awake()
     {
         rnd = new System.Random();
@@ -48,12 +51,17 @@ public class PirateBoatManager : MonoBehaviour
             Destroy(GameObject.Find("Explosion1(Clone)"), 0.5f);
         if (GameObject.Find("sinkingTrail(Clone)") != null)
             Destroy(GameObject.Find("sinkingTrail(Clone)"), 0.5f);
+        if(this.CoroutineBoat)
+        {
+            StartCoroutine("StartLaunchingPirateBoats");
+            this.CoroutineBoat = false;
+        }
     }
 
     private void Client_MessagePiratesIncreaseRateEvent(object sender, MessageEventArgs e)
     {
         launchBoats = true;
-        StartCoroutine("StartLaunchingPirateBoats");
+        this.CoroutineBoat = true;
     }
 
     private void Client_MessagePiratesStartArrivalEvent(object sender, MessageEventArgs e)
