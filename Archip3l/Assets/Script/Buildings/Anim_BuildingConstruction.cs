@@ -17,7 +17,7 @@ public class Anim_BuildingConstruction : MonoBehaviour
     {
         for (;;)
         {
-            //SoundPlayer.Instance.playConstructionSound();
+            SoundPlayer.Instance.playConstructionSound();
             for (int i = 0; i < 23; i++)
             {
                 RotateLeft();
