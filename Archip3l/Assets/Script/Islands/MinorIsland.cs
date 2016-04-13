@@ -406,9 +406,9 @@ public class MinorIsland : InputSource
             this.coroutineDisturbance = true;
         }
     }
+
     private IEnumerator disturbanceAnimation()
     {
-        disturbancePresent = true;
         Transform animationTransform;
         if (MinorIsland.DisturbanceCount%2 == 0)
         {
@@ -421,9 +421,13 @@ public class MinorIsland : InputSource
 
         animationTransform.name = "Disturbance_" + nameMinorIsland;
         animationTransform.transform.SetParent(this.transform);
+        animationTransform.position = this.transform.parent.position;
+        //rotation of image according to the place of the island
+        char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
+        if (id == '1' || id == '2')
+            animationTransform.Rotate(Vector3.forward * 180);
         yield return new WaitForSeconds(10);
-
-        disturbancePresent = false;
+        
         Destroy(animationTransform.gameObject);
     }
 
@@ -582,8 +586,10 @@ public class MinorIsland : InputSource
 
         if(this.coroutineDisturbance)
         {
+            disturbancePresent = true;
             StartCoroutine(disturbanceAnimation());
             this.coroutineDisturbance = false;
+            disturbancePresent = false;
         }
     }
 
