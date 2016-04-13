@@ -105,11 +105,10 @@ public class ResourceManager : MonoBehaviour
             }
         }
         //The board shouldn't notice the network of an gloabl stock update
-        //if(this.ChangeResourceStockEvent != null)
-        //{
-
-        //    this.ChangeResourceStockEvent(this, new ChangeResourceStockEventArgs { resourceType = resourceType, stock = resource.Stock });
-        //}
+        if(this.ChangeResourceStockEvent != null)
+        {
+            this.ChangeResourceStockEvent(this, new ChangeResourceStockEventArgs { resourceType = resourceType, stock = resource.Stock });
+        }
         return result;
     }
     public Resource getResource(TypeResource resourceType)
