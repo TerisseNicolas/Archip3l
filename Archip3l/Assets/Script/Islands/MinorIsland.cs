@@ -398,11 +398,11 @@ public class MinorIsland : InputSource
 
     private void Client_MessageDisturbanceEvent(object sender, MessageEventArgs e)
     {
-        MinorIsland.DisturbanceCount += 1;
         char islandNumber = (char)e.message.Split('@')[1][1];
 
         if (this.nameMinorIsland.Contains(islandNumber.ToString()) || islandNumber == '5')
         {
+            MinorIsland.DisturbanceCount += 1;
             this.coroutineDisturbance = true;
         }
     }
@@ -420,7 +420,7 @@ public class MinorIsland : InputSource
         }
 
         animationTransform.name = "Disturbance_" + nameMinorIsland;
-        animationTransform.transform.SetParent(this.transform);
+        animationTransform.transform.SetParent(this.transform.parent);
         yield return new WaitForSeconds(10);
 
         disturbancePresent = false;

@@ -16,8 +16,6 @@ public class GlobalInfo : MonoBehaviour {
         this.Client.MessageSystemTeamNameEvent += Client_MessageSystemTeamNameEvent;
 
         //Watch out, the client should not be used after the scene changes
-
-        NetDebugger.Instance.
     }
 
     private void Client_MessageSystemTeamNameEvent(object sender, MessageEventArgs e)
