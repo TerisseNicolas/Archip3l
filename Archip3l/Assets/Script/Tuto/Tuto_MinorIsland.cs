@@ -17,6 +17,7 @@ public class Tuto_MinorIsland : InputSource {
     Canvas startCanvas;
 
     private bool begun = false;
+    public Tuto_Building building;
 
     public string nameTuto_MinorIsland;
 

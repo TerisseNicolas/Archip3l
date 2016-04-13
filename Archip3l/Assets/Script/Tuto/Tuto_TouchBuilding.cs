@@ -19,14 +19,14 @@ public class Tuto_TouchBuilding : InputSource
     {
         Vector3 pos;
         island = GameObject.Find(this.transform.parent.parent.parent.name).GetComponent<Tuto_MinorIsland>();
-        building = GameObject.Find(island.nameTuto_MinorIsland + "_Harbor").GetComponent<Tuto_Building>();
+        island.building = GameObject.Find(island.nameTuto_MinorIsland + "_Harbor").GetComponent<Tuto_Building>();
+        building = island.building;
 
         switch (this.name)
         {
             case "Upgrade":
                 if (island.harborMoved)
                 {
-                    Destroy(GameObject.Find(this.transform.parent.parent.name));
                     Canvas upgradeTuto_BuildingWindowCanvasPrefab = Resources.Load<Canvas>("Prefab/Tuto/UpgradeBuildingWindowCanvasTuto");
                     Canvas upgradeTuto_BuildingWindowCanvas = Instantiate(upgradeTuto_BuildingWindowCanvasPrefab);
                     upgradeTuto_BuildingWindowCanvas.name = "UpgradeBuildingWindowCanvas_" + building.name;
@@ -74,6 +74,7 @@ public class Tuto_TouchBuilding : InputSource
                                 break;
                         }
                     }
+                    Destroy(GameObject.Find(this.transform.parent.parent.name));
                 }
                 else
                 {
@@ -98,7 +99,6 @@ public class Tuto_TouchBuilding : InputSource
             case "Move":
                 if (!island.harborMoved)
                 {
-                    Destroy(GameObject.Find(this.transform.parent.parent.name));
                     island.displayPopup("Appuyez sur l'endroit où placer le bâtiment", 3);
                     island.moveBuilding = true;
                 }
@@ -109,6 +109,7 @@ public class Tuto_TouchBuilding : InputSource
                     else
                         island.displayPopup("Maintenant, améliorez le port.", 5);
                 }
+                Destroy(GameObject.Find(this.transform.parent.parent.name));
                 break;
         }
     }
