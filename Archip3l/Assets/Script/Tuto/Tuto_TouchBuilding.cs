@@ -19,7 +19,8 @@ public class Tuto_TouchBuilding : InputSource
     {
         Vector3 pos;
         island = GameObject.Find(this.transform.parent.parent.parent.name).GetComponent<Tuto_MinorIsland>();
-        building = GameObject.Find(island.nameTuto_MinorIsland + "_Harbor").GetComponent<Tuto_Building>();
+        island.building = GameObject.Find(island.nameTuto_MinorIsland + "_Harbor").GetComponent<Tuto_Building>();
+        building = island.building;
 
         switch (this.name)
         {
