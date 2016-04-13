@@ -420,16 +420,12 @@ public class MinorIsland : InputSource
         }
 
         animationTransform.name = "Disturbance_" + nameMinorIsland;
-<<<<<<< HEAD
         animationTransform.transform.SetParent(this.transform.parent);
-=======
-        animationTransform.transform.SetParent(this.transform);
         animationTransform.position = this.transform.parent.position;
         //rotation of image according to the place of the island
         char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
         if (id == '1' || id == '2')
             animationTransform.Rotate(Vector3.forward * 180);
->>>>>>> 40b4ecf501100ac8fc75b7844dde6666b8383dbf
         yield return new WaitForSeconds(10);
         
         Destroy(animationTransform.gameObject);
