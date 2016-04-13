@@ -96,13 +96,13 @@ public class MinorIsland : InputSource
                 harborPosition = new Vector3(106, -71, -3);
                 break;
         }
-        buildingManager.createBuilding(TypeBuilding.Harbor, harborPosition);
         displayPopup("C'est parti !", 3);
 
     }
 
     public void Start()
     {
+        buildingManager.createBuilding(TypeBuilding.Harbor, harborPosition);
         if (nameMinorIsland == "sous_ile_1")
         {
             Canvas startCanvasPrefab = Resources.Load<Canvas>("Prefab/StartCanvas");
