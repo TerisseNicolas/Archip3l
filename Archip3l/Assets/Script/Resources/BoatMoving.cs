@@ -153,6 +153,9 @@ public class BoatMoving : InputSource
 
         float alpha = 90 - (Mathf.Rad2Deg * Mathf.Atan2(y1 - transform.position.y, x1 - transform.position.x));
         transform.rotation = Quaternion.Euler(0f, 0f, -alpha);
+        Vector3 v = transform.position;
+        v.z = -3;
+        transform.position = v;
 
     }
 
