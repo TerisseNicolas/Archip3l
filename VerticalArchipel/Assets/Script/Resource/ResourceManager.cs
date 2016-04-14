@@ -27,7 +27,7 @@ public class ResourceManager : MonoBehaviour
         }
 
         //Todo delete this instruction and the function
-        StartCoroutine("test");
+        //StartCoroutine("test");
     }
 
     IEnumerator test()
@@ -127,7 +127,8 @@ public class ResourceManager : MonoBehaviour
         }
         return result;
     }
-    public Resource getResource(TypeResource resourceType)
+
+public Resource getResource(TypeResource resourceType)
     {
         foreach (Resource item in this.Resources)
         {
@@ -144,11 +145,13 @@ public class ResourceManager : MonoBehaviour
         this.client.sendData("@30306");
     }
 }
+
 public class ChangeResourceStockEventArgs : EventArgs
 {
     public TypeResource resourceType;
     public float stock;
 }
+
 public class ChangeResourceProductionEventArgs : EventArgs
 {
     public TypeResource resourceType;

@@ -32,7 +32,6 @@ public class Game : MonoBehaviour
     private void Client_MessageSystemEndOfGameEvent(object sender, MessageEventArgs e)
     {
         //End of the game
-        //Todo : fade animation?
         SceneSupervisor.Instance.loadEndScenes();
     }
 }
