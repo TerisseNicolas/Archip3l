@@ -188,7 +188,6 @@ namespace TouchScript.Utils.Debug
         public static int DrawLineWithCross(int? id, Vector3 start, Vector3 end, float crossRelativePosition = 0.5f, Vector3? scale = null, Color? color = null, float duration = 0, bool depthTest = false)
         {
             var lines = new List<Line>() {new Line(start, end)};
-            // TODO: Calculate cross rotation
             lines.AddRange(createCrossLines(Matrix4x4.TRS(Vector3.Lerp(start, end, crossRelativePosition), Quaternion.identity, scale ?? Vector3.one)));
             return drawFigure(id, lines, color ?? Color.white, duration, depthTest);
         }
