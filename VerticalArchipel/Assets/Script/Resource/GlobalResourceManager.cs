@@ -60,6 +60,7 @@ public class GlobalResourceManager : MonoBehaviour
     }
     private void _ChangeResourceStockEvent(object sender, ChangeResourceStockEventArgs e)
     {
+        Debug.Log("Global resource manager : change resource stock event : " + e.resourceType.ToString() + " : " + e.stock.ToString());
         Resource resource = this.getResource(e.resourceType);
         if (resource != null)
         {
@@ -68,7 +69,6 @@ public class GlobalResourceManager : MonoBehaviour
             {
                 this.resourceCountForScoreCurrent = this.resourceCountForScoreInit;
                 this.Client.sendData("@30505@" + 50.ToString());
-
             }
             resource.changeStock(e.stock);
         }

@@ -23,8 +23,23 @@ public class ResourceManager : MonoBehaviour
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
             //To be modified to 0;
-            this.addResource(resourceType, 10, 5);
+            this.addResource(resourceType, 0, 0);
         }
+
+        //Todo delete this instruction and the function
+        //StartCoroutine("test");
+    }
+
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(2);
+        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@22355@Gold@45" }, TypeResource.Gold, 45);
+        yield return new WaitForSeconds(2);
+        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@23355@Tourism@2" }, TypeResource.Tourism, 2);
+        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@24355@Tourism@7" }, TypeResource.Tourism, 7);
+        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@23355@Tourism@15" }, TypeResource.Tourism, 120);
+        yield return new WaitForSeconds(2);
+        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@22355@Gold@45" }, TypeResource.Gold, 45);
     }
 
     public bool addResource(TypeResource resourceType, int quantity, int production = 0)
@@ -80,6 +95,7 @@ public class ResourceManager : MonoBehaviour
     }
     public bool changeResourceStock(object sender, MessageEventArgs e, TypeResource resourceType, int value)
     {
+        //Debug.Log("Changing resource stock : " + resourceType.ToString() + " - " + value.ToString());
         char islandNumber = ((string)e.message.Split('@').GetValue(1))[1];
         if (!gameObject.name.Contains(islandNumber))
         {
@@ -105,9 +121,9 @@ public class ResourceManager : MonoBehaviour
             }
         }
         //The board shouldn't notice the network of an gloabl stock update
-        if(this.ChangeResourceStockEvent != null)
+        if(this.ChangeResourceStockEvent != null && result)
         {
-            this.ChangeResourceStockEvent(this, new ChangeResourceStockEventArgs { resourceType = resourceType, stock = resource.Stock });
+            this.ChangeResourceStockEvent(this, new ChangeResourceStockEventArgs { resourceType = resourceType, stock = value }); // resource.Stock });
         }
         return result;
     }
