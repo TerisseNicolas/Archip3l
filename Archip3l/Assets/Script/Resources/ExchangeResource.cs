@@ -139,8 +139,8 @@ public class ExchangeResource : InputSource
                     }
                     island.otherWindowOpen = true;
                     //rotation if other side of the table
-                    char id = this.island.nameMinorIsland[this.island.nameMinorIsland.Length - 1];
-                    if (id == '1' || id == '2')
+                    char idIsland = this.island.nameMinorIsland[this.island.nameMinorIsland.Length - 1];
+                    if (idIsland == '1' || idIsland == '2')
                         listIslandsCanvas.transform.Rotate(Vector3.forward * 180);
                     break;
                 case "Close":

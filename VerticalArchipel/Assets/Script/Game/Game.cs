@@ -38,6 +38,7 @@ public class Game : MonoBehaviour
         this.DisturbanceCount = 0;
 
         this.ChallengerTimer = gameObject.GetComponent<ChallengeTimer>();
+        //Todo : keep the good one
         //this.ChallengerTimer.Init(30f);
         this.ChallengerTimer.Init(5f);
         this.ChallengerTimer.FinalTick += ChallengerTimer_FinalTick;
@@ -46,8 +47,7 @@ public class Game : MonoBehaviour
         this.GlobalResourceManager.MessageInitialized += GlobalResourceManager_MessageInitialized;
 
         this.Score = gameObject.GetComponent<Score>();
-        //To be activated, the object come from the previous scene
-        //this.GlobalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
+        this.GlobalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
     }
 
     void Start()
@@ -101,11 +101,13 @@ public class Game : MonoBehaviour
 
     private void Timer_PirateBoatsIncreaseTick(object sender, System.EventArgs e)
     {
+        Debug.LogWarning("Increase pirate boats appearance rate");
         this.Client.sendData("@40001");
     }
 
     private void Timer_PirateBoatsStartTick(object sender, System.EventArgs e)
     {
+        Debug.LogWarning("Launch pirate boats");
         this.Client.sendData("@40002");
     }
 

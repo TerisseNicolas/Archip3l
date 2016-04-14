@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Game : MonoBehaviour
 {
-    public Client Client;
+    private Client Client;
 
     void Awake()
     {
@@ -17,6 +17,13 @@ public class Game : MonoBehaviour
         //Launch initialization of the game
         this.Client.sendData("@30006");
     }
+
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(4);
+        Client_MessageSystemEndOfGameEvent(null, null);
+
+    }
     private void Client_MessageSystemStartInitofGameAnswerEvent(object sender, MessageEventArgs e)
     {
         //Launch game
@@ -25,6 +32,7 @@ public class Game : MonoBehaviour
     private void Client_MessageSystemEndOfGameEvent(object sender, MessageEventArgs e)
     {
         //End of the game
+        //Todo : fade animation?
         SceneSupervisor.Instance.loadEndScenes();
     }
 }
