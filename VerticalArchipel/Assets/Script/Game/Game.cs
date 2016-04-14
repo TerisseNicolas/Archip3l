@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Game : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Game : MonoBehaviour
     private GlobalInfo GlobalInfo;
 
     public const int nbChallengesMax = 3;
+
+    private List<GameObject> ChallengesGameObjects;
 
     private bool CoroutineInitOfGame = false;
 
@@ -48,6 +51,11 @@ public class Game : MonoBehaviour
 
         this.Score = gameObject.GetComponent<Score>();
         this.GlobalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
+
+        for (int i = 1; i <= nbChallengesMax; i++)
+        {
+            this.ChallengesGameObjects.Add(GameObject.Find("Challenge" + i.ToString()));
+        }
     }
 
     void Start()
@@ -86,12 +94,12 @@ public class Game : MonoBehaviour
     }
     private void ChallengerTimer_FinalTick(object sender, System.EventArgs e)
     {
-        for (int i = 1; i <= nbChallengesMax; i++)
+        for (int i = 0; i < nbChallengesMax; i++)
         {
-            if (GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled == false)
+            if (this.ChallengesGameObjects[i].GetComponent<SpriteRenderer>().enabled == false)
             {
-                GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled = true;
-                GameObject.Find("Challenge" + i.ToString()).GetComponent<BoxCollider>().enabled = true;
+                this.ChallengesGameObjects[i].GetComponent<SpriteRenderer>().enabled = true;
+                this.ChallengesGameObjects[i].GetComponent<BoxCollider>().enabled = true;
             }
         }
 

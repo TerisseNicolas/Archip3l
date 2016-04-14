@@ -15,6 +15,15 @@ public class FinalFireWork : MonoBehaviour
         }
     }
 
+    void Destroy()
+    {
+        this.StopFire();
+        for (int i = 1; i < 5; i++)
+        {
+            Destroy(GameObject.Find("PS_" + i.ToString()));
+        }
+    }
+
     public void StartFire()
     {
         foreach (ParticleSystem ps in this.PSList)
