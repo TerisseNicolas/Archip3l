@@ -71,7 +71,7 @@ public class Resource : ScriptableObject {
     public bool changeProduction(float valueToAdd)
     {
         //Stat resource
-        if (Enum.IsDefined(typeof(TypeStat), this.TypeResource))
+        if (Enum.IsDefined(typeof(TypeStat), this.TypeResource.ToString()))
         {
             if (this.Production + valueToAdd >= 0)
             {

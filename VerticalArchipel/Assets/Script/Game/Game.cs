@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Game : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Game : MonoBehaviour
 
     public const int nbChallengesMax = 3;
 
+    private List<GameObject> ChallengesGameObjects;
+
     private bool CoroutineInitOfGame = false;
 
     void Awake()
@@ -24,8 +27,8 @@ public class Game : MonoBehaviour
         this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
 
         this.Timer = gameObject.GetComponent<Timer>();
-        //this.Timer.Init(0.1f * 60f);
-        this.Timer.Init(13f * 60f);
+        this.Timer.Init(2f * 60f);
+        //this.Timer.Init(13f * 60f);
         this.Timer.FinalTick += Timer_FinalTick;
         this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
         this.Timer.PirateBoatsIncreaseTick += Timer_PirateBoatsIncreaseTick;
@@ -48,6 +51,11 @@ public class Game : MonoBehaviour
 
         this.Score = gameObject.GetComponent<Score>();
         this.GlobalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
+
+        for (int i = 1; i <= nbChallengesMax; i++)
+        {
+            this.ChallengesGameObjects.Add(GameObject.Find("Challenge" + i.ToString()));
+        }
     }
 
     void Start()
@@ -86,12 +94,12 @@ public class Game : MonoBehaviour
     }
     private void ChallengerTimer_FinalTick(object sender, System.EventArgs e)
     {
-        for (int i = 1; i <= nbChallengesMax; i++)
+        for (int i = 0; i < nbChallengesMax; i++)
         {
-            if (GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled == false)
+            if (this.ChallengesGameObjects[i].GetComponent<SpriteRenderer>().enabled == false)
             {
-                GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled = true;
-                GameObject.Find("Challenge" + i.ToString()).GetComponent<BoxCollider>().enabled = true;
+                this.ChallengesGameObjects[i].GetComponent<SpriteRenderer>().enabled = true;
+                this.ChallengesGameObjects[i].GetComponent<BoxCollider>().enabled = true;
             }
         }
 

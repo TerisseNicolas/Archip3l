@@ -11,6 +11,7 @@ public class ContactPointLayer : MonoBehaviour
 
     private Client Client;
 
+    private FinalFireWork finalFireWork;
     private List<ContactPoint> ListContactPoint;
 
     private ContactPoint ContactPoint1;
@@ -22,6 +23,7 @@ public class ContactPointLayer : MonoBehaviour
         this.Completed = false;
 
         this.Client = GameObject.Find("Network").GetComponent<Client>();
+        this.finalFireWork = GameObject.Find("WonLayer").GetComponent<FinalFireWork>();
         this.ListContactPoint = new List<ContactPoint>();
 
         for(int i = 1; i<=NumberOfContact; i++)
@@ -42,7 +44,7 @@ public class ContactPointLayer : MonoBehaviour
         this.ActualContactActivated += 1;
         if (this.ActualContactActivated == this.NumberOfContact && !this.Completed)
         {
-            GameObject.Find("WonLayer").GetComponent<FinalFireWork>().StartFire();
+            this.finalFireWork.StartFire();
             this.Client.sendData("@30921");
         }
     }
