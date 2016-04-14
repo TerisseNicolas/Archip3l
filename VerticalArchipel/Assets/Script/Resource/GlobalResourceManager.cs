@@ -16,7 +16,7 @@ public class GlobalResourceManager : MonoBehaviour
 
     public event EventHandler<EventArgs> MessageInitialized;
 
-    void Awake()
+    void Start()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
 

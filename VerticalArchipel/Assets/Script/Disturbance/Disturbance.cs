@@ -28,7 +28,7 @@ public class Disturbance : InputSource
     }
 
 
-    void Awake()
+    void Start()
     {
         //close other windows
         if (ChallengeVertical.challengeWindowPresent)
@@ -61,15 +61,13 @@ public class Disturbance : InputSource
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.counter = GameObject.Find("DisturbanceCounter").GetComponent<Text>();
         this.disturbanceText = GameObject.Find("DisturbanceText").GetComponent<Text>();
-    }
 
-    void Start()
-    {
-        if(name.Contains("sous_ile_1"))
+        if (name.Contains("sous_ile_1"))
         {
             StartCoroutine(counterDecrement());
         }
     }
+
 
     IEnumerator counterDecrement()
     {

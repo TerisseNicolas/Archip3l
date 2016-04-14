@@ -60,7 +60,7 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemTeamNameEvent;
 
 
-    void Awake()
+    void Start()
     {
 
         this.filePath = "port.txt";

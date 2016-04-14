@@ -7,7 +7,7 @@ public class SceneSupervisor : MonoBehaviour {
     private Client Client;
     private string sceneName = string.Empty;
 
-    void Awake()
+    void Start()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemChangeSceneEvent += Client_MessageSystemChangeSceneEvent;

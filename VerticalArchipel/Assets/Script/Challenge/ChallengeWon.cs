@@ -23,7 +23,7 @@ public class ChallengeWon : InputSource
     private Client client { get; set; }
 
 
-    void Awake()
+    void Start()
     {
         this.client = GameObject.Find("Network").GetComponent<Client>();
         ChallengeWon.challengeWonWindowPresent = true;

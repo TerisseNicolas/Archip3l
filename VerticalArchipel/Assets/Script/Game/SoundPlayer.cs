@@ -34,7 +34,7 @@ public class SoundPlayer : MonoBehaviour
     public AudioClip startGameSound;
     public AudioClip endGameSound;
 
-    void Awake()
+    void Start()
     {
         DontDestroyOnLoad(transform.gameObject);
         if (Instance != null)
