@@ -80,6 +80,13 @@ public class MinorIsland : InputSource
         this.Client.MessageDisturbanceEvent += Client_MessageDisturbanceEvent;
         this.Client.MessageSystemEndOfGameEvent += Client_MessageSystemEndOfGameEvent;
 
+        
+        displayPopup("C'est parti !", 3);
+
+    }
+
+    public void Start()
+    {
         Vector3 harborPosition;
         switch (this.nameMinorIsland)
         {
@@ -96,13 +103,9 @@ public class MinorIsland : InputSource
                 harborPosition = new Vector3(106, -71, -3);
                 break;
         }
-        displayPopup("C'est parti !", 3);
-
-    }
-
-    public void Start()
-    {
         buildingManager.createBuilding(TypeBuilding.Harbor, harborPosition);
+
+
         if (nameMinorIsland == "sous_ile_1")
         {
             Canvas startCanvasPrefab = Resources.Load<Canvas>("Prefab/StartCanvas");
@@ -420,16 +423,12 @@ public class MinorIsland : InputSource
         }
 
         animationTransform.name = "Disturbance_" + nameMinorIsland;
-<<<<<<< HEAD
-        animationTransform.transform.SetParent(this.transform.parent);
-=======
         animationTransform.transform.SetParent(this.transform);
         animationTransform.position = this.transform.parent.position;
         //rotation of image according to the place of the island
         char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
         if (id == '1' || id == '2')
             animationTransform.Rotate(Vector3.forward * 180);
->>>>>>> 40b4ecf501100ac8fc75b7844dde6666b8383dbf
         yield return new WaitForSeconds(10);
         
         Destroy(animationTransform.gameObject);
