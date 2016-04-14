@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SurvivorScript : MonoBehaviour
 {
-	void Awake()
+	void Start()
     {
         DontDestroyOnLoad(transform.gameObject);
     }

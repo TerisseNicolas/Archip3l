@@ -6,7 +6,7 @@ public class GlobalInfo : MonoBehaviour {
     public string teamName;
     private Client Client;
 
-    void Awake()
+    void Start()
     {
         //Keep the game object at scene change
         DontDestroyOnLoad(transform.gameObject);

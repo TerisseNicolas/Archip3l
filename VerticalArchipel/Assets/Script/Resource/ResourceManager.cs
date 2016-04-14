@@ -12,7 +12,7 @@ public class ResourceManager : MonoBehaviour
 
     private Client client;
 
-    void Awake()
+    void Start()
     {
         this.Resources = new List<Resource>();
         this.client = GameObject.Find("Network").GetComponent<Client>();

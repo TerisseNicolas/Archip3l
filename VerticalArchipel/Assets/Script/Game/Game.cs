@@ -20,7 +20,7 @@ public class Game : MonoBehaviour
 
     private bool CoroutineInitOfGame = false;
 
-    void Awake()
+    void Start()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemStartOfGameEvent += Client_MessageSystemStartOfGame;
@@ -56,12 +56,10 @@ public class Game : MonoBehaviour
         {
             this.ChallengesGameObjects.Add(GameObject.Find("Challenge" + i.ToString()));
         }
-    }
 
-    void Start()
-    {
         Client_MessageSystemStartOfGame(this, null);
     }
+    
     void Update()
     {
         if(this.CoroutineInitOfGame)

@@ -11,7 +11,7 @@ public class main : MonoBehaviour
     public const int nbChallengesMax = 3;
     public const int nbNotificationsMax = 8;
 
-    void Awake()
+    void Start()
     {
         //hiding challenges and notifications at the beginning
         for (int i = 1; i <= nbChallengesMax; i++)

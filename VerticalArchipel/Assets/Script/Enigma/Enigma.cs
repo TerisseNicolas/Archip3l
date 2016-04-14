@@ -53,7 +53,7 @@ public class Enigma : InputSource
 
     }
 
-    void Awake()
+    void Start()
     {
         this.client = GameObject.Find("Network").GetComponent<Client>();
 

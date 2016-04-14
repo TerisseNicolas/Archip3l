@@ -24,7 +24,7 @@ public class ContactPoint : InputSource
 
     public bool touched = false;
 
-    void Awake()
+    void Start()
     {
         this.ParticleSystem = gameObject.GetComponentInChildren<ParticleSystem>();
         this.ParticleSystemEmit = this.ParticleSystem.emission;

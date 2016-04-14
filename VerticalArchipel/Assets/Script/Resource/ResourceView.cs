@@ -7,7 +7,7 @@ public class ResourceView : MonoBehaviour {
 
     private GlobalResourceManager resourceManager;
 
-    void Awake()
+    void Start()
     {
         this.resourceManager = gameObject.GetComponent<GlobalResourceManager>();
     }

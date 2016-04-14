@@ -5,7 +5,7 @@ public class TimerView : MonoBehaviour
 {
     Timer Timer;
 
-    void Awake()
+    void Start()
     {
         GameObject game = GameObject.Find("Game");
         this.Timer = game.GetComponent<Timer>();

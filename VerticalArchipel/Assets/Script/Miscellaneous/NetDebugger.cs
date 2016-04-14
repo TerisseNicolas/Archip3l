@@ -11,7 +11,7 @@ public class NetDebugger : MonoBehaviour {
 
 
 
-    void Awake()
+    void Start()
     {
         this.filePath = "Debug.txt";
         if (Instance != null)
