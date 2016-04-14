@@ -33,7 +33,7 @@ public class Resource : ScriptableObject {
     }
     public bool changeStock(float value)
     {
-        Debug.Log("Changing stock : " + this.TypeResource.ToString() + " stock " + this.Stock.ToString() + "production " + this.Production.ToString() + " value arg " + value.ToString() );
+        //Debug.Log("Changing stock : " + this.TypeResource.ToString() + " stock " + this.Stock.ToString() + "production " + this.Production.ToString() + " value arg " + value.ToString() );
         //Stat resource
         if (Enum.IsDefined(typeof(TypeStat), this.TypeResource.ToString()))
         {

@@ -60,7 +60,7 @@ public class GlobalResourceManager : MonoBehaviour
     }
     private void _ChangeResourceStockEvent(object sender, ChangeResourceStockEventArgs e)
     {
-        Debug.Log("Global resource manager : change resource stock event : " + e.resourceType.ToString() + " : " + e.stock.ToString());
+        //Debug.Log("Global resource manager : change resource stock event : " + e.resourceType.ToString() + " : " + e.stock.ToString());
         Resource resource = this.getResource(e.resourceType);
         if (resource != null)
         {

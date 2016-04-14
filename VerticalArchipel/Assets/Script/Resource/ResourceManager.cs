@@ -27,7 +27,7 @@ public class ResourceManager : MonoBehaviour
         }
 
         //Todo delete this instruction and the function
-        //StartCoroutine("test");
+        StartCoroutine("test");
     }
 
     IEnumerator test()
