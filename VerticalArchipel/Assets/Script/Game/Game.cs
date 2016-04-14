@@ -52,6 +52,7 @@ public class Game : MonoBehaviour
         this.Score = gameObject.GetComponent<Score>();
         this.GlobalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
 
+        this.ChallengesGameObjects = new List<GameObject>();
         for (int i = 1; i <= nbChallengesMax; i++)
         {
             this.ChallengesGameObjects.Add(GameObject.Find("Challenge" + i.ToString()));

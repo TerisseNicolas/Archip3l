@@ -7,6 +7,8 @@ public class SceneSupervisor : MonoBehaviour {
     private Client Client;
     public static SceneSupervisor Instance;
 
+    //public 
+
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
@@ -18,6 +20,11 @@ public class SceneSupervisor : MonoBehaviour {
         Instance = this;
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         //this.Client.MessageSystemChangeSceneEvent += Client_MessageSystemChangeSceneEvent;
+    }
+
+    void Update()
+    {
+
     }
 
     public void loadLoadingScene()
