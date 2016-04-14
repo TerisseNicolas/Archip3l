@@ -5,7 +5,7 @@ public class EnigmaManager : MonoBehaviour {
 
     private Client Client;
 
-    void awake()
+    void Awake()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         //this.Client.MessaC
