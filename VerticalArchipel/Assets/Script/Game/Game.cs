@@ -24,8 +24,8 @@ public class Game : MonoBehaviour
         this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
 
         this.Timer = gameObject.GetComponent<Timer>();
-        //this.Timer.Init(0.1f * 60f);
-        this.Timer.Init(13f * 60f);
+        this.Timer.Init(2f * 60f);
+        //this.Timer.Init(13f * 60f);
         this.Timer.FinalTick += Timer_FinalTick;
         this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
         this.Timer.PirateBoatsIncreaseTick += Timer_PirateBoatsIncreaseTick;

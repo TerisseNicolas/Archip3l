@@ -65,7 +65,10 @@ public class Disturbance : InputSource
 
     void Start()
     {
-        StartCoroutine(counterDecrement());
+        if(name.Contains("sous_ile_1"))
+        {
+            StartCoroutine(counterDecrement());
+        }
     }
 
     IEnumerator counterDecrement()
