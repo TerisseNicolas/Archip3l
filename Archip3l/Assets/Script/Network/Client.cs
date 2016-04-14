@@ -20,7 +20,7 @@ public class Client : MonoBehaviour
     private int sendingPort = 1523;
     private int listeningPort = 5050;
     private string serverIP = "172.18.136.49";
-    //private string serverIP = "192.168.1.91";
+    //private string serverIP = "172.18.136.40";
 
     //All events raised
     private delegate void DelegateEvent(object send, EventArgs e);
