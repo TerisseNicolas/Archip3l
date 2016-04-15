@@ -64,6 +64,7 @@ public class ResourceManager : MonoBehaviour
             return true;
         }
     }
+
     private bool changeResourceProduction(object sender, MessageEventArgs e, TypeResource resourceType, int value)
     {
         //int islandNumber = (Int32.Parse((string)e.message.Split('@').GetValue(1)) % 10000)/100;
