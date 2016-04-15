@@ -40,12 +40,21 @@ public class ResourceManager : MonoBehaviour
     {
         if(_MessageResourceProductionUpdateEvent)
         {
-            changeResourceProduction(null, this._MessageResourceProductionUpdateEventEventArgs, (TypeResource)Enum.Parse(typeof(TypeResource), (string)this._MessageResourceProductionUpdateEventEventArgs.message.Split('@').GetValue(2)), Int32.Parse((string)this._MessageResourceProductionUpdateEventEventArgs.message.Split('@').GetValue(3)));
+            try
+            {
+                changeResourceProduction(null, this._MessageResourceProductionUpdateEventEventArgs, (TypeResource)Enum.Parse(typeof(TypeResource), (string)this._MessageResourceProductionUpdateEventEventArgs.message.Split('@').GetValue(2)), Int32.Parse((string)this._MessageResourceProductionUpdateEventEventArgs.message.Split('@').GetValue(3)));
+            }
+            catch(ArgumentException e) { }
+                       
             this._MessageResourceProductionUpdateEvent = false;
         }
         if(_MessageResourceStockUpdateEvent)
         {
-            changeResourceStock(null, this._MessageResourceStockUpdateEventEventArgs, (TypeResource)Enum.Parse(typeof(TypeResource), (string)this._MessageResourceStockUpdateEventEventArgs.message.Split('@').GetValue(2)), Int32.Parse((string)this._MessageResourceStockUpdateEventEventArgs.message.Split('@').GetValue(3)));
+            try
+            {
+                changeResourceStock(null, this._MessageResourceStockUpdateEventEventArgs, (TypeResource)Enum.Parse(typeof(TypeResource), (string)this._MessageResourceStockUpdateEventEventArgs.message.Split('@').GetValue(2)), Int32.Parse((string)this._MessageResourceStockUpdateEventEventArgs.message.Split('@').GetValue(3)));
+            }
+            catch(ArgumentException e) { }
             this._MessageResourceStockUpdateEvent = false;
         }
     }
