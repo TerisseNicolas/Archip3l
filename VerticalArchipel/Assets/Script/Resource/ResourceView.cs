@@ -11,8 +11,10 @@ public class ResourceView : MonoBehaviour {
     {
         this.resourceManager = gameObject.GetComponent<GlobalResourceManager>();
     }
+
     void FixedUpdate()
     {
+        
         foreach(Resource res in this.resourceManager.Resources)
         {
             //Debug.Log()
