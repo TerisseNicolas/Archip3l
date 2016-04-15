@@ -168,8 +168,8 @@ public class ResourceManager : MonoBehaviour
                     //if (this.minorIsland.nameMinorIsland.Contains("1"))
                     //    Debug.Log("After " + i.ToString() + " " + res.Stock.ToString());
                     //Debug.Log("Island : " + this.minorIsland + "\tProduction : " + res.Production + "\tStock  : " + res.TypeResource.ToString() + " : " + res.Stock);
-                    this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + res.Stock);
-                    this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "345@" + res.TypeResource.ToString() + "@" + res.Production);
+                    this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + res.Production);
+                    //this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "345@" + res.TypeResource.ToString() + "@" + res.Production);
                 }
             }
             yield return new WaitForSeconds(5f);
@@ -177,10 +177,11 @@ public class ResourceManager : MonoBehaviour
     }
     private void Client_MessageResourceInitEvent(object sender, MessageEventArgs e)
     {
-        foreach(Resource resource in this.Resources)
+        string islandNumber = this.minorIsland.nameMinorIsland.Split('_')[2];
+        foreach (Resource resource in this.Resources)
         {
-            this.Client.sendData("@20355@" + resource.TypeResource.ToString() + "@" + resource.Stock);
-            this.Client.sendData("@20345@" + resource.TypeResource.ToString() + "@" + resource.Production);
+            this.Client.sendData("@2" + islandNumber + "355@" + resource.TypeResource.ToString() + "@" + resource.Stock);
+            this.Client.sendData("@2" + islandNumber + "345@" + resource.TypeResource.ToString() + "@" + resource.Production);
         }
     }
 }

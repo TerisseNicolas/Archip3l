@@ -116,7 +116,7 @@ public class ResourceManager : MonoBehaviour
         {
             if (value >= 0)
             {
-                this.addResource(resourceType, value);
+                this.addResource(resourceType, 0, value);
                 result = true;
             }
             else
