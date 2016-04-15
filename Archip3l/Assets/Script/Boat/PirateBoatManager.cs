@@ -60,13 +60,13 @@ public class PirateBoatManager : MonoBehaviour
 
     private void Client_MessagePiratesIncreaseRateEvent(object sender, MessageEventArgs e)
     {
-        launchBoats = true;
-        this.CoroutineBoat = true;
+        this.raisingFlag = true;
     }
 
     private void Client_MessagePiratesStartArrivalEvent(object sender, MessageEventArgs e)
     {
-        this.raisingFlag = true;
+        launchBoats = true;
+        this.CoroutineBoat = true;
     }
 
     IEnumerator StartLaunchingPirateBoats()

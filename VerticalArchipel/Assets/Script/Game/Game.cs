@@ -59,7 +59,7 @@ public class Game : MonoBehaviour
             this.ChallengesGameObjects.Add(GameObject.Find("Challenge" + i.ToString()));
         }
 
-        Client_MessageSystemStartOfGame(this, null);
+        //Client_MessageSystemStartOfGame(this, null);
     }
     
     void Update()

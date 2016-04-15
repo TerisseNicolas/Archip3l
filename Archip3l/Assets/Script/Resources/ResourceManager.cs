@@ -12,6 +12,8 @@ public class ResourceManager : MonoBehaviour
 
     private Client Client;
 
+    private bool InitRout = false;
+
     public void init(MinorIsland island)
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
@@ -56,6 +58,15 @@ public class ResourceManager : MonoBehaviour
     void Start()
     {
         StartCoroutine("updateStocks");
+    }
+
+    void Update()
+    {
+        if(this.InitRout)
+        {
+            StartCoroutine("InitRoutine");
+            this.InitRout = false;
+        }
     }
 
     private void Client_MessageResourceStockReceivedEvent(object sender, MessageEventArgs e)
@@ -179,7 +190,7 @@ public class ResourceManager : MonoBehaviour
     }
     private void Client_MessageResourceInitEvent(object sender, MessageEventArgs e)
     {
-        StartCoroutine("InitRoutine");
+        this.InitRout = true;
     }
 
     IEnumerator InitRoutine()
