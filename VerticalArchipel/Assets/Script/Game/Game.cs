@@ -24,7 +24,7 @@ public class Game : MonoBehaviour
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemStartOfGameEvent += Client_MessageSystemStartOfGame;
-        this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
+        //this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
 
         this.Timer = gameObject.GetComponent<Timer>();
         this.Timer.Init(2f * 60f);
@@ -77,10 +77,11 @@ public class Game : MonoBehaviour
         this.Timer.StartTimer();
         this.TimerDisturbance.StartTimer();
         this.ChallengerTimer.StartTimer();
+        this.Client_MessageSystemStartInitOfGame(this, null);
     }
     private void Client_MessageSystemStartInitOfGame(object sender, MessageEventArgs e)
     {
-        Debug.Log("Start initializing game");
+        this.Client.sendData("@Start initializing game");
         this.CoroutineInitOfGame = true;
     }
     private void GlobalResourceManager_MessageInitialized(object sender, System.EventArgs e)

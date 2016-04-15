@@ -154,6 +154,7 @@ public class ResourceManager : MonoBehaviour
     IEnumerator updateStocks()
     {
         int i = 0;
+        yield return new WaitForSeconds(Int32.Parse(this.minorIsland.nameMinorIsland.Split('_')[2]));
         for (;;)
         {
             i++;
@@ -169,19 +170,28 @@ public class ResourceManager : MonoBehaviour
                     //    Debug.Log("After " + i.ToString() + " " + res.Stock.ToString());
                     //Debug.Log("Island : " + this.minorIsland + "\tProduction : " + res.Production + "\tStock  : " + res.TypeResource.ToString() + " : " + res.Stock);
                     this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + res.Production);
+                    yield return new WaitForSeconds(0.02f);
                     //this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "345@" + res.TypeResource.ToString() + "@" + res.Production);
                 }
             }
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(4f);
         }
     }
     private void Client_MessageResourceInitEvent(object sender, MessageEventArgs e)
     {
+        StartCoroutine("InitRoutine");
+    }
+
+    IEnumerator InitRoutine()
+    {
+        yield return new WaitForSeconds(Int32.Parse(this.minorIsland.nameMinorIsland.Split('_')[2]) -1);
         string islandNumber = this.minorIsland.nameMinorIsland.Split('_')[2];
         foreach (Resource resource in this.Resources)
         {
             this.Client.sendData("@2" + islandNumber + "355@" + resource.TypeResource.ToString() + "@" + resource.Stock);
+            yield return new WaitForSeconds(0.02f);
             this.Client.sendData("@2" + islandNumber + "345@" + resource.TypeResource.ToString() + "@" + resource.Production);
+            yield return new WaitForSeconds(0.02f);
         }
     }
 }
