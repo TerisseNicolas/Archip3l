@@ -4,26 +4,17 @@ using System.Collections;
 public class Game : MonoBehaviour
 {
     private Client Client;
+    
 
-    void Awake()
+    void Start()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemEndOfGameEvent += Client_MessageSystemEndOfGameEvent;
         this.Client.MessageSystemStartInitOfGameAnswerEvent += Client_MessageSystemStartInitofGameAnswerEvent;
-    }    
-
-    void Start()
-    {
         //Launch initialization of the game
         this.Client.sendData("@30006");
     }
-
-    IEnumerator test()
-    {
-        yield return new WaitForSeconds(4);
-        Client_MessageSystemEndOfGameEvent(null, null);
-
-    }
+    
     private void Client_MessageSystemStartInitofGameAnswerEvent(object sender, MessageEventArgs e)
     {
         //Launch game
