@@ -10,19 +10,8 @@ public class Loading : InputSource {
 
     void OnMouseDownSimulation()
     {
-        SceneManager.LoadScene("menuScene");
+        SceneSupervisor.Instance.loadMenuScenes(false);;
     }
-
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 
 
     //-------------- TUIO -----------------------------------------------------------------------

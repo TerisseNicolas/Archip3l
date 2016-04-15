@@ -153,19 +153,26 @@ public class ResourceManager : MonoBehaviour
 
     IEnumerator updateStocks()
     {
+        int i = 0;
         for (;;)
         {
+            i++;
             foreach (Resource res in this.Resources)
             {
-                res.changeStock(res.Production);
                 if (res.Production != 0)
                 {
+                    //if (this.minorIsland.nameMinorIsland.Contains("1"))
+                    //    Debug.Log("Updating" + i.ToString() + "Before" + res.Stock.ToString());
+                    //res.changeStock(res.Production);
+                    this.changeResourceStock(res.TypeResource, res.Production);
+                    //if (this.minorIsland.nameMinorIsland.Contains("1"))
+                    //    Debug.Log("After " + i.ToString() + " " + res.Stock.ToString());
                     //Debug.Log("Island : " + this.minorIsland + "\tProduction : " + res.Production + "\tStock  : " + res.TypeResource.ToString() + " : " + res.Stock);
                     this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + res.Stock);
                     this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "345@" + res.TypeResource.ToString() + "@" + res.Production);
                 }
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(5f);
         }
     }
     private void Client_MessageResourceInitEvent(object sender, MessageEventArgs e)

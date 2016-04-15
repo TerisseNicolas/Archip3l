@@ -282,7 +282,8 @@ public class Building : InputSource
 
             yield return new WaitForSeconds(this.constructionTime);
             this.buildState = 1;
-            StartCoroutine("updateStocks");
+            this.changeProduction((int)this.resourceProduced.Production);
+            //StartCoroutine("updateStocks");
             Destroy(buildingConstructionTransform.gameObject);
 
             //Todo : score to add must be checked
@@ -303,14 +304,14 @@ public class Building : InputSource
     {
         return this.minorIsland.resourceManager.changeResourceStock(this.resourceProduced.TypeResource, value);
     }
-    IEnumerator updateStocks()
-    {
-        for (;;)
-        {
-            this.changeStock(this.resourceProduced.Production);
-            yield return new WaitForSeconds(5f);
-        }
-    }
+    //IEnumerator updateStocks()
+    //{
+    //    for (;;)
+    //    {
+    //        this.changeStock(this.resourceProduced.Production);
+    //        yield return new WaitForSeconds(5f);
+    //    }
+    //}
 
     void OnMouseDownSimulation()
     {
