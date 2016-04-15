@@ -122,15 +122,15 @@ public class Disturbance : InputSource
 
         StartCoroutine(wait());
 
+        Disturbance.disturbanceWindowOpen = false;
         Destroy(GameObject.Find("Disturbance"), 3.1f);
     }
 
     IEnumerator wait()
     {
         yield return new WaitForSeconds(3);
-        Disturbance.disturbanceWindowOpen = false;
         Enigma.enimgasToBeDone = 2;
-        main.addEnigma();
+        //main.addEnigma();
     }
 
 
