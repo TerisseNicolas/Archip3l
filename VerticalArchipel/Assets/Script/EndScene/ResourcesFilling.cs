@@ -9,7 +9,8 @@ public class ResourcesFilling : MonoBehaviour
 	void Start ()
     {
         GameObject resourceObject = GameObject.Find("Resources");
-        resourceObject.transform.position = new Vector3(0, 0, 12);
+        //resourceObject.transform.position = new Vector3(0, 0, 12);
+        resourceObject.GetComponent<Canvas>().enabled = false;
         this.GRM = resourceObject.GetComponent<GlobalResourceManager>();
 
         //fill island stats
