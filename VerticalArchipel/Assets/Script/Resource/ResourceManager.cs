@@ -12,6 +12,12 @@ public class ResourceManager : MonoBehaviour
 
     private Client client;
 
+    private bool _MessageResourceProductionUpdateEvent = false;
+    private MessageEventArgs _MessageResourceProductionUpdateEventEventArgs;
+
+    private bool _MessageResourceStockUpdateEvent = false;
+    private MessageEventArgs _MessageResourceStockUpdateEventEventArgs;
+
     void Start()
     {
         this.Resources = new List<Resource>();
@@ -30,14 +36,30 @@ public class ResourceManager : MonoBehaviour
         //StartCoroutine("test");
     }
 
+    void Update()
+    {
+        if(_MessageResourceProductionUpdateEvent)
+        {
+            changeResourceProduction(null, this._MessageResourceProductionUpdateEventEventArgs, (TypeResource)Enum.Parse(typeof(TypeResource), (string)this._MessageResourceProductionUpdateEventEventArgs.message.Split('@').GetValue(2)), Int32.Parse((string)this._MessageResourceProductionUpdateEventEventArgs.message.Split('@').GetValue(3)));
+            this._MessageResourceProductionUpdateEvent = false;
+        }
+        if(_MessageResourceStockUpdateEvent)
+        {
+            changeResourceStock(null, this._MessageResourceStockUpdateEventEventArgs, (TypeResource)Enum.Parse(typeof(TypeResource), (string)this._MessageResourceStockUpdateEventEventArgs.message.Split('@').GetValue(2)), Int32.Parse((string)this._MessageResourceStockUpdateEventEventArgs.message.Split('@').GetValue(3)));
+            this._MessageResourceStockUpdateEvent = false;
+        }
+    }
+
     private void Client_MessageResourceProductionUpdateEvent(object sender, MessageEventArgs e)
     {
-        changeResourceProduction(sender, e, (TypeResource)Enum.Parse(typeof(TypeResource), (string)e.message.Split('@').GetValue(2)), Int32.Parse((string)e.message.Split('@').GetValue(3))); ;
+        this._MessageResourceProductionUpdateEvent = true;
+        this._MessageResourceProductionUpdateEventEventArgs = e;
     }
 
     private void Client_MessageResourceStockUpdateEvent(object sender, MessageEventArgs e)
     {
-        changeResourceStock(sender, e, (TypeResource)Enum.Parse(typeof(TypeResource), (string)e.message.Split('@').GetValue(2)), Int32.Parse((string)e.message.Split('@').GetValue(3)));
+        this._MessageResourceStockUpdateEvent = true;
+        this._MessageResourceStockUpdateEventEventArgs = e;
     }
 
     IEnumerator test()

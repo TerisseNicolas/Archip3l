@@ -14,7 +14,7 @@ public class ContactPointLayer : MonoBehaviour
     private FinalFireWork finalFireWork;
     private List<ContactPoint> ListContactPoint;
 
-    private ContactPoint ContactPoint1;
+    private bool startFire = false;
 
     void Awake()
     {
@@ -34,6 +34,14 @@ public class ContactPointLayer : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if(this.startFire)
+        {
+            this.finalFireWork.StartFire();
+        }
+    }
+
     private void ContactPoint_ContactReleased(object sender, System.EventArgs e)
     {
         this.ActualContactActivated -= 1;
@@ -44,7 +52,7 @@ public class ContactPointLayer : MonoBehaviour
         this.ActualContactActivated += 1;
         if (this.ActualContactActivated == this.NumberOfContact && !this.Completed)
         {
-            this.finalFireWork.StartFire();
+            this.startFire = true;
             this.Client.sendData("@30921");
         }
     }

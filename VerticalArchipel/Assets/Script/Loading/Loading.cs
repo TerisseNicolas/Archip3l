@@ -11,17 +11,28 @@ public class Loading : InputSource
 
     private Client Client;
 
+    private bool touchedEvent = false;
+
     void Start()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemChangeSceneEvent += Client_MessageSystemChangeSceneEvent;
     }
 
+    void Update()
+    {
+        if(touchedEvent)
+        {
+            SceneManager.LoadScene("verticalPlayingScene");
+            this.touchedEvent = false;
+        }
+    }
+
     private void Client_MessageSystemChangeSceneEvent(object sender, MessageEventArgs e)
     {
         if(e.message.Split('@')[2] == "PlayingScene")
         {
-            SceneManager.LoadScene("verticalPlayingScene");
+            this.touchedEvent = true;
         }
     }
 
