@@ -117,10 +117,12 @@ public class GlobalResourceManager : MonoBehaviour
     {
         //Sync all resource before the start of the game
         //sub resource manager
-        foreach(ResourceManager rm in this.ResourceManagers)
-        {
-            rm.initResources();
-        }
+        this.Client.sendData("@30306");
+
+        //foreach(ResourceManager rm in this.ResourceManagers)
+        //{
+        //    rm.initResources();
+        //}
 
         //Wait all anwsers from the network to initialize island resource manager
         yield return new WaitForSeconds(5f);
