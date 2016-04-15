@@ -436,6 +436,8 @@ public class MinorIsland : InputSource
 
     private void Client_MessageSystemEndOfGameEvent(object sender, MessageEventArgs e)
     {
+        if (nbAnswersChallenges == 0)
+            nbAnswersChallenges = 1;
         this.Client.sendData("@3" + this.nameMinorIsland.Split('_')[2] + "441@" + (this.nbGoodAnswersChallenges / this.nbAnswersChallenges).ToString());
     }
 

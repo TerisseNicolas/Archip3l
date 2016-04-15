@@ -151,6 +151,7 @@ public class SceneSupervisor : MonoBehaviour {
     }
     public void loadEndScenes()
     {
+        Debug.Log("load end scene");
         this._loadEndScenes = true;
     }
     public void loadResultScenes(bool independent)
