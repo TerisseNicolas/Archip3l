@@ -65,7 +65,6 @@ public class Client : MonoBehaviour
 
         this.filePath = "port.txt";
         loadPort();
-        Debug.Log(listeningPort);
         DontDestroyOnLoad(transform.gameObject);
 
         _client = new UdpClient();

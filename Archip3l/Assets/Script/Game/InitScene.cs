@@ -11,6 +11,6 @@ public class InitScene : MonoBehaviour
     IEnumerator launchGame()
     {
         yield return new WaitForSeconds(0.1f);
-        SceneManager.LoadScene("loading");
+        SceneSupervisor.Instance.loadLoadingScene();
     }
 }
