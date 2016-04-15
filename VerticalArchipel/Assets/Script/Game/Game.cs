@@ -24,7 +24,7 @@ public class Game : MonoBehaviour
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemStartOfGameEvent += Client_MessageSystemStartOfGame;
-        //this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
+        this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
 
         this.Timer = gameObject.GetComponent<Timer>();
         this.Timer.Init(2f * 60f);
@@ -59,7 +59,7 @@ public class Game : MonoBehaviour
             this.ChallengesGameObjects.Add(GameObject.Find("Challenge" + i.ToString()));
         }
 
-        //Client_MessageSystemStartOfGame(this, null);
+        Client_MessageSystemStartOfGame(this, null);
     }
     
     void Update()
@@ -77,7 +77,7 @@ public class Game : MonoBehaviour
         this.Timer.StartTimer();
         this.TimerDisturbance.StartTimer();
         this.ChallengerTimer.StartTimer();
-        this.Client_MessageSystemStartInitOfGame(this, null);
+        //this.Client_MessageSystemStartInitOfGame(this, null);
     }
     private void Client_MessageSystemStartInitOfGame(object sender, MessageEventArgs e)
     {
