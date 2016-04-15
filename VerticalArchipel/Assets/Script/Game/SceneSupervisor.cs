@@ -40,6 +40,9 @@ public class SceneSupervisor : MonoBehaviour {
                 case "BoardLoadingScene":
                     SceneManager.LoadScene("loading");
                     break;
+                case "BoardEndScene":
+                    SceneManager.LoadScene("endScene");
+                    break;
             }
             this.sceneName = string.Empty;
         }
