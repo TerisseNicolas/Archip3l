@@ -18,7 +18,6 @@ public class Briefing : InputSource
 
     void Awake()
     {
-        SoundPlayer.Instance.playBriefingLetterSound();
         this.logoSprite = GameObject.Find("Logo");
 
         this.initScale = this.logoSprite.transform.localScale; // new Vector3(1.491848f, 1.495401f, 1f);
@@ -35,6 +34,11 @@ public class Briefing : InputSource
 
         this.animationFlag = false;
         this.animationLaunchedFlag = false;
+    }
+
+    void Start()
+    {
+        SoundPlayer.Instance.playBriefingLetterSound();
     }
 
     void Update()
