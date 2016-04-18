@@ -1,12 +1,1 @@
-sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/verticalPlayingScene.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/verticalPlayingScene.unity
-=======
-- path: Assets/Scenes/loading.unity
->>>>>>> 0e0e20268a2b88c5b8a732c198741360139e7495
->>>>>>> 118b8aadf2fb8ed0842a8b95d8bb51034849c011
-  isLoaded: 1
-  isActive: 1
+sceneSetups: []

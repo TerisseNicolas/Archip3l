@@ -85,15 +85,9 @@ public class Client : MonoBehaviour
     IEnumerator test(int temps, string mes)
     {
         yield return new WaitForSeconds(4);
-<<<<<<< HEAD
         ProcessMessage("server@30002");
         //ProcessMessage("server@23394@Food@25");
     }
-=======
-        ProcessMessage(mes);
-    }        
-    
->>>>>>> 118b8aadf2fb8ed0842a8b95d8bb51034849c011
 
  public void loadPort()
     {
