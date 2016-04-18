@@ -80,7 +80,6 @@ public class MinorIsland : InputSource
         this.Client.MessageDisturbanceEvent += Client_MessageDisturbanceEvent;
         this.Client.MessageSystemEndOfGameEvent += Client_MessageSystemEndOfGameEvent;
 
-        
         displayPopup("C'est parti !", 3);
 
     }

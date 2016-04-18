@@ -85,8 +85,8 @@ public class Client : MonoBehaviour
     IEnumerator test()
     {
         yield return new WaitForSeconds(4);
-        ProcessMessage("server@23394@Wood@25");
-        ProcessMessage("server@23394@Food@25");
+        ProcessMessage("server@30002");
+        //ProcessMessage("server@23394@Food@25");
     }
 
  public void loadPort()
@@ -212,10 +212,10 @@ public class Client : MonoBehaviour
             case 22161:
             case 23161:
             case 24161:
-            case 21211:
-            case 22211:
-            case 23211:
-            case 24211:
+            //case 21211:
+            //case 22211:
+            //case 23211:
+            //case 24211:
                 MessageEvent += MessageBuildingDestructionEvent;
                 break;
             case 21331:

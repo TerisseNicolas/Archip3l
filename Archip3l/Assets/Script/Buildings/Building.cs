@@ -287,9 +287,12 @@ public class Building : InputSource
             Destroy(buildingConstructionTransform.gameObject);
 
             //Todo : score to add must be checked
-            this.Client.sendData("@30505@" + 100.ToString());
             yield return new WaitForSeconds(Int32.Parse(minorIsland.nameMinorIsland.Split('_')[2])-1);
+            this.Client.sendData("@30505@" + 100.ToString());
+            yield return new WaitForSeconds(0.1f);
             this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "345@" + resourceProduced.TypeResource.ToString() + "@" + resourceProduced.Production);
+            yield return new WaitForSeconds(0.1f);
+            this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "111@" + this.TypeBuilding.ToString());
 
         }
         else

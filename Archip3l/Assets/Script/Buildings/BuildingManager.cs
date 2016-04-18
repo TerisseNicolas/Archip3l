@@ -11,6 +11,12 @@ public class BuildingManager : MonoBehaviour
     public Transform buildingPrefab;
     public List<Building> buildingList { get; private set; }
 
+    private Client Client;
+
+    void Start()
+    {
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+    }
     public void init(MinorIsland island)
     {
         this.minorIsland = island;
@@ -73,6 +79,8 @@ public class BuildingManager : MonoBehaviour
         buildingToDestroy.quantityProduced = 0;
         //remove the building in the list of this manager
         this.buildingList.Remove(this.getBuilding(buildingType));
+        this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "161@" + buildingType.ToString());
+        //update resource production in island resource manager)
         //Delete game object
         yield return StartCoroutine(fadeAndDestroy(objectToDestroy));
     }
