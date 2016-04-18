@@ -11,6 +11,8 @@ using TouchScript.InputSources;
 
 public class ChallengeUpgrade : InputSource
 {
+    static public bool clicked = false;
+    private bool error = false;
     public string question { get; private set; }
     public string answer { get; private set; }
     public string explainations { get; private set; }
@@ -55,46 +57,64 @@ public class ChallengeUpgrade : InputSource
 
         string[] row = CSV_reader.GetRandomLine(csv.text);
 
-        this.question = row[0];
-        addLineBreaks();
-        this.answer = row[1];
-        this.explainations = row[2];
-        this.propositions = new string[nbPropositions];
-        this.propositions[0] = row[3];
-        this.propositions[1] = row[4];
-        if (this.nbPropositions == 3)
-            this.propositions[2] = row[5];
-
-
-        foreach (Text text in canvasChallenge.GetComponentsInChildren<Text>())
+        try
         {
-            switch (text.name)
-            {
-                case "Question":
-                    text.text = this.question;
-                    break;
-                case "Result":
-                    resultText = text;
-                    break;
-                case "Proposition0":
-                    if (typeChallenge == TypeChallenge.QCM)
-                        text.text = this.propositions[0];
-                    break;
-                case "Proposition1":
-                    if (typeChallenge == TypeChallenge.QCM)
-                        text.text = this.propositions[1];
-                    break;
-                case "Proposition2":
-                    if (typeChallenge == TypeChallenge.QCM)
-                        text.text = this.propositions[2];
-                    break;
-            }
+            this.question = row[0];
         }
-
-        foreach (SpriteRenderer sp in canvasChallenge.GetComponentsInChildren<SpriteRenderer>())
+        catch (Exception e)
         {
-            if (sp.name == "background")
-                this.background = sp;
+            error = true;
+        }
+        finally
+        {
+            if (!error)
+            {
+                addLineBreaks();
+                this.answer = row[1];
+                this.explainations = row[2];
+                this.propositions = new string[nbPropositions];
+                this.propositions[0] = row[3];
+                this.propositions[1] = row[4];
+                if (this.nbPropositions == 3)
+                    this.propositions[2] = row[5];
+
+
+                foreach (Text text in canvasChallenge.GetComponentsInChildren<Text>())
+                {
+                    switch (text.name)
+                    {
+                        case "Question":
+                            text.text = this.question;
+                            break;
+                        case "Result":
+                            resultText = text;
+                            break;
+                        case "Proposition0":
+                            if (typeChallenge == TypeChallenge.QCM)
+                                text.text = this.propositions[0];
+                            break;
+                        case "Proposition1":
+                            if (typeChallenge == TypeChallenge.QCM)
+                                text.text = this.propositions[1];
+                            break;
+                        case "Proposition2":
+                            if (typeChallenge == TypeChallenge.QCM)
+                                text.text = this.propositions[2];
+                            break;
+                    }
+                }
+
+                foreach (SpriteRenderer sp in canvasChallenge.GetComponentsInChildren<SpriteRenderer>())
+                {
+                    if (sp.name == "background")
+                        this.background = sp;
+                }
+            }
+            else
+            {
+                minorIsland.displayPopup("Oups ! Une erreur s'eest produite, veuillez ré-essayer ...", 3);
+                Destroy(GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland));
+            }
         }
     }
 
@@ -143,45 +163,49 @@ public class ChallengeUpgrade : InputSource
 
     void OnMouseDownSimulation()
     {
-        refreshAttributes();
-        string clickedText = this.name.Split('_')[0];
-
-        //modify Result.text     
-        if (clickedText == answer)
+        if (!clicked)
         {
-            resultText.text = "Réponse correcte !";
-            goodAnswer = true;
-            minorIsland.nbGoodAnswersChallenges++;
-        }
-        else {
-            resultText.text = "Réponse incorrecte !";
-            goodAnswer = false;
-        }
-        minorIsland.nbAnswersChallenges++;
+            clicked = true;
+            refreshAttributes();
+            string clickedText = this.name.Split('_')[0];
 
-        //modify Propositions background
-        if (typeChallenge == TypeChallenge.VraiFaux)
-        {
-            foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
+            //modify Result.text     
+            if (clickedText == answer)
             {
-                if (background.name == answer + "_background")
-                    background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + answer + "Clic");
-                else if (background.name.Contains("_background"))
-                    background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + background.name.Split('_')[0] + "Grise");
+                resultText.text = "Réponse correcte !";
+                goodAnswer = true;
+                minorIsland.nbGoodAnswersChallenges++;
             }
-        }
-        else
-        {
-            foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
-            {
-                if (background.name == answer + "_background")
-                    background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + answer + "Clic");
-                else if (background.name.Contains("_background"))
-                    background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + background.name.Split('_')[0] + "Grise");
+            else {
+                resultText.text = "Réponse incorrecte !";
+                goodAnswer = false;
             }
-        }
+            minorIsland.nbAnswersChallenges++;
 
-        StartCoroutine(wait());
+            //modify Propositions background
+            if (typeChallenge == TypeChallenge.VraiFaux)
+            {
+                foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
+                {
+                    if (background.name == answer + "_background")
+                        background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + answer + "Clic");
+                    else if (background.name.Contains("_background"))
+                        background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + background.name.Split('_')[0] + "Grise");
+                }
+            }
+            else
+            {
+                foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
+                {
+                    if (background.name == answer + "_background")
+                        background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + answer + "Clic");
+                    else if (background.name.Contains("_background"))
+                        background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + background.name.Split('_')[0] + "Grise");
+                }
+            }
+
+            StartCoroutine(wait());
+        }
 
     }
 
@@ -238,6 +262,7 @@ public class ChallengeUpgrade : InputSource
         GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland).GetComponent<Transform>().position = new Vector3(0, 0, -15);
         yield return new WaitForSeconds(building.constructionTime + 2);
 
+        clicked = false;
         Destroy(GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland));
 
     }
