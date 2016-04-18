@@ -33,20 +33,6 @@ public class Resource : ScriptableObject{
 
     public bool changeProduction(float valueToAdd)
     {
-        //Stat resource
-        if (Enum.IsDefined(typeof(TypeStat), this.TypeResource.ToString()))
-        {
-            if (this.Production + valueToAdd >= 0)
-            {
-                this.Production += valueToAdd/1000;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        //Concrete resource
         if (this.Production + valueToAdd >= 0)
         {
             this.Production += valueToAdd;
@@ -59,30 +45,6 @@ public class Resource : ScriptableObject{
     }
     public bool changeStock(float value)
     {
-        //Stat resource
-        if (Enum.IsDefined(typeof(TypeStat), this.TypeResource.ToString()))
-        {
-            float estimated = this.Stock + value * 0.01f;
-            if (estimated>= 0 && estimated<=1)
-            {
-                this.Stock = estimated;
-                return true;
-            }
-            else
-            {
-                estimated = this.Stock + value * 0.0001f;
-                if (estimated >= 0 && estimated <= 1)
-                {
-                    this.Stock = estimated;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
-        //Concrete resource
         if (this.Stock + value >= 0)
         {
             this.Stock += value;

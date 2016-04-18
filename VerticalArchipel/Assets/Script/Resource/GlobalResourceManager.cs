@@ -133,17 +133,8 @@ public class GlobalResourceManager : MonoBehaviour
             foreach (Resource resource in rm.Resources)
             {
                 Resource resourceGlobalManager = getResource(resource.TypeResource);
-                //If not a stat
-                if (!Enum.IsDefined(typeof(TypeStat), resource.TypeResource.ToString()))
-                {
-                    _ChangeResourceStockEvent(null, new ChangeResourceStockEventArgs { resourceType = resourceGlobalManager.TypeResource, stock = resource.Stock });
-                    _ChangeResourceProductionEvent(null, new ChangeResourceProductionEventArgs { resourceType = resourceGlobalManager.TypeResource, production = resource.Production });
-                }
-                else
-                {
-                    _ChangeResourceStockEvent(null, new ChangeResourceStockEventArgs { resourceType = resourceGlobalManager.TypeResource, stock = resource.Stock / 4});
-                    _ChangeResourceProductionEvent(null, new ChangeResourceProductionEventArgs { resourceType = resourceGlobalManager.TypeResource, production = resource.Production /4 });
-                }
+                _ChangeResourceStockEvent(null, new ChangeResourceStockEventArgs { resourceType = resourceGlobalManager.TypeResource, stock = resource.Stock / 4 });
+                _ChangeResourceProductionEvent(null, new ChangeResourceProductionEventArgs { resourceType = resourceGlobalManager.TypeResource, production = resource.Production / 4 });
             }
         }
         if(this.MessageInitialized != null)
