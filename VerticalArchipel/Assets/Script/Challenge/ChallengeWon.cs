@@ -45,7 +45,7 @@ public class ChallengeWon : InputSource
         string islandToSend = this.name.Split('-')[1];
         string resource = char.ToUpper(resourceWon[0]).ToString() + resourceWon.Substring(1);
         GameObject.Find("Network").GetComponent<Client>().sendData("@2" + islandToSend.Split('_')[2] + "394@" + resource + "@" + ChallengeWon.quantityWon.ToString());
-        //main.addNotification(ChallengeWon.quantityWon.ToString() + " " + main.translateResourceName(resource) + " envoyés !");
+        //main.addNotification(ChallengeWon.quantityWon.ToString() + " " + main.translateResourceName(resource) + " envoyés à "+ islandToSend +" !");
         ChallengeWon.challengeWonWindowPresent = false;
 
         ChallengeWon.challengeWonWindowPresent = false;
