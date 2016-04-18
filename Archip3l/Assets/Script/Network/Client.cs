@@ -15,7 +15,8 @@ public class Client : MonoBehaviour
     private bool _continue;
     private Thread _thListener;
 
-    private string filePath;
+    private string filePath1;
+    private string filePath2;
 
     private int sendingPort = 1523;
     private int listeningPort = 5050;
@@ -63,8 +64,10 @@ public class Client : MonoBehaviour
     void Awake()
     {
 
-        this.filePath = "port.txt";
+        this.filePath1 = "port.txt";
+        this.filePath2 = "ip.txt";
         loadPort();
+        loadIP();
         DontDestroyOnLoad(transform.gameObject);
 
         _client = new UdpClient();
@@ -88,9 +91,9 @@ public class Client : MonoBehaviour
  public void loadPort()
     {
         string line;
-        if (File.Exists(this.filePath))
+        if (File.Exists(this.filePath1))
         {
-            StreamReader file = new StreamReader(this.filePath);
+            StreamReader file = new StreamReader(this.filePath1);
             while ((line = file.ReadLine()) != null)
             {
                 listeningPort = Int32.Parse(line);
@@ -99,7 +102,27 @@ public class Client : MonoBehaviour
         }
         else
         {
-            StreamWriter file = new StreamWriter(this.filePath);
+            StreamWriter file = new StreamWriter(this.filePath1);
+            file.Close();
+        }
+    }
+
+    public void loadIP()
+    {
+        string line;
+        if (File.Exists(this.filePath2))
+        {
+            StreamReader file = new StreamReader(this.filePath2);
+            while ((line = file.ReadLine()) != null)
+            {
+                serverIP = line;
+                Debug.Log(serverIP);
+            }
+            file.Close();
+        }
+        else
+        {
+            StreamWriter file = new StreamWriter(this.filePath2);
             file.Close();
         }
     }
