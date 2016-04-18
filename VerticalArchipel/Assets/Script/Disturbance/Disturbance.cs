@@ -106,6 +106,7 @@ public class Disturbance : InputSource
         {
             string island = Disturbance.islandChosen.Split('-')[1];
             this.Client.sendData("@3" + island.Split('_')[2] + "770");
+            Debug.Log("disturbance sent to : "+ island);
             for (int i = 1; i <= 4; i++)
             {
                 if (("Disturbance-sous_ile_" + i.ToString()) != Disturbance.islandChosen)
