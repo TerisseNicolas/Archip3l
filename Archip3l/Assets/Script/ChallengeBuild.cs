@@ -11,7 +11,8 @@ using TouchScript.InputSources;
 
 public class ChallengeBuild : InputSource
 {
-
+    static public bool clicked = false;
+    private bool error = false;
     public string question { get; private set; }
     public string answer { get; private set; }
     public string explainations { get; private set; }
@@ -52,52 +53,69 @@ public class ChallengeBuild : InputSource
         Debug.Log("File : " + typeChallenge.ToString() + "_" + typeBuilding.ToString());
 
         string[] row = CSV_reader.GetRandomLine(csv.text);
-        this.question = row[0];
-        addLineBreaks();
-        this.answer = row[1];
-        this.explainations = row[2];
-        this.propositions = new string[nbPropositions];
-        this.propositions[0] = row[3];
-        this.propositions[1] = row[4];
-        if (this.nbPropositions == 3)
-            this.propositions[2] = row[5];
-
-        //Debug.Log("Question : " + this.question);
-        //Debug.Log("Answer : " + this.answer);
-        //Debug.Log("Explainations : " + this.explainations);
-        //Debug.Log("Proposition0 : " + this.propositions[0]);
-        //Debug.Log("Proposition1 : " + this.propositions[1]);
-
-        //graphic part
-
-        foreach (Text text in canvasChallenge.GetComponentsInChildren<Text>())
+        try
         {
-            switch (text.name)
+            this.question = row[0];
+        }
+        catch (Exception e)
+        {
+            error = true;
+        }
+        finally
+        {
+            if (!error)
             {
-                case "Question":
-                    text.text = this.question;
-                    break;
-                case "Result":
-                    resultText = text;
-                    break;
-                case "Proposition0":
-                    if (typeChallenge == TypeChallenge.QCM)
-                        text.text = this.propositions[0];
-                    break;
-                case "Proposition1":
-                    if (typeChallenge == TypeChallenge.QCM)
-                        text.text = this.propositions[1];
-                    break;
-                case "Proposition2":
-                    if (typeChallenge == TypeChallenge.QCM)
-                        text.text = this.propositions[2];
-                    break;
+                addLineBreaks();
+                this.answer = row[1];
+                this.explainations = row[2];
+                this.propositions = new string[nbPropositions];
+                this.propositions[0] = row[3];
+                this.propositions[1] = row[4];
+                if (this.nbPropositions == 3)
+                    this.propositions[2] = row[5];
+
+                //Debug.Log("Question : " + this.question);
+                //Debug.Log("Answer : " + this.answer);
+                //Debug.Log("Explainations : " + this.explainations);
+                //Debug.Log("Proposition0 : " + this.propositions[0]);
+                //Debug.Log("Proposition1 : " + this.propositions[1]);
+
+                //graphic part
+
+                foreach (Text text in canvasChallenge.GetComponentsInChildren<Text>())
+                {
+                    switch (text.name)
+                    {
+                        case "Question":
+                            text.text = this.question;
+                            break;
+                        case "Result":
+                            resultText = text;
+                            break;
+                        case "Proposition0":
+                            if (typeChallenge == TypeChallenge.QCM)
+                                text.text = this.propositions[0];
+                            break;
+                        case "Proposition1":
+                            if (typeChallenge == TypeChallenge.QCM)
+                                text.text = this.propositions[1];
+                            break;
+                        case "Proposition2":
+                            if (typeChallenge == TypeChallenge.QCM)
+                                text.text = this.propositions[2];
+                            break;
+                    }
+                }
+
+
+                this.background = this.GetComponent<SpriteRenderer>();
+            }
+            else
+            {
+                minorIsland.displayPopup("Oups ! Une erreur s'eest produite, veuillez ré-essayer ...", 3);
+                Destroy(GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland));
             }
         }
-
-
-        this.background = this.GetComponent<SpriteRenderer>();
-
     }
 
 
@@ -145,45 +163,49 @@ public class ChallengeBuild : InputSource
 
     void OnMouseDownSimulation()
     {
-        refreshAttributes();
-        string clickedText = this.name.Split('_')[0];
+        if (!clicked)
+        {
+            clicked = true;
+            refreshAttributes();
+            string clickedText = this.name.Split('_')[0];
 
-        //modify Result.text     
-        if (clickedText == answer)
-        {
-            resultText.text = "Réponse correcte !";
-            goodAnswer = true;
-            minorIsland.nbGoodAnswersChallenges++;
-        }
-        else {
-            resultText.text = "Réponse incorrecte !";
-            goodAnswer = false;
-        }
-        minorIsland.nbAnswersChallenges++;
+            //modify Result.text     
+            if (clickedText == answer)
+            {
+                resultText.text = "Réponse correcte !";
+                goodAnswer = true;
+                minorIsland.nbGoodAnswersChallenges++;
+            }
+            else {
+                resultText.text = "Réponse incorrecte !";
+                goodAnswer = false;
+            }
+            minorIsland.nbAnswersChallenges++;
 
-        //modify Propositions background
-        if (typeChallenge == TypeChallenge.VraiFaux)
-        {
-            foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
+            //modify Propositions background
+            if (typeChallenge == TypeChallenge.VraiFaux)
             {
-                if (background.name == answer + "_background")
-                    background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + answer + "Clic");
-                else if (background.name.Contains("_background"))
-                    background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + background.name.Split('_')[0] + "Grise");
+                foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
+                {
+                    if (background.name == answer + "_background")
+                        background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + answer + "Clic");
+                    else if (background.name.Contains("_background"))
+                        background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + background.name.Split('_')[0] + "Grise");
+                }
             }
-        }
-        else
-        {
-            foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
+            else
             {
-                if (background.name == answer + "_background")
-                    background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + answer + "Clic");
-                else if (background.name.Contains("_background"))
-                    background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + background.name.Split('_')[0] + "Grise");
+                foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
+                {
+                    if (background.name == answer + "_background")
+                        background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + answer + "Clic");
+                    else if (background.name.Contains("_background"))
+                        background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + background.name.Split('_')[0] + "Grise");
+                }
             }
+
+            StartCoroutine(wait());
         }
-            
-        StartCoroutine(wait());
 
     }
 
@@ -234,6 +256,7 @@ public class ChallengeBuild : InputSource
 
         minorIsland.challengePresent = false;
 
+        clicked = false;
         Destroy(GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland));
     }
 
