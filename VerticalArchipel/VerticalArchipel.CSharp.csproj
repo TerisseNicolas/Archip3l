@@ -58,12 +58,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -86,6 +80,7 @@
     <Compile Include="Assets\Script\EndScene\ResourcesFilling.cs" />
     <Compile Include="Assets\Script\Enigma\Enigma.cs" />
     <Compile Include="Assets\Script\Enigma\EnigmaManager.cs" />
+    <Compile Include="Assets\Script\Game\Cleaner.cs" />
     <Compile Include="Assets\Script\Game\Game.cs" />
     <Compile Include="Assets\Script\Game\GlobalInfo.cs" />
     <Compile Include="Assets\Script\Game\InitScene.cs" />
