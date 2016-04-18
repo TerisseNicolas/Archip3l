@@ -12,9 +12,12 @@ public class Timer : MonoBehaviour
 
     public event EventHandler<EventArgs> PirateBoatsStartTick;
     public event EventHandler<EventArgs> PirateBoatsIncreaseTick;
-    //Todo keep good values
-    private float startPirateBoats = 30f; //7 * 60f;
-    private float increasePirateBoats = 60f; //10 * 60f;
+    //TODO keep good values
+    //temps RESTANT auquel sera appelé l'event :
+    private float startPirateBoats = 12*60f + 55f; //6 * 60f;
+    private bool launched = false;
+    private float increasePirateBoats = 60f; //3 * 60f;
+    private bool increased = false;
 
     public void Init(float seconds)
     {
@@ -41,16 +44,18 @@ public class Timer : MonoBehaviour
         if(this.Running)
         {
             this.TimeLeft -= Time.deltaTime;
-            if (this.TimeLeft < 0)
+            if (this.TimeLeft <= 0)
             {
                 this.StopTimer();
             }
-            if(this.TimeLeft == this.startPirateBoats && this.PirateBoatsStartTick != null)
+            if(!launched && this.TimeLeft-0.1 <= this.startPirateBoats && this.TimeLeft + 0.1 >= this.startPirateBoats && this.PirateBoatsStartTick != null)
             {
+                launched = true;
                 this.PirateBoatsStartTick(this, null);
             }
-            if(this.TimeLeft == this.increasePirateBoats && this.PirateBoatsIncreaseTick != null)
+            if(!increased && this.TimeLeft - 0.1 <= this.increasePirateBoats && this.TimeLeft + 0.1 >= this.increasePirateBoats && this.PirateBoatsIncreaseTick != null)
             {
+                increased = true;
                 this.PirateBoatsIncreaseTick(this, null);
             }
         }

@@ -113,7 +113,7 @@ public class ChallengeBuild : InputSource
             else
             {
                 minorIsland.displayPopup("Oups ! Une erreur s'eest produite, veuillez ré-essayer ...", 3);
-                Destroy(GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland));
+                Destroy(this.transform.parent.gameObject);
             }
         }
     }
@@ -257,7 +257,7 @@ public class ChallengeBuild : InputSource
         minorIsland.challengePresent = false;
 
         clicked = false;
-        Destroy(GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland));
+        Destroy(this.transform.parent.gameObject);
     }
 
 

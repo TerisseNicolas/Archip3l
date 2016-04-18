@@ -216,7 +216,7 @@ public class Building : InputSource
         StartCoroutine("build");
     }
 
-    public IEnumerator launchUpgradeAnimation()
+    public IEnumerator launchUpgradeAnimation(GameObject go)
     {
         this.buildState = 0;
         //Animation
@@ -234,6 +234,7 @@ public class Building : InputSource
             Debug.Log("toto");
         yield return new WaitForSeconds(this.constructionTime);
         this.buildState = 1;
+        Destroy(go);
         Destroy(buildingUpgradeTransform.gameObject);
     }
 
