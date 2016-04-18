@@ -25,7 +25,7 @@ public class RemoveBuilding : InputSource
             StartCoroutine(building.minorIsland.buildingManager.destroyBuilding(building.TypeBuilding));
         }
 
-        Destroy(GameObject.Find(this.transform.parent.parent.name));
+        Destroy(this.transform.parent.parent);
         island.nameBuildingTouchCanvas = string.Empty;
     }
 

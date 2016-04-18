@@ -28,7 +28,7 @@ public class TouchBuilding : InputSource
             case "Upgrade":
                 Canvas upgradeBuildingWindowCanvasPrefab = Resources.Load<Canvas>("Prefab/UpgradeBuildingWindowCanvas");
                 Canvas upgradeBuildingWindowCanvas = Instantiate(upgradeBuildingWindowCanvasPrefab);
-                upgradeBuildingWindowCanvas.name = "UpgradeBuildingWindowCanvas_" + building.name;
+                upgradeBuildingWindowCanvas.name = "UpgradeBuildingWindowCanvas_" + building.name + "_" + island.nameMinorIsland;
                 upgradeBuildingWindowCanvas.transform.SetParent(this.transform.parent.parent.parent);  //parent : sous_ile
                 pos = GameObject.Find("sprite-" + island.nameMinorIsland).transform.position;
                 pos.z = -2;

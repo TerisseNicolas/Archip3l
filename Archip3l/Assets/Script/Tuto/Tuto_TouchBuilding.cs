@@ -29,7 +29,7 @@ public class Tuto_TouchBuilding : InputSource
                 {
                     Canvas upgradeTuto_BuildingWindowCanvasPrefab = Resources.Load<Canvas>("Prefab/Tuto/UpgradeBuildingWindowCanvasTuto");
                     Canvas upgradeTuto_BuildingWindowCanvas = Instantiate(upgradeTuto_BuildingWindowCanvasPrefab);
-                    upgradeTuto_BuildingWindowCanvas.name = "UpgradeBuildingWindowCanvas_" + building.name;
+                    upgradeTuto_BuildingWindowCanvas.name = "UpgradeBuildingWindowCanvas_" + building.name + "_" + island.nameTuto_MinorIsland;
                     upgradeTuto_BuildingWindowCanvas.transform.SetParent(this.transform.parent.parent.parent);  //parent : sous_ile
                     pos = GameObject.Find("Virtual_" + island.nameTuto_MinorIsland).transform.position;
                     pos.z = -2;

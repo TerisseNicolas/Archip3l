@@ -27,8 +27,8 @@ public class Game : MonoBehaviour
         this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
 
         this.Timer = gameObject.GetComponent<Timer>();
-        this.Timer.Init(2f * 60f);
-        //this.Timer.Init(13f * 60f);
+        //this.Timer.Init(2f * 60f);
+        this.Timer.Init(13f * 60f);
         this.Timer.FinalTick += Timer_FinalTick;
         this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
         this.Timer.PirateBoatsIncreaseTick += Timer_PirateBoatsIncreaseTick;
@@ -42,8 +42,8 @@ public class Game : MonoBehaviour
 
         this.ChallengerTimer = gameObject.GetComponent<ChallengeTimer>();
         //Todo : keep the good one
-        //this.ChallengerTimer.Init(30f);
-        this.ChallengerTimer.Init(5f);
+        this.ChallengerTimer.Init(30f);
+        //this.ChallengerTimer.Init(5f);
         this.ChallengerTimer.FinalTick += ChallengerTimer_FinalTick;
 
         this.GlobalResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
@@ -105,6 +105,7 @@ public class Game : MonoBehaviour
         }
 
         this.ChallengerTimer.Init(30f);
+        //this.ChallengerTimer.Init(5f);
         this.ChallengerTimer.StartTimer();
     }
 
@@ -136,6 +137,7 @@ public class Game : MonoBehaviour
                 case 1:
                 case 2:
                     this.TimerDisturbance.Init(180f);
+                    //this.TimerDisturbance.Init(15f);
                     break;
                 case 3:
                     this.TimerDisturbance.Init(120f);
