@@ -21,16 +21,8 @@ public class ResourceView : MonoBehaviour {
             //GameObject.Find(res.TypeResource.ToString()).GetComponent<RectTransform>().transform.FindChild("Value").gameObject.GetComponent<Text>().text = res.Stock.ToString();
             foreach(Text t in GameObject.Find(res.TypeResource.ToString()).GetComponentsInChildren<Text>())
             {
-                if (Enum.IsDefined(typeof(TypeStat), res.TypeResource.ToString()))
-                {
-                    if (t.name == "Value")
-                        t.text = res.Stock.ToString() + " %";
-                }
-                else
-                {
-                    if (t.name == "Value")
-                        t.text = res.Stock.ToString();
-                }
+                if (t.name == "Value")
+                    t.text = res.Stock.ToString();
             }
         }
     }
