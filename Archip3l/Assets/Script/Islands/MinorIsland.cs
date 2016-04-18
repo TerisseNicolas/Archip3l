@@ -558,8 +558,8 @@ public class MinorIsland : InputSource
                 System.Random rnd = new System.Random();
                 int index = rnd.Next(0, resourceCount);
                 //pirates can only steal physical resource --> resources which are not in TypeStat
-                while(Enum.IsDefined(typeof(TypeStat), this.resourceManager.Resources[index].TypeResource.ToString()))
-                    index = rnd.Next(0, resourceCount);
+                //while(Enum.IsDefined(typeof(TypeStat), this.resourceManager.Resources[index].TypeResource.ToString()))
+                //    index = rnd.Next(0, resourceCount);
                 int quantity = rnd.Next(10, 50);
                 if (this.resourceManager.changeResourceStock(this.resourceManager.Resources[index].TypeResource, -quantity))
                 {
