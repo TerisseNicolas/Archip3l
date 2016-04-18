@@ -7,7 +7,7 @@ public class TrophyManager : MonoBehaviour
 {
     public List<Trophy> Trophies { get; private set; }
     private Client Client;
-    private ResourceManager ResourceManager;
+    private GlobalResourceManager ResourceManager;
     public event EventHandler<TrophyObtainedEventArgs> TrophyObtained;
 
     public int airportsBuilt { get; private set; }
@@ -18,7 +18,7 @@ public class TrophyManager : MonoBehaviour
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageTrophyWonEvent += Client_MessageTrophyWonEvent;
         this.Client.MessageBuildingConstructionEvent += Client_MessageBuildingConstructionEvent;
-        this.ResourceManager = GameObject.Find("Resources").GetComponent<ResourceManager>();
+        this.ResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
         this.Trophies = new List<Trophy>();
 
         //Trophy trophy1 = GameObject.Find("Medal1").GetComponent<Trophy>();  //new Trophy(1, "Trophée ressources", "Gain de ressources", 50, 50, null);

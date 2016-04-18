@@ -86,7 +86,8 @@ public class Client : MonoBehaviour
     IEnumerator test()
     {
         yield return new WaitForSeconds(5);
-        this.ProcessMessage("serverinfo@21355@Tourism@5");
+        this.ProcessMessage("serverinfo@31441@50");
+        this.ProcessMessage("serverinfo@32441@100");
 
     }
 

@@ -34,7 +34,7 @@ public class Trophy : InputSource
         this.trophyName = name;
     }
 
-    public bool requirementVerified(ResourceManager resourceManager)
+    public bool requirementVerified(GlobalResourceManager resourceManager)
     {
         switch (this.trophyName)
         {

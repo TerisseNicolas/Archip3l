@@ -31,6 +31,7 @@ public class Score : MonoBehaviour {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageScoreUpdateEvent += Client_MessageScoreUpdateEvent;
         this.Client.MessageBuildingConstructionEvent += Client_MessageBuildingConstructionEvent;
+        this.Client.MessageBuildingDestructionEvent += Client_MessageBuildingDestructionEvent;
         this.Client.MessageTrophyWonEvent += Client_MessageTrophyWonEvent;
         this.Client.MessageChallengeFinalSuccessRateEvent += Client_MessageChallengeFinalSuccessRateEvent;
 
@@ -176,10 +177,19 @@ public class Score : MonoBehaviour {
 
     private void Client_MessageTrophyWonEvent(object sender, MessageEventArgs e)
     {
+        //Debug.Log("New Medal won");
         this.MedalCount += 1;
     }
     private void Client_MessageBuildingConstructionEvent(object sender, MessageEventArgs e)
     {
+        //Debug.Log("New building built");
         this.BuildingCount += 1;
+    }
+    private void Client_MessageBuildingDestructionEvent(object sender, MessageEventArgs e)
+    {
+        if(this.BuildingCount > 0)
+        {
+            this.BuildingCount -= 1;
+        }
     }
 }
