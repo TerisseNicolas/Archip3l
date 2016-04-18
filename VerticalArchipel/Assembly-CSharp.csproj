@@ -69,6 +69,7 @@
      <Compile Include="Assets\Script\Island\Island.cs" />
      <Compile Include="Assets\Script\Loading\Loading.cs" />
      <Compile Include="Assets\Script\Miscellaneous\CSV_reader.cs" />
+     <Compile Include="Assets\Script\Miscellaneous\NetDebugger.cs" />
      <Compile Include="Assets\Script\Miscellaneous\Tuple.cs" />
      <Compile Include="Assets\Script\Network\Client.cs" />
      <Compile Include="Assets\Script\Network\trigger.cs" />

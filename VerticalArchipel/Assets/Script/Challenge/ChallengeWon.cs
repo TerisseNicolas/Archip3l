@@ -23,7 +23,7 @@ public class ChallengeWon : InputSource
     private Client client { get; set; }
 
 
-    void Awake()
+    void Start()
     {
         this.client = GameObject.Find("Network").GetComponent<Client>();
         ChallengeWon.challengeWonWindowPresent = true;
@@ -46,6 +46,7 @@ public class ChallengeWon : InputSource
         string resource = char.ToUpper(resourceWon[0]).ToString() + resourceWon.Substring(1);
         GameObject.Find("Network").GetComponent<Client>().sendData("@2" + islandToSend.Split('_')[2] + "394@" + resource + "@" + ChallengeWon.quantityWon.ToString());
         //main.addNotification(ChallengeWon.quantityWon.ToString() + " " + main.translateResourceName(resource) + " envoyés !");
+        ChallengeWon.challengeWonWindowPresent = false;
 
         Destroy(GameObject.Find("challengeWonCanvas"));
     }

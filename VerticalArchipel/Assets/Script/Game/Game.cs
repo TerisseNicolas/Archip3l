@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Game : MonoBehaviour
 {
@@ -15,40 +16,59 @@ public class Game : MonoBehaviour
 
     public const int nbChallengesMax = 3;
 
-    void Awake()
+    private List<GameObject> ChallengesGameObjects;
+
+    private bool CoroutineInitOfGame = false;
+
+    void Start()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemStartOfGameEvent += Client_MessageSystemStartOfGame;
         this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
 
         this.Timer = gameObject.GetComponent<Timer>();
-        //this.Timer.Init(0.1f * 60f);
+        //this.Timer.Init(2f * 60f);
         this.Timer.Init(13f * 60f);
         this.Timer.FinalTick += Timer_FinalTick;
         this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
         this.Timer.PirateBoatsIncreaseTick += Timer_PirateBoatsIncreaseTick;
 
         this.TimerDisturbance = gameObject.GetComponent<DisturbanceTimer>();
-        this.TimerDisturbance.Init(10f);
+        //Todo : keep the good one
+        this.TimerDisturbance.Init(180f);
+        //this.TimerDisturbance.Init(10f);
         this.TimerDisturbance.FinalTick += TimerDisturbance_FinalTick;
         this.DisturbanceCount = 0;
 
         this.ChallengerTimer = gameObject.GetComponent<ChallengeTimer>();
-        //this.ChallengerTimer.Init(30f);
-        this.ChallengerTimer.Init(5f);
+        //Todo : keep the good one
+        this.ChallengerTimer.Init(30f);
+        //this.ChallengerTimer.Init(5f);
         this.ChallengerTimer.FinalTick += ChallengerTimer_FinalTick;
 
         this.GlobalResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
         this.GlobalResourceManager.MessageInitialized += GlobalResourceManager_MessageInitialized;
 
         this.Score = gameObject.GetComponent<Score>();
-        //To be activated, the object come from the previous scene
-        //this.GlobalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
-    }
+        this.GlobalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
 
-    void Start()
-    {
+
+        this.ChallengesGameObjects = new List<GameObject>();
+        for (int i = 1; i <= nbChallengesMax; i++)
+        {
+            this.ChallengesGameObjects.Add(GameObject.Find("Challenge" + i.ToString()));
+        }
+
         Client_MessageSystemStartOfGame(this, null);
+    }
+    
+    void Update()
+    {
+        if(this.CoroutineInitOfGame)
+        {
+            StartCoroutine(this.GlobalResourceManager.initResources());
+            this.CoroutineInitOfGame = false;
+        }
     }
 
     private void Client_MessageSystemStartOfGame(object sender, MessageEventArgs e)
@@ -57,11 +77,12 @@ public class Game : MonoBehaviour
         this.Timer.StartTimer();
         this.TimerDisturbance.StartTimer();
         this.ChallengerTimer.StartTimer();
+        //this.Client_MessageSystemStartInitOfGame(this, null);
     }
     private void Client_MessageSystemStartInitOfGame(object sender, MessageEventArgs e)
     {
-        Debug.Log("Start initializing game");
-        StartCoroutine(this.GlobalResourceManager.initResources());
+        this.Client.sendData("@Start initializing game");
+        this.CoroutineInitOfGame = true;
     }
     private void GlobalResourceManager_MessageInitialized(object sender, System.EventArgs e)
     {
@@ -74,12 +95,12 @@ public class Game : MonoBehaviour
     }
     private void ChallengerTimer_FinalTick(object sender, System.EventArgs e)
     {
-        for (int i = 1; i <= nbChallengesMax; i++)
+        for (int i = 0; i < nbChallengesMax; i++)
         {
-            if (GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled == false)
+            if (this.ChallengesGameObjects[i].GetComponent<SpriteRenderer>().enabled == false)
             {
-                GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled = true;
-                GameObject.Find("Challenge" + i.ToString()).GetComponent<BoxCollider>().enabled = true;
+                this.ChallengesGameObjects[i].GetComponent<SpriteRenderer>().enabled = true;
+                this.ChallengesGameObjects[i].GetComponent<BoxCollider>().enabled = true;
             }
         }
 
@@ -89,11 +110,13 @@ public class Game : MonoBehaviour
 
     private void Timer_PirateBoatsIncreaseTick(object sender, System.EventArgs e)
     {
+        Debug.LogWarning("Increase pirate boats appearance rate");
         this.Client.sendData("@40001");
     }
 
     private void Timer_PirateBoatsStartTick(object sender, System.EventArgs e)
     {
+        Debug.LogWarning("Launch pirate boats");
         this.Client.sendData("@40002");
     }
 

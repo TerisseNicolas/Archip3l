@@ -282,11 +282,15 @@ public class Building : InputSource
 
             yield return new WaitForSeconds(this.constructionTime);
             this.buildState = 1;
-            StartCoroutine("updateStocks");
+            this.changeProduction((int)this.resourceProduced.Production);
+            //StartCoroutine("updateStocks");
             Destroy(buildingConstructionTransform.gameObject);
 
-            //Score to add must be checked
+            //Todo : score to add must be checked
             this.Client.sendData("@30505@" + 100.ToString());
+            yield return new WaitForSeconds(Int32.Parse(minorIsland.nameMinorIsland.Split('_')[2])-1);
+            this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "345@" + resourceProduced.TypeResource.ToString() + "@" + resourceProduced.Production);
+
         }
         else
         {
@@ -303,14 +307,14 @@ public class Building : InputSource
     {
         return this.minorIsland.resourceManager.changeResourceStock(this.resourceProduced.TypeResource, value);
     }
-    IEnumerator updateStocks()
-    {
-        for (;;)
-        {
-            this.changeStock(this.resourceProduced.Production);
-            yield return new WaitForSeconds(5f);
-        }
-    }
+    //IEnumerator updateStocks()
+    //{
+    //    for (;;)
+    //    {
+    //        this.changeStock(this.resourceProduced.Production);
+    //        yield return new WaitForSeconds(5f);
+    //    }
+    //}
 
     void OnMouseDownSimulation()
     {

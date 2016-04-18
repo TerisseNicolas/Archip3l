@@ -28,7 +28,7 @@ public class Disturbance : InputSource
     }
 
 
-    void Awake()
+    void Start()
     {
         //close other windows
         if (ChallengeVertical.challengeWindowPresent)
@@ -61,8 +61,13 @@ public class Disturbance : InputSource
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.counter = GameObject.Find("DisturbanceCounter").GetComponent<Text>();
         this.disturbanceText = GameObject.Find("DisturbanceText").GetComponent<Text>();
-        StartCoroutine(counterDecrement());
+
+        if (name.Contains("sous_ile_1"))
+        {
+            StartCoroutine(counterDecrement());
+        }
     }
+
 
     IEnumerator counterDecrement()
     {
@@ -117,15 +122,15 @@ public class Disturbance : InputSource
 
         StartCoroutine(wait());
 
+        Disturbance.disturbanceWindowOpen = false;
         Destroy(GameObject.Find("Disturbance"), 3.1f);
     }
 
     IEnumerator wait()
     {
         yield return new WaitForSeconds(3);
-        Disturbance.disturbanceWindowOpen = false;
         Enigma.enimgasToBeDone = 2;
-        main.addEnigma();
+        //main.addEnigma();
     }
 
 

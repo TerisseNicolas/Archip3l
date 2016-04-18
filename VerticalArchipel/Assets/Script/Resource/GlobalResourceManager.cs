@@ -16,7 +16,7 @@ public class GlobalResourceManager : MonoBehaviour
 
     public event EventHandler<EventArgs> MessageInitialized;
 
-    void Awake()
+    void Start()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
 
@@ -60,6 +60,7 @@ public class GlobalResourceManager : MonoBehaviour
     }
     private void _ChangeResourceStockEvent(object sender, ChangeResourceStockEventArgs e)
     {
+        //Debug.Log("Global resource manager : change resource stock event : " + e.resourceType.ToString() + " : " + e.stock.ToString());
         Resource resource = this.getResource(e.resourceType);
         if (resource != null)
         {
@@ -68,7 +69,6 @@ public class GlobalResourceManager : MonoBehaviour
             {
                 this.resourceCountForScoreCurrent = this.resourceCountForScoreInit;
                 this.Client.sendData("@30505@" + 50.ToString());
-
             }
             resource.changeStock(e.stock);
         }
@@ -117,10 +117,12 @@ public class GlobalResourceManager : MonoBehaviour
     {
         //Sync all resource before the start of the game
         //sub resource manager
-        foreach(ResourceManager rm in this.ResourceManagers)
-        {
-            rm.initResources();
-        }
+        this.Client.sendData("@30306");
+
+        //foreach(ResourceManager rm in this.ResourceManagers)
+        //{
+        //    rm.initResources();
+        //}
 
         //Wait all anwsers from the network to initialize island resource manager
         yield return new WaitForSeconds(5f);

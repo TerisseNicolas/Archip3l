@@ -210,6 +210,7 @@ public class ChallengeUpgrade : InputSource
             if (goodAnswer)
             {
                 building.level += 1;
+                this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "345@" + building.resourceProduced.TypeResource.ToString() + "@" + building.resourceProduced.Production);
                 building.changeProduction(building.quantityProduced);
                 building.quantityProduced *= 2;
                 minorIsland.displayPopup("Bonne réponse ! Votre bâtiment passe au niveau " + building.level.ToString() + " !", 3, explainations);

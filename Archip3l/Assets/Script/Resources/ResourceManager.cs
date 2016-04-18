@@ -12,6 +12,8 @@ public class ResourceManager : MonoBehaviour
 
     private Client Client;
 
+    private bool InitRout = false;
+
     public void init(MinorIsland island)
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
@@ -25,8 +27,6 @@ public class ResourceManager : MonoBehaviour
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
             this.addResource(resourceType, 0, 0);
-            //TESTS
-            //this.addResource(resourceType, 200, 0);
         }
 
         switch (this.minorIsland.nameMinorIsland)
@@ -58,6 +58,15 @@ public class ResourceManager : MonoBehaviour
     void Start()
     {
         StartCoroutine("updateStocks");
+    }
+
+    void Update()
+    {
+        if(this.InitRout)
+        {
+            StartCoroutine("InitRoutine");
+            this.InitRout = false;
+        }
     }
 
     private void Client_MessageResourceStockReceivedEvent(object sender, MessageEventArgs e)
@@ -155,25 +164,45 @@ public class ResourceManager : MonoBehaviour
 
     IEnumerator updateStocks()
     {
+        int i = 0;
+        yield return new WaitForSeconds(Int32.Parse(this.minorIsland.nameMinorIsland.Split('_')[2]));
         for (;;)
         {
+            i++;
             foreach (Resource res in this.Resources)
             {
-                res.changeStock(res.Production);
                 if (res.Production != 0)
                 {
-                    //Debug.Log("Island : " + this.minorIsland + "\tProduction : " + res.Production + "\tStock  : " + res.Name + " : " + res.Stock);
+                    //if (this.minorIsland.nameMinorIsland.Contains("1"))
+                    //    Debug.Log("Updating" + i.ToString() + "Before" + res.Stock.ToString());
+                    //res.changeStock(res.Production);
+                    this.changeResourceStock(res.TypeResource, res.Production);
+                    //if (this.minorIsland.nameMinorIsland.Contains("1"))
+                    //    Debug.Log("After " + i.ToString() + " " + res.Stock.ToString());
+                    //Debug.Log("Island : " + this.minorIsland + "\tProduction : " + res.Production + "\tStock  : " + res.TypeResource.ToString() + " : " + res.Stock);
+                    this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + res.Production);
+                    yield return new WaitForSeconds(0.02f);
+                    //this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "345@" + res.TypeResource.ToString() + "@" + res.Production);
                 }
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(4f);
         }
     }
     private void Client_MessageResourceInitEvent(object sender, MessageEventArgs e)
     {
-        foreach(Resource resource in this.Resources)
+        this.InitRout = true;
+    }
+
+    IEnumerator InitRoutine()
+    {
+        yield return new WaitForSeconds(Int32.Parse(this.minorIsland.nameMinorIsland.Split('_')[2]) -1);
+        string islandNumber = this.minorIsland.nameMinorIsland.Split('_')[2];
+        foreach (Resource resource in this.Resources)
         {
-            this.Client.sendData("@20355@" + resource.TypeResource.ToString() + "@" + resource.Stock);
-            this.Client.sendData("@20345@" + resource.TypeResource.ToString() + "@" + resource.Production);
+            this.Client.sendData("@2" + islandNumber + "355@" + resource.TypeResource.ToString() + "@" + resource.Stock);
+            yield return new WaitForSeconds(0.02f);
+            this.Client.sendData("@2" + islandNumber + "345@" + resource.TypeResource.ToString() + "@" + resource.Production);
+            yield return new WaitForSeconds(0.02f);
         }
     }
 }

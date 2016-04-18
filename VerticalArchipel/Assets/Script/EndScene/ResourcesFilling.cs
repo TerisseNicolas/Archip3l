@@ -5,16 +5,16 @@ using UnityEngine.UI;
 public class ResourcesFilling : MonoBehaviour
 {
     private GlobalResourceManager GRM;
-    void Awake()
-    {
-        GameObject resourceObject = GameObject.Find("Resources");
-        resourceObject.transform.position = new Vector3(0, 0, 5);
-        this.GRM = resourceObject.GetComponent<GlobalResourceManager>();
-    }
+
 	void Start ()
     {
+        GameObject resourceObject = GameObject.Find("Resources");
+        //resourceObject.transform.position = new Vector3(0, 0, 12);
+        resourceObject.GetComponent<Canvas>().enabled = false;
+        this.GRM = resourceObject.GetComponent<GlobalResourceManager>();
+
         //fill island stats
-        for(int i = 1; i < 5; i++)
+        for (int i = 1; i < 5; i++)
         {
             foreach (Resource resource in this.GRM.ResourceManagers[i-1].Resources)
             {

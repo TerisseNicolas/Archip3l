@@ -12,19 +12,75 @@ public class ResourceManager : MonoBehaviour
 
     private Client client;
 
-    void Awake()
+    private bool _MessageResourceProductionUpdateEvent = false;
+    private MessageEventArgs _MessageResourceProductionUpdateEventEventArgs;
+
+    private bool _MessageResourceStockUpdateEvent = false;
+    private MessageEventArgs _MessageResourceStockUpdateEventEventArgs;
+
+    void Start()
     {
         this.Resources = new List<Resource>();
         this.client = GameObject.Find("Network").GetComponent<Client>();
-        this.client.MessageResourceStockUpdateEvent += ((sender, e) => changeResourceStock(sender, e, (TypeResource)Enum.Parse(typeof(TypeResource), (string)e.message.Split('@').GetValue(2)), Int32.Parse((string)e.message.Split('@').GetValue(3))));
-        this.client.MessageResourceProductionUpdateEvent += ((sender, e) => changeResourceProduction(sender, e, (TypeResource)Enum.Parse(typeof(TypeResource), (string)e.message.Split('@').GetValue(2)), Int32.Parse((string)e.message.Split('@').GetValue(3)))); ;
+        this.client.MessageResourceStockUpdateEvent += Client_MessageResourceStockUpdateEvent;
+        this.client.MessageResourceProductionUpdateEvent += Client_MessageResourceProductionUpdateEvent;
 
         //Add all resources
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
             //To be modified to 0;
-            this.addResource(resourceType, 10, 5);
+            this.addResource(resourceType, 0, 0);
         }
+
+        //Todo delete this instruction and the function
+        //StartCoroutine("test");
+    }
+
+    void Update()
+    {
+        if(_MessageResourceProductionUpdateEvent)
+        {
+            try
+            {
+                changeResourceProduction(null, this._MessageResourceProductionUpdateEventEventArgs, (TypeResource)Enum.Parse(typeof(TypeResource), (string)this._MessageResourceProductionUpdateEventEventArgs.message.Split('@').GetValue(2)), Int32.Parse((string)this._MessageResourceProductionUpdateEventEventArgs.message.Split('@').GetValue(3)));
+            }
+            catch(ArgumentException e) { }
+                       
+            this._MessageResourceProductionUpdateEvent = false;
+        }
+        if(_MessageResourceStockUpdateEvent)
+        {
+            try
+            {
+                changeResourceStock(null, this._MessageResourceStockUpdateEventEventArgs, (TypeResource)Enum.Parse(typeof(TypeResource), (string)this._MessageResourceStockUpdateEventEventArgs.message.Split('@').GetValue(2)), Int32.Parse((string)this._MessageResourceStockUpdateEventEventArgs.message.Split('@').GetValue(3)));
+            }
+            catch(ArgumentException e) { }
+            this._MessageResourceStockUpdateEvent = false;
+        }
+    }
+
+    private void Client_MessageResourceProductionUpdateEvent(object sender, MessageEventArgs e)
+    {
+        this._MessageResourceProductionUpdateEvent = true;
+        this._MessageResourceProductionUpdateEventEventArgs = e;
+    }
+
+    private void Client_MessageResourceStockUpdateEvent(object sender, MessageEventArgs e)
+    {
+        this._MessageResourceStockUpdateEvent = true;
+        this._MessageResourceStockUpdateEventEventArgs = e;
+    }
+
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(2);
+        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@22355@Gold@45" }, TypeResource.Gold, 45);
+        yield return new WaitForSeconds(2);
+        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@23355@Tourism@2" }, TypeResource.Tourism, 2);
+        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@24355@Tourism@7" }, TypeResource.Tourism, 7);
+        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@23355@Tourism@15" }, TypeResource.Tourism, 120);
+        yield return new WaitForSeconds(2);
+        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@22355@Gold@45" }, TypeResource.Gold, 45);
     }
 
     public bool addResource(TypeResource resourceType, int quantity, int production = 0)
@@ -49,6 +105,7 @@ public class ResourceManager : MonoBehaviour
             return true;
         }
     }
+
     private bool changeResourceProduction(object sender, MessageEventArgs e, TypeResource resourceType, int value)
     {
         //int islandNumber = (Int32.Parse((string)e.message.Split('@').GetValue(1)) % 10000)/100;
@@ -68,7 +125,7 @@ public class ResourceManager : MonoBehaviour
         {
             if (value >= 0)
             {
-                this.addResource(resourceType, value);
+                this.addResource(resourceType, 0, value);
                 result = true;
             }
             else
@@ -80,12 +137,14 @@ public class ResourceManager : MonoBehaviour
     }
     public bool changeResourceStock(object sender, MessageEventArgs e, TypeResource resourceType, int value)
     {
+        //Debug.Log("Changing resource stock : " + resourceType.ToString() + " - " + value.ToString());
         char islandNumber = ((string)e.message.Split('@').GetValue(1))[1];
         if (!gameObject.name.Contains(islandNumber))
         {
             //Island not concerned
             return false;
         }
+        Debug.Log("Stock update : " + e.message);
         Resource resource = this.getResource(resourceType);
         bool result = false;
         if (resource != null)
@@ -105,14 +164,14 @@ public class ResourceManager : MonoBehaviour
             }
         }
         //The board shouldn't notice the network of an gloabl stock update
-        //if(this.ChangeResourceStockEvent != null)
-        //{
-
-        //    this.ChangeResourceStockEvent(this, new ChangeResourceStockEventArgs { resourceType = resourceType, stock = resource.Stock });
-        //}
+        if(this.ChangeResourceStockEvent != null && result)
+        {
+            this.ChangeResourceStockEvent(this, new ChangeResourceStockEventArgs { resourceType = resourceType, stock = value }); // resource.Stock });
+        }
         return result;
     }
-    public Resource getResource(TypeResource resourceType)
+
+public Resource getResource(TypeResource resourceType)
     {
         foreach (Resource item in this.Resources)
         {
@@ -123,17 +182,19 @@ public class ResourceManager : MonoBehaviour
         }
         return null;
     }
-    public void initResources()
-    {
-        //Sync all resource from table before the start of the game
-        this.client.sendData("@30306");
-    }
+    //public void initResources()
+    //{
+    //    //Sync all resource from table before the start of the game
+    //    this.client.sendData("@30306");
+    //}
 }
+
 public class ChangeResourceStockEventArgs : EventArgs
 {
     public TypeResource resourceType;
     public float stock;
 }
+
 public class ChangeResourceProductionEventArgs : EventArgs
 {
     public TypeResource resourceType;

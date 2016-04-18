@@ -28,7 +28,7 @@ public class TouchBuilding : InputSource
             case "Upgrade":
                 Canvas upgradeBuildingWindowCanvasPrefab = Resources.Load<Canvas>("Prefab/UpgradeBuildingWindowCanvas");
                 Canvas upgradeBuildingWindowCanvas = Instantiate(upgradeBuildingWindowCanvasPrefab);
-                upgradeBuildingWindowCanvas.name = "UpgradeBuildingWindowCanvas_" + building.name;
+                upgradeBuildingWindowCanvas.name = "UpgradeBuildingWindowCanvas_" + building.name + island.nameMinorIsland;
                 upgradeBuildingWindowCanvas.transform.SetParent(this.transform.parent.parent.parent);  //parent : sous_ile
                 pos = GameObject.Find("sprite-" + island.nameMinorIsland).transform.position;
                 pos.z = -2;
@@ -269,8 +269,6 @@ public class TouchBuilding : InputSource
                     //StartCoroutine(this.island.destroyPopup(this.island.createPopup("Impossible de déplacer le port !"), 3));
                 }
                 else {
-                    Destroy(GameObject.Find(this.transform.parent.parent.name));
-
                     if (building.TypeBuilding.ToString() == "Harbor")
                     {
                         island.displayPopup("Le port ne peut pas être déplacé !", 3);
@@ -282,6 +280,7 @@ public class TouchBuilding : InputSource
                         //StartCoroutine(island.destroyPopup(island.createPopup("Appuyez sur l'endroit où placer le batiment"), 3));
                         island.moveBuilding = true;
                     }
+                    Destroy(GameObject.Find(this.transform.parent.parent.name));
                 }
                 break;
         }

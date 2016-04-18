@@ -52,6 +52,9 @@ public class MinorIsland : InputSource
     public Canvas startCanvas;
     public int numPopup = 0;
 
+    //fixes coroutine bug
+    private bool coroutineDisturbance = false;
+
     void Awake()
     {
 
@@ -77,29 +80,32 @@ public class MinorIsland : InputSource
         this.Client.MessageDisturbanceEvent += Client_MessageDisturbanceEvent;
         this.Client.MessageSystemEndOfGameEvent += Client_MessageSystemEndOfGameEvent;
 
-        Vector3 harborPosition;
-        switch (this.nameMinorIsland)
-        {
-            case "sous_ile_1":
-                harborPosition = new Vector3(-84, 88, -3);
-                break;
-            case "sous_ile_2":
-                harborPosition = new Vector3(132, 111, -3);
-                break;
-            case "sous_ile_3":
-                harborPosition = new Vector3(-107, -71, -3);
-                break;
-            default:
-                harborPosition = new Vector3(111, -77, -3);
-                break;
-        }
-        buildingManager.createBuilding(TypeBuilding.Harbor, harborPosition);
+        
         displayPopup("C'est parti !", 3);
 
     }
 
     public void Start()
     {
+        Vector3 harborPosition;
+        switch (this.nameMinorIsland)
+        {
+            case "sous_ile_1":
+                harborPosition = new Vector3(-83, 84, -3);
+                break;
+            case "sous_ile_2":
+                harborPosition = new Vector3(130, 110, -3);
+                break;
+            case "sous_ile_3":
+                harborPosition = new Vector3(-107, -69, -3);
+                break;
+            default:
+                harborPosition = new Vector3(106, -71, -3);
+                break;
+        }
+        buildingManager.createBuilding(TypeBuilding.Harbor, harborPosition);
+
+
         if (nameMinorIsland == "sous_ile_1")
         {
             Canvas startCanvasPrefab = Resources.Load<Canvas>("Prefab/StartCanvas");
@@ -395,17 +401,17 @@ public class MinorIsland : InputSource
 
     private void Client_MessageDisturbanceEvent(object sender, MessageEventArgs e)
     {
-        MinorIsland.DisturbanceCount += 1;
         char islandNumber = (char)e.message.Split('@')[1][1];
 
         if (this.nameMinorIsland.Contains(islandNumber.ToString()) || islandNumber == '5')
         {
-            StartCoroutine(disturbanceAnimation());
+            MinorIsland.DisturbanceCount += 1;
+            this.coroutineDisturbance = true;
         }
     }
+
     private IEnumerator disturbanceAnimation()
     {
-        disturbancePresent = true;
         Transform animationTransform;
         if (MinorIsland.DisturbanceCount%2 == 0)
         {
@@ -417,17 +423,21 @@ public class MinorIsland : InputSource
         }
 
         animationTransform.name = "Disturbance_" + nameMinorIsland;
-        animationTransform.transform.SetParent(this.transform);
+        animationTransform.transform.SetParent(this.transform.parent);
+        animationTransform.position = this.transform.parent.position;
+        //rotation of image according to the place of the island
+        char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
+        if (id == '1' || id == '2')
+            animationTransform.Rotate(Vector3.forward * 180);
         yield return new WaitForSeconds(10);
-
-        disturbancePresent = false;
+        
         Destroy(animationTransform.gameObject);
-
-
     }
 
     private void Client_MessageSystemEndOfGameEvent(object sender, MessageEventArgs e)
     {
+        if (nbAnswersChallenges == 0)
+            nbAnswersChallenges = 1;
         this.Client.sendData("@3" + this.nameMinorIsland.Split('_')[2] + "441@" + (this.nbGoodAnswersChallenges / this.nbAnswersChallenges).ToString());
     }
 
@@ -577,6 +587,14 @@ public class MinorIsland : InputSource
                 if (!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
                     this.createExchangeWindow();
             }
+        }
+
+        if(this.coroutineDisturbance)
+        {
+            disturbancePresent = true;
+            StartCoroutine(disturbanceAnimation());
+            this.coroutineDisturbance = false;
+            disturbancePresent = false;
         }
     }
 

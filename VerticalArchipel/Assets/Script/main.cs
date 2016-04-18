@@ -11,7 +11,7 @@ public class main : MonoBehaviour
     public const int nbChallengesMax = 3;
     public const int nbNotificationsMax = 8;
 
-    void Awake()
+    void Start()
     {
         //hiding challenges and notifications at the beginning
         for (int i = 1; i <= nbChallengesMax; i++)
@@ -27,26 +27,7 @@ public class main : MonoBehaviour
         }
 
     }
-
-    //trophy = trophies + medals + AirportMedal
-    //static public void unlockTrophy(string nameTrophyGameObject)
-    //{
-    //    GameObject.Find(nameTrophyGameObject).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Trophies/" + nameTrophyGameObject);
-    //}
-
-
-    //static public bool addChallenge()
-    //{
-    //    for (int i = 1; i <= nbChallengesMax; i++)
-    //        if (GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled == false)
-    //        {
-    //            GameObject.Find("Challenge" + i.ToString()).GetComponent<SpriteRenderer>().enabled = true;
-    //            GameObject.Find("Challenge" + i.ToString()).GetComponent<BoxCollider>().enabled = true;
-    //            return true;
-    //        }
-    //    return false;
-    //}
-
+    
     static public void removeChallenge(GameObject go)
     {
         go.GetComponent<SpriteRenderer>().enabled = false;
@@ -87,14 +68,7 @@ public class main : MonoBehaviour
         Enigma.enigmaWindowName = enigma.name;
         Enigma.enigmaWindowOpen = true;
     }
-
-    //static public void addDisturbance()
-    //{
-    //    Canvas disturbancePrefab = Resources.Load<Canvas>("Prefab/DisturbanceCanvas");
-    //    Canvas disturbance = Instantiate(disturbancePrefab);
-    //    disturbance.name = "Disturbance";
-    //    Disturbance.disturbanceWindowOpen = true;
-    //}
+    
 
 
     static string addLineBreaks(string text)
@@ -121,26 +95,7 @@ public class main : MonoBehaviour
         return text;
     }
 
-
-
-    void Start()
-    {
-        //tests ---------------------------------
-
-        /*for (int i = 0; i < 5; i++)
-        {
-            addNotification("gaga " + i.ToString());
-        }*/
-
-        //addChallenge();
-        //addChallenge();
-        //addDisturbance();
-
-        //-----------------------------------
-        
-
-    }
-
+    
 
     //translation of the resource's name to french
     static public string translateResourceName(string resourceName)

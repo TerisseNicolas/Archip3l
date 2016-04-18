@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using TouchScript;
 using TouchScript.InputSources;
 using TouchScript.Hit;
-//toto
+
 public class ContactPoint : InputSource
 {
 
@@ -24,7 +24,7 @@ public class ContactPoint : InputSource
 
     public bool touched = false;
 
-    void Awake()
+    void Start()
     {
         this.ParticleSystem = gameObject.GetComponentInChildren<ParticleSystem>();
         this.ParticleSystemEmit = this.ParticleSystem.emission;

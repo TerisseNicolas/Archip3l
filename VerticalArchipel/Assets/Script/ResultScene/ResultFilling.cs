@@ -21,7 +21,7 @@ public class ResultFilling : MonoBehaviour {
         -challengeSuccessRate
     */
 
-    void Awake()
+    void Start()
     {
         this.filePath = "scores.txt";
         this.teamName = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>().teamName;

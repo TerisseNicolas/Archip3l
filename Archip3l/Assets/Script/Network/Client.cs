@@ -20,7 +20,7 @@ public class Client : MonoBehaviour
     private int sendingPort = 1523;
     private int listeningPort = 5050;
     private string serverIP = "172.18.136.49";
-    //private string serverIP = "192.168.1.91";
+    //private string serverIP = "172.18.136.40";
 
     //All events raised
     private delegate void DelegateEvent(object send, EventArgs e);
@@ -65,7 +65,6 @@ public class Client : MonoBehaviour
 
         this.filePath = "port.txt";
         loadPort();
-        Debug.Log(listeningPort);
         DontDestroyOnLoad(transform.gameObject);
 
         _client = new UdpClient();
@@ -76,6 +75,14 @@ public class Client : MonoBehaviour
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
 
+        //StartCoroutine("test");
+
+    }
+
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(4);
+        ProcessMessage("server@30002");
     }
 
  public void loadPort()

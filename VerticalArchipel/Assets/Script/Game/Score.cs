@@ -25,7 +25,7 @@ public class Score : MonoBehaviour {
     private string filePath;
     private List<Tuple<int, string, int, int, int, int>> scores;
 
-    void Awake()
+    void Start()
     {
         DontDestroyOnLoad(transform.gameObject);
         this.Client = GameObject.Find("Network").GetComponent<Client>();

@@ -101,6 +101,10 @@ public class ExchangeResource : InputSource
                     }
                     island.otherWindowOpen = true;
                     quantityValue.text = "0";
+                    //rotation if other side of the table
+                    char id = this.island.nameMinorIsland[this.island.nameMinorIsland.Length - 1];
+                    if (id == '1' || id == '2')
+                        listResourcesCanvas.transform.Rotate(Vector3.forward * 180);
                     break;
                 case "Less":
                     if (quantityValue.text == "0")
@@ -134,6 +138,10 @@ public class ExchangeResource : InputSource
                             sp.GetComponent<BoxCollider>().enabled = false;
                     }
                     island.otherWindowOpen = true;
+                    //rotation if other side of the table
+                    char idIsland = this.island.nameMinorIsland[this.island.nameMinorIsland.Length - 1];
+                    if (idIsland == '1' || idIsland == '2')
+                        listIslandsCanvas.transform.Rotate(Vector3.forward * 180);
                     break;
                 case "Close":
                     Destroy(GameObject.Find(this.transform.parent.parent.name));

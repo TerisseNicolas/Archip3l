@@ -60,12 +60,11 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemTeamNameEvent;
 
 
-    void Awake()
+    void Start()
     {
 
         this.filePath = "port.txt";
         loadPort();
-        Debug.Log(listeningPort);
         DontDestroyOnLoad(transform.gameObject);
 
         _client = new UdpClient();
@@ -76,9 +75,19 @@ public class Client : MonoBehaviour
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
 
+        //todo : delete
+        //StartCoroutine("test");
+
     }
 
- public void loadPort()
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(5);
+        this.ProcessMessage("serverinfo@21355@Tourism@5");
+
+    }
+
+    public void loadPort()
     {
         string line;
         if (File.Exists(this.filePath))

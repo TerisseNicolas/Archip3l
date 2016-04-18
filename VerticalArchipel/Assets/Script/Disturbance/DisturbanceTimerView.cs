@@ -6,7 +6,7 @@ public class DisturbanceTimerView : MonoBehaviour {
 
     DisturbanceTimer DisturbanceTimer;
 
-    void Awake()
+    void Start()
     {
         GameObject game = GameObject.Find("Game");
         this.DisturbanceTimer = game.GetComponent<DisturbanceTimer>();

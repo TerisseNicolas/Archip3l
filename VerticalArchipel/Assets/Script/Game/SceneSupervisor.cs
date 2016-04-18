@@ -7,7 +7,7 @@ public class SceneSupervisor : MonoBehaviour {
     private Client Client;
     private string sceneName = string.Empty;
 
-    void Awake()
+    void Start()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemChangeSceneEvent += Client_MessageSystemChangeSceneEvent;
@@ -39,6 +39,9 @@ public class SceneSupervisor : MonoBehaviour {
                     break;
                 case "BoardLoadingScene":
                     SceneManager.LoadScene("loading");
+                    break;
+                case "BoardEndScene":
+                    SceneManager.LoadScene("endScene");
                     break;
             }
             this.sceneName = string.Empty;

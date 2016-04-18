@@ -3,20 +3,18 @@ using System.Collections;
 
 public class Game : MonoBehaviour
 {
-    public Client Client;
+    private Client Client;
+    
 
-    void Awake()
+    void Start()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemEndOfGameEvent += Client_MessageSystemEndOfGameEvent;
         this.Client.MessageSystemStartInitOfGameAnswerEvent += Client_MessageSystemStartInitofGameAnswerEvent;
-    }    
-
-    void Start()
-    {
         //Launch initialization of the game
         this.Client.sendData("@30006");
     }
+    
     private void Client_MessageSystemStartInitofGameAnswerEvent(object sender, MessageEventArgs e)
     {
         //Launch game
@@ -25,6 +23,7 @@ public class Game : MonoBehaviour
     private void Client_MessageSystemEndOfGameEvent(object sender, MessageEventArgs e)
     {
         //End of the game
+        Debug.Log("End of game");
         SceneSupervisor.Instance.loadEndScenes();
     }
 }

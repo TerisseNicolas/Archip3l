@@ -62,18 +62,18 @@ public class Resource : ScriptableObject{
         //Stat resource
         if (Enum.IsDefined(typeof(TypeStat), this.TypeResource.ToString()))
         {
-            float estimated = this.Production + value * 0.01f;
+            float estimated = this.Stock + value * 0.01f;
             if (estimated>= 0 && estimated<=1)
             {
-                this.Production = estimated;
+                this.Stock = estimated;
                 return true;
             }
             else
             {
-                estimated = this.Production + value * 0.0001f;
+                estimated = this.Stock + value * 0.0001f;
                 if (estimated >= 0 && estimated <= 1)
                 {
-                    this.Production = estimated;
+                    this.Stock = estimated;
                     return true;
                 }
                 else
