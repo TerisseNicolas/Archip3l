@@ -36,7 +36,7 @@ public class WheelIcon : InputSource
             Canvas buildingInfoPrefab = Resources.Load<Canvas>("Prefab/BuildingInfoWindowCanvas");
             Canvas buildingInfo = Instantiate(buildingInfoPrefab);
 
-            buildingInfo.name = "BuildingInfo_" + this.name;
+            buildingInfo.name = "BuildingInfo_" + island.nameMinorIsland + "_" + this.name;
             buildingInfo.transform.SetParent(this.transform.parent.parent.parent);  //parent : minorIsland
             Vector3 pos = GameObject.Find("sprite-" + island.nameMinorIsland).transform.position;
             pos.z = -2;
@@ -117,7 +117,7 @@ public class WheelIcon : InputSource
 
             island.buildingInfoPresent = true;
             island.wheelPresent = false;
-            Destroy(GameObject.Find("WheelCanvas_" + island.nameMinorIsland));
+            Destroy(this.transform.parent.parent.gameObject);
         }
 
     }

@@ -112,13 +112,13 @@ public class Game : MonoBehaviour
     private void Timer_PirateBoatsIncreaseTick(object sender, System.EventArgs e)
     {
         Debug.LogWarning("Increase pirate boats appearance rate");
-        this.Client.sendData("@40001");
+        this.Client.sendData("@40002");
     }
 
     private void Timer_PirateBoatsStartTick(object sender, System.EventArgs e)
     {
         Debug.LogWarning("Launch pirate boats");
-        this.Client.sendData("@40002");
+        this.Client.sendData("@40001");
     }
 
     private void TimerDisturbance_FinalTick(object sender, System.EventArgs e)

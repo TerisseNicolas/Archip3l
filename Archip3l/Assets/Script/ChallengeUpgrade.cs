@@ -158,6 +158,7 @@ public class ChallengeUpgrade : InputSource
         this.goodAnswer = backgroundChallengeUpgrade.goodAnswer;
         this.canvasChallenge = backgroundChallengeUpgrade.canvasChallenge;
         this.building = backgroundChallengeUpgrade.building;
+        this.Client = backgroundChallengeUpgrade.Client;
     }
 
 
@@ -223,6 +224,7 @@ public class ChallengeUpgrade : InputSource
         }
 
         minorIsland.challengePresent = false;
+        clicked = false;
 
         //ChallengeUpgrade.building.name is a string --> conversion necessary + split (name like: "sous_ile_X_nameBuilding")
         if (Enum.IsDefined(typeof(TypeBuilding), this.building.name.Split('_')[3]))
@@ -238,6 +240,13 @@ public class ChallengeUpgrade : InputSource
                 building.changeProduction(building.quantityProduced);
                 building.quantityProduced *= 2;
                 minorIsland.displayPopup("Bonne réponse ! Votre bâtiment passe au niveau " + building.level.ToString() + " !", 3, explainations);
+
+                //upgrading animation
+                if (building.level != 0)
+                    StartCoroutine(building.launchUpgradeAnimation(this.transform.parent.gameObject));
+                this.transform.parent.position = new Vector3(1000, 1000, 1000);
+                //Destroy(this.transform.parent.gameObject, building.constructionTime + 2);
+
             }
             else
             {
@@ -251,19 +260,12 @@ public class ChallengeUpgrade : InputSource
                 }
                 else
                     minorIsland.displayPopup("Mauvaise réponse ! L'amélioration n'a donc pas pu se faire ...", 3, explainations);
+
+                Destroy(this.transform.parent.gameObject);
             }
 
-            //upgrading animation
-            if (building.level != 0)
-                StartCoroutine(building.launchUpgradeAnimation());
-        }
-
-        //To fix bug with infinite animation
-        GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland).GetComponent<Transform>().position = new Vector3(0, 0, -15);
-        yield return new WaitForSeconds(building.constructionTime + 2);
-
-        clicked = false;
-        Destroy(GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland));
+           
+        }       
 
     }
 
