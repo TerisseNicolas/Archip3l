@@ -116,7 +116,7 @@ public class Client : MonoBehaviour
             while ((line = file.ReadLine()) != null)
             {
                 serverIP = line;
-                Debug.Log(serverIP);
+                //Debug.Log(serverIP);
             }
             file.Close();
         }

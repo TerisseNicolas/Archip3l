@@ -10,23 +10,32 @@ public class Cleaner : MonoBehaviour {
     void Awake()
     {
         this.ToBeSaved = new List<string>();
+        this.ToBeSaved.Add("Jouer");
+        this.ToBeSaved.Add("Quitter");
+        this.ToBeSaved.Add("Credits");
+        this.ToBeSaved.Add("Classement");
+        this.ToBeSaved.Add("returnArrow");
         this.ToBeSaved.Add("Main Camera");
-        this.ToBeSaved.Add("logo2_sans_gears");
-        this.ToBeSaved.Add("v");
-        this.ToBeSaved.Add("vv");
-        this.ToBeSaved.Add("vvv");
-        this.ToBeSaved.Add("vvvv");
-        this.ToBeSaved.Add("vvvvv");
-        this.ToBeSaved.Add("vvvvvv");
-        this.ToBeSaved.Add("waves");
+        this.ToBeSaved.Add("endWindowBackground");
+        this.ToBeSaved.Add("EventSystem");
+        this.ToBeSaved.Add("ARCHIPEL");
+        this.ToBeSaved.Add("Embellishment");
+        this.ToBeSaved.Add("ParticleSystemMenu");
+        this.ToBeSaved.Add("Embelishment2");
+        this.ToBeSaved.Add("Particle System");
+        this.ToBeSaved.Add("Particle System (1)");
+        this.ToBeSaved.Add("Particle System (2)");
+        this.ToBeSaved.Add("Embelishment3");
+
         this.ToBeSaved.Add("Cleaner");
         this.ToBeSaved.Add("GlobalInfo");
         this.ToBeSaved.Add("Network");
         this.ToBeSaved.Add("Music");
         this.ToBeSaved.Add("TouchScript");
+
+        //hidden
         this.ToBeSaved.Add("GestureManager Instance");
         this.ToBeSaved.Add("TouchManager Instance");
-
     }
 	void Start ()
     {
