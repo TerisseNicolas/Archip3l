@@ -116,14 +116,12 @@ public class Disturbance : InputSource
             }
         }
 
-        //TODO : popup for the impact over the island(s)
 
-
-
-
+        Disturbance.islandChosen = string.Empty;
         StartCoroutine(wait());
 
         Disturbance.disturbanceWindowOpen = false;
+        Disturbance.actionMade = false; //"remise à 0" de l'attribut static
         Destroy(GameObject.Find("Disturbance"), 3.1f);
     }
 

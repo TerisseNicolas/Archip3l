@@ -105,6 +105,7 @@ public class Game : MonoBehaviour
         }
 
         this.ChallengerTimer.Init(30f);
+        //this.ChallengerTimer.Init(5f);
         this.ChallengerTimer.StartTimer();
     }
 
@@ -136,6 +137,7 @@ public class Game : MonoBehaviour
                 case 1:
                 case 2:
                     this.TimerDisturbance.Init(180f);
+                    //this.TimerDisturbance.Init(15f);
                     break;
                 case 3:
                     this.TimerDisturbance.Init(120f);

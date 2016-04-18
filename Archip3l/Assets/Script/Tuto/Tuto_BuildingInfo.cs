@@ -24,8 +24,8 @@ public class Tuto_BuildingInfo : InputSource {
             island.harborBuilt = true;
         }
         Debug.Log(this.transform.parent.parent.name);
-        Destroy(GameObject.Find(this.transform.parent.parent.name));
         island.buildingInfoPresent = false;
+        Destroy(GameObject.Find(this.transform.parent.parent.name));
     }
 
 

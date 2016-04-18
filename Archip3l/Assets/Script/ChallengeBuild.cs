@@ -200,7 +200,6 @@ public class ChallengeBuild : InputSource
             background.material.color = color;
         }
 
-        minorIsland.challengePresent = false;
 
         //minorIsland.buildingClicked is a string --> conversion necessary
         if (Enum.IsDefined(typeof(TypeBuilding), minorIsland.buildingClickedWheel))
@@ -232,6 +231,9 @@ public class ChallengeBuild : InputSource
                 buildingConstructed.changeProduction(buildingConstructed.quantityProduced);
             }
         }
+
+        minorIsland.challengePresent = false;
+
         Destroy(GameObject.Find("Challenge_" + typeChallenge + "_" + minorIsland.nameMinorIsland));
     }
 

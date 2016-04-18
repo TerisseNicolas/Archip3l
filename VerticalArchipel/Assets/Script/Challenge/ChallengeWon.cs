@@ -48,6 +48,7 @@ public class ChallengeWon : InputSource
         //main.addNotification(ChallengeWon.quantityWon.ToString() + " " + main.translateResourceName(resource) + " envoyés à "+ islandToSend +" !");
         ChallengeWon.challengeWonWindowPresent = false;
 
+        ChallengeWon.challengeWonWindowPresent = false;
         Destroy(GameObject.Find("challengeWonCanvas"));
     }
 
