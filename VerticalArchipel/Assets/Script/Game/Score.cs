@@ -13,7 +13,7 @@ public class Score : MonoBehaviour {
 
     private TrophyManager TrophyManager;
 
-    public List<int> ChallengeSuccessRate;
+    public List<float> ChallengeSuccessRate;
 
     /* File structure
         -position
@@ -25,7 +25,7 @@ public class Score : MonoBehaviour {
     */
 
     private string filePath;
-    private List<Tuple<int, string, int, int, int, int>> scores;
+    private List<Tuple<int, string, int, int, int, float>> scores;
 
     void Start()
     {
@@ -43,8 +43,8 @@ public class Score : MonoBehaviour {
         this.ScoreCount = 0;
         this.filePath = "scores.txt";
 
-        this.scores = new List<Tuple<int, string, int, int, int, int>>();
-        this.ChallengeSuccessRate = new List<int>();
+        this.scores = new List<Tuple<int, string, int, int, int, float>>();
+        this.ChallengeSuccessRate = new List<float>();
         for(int i = 0; i<4; i++)
         {
             this.ChallengeSuccessRate.Add(0);
@@ -79,7 +79,7 @@ public class Score : MonoBehaviour {
             while ((line = file.ReadLine()) != null)
             {
                 string[] words = line.Split('@');
-                scores.Add(new Tuple<int, string, int, int, int, int>(Int32.Parse(words[0]), words[1], Int32.Parse(words[2]),
+                scores.Add(new Tuple<int, string, int, int, int, float>(Int32.Parse(words[0]), words[1], Int32.Parse(words[2]),
                                                                       Int32.Parse(words[3]), Int32.Parse(words[4]), Int32.Parse(words[5])));
             }
             file.Close();
@@ -90,11 +90,11 @@ public class Score : MonoBehaviour {
             file.Close();
         }
     }
-    public List<Tuple<int, string, int, int, int, int>> getBestScores(int limit)
+    public List<Tuple<int, string, int, int, int, float>> getBestScores(int limit)
     {
-        List<Tuple<int, string, int, int, int, int>> retour = new List<Tuple<int, string, int, int, int, int>>();
+        List<Tuple<int, string, int, int, int, float>> retour = new List<Tuple<int, string, int, int, int, float>>();
         int temp = limit;
-        foreach (Tuple<int, string, int, int, int, int> item in this.scores)
+        foreach (Tuple<int, string, int, int, int, float> item in this.scores)
         {
             if (temp > 0)
             {
@@ -104,13 +104,13 @@ public class Score : MonoBehaviour {
         }
         return retour;
     }
-    public List<Tuple<int, string, int, int, int, int>> getFinalResult(string teamName)
+    public List<Tuple<int, string, int, int, int, float>> getFinalResult(string teamName)
     {
         int count = 0;
         int limit = 10;
         bool flag = false;
-        List<Tuple<int, string, int, int, int, int>> final = new List<Tuple<int, string, int, int, int, int>>();
-        foreach (Tuple<int, string, int, int, int, int> item in this.scores)
+        List<Tuple<int, string, int, int, int, float>> final = new List<Tuple<int, string, int, int, int, float>>();
+        foreach (Tuple<int, string, int, int, int, float> item in this.scores)
         {
             if (count == limit)
             {
@@ -138,32 +138,32 @@ public class Score : MonoBehaviour {
         bool flag = false;
         int count = 1;
 
-        int challengeSuccessRate = 0;
+        float challengeSuccessRate = 0;
         foreach(int c in this.ChallengeSuccessRate)
         {
             challengeSuccessRate += c;
         }
         challengeSuccessRate /= 4;
 
-        List<Tuple<int, string, int, int, int, int>> temp = new List<Tuple<int, string, int, int, int, int>>();
-        foreach (Tuple<int, string, int, int, int, int> item in this.scores)
+        List<Tuple<int, string, int, int, int, float>> temp = new List<Tuple<int, string, int, int, int, float>>();
+        foreach (Tuple<int, string, int, int, int, float> item in this.scores)
         {
             if ((item.Third <= this.ScoreCount) && !flag)
             {
                 flag = true;
-                temp.Add(new Tuple<int, string, int, int, int, int>(count, teamName, this.ScoreCount, this.MedalCount, this.BuildingCount, challengeSuccessRate));
+                temp.Add(new Tuple<int, string, int, int, int, float>(count, teamName, this.ScoreCount, this.MedalCount, this.BuildingCount, challengeSuccessRate));
                 count += 1;
-                temp.Add(new Tuple<int, string, int, int, int, int>(count, item.Second, item.Third, item.Fourth, item.Fifth, item.Sixth));
+                temp.Add(new Tuple<int, string, int, int, int, float>(count, item.Second, item.Third, item.Fourth, item.Fifth, item.Sixth));
             }
             else
             {
-                temp.Add(new Tuple<int, string, int, int, int, int>(count, item.Second, item.Third, item.Fourth, item.Fifth, item.Sixth));
+                temp.Add(new Tuple<int, string, int, int, int, float>(count, item.Second, item.Third, item.Fourth, item.Fifth, item.Sixth));
             }
             count += 1;
         }
         if (!flag)
         {
-            temp.Add(new Tuple<int, string, int, int, int, int>(count, teamName, this.ScoreCount, this.MedalCount, this.BuildingCount, challengeSuccessRate));
+            temp.Add(new Tuple<int, string, int, int, int, float>(count, teamName, this.ScoreCount, this.MedalCount, this.BuildingCount, challengeSuccessRate));
         }
         this.scores = temp;
         this.saveScores();
@@ -172,7 +172,7 @@ public class Score : MonoBehaviour {
     {
         StreamWriter file = new StreamWriter(this.filePath, false);
         string line;
-        foreach (Tuple<int, string, int, int, int, int> item in this.scores)
+        foreach (Tuple<int, string, int, int, int, float> item in this.scores)
         {
             line = item.First.ToString() + "@" + item.Second + "@" + item.Third.ToString() + "@" + item.Fourth.ToString() + "@" + item.Fifth.ToString() + "@" + item.Sixth.ToString();
             file.WriteLine(line);

@@ -25,13 +25,13 @@ public class ResourcesFilling : MonoBehaviour
         //fill total stats
         foreach (Resource resource in this.GRM.Resources)
         {
-            GameObject.Find(resource.TypeResource.ToString().ToLower() + "5").GetComponent<Text>().text = resource.Stock.ToString();
+            GameObject.Find(resource.TypeResource.ToString().ToLower() + "5").GetComponent<Text>().text = resource.Stock.ToString("F2");
         }
 
         //fill challenge success rate
         GameObject game = GameObject.Find("Game");
-        int totalSuccessRate = 0;
-        int value = 0;
+        float totalSuccessRate = 0;
+        float value = 0;
         for(int i = 0; i <game.GetComponent<Score>().ChallengeSuccessRate.Count; i++)
         {
             value = game.GetComponent<Score>().ChallengeSuccessRate[i];
