@@ -13,6 +13,7 @@ public class ExchangeResource : InputSource
 {
 
     public MinorIsland island;
+    private Client Client;
 
     SpriteRenderer less = null;
     SpriteRenderer more = null;
@@ -61,6 +62,8 @@ public class ExchangeResource : InputSource
 
     void OnMouseDownSimulation()
     {
+
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
 
         refresh();
 
@@ -151,35 +154,34 @@ public class ExchangeResource : InputSource
                     if (to.text == "Ile X")
                     {
                         island.displayPopup("Veuillez sélectionner une île, en appuyant sur \"Ile X\".", 3);
-                        //StartCoroutine(island.destroyPopup(island.createPopup("Veuillez sélectionner une île, en appuyant sur \"Ile X\"."), 3));
                     }
                     else
                     {
                         if (quantityValue.text == "0")
                         {
                             island.displayPopup("Veuillez sélectionner une quantité à envoyer", 3);
-                            //StartCoroutine(island.destroyPopup(island.createPopup("Veuillez sélectionner une quantité à envoyer"), 3));
                         }
                         else
                         {
                             if (resource_sp.sprite.name == "Knob") //defaults sprite when not already clicked on
                             { 
                                 island.displayPopup("Veuillez sélectionner une ressource à envoyer", 3);
-                                //StartCoroutine(island.destroyPopup(island.createPopup("Veuillez sélectionner une ressource à envoyer"), 3));
                             }
                             else
                             {
                                 if (MinorIsland.exchangePerforming)
                                 {
                                     island.displayPopup("Veuillez attendre la fin de l'échange en cours", 3);
-                                    //StartCoroutine(island.destroyPopup(island.createPopup("Veuillez attendre la fin de l'échange en cours"), 3));
                                 }
                                 else
                                 {
                                     //withdrawal of resources
                                     TypeResource tr = (TypeResource)System.Enum.Parse(typeof(TypeResource), Resource.getResourceFromIconName(this.resource_sp.sprite.name));
                                     int quantitySent = int.Parse(quantityValue.text);
-                                    island.resourceManager.getResource(tr).changeStock(-quantitySent);
+                                    Resource res = island.resourceManager.getResource(tr);
+                                    res.changeStock(-quantitySent);
+                                    //TODO: send negative DATA to Vertical
+                                    this.Client.sendData("@2" + this.island.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + (-quantitySent).ToString());
 
                                     MinorIsland.exchangePerforming = true;
                                     SpriteRenderer exchangeResourceAnimationPrefab = Resources.Load<SpriteRenderer>("Prefab/exchangeResourceAnimation/exchangeResourceAnimation_" + island.nameMinorIsland[island.nameMinorIsland.Length - 1].ToString()); // + "-" + to.text[to.text.Length - 1].ToString());

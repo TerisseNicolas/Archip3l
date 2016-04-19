@@ -23,10 +23,14 @@ public class BoatMoving : InputSource
 
     private GameObject harbor;
 
+    private Client Client;
+
     private float x1, y1;
 
     void OnTriggerEnter(Collider col)
     {
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+
         if (col.name == islandToSend + "_Harbor")
         {
             MinorIsland islandReceiver = GameObject.Find(islandToSend).GetComponent<MinorIsland>();
@@ -36,6 +40,8 @@ public class BoatMoving : InputSource
             //add resources to islandToSend
             TypeResource res = (TypeResource)System.Enum.Parse(typeof(TypeResource), resourceSent);
             islandReceiver.resourceManager.getResource(res).changeStock(this.quantityCarried);
+            //TODO : update to be checked
+            this.Client.sendData("@2" + islandReceiver.nameMinorIsland.Split('_')[2] + "355@" + islandReceiver.resourceManager.getResource(res).TypeResource.ToString() + "@" + this.quantityCarried.ToString());
             StartCoroutine(startBoatDisappearance());
         }
         else
