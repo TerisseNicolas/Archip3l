@@ -5,6 +5,7 @@ using TouchScript.Gestures;
 using TouchScript.Hit;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 using TouchScript;
 
 
@@ -97,16 +98,34 @@ public class Disturbance : InputSource
         for (int i = 1; i <= 4; i++)
             GameObject.Find("Disturbance-sous_ile_" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
 
+        /*--------------- random effect on resource-----*/
+        System.Random ran = new System.Random();
+        int aleat;
+        int quantityLost = (-1)*(ran.Next(0, 50));
+        //random type of Resource
+        TypeResource resourceLost;
+        aleat = ran.Next(0, Enum.GetNames(typeof(TypeResource)).Length);
+        resourceLost = (TypeResource)Enum.Parse(typeof(TypeResource), Enum.GetNames(typeof(TypeResource))[aleat], true);
+        /*-------------------*/
+
         if (Disturbance.islandChosen == string.Empty)
         {
             this.disturbanceText.text = "Vous n'avez choisi aucune île !\n\nEn conséquence, la perturbation s'abattra \nsur toutes les îles !";
             this.Client.sendData("@35770");
+            //TODO : check remove resource from each island
+            Client.sendData("@21394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
+            Client.sendData("@22394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
+            Client.sendData("@23394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
+            Client.sendData("@24394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
+            main.addNotification("Toutes les îles viennent de perdre " + quantityLost.ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
         }
         else
         {
             string island = Disturbance.islandChosen.Split('-')[1];
             this.Client.sendData("@3" + island.Split('_')[2] + "770");
-            Debug.Log("disturbance sent to : "+ island);
+            //TODO : check remove resource from the island
+            Client.sendData("@2" + island.Split('_')[2] + "394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
+            main.addNotification("L'île " + island.Split('_')[2] + " vient de perdre " + quantityLost.ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
             for (int i = 1; i <= 4; i++)
             {
                 if (("Disturbance-sous_ile_" + i.ToString()) != Disturbance.islandChosen)
@@ -129,6 +148,7 @@ public class Disturbance : InputSource
     {
         yield return new WaitForSeconds(3);
         Enigma.enimgasToBeDone = 2;
+        //TODO : uncomment + test
         //main.addEnigma();
     }
 

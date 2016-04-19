@@ -76,6 +76,8 @@ public class ResourceManager : MonoBehaviour
             TypeResource resourceType = (TypeResource) Enum.Parse(typeof(TypeResource), (string) e.message.Split('@')[2]);
             int quantity = Int32.Parse(e.message.Split('@')[3]);
             this.changeResourceStock(resourceType, quantity);
+            //TODO: check update
+            this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "355@" + resourceType.ToString() + "@" + quantity);
         }
     }
 
@@ -171,16 +173,11 @@ public class ResourceManager : MonoBehaviour
             {
                 if (res.Production != 0)
                 {
-                    //if (this.minorIsland.nameMinorIsland.Contains("1"))
-                    //    Debug.Log("Updating" + i.ToString() + "Before" + res.Stock.ToString());
-                    //res.changeStock(res.Production);
+                    if (this.minorIsland.nameMinorIsland.Contains("3"))
+                        Debug.Log(res.TypeResource.ToString() + " --> " + res.Stock);
                     this.changeResourceStock(res.TypeResource, res.Production);
-                    //if (this.minorIsland.nameMinorIsland.Contains("1"))
-                    //    Debug.Log("After " + i.ToString() + " " + res.Stock.ToString());
-                    //Debug.Log("Island : " + this.minorIsland + "\tProduction : " + res.Production + "\tStock  : " + res.TypeResource.ToString() + " : " + res.Stock);
                     this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + res.Production);
                     yield return new WaitForSeconds(0.02f);
-                    //this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "345@" + res.TypeResource.ToString() + "@" + res.Production);
                 }
             }
             yield return new WaitForSeconds(4f);

@@ -548,7 +548,6 @@ public class MinorIsland : InputSource
 
     void OnTriggerEnter(Collider collider)
     {
-
         if (collider.name.Contains("PirateBoat"))
         {
             int resourceCount = this.resourceManager.Resources.Count;
