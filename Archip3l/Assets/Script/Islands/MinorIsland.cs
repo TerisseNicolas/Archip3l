@@ -555,15 +555,13 @@ public class MinorIsland : InputSource
             {
                 System.Random rnd = new System.Random();
                 int index = rnd.Next(0, resourceCount);
-                //pirates can only steal physical resource --> resources which are not in TypeStat
-                //while(Enum.IsDefined(typeof(TypeStat), this.resourceManager.Resources[index].TypeResource.ToString()))
-                //    index = rnd.Next(0, resourceCount);
+                Resource res = resourceManager.getResource(this.resourceManager.Resources[index].TypeResource);
                 int quantity = rnd.Next(10, 50);
                 if (this.resourceManager.changeResourceStock(this.resourceManager.Resources[index].TypeResource, -quantity))
                 {
-                    //Notice someone? network?
-                    //Debug.Log("Les pirates vous ont volé : " + quantity + " de " + this.resourceManager.Resources[index].TypeResource.ToString());
-                    //Debug.Log("Il vous reste maintenant : " + this.resourceManager.Resources[index].Stock + " de " + this.resourceManager.Resources[index].TypeResource.ToString());
+                    //TODO: check message sent
+                    displayPopup("Les pirates vous ont volé : " + quantity + " de " + Resource.translateResourceName(this.resourceManager.Resources[index].TypeResource.ToString()) + " !", 3);
+                    this.Client.sendData("@2" + this.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + (-quantity).ToString());
                 }
                 else
                 {
