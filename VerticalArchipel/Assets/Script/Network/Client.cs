@@ -31,7 +31,7 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageBuildingUpgradeEvent;
     public event EventHandler<MessageEventArgs> MessageBuildingDestructionEvent;
 
-    public event EventHandler<MessageEventArgs> MessageTrophyWonEvent;
+    //public event EventHandler<MessageEventArgs> MessageTrophyWonEvent;
 
     public event EventHandler<MessageEventArgs> MessageResourceInitEvent;
     public event EventHandler<MessageEventArgs> MessageResourceProductionUpdateEvent;
@@ -132,7 +132,6 @@ public class Client : MonoBehaviour
             while ((line = file.ReadLine()) != null)
             {
                 serverIP = line;
-                //Debug.Log(serverIP);
             }
             file.Close();
         }
@@ -205,12 +204,12 @@ public class Client : MonoBehaviour
         //Raise event
         switch (code)
         {
-            case 11221:
-            case 12221:
-            case 12321:
-            case 12421:
-                MessageEvent += MessageTrophyWonEvent;
-                break;
+            //case 11221:
+            //case 12221:
+            //case 12321:
+            //case 12421:
+            //    MessageEvent += MessageTrophyWonEvent;
+            //    break;
             case 21111:
             case 22111:
             case 23111:
