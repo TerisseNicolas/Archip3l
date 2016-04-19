@@ -180,7 +180,6 @@ public class ExchangeResource : InputSource
                                     int quantitySent = int.Parse(quantityValue.text);
                                     Resource res = island.resourceManager.getResource(tr);
                                     res.changeStock(-quantitySent);
-                                    //TODO: send negative DATA to Vertical
                                     this.Client.sendData("@2" + this.island.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + (-quantitySent).ToString());
 
                                     MinorIsland.exchangePerforming = true;

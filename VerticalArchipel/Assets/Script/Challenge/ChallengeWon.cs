@@ -35,7 +35,6 @@ public class ChallengeWon : InputSource
         ChallengeWon.quantityWon = quantityWon;
         GameObject.Find("RewardValue").GetComponent<Text>().text = quantityWon.ToString();
         GameObject.Find("RewardSprite").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Resource/" + resourceWon + "Icon");
-
     }
 
     

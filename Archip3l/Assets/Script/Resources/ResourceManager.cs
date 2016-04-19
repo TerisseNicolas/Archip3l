@@ -71,7 +71,7 @@ public class ResourceManager : MonoBehaviour
     {
         //If it concerns my island
         char islandNumber = (char)e.message.Split('@')[1][1];
-        if (this.minorIsland.nameMinorIsland.Contains(islandNumber) || islandNumber=='5')
+        if (this.minorIsland.nameMinorIsland.Contains(islandNumber) || islandNumber=='0')
         {
             TypeResource resourceType = (TypeResource) Enum.Parse(typeof(TypeResource), (string) e.message.Split('@')[2]);
             int quantity = Int32.Parse(e.message.Split('@')[3]);

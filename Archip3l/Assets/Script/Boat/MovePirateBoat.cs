@@ -136,12 +136,12 @@ public class MovePirateBoat : InputSource
 
         if(touched)
         {
-//            SoundPlayer.Instance.playSinkingPirateShipSound();
+            SoundPlayer.Instance.playSinkingPirateShipSound();
 			StartCoroutine(ShipSinking());
         }
         else
         {
-//            SoundPlayer.Instance.playSinkingPirateShipSound();
+            SoundPlayer.Instance.playSinkingPirateShipSound();
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

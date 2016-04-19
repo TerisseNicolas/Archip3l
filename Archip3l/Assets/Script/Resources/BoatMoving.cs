@@ -39,7 +39,7 @@ public class BoatMoving : InputSource
             MinorIsland.exchangePerforming = false;
             //add resources to islandToSend
             TypeResource res = (TypeResource)System.Enum.Parse(typeof(TypeResource), resourceSent);
-            islandReceiver.resourceManager.getResource(res).changeStock(this.quantityCarried);
+            islandReceiver.resourceManager.changeResourceStock(res, this.quantityCarried);
             //TODO : update to be checked
             this.Client.sendData("@2" + islandReceiver.nameMinorIsland.Split('_')[2] + "355@" + islandReceiver.resourceManager.getResource(res).TypeResource.ToString() + "@" + this.quantityCarried.ToString());
             StartCoroutine(startBoatDisappearance());

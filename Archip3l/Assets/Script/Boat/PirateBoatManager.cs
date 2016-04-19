@@ -4,7 +4,7 @@ using TouchScript.InputSources;
 
 public class PirateBoatManager : MonoBehaviour
 {
-    private float initInterval = 1f;
+    private float initInterval = 3f;
     private float interval;
     private float raisingRate = 0.999f;
     private int boatId = 0;
