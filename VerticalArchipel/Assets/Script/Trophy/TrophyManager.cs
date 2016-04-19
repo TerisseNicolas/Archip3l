@@ -12,11 +12,11 @@ public class TrophyManager : MonoBehaviour
 
     public int airportsBuilt { get; private set; }
 
-    void Awake()
+    void Start()
     {
         this.airportsBuilt = 0;
         this.Client = GameObject.Find("Network").GetComponent<Client>();
-        this.Client.MessageTrophyWonEvent += Client_MessageTrophyWonEvent;
+        //this.Client.MessageTrophyWonEvent += Client_MessageTrophyWonEvent;
         this.Client.MessageBuildingConstructionEvent += Client_MessageBuildingConstructionEvent;
         this.ResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
         this.Trophies = new List<Trophy>();
@@ -42,6 +42,8 @@ public class TrophyManager : MonoBehaviour
         this.Trophies.Add(GameObject.Find("Trophy2").GetComponent<Trophy>());
         this.Trophies.Add(GameObject.Find("Trophy3").GetComponent<Trophy>());
         this.Trophies.Add(GameObject.Find("AirportMedal").GetComponent<Trophy>());
+
+        StartCoroutine(checkNewTrophyAvailable());
     }
 
     private void Client_MessageBuildingConstructionEvent(object sender, MessageEventArgs e)
@@ -125,7 +127,7 @@ public class TrophyManager : MonoBehaviour
         {
             foreach (Trophy trophy in this.Trophies)
             {
-                if(trophy.requirementVerified(this.ResourceManager))
+                if(trophy.requirementVerified(this.ResourceManager) && !trophy.active)
                 {
                     changeTrophyToObtained(trophy);
                 }

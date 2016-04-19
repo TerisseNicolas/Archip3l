@@ -11,6 +11,8 @@ public class Score : MonoBehaviour {
     public int BuildingCount;
     public int MedalCount;
 
+    private TrophyManager TrophyManager;
+
     public List<int> ChallengeSuccessRate;
 
     /* File structure
@@ -32,8 +34,11 @@ public class Score : MonoBehaviour {
         this.Client.MessageScoreUpdateEvent += Client_MessageScoreUpdateEvent;
         this.Client.MessageBuildingConstructionEvent += Client_MessageBuildingConstructionEvent;
         this.Client.MessageBuildingDestructionEvent += Client_MessageBuildingDestructionEvent;
-        this.Client.MessageTrophyWonEvent += Client_MessageTrophyWonEvent;
+        //this.Client.MessageTrophyWonEvent += Client_MessageTrophyWonEvent;
         this.Client.MessageChallengeFinalSuccessRateEvent += Client_MessageChallengeFinalSuccessRateEvent;
+
+        this.TrophyManager = GameObject.Find("Trophies").GetComponent<TrophyManager>();
+        this.TrophyManager.TrophyObtained += TrophyManager_TrophyObtained;
 
         this.ScoreCount = 0;
         this.filePath = "scores.txt";
@@ -175,9 +180,14 @@ public class Score : MonoBehaviour {
         file.Close();
     }
 
-    private void Client_MessageTrophyWonEvent(object sender, MessageEventArgs e)
+    //private void Client_MessageTrophyWonEvent(object sender, MessageEventArgs e)
+    //{
+    //    //Debug.Log("New Medal won");
+    //    this.MedalCount += 1;
+    //}
+    private void TrophyManager_TrophyObtained(object sender, TrophyObtainedEventArgs e)
     {
-        //Debug.Log("New Medal won");
+        //Debug.Log("New Medal won : " + e.Trophy.ToString());
         this.MedalCount += 1;
     }
     private void Client_MessageBuildingConstructionEvent(object sender, MessageEventArgs e)

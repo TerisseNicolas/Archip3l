@@ -86,8 +86,21 @@ public class Client : MonoBehaviour
     IEnumerator test()
     {
         yield return new WaitForSeconds(5);
-        this.ProcessMessage("serverinfo@31441@50");
-        this.ProcessMessage("serverinfo@32441@100");
+        this.ProcessMessage("serverinfo@21355@Gold@10500");
+        yield return new WaitForSeconds(0.1f);
+        this.ProcessMessage("serverinfo@21355@Food@7000");
+        yield return new WaitForSeconds(0.1f);
+        this.ProcessMessage("serverinfo@31505@7600");
+        yield return new WaitForSeconds(1);
+        this.ProcessMessage("serverinfo@21111@Airport");
+        yield return new WaitForSeconds(1);
+        this.ProcessMessage("serverinfo@22111@Airport");
+        yield return new WaitForSeconds(1);
+        this.ProcessMessage("serverinfo@23111@Airport");
+        yield return new WaitForSeconds(1);
+        this.ProcessMessage("serverinfo@24111@Airport");
+
+        //this.ProcessMessage("serverinfo@32441@100");
 
     }
 
@@ -132,7 +145,7 @@ public class Client : MonoBehaviour
 
     public void sendData(string dataToSend)
     {
-        Debug.Log("Sending : " + dataToSend);
+        //Debug.Log("Sending : " + dataToSend);
         byte[] data = Encoding.Default.GetBytes(dataToSend);
         _client.Send(data, data.Length);
     }
