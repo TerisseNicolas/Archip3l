@@ -26,7 +26,7 @@ public class ResourceManager : MonoBehaviour
         //Add all resources
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
-            this.addResource(resourceType, 50, 0);
+            this.addResource(resourceType, 5, 0);
         }
 
         switch (this.minorIsland.nameMinorIsland)
@@ -40,12 +40,10 @@ public class ResourceManager : MonoBehaviour
                 this.changeResourceStock(TypeResource.Stone, 10);
                 this.changeResourceStock(TypeResource.Oil, 20);
                 this.changeResourceStock(TypeResource.Wood, 10);
-                this.changeResourceStock(TypeResource.Food, 5);
                 break;
             case "sous_ile_3":
                 this.changeResourceStock(TypeResource.Gold, 5);
                 this.changeResourceStock(TypeResource.Stone, 10);
-                this.changeResourceStock(TypeResource.Food, 5);
                 break;
             case "sous_ile_4":
                 this.changeResourceStock(TypeResource.Stone, 5);
