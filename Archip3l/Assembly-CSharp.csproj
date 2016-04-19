@@ -59,6 +59,7 @@
      <Compile Include="Assets\Script\Buildings\WheelIcon.cs" />
      <Compile Include="Assets\Script\ChallengeBuild.cs" />
      <Compile Include="Assets\Script\ChallengeUpgrade.cs" />
+     <Compile Include="Assets\Script\Game\Cleaner.cs" />
      <Compile Include="Assets\Script\Game\Game.cs" />
      <Compile Include="Assets\Script\Game\GameMenu.cs" />
      <Compile Include="Assets\Script\Game\GlobalInfo.cs" />
@@ -166,7 +167,6 @@
      <Compile Include="Assets\Script\Types\TypeBuildingStat.cs" />
      <Compile Include="Assets\Script\Types\TypeChallenge.cs" />
      <Compile Include="Assets\Script\Types\TypeResource.cs" />
-     <Compile Include="Assets\Script\Types\TypeStat.cs" />
      <Compile Include="Assets\Script\UnlockTuto\ContactPoint.cs" />
      <Compile Include="Assets\Script\UnlockTuto\ContactPointLayer.cs" />
      <Compile Include="Assets\Script\UnlockTuto\Emitter.cs" />
