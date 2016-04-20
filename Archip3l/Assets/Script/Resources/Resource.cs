@@ -40,6 +40,7 @@ public class Resource : ScriptableObject{
         }
         else
         {
+            this.Production = 0;
             return false;
         }
     }
@@ -54,7 +55,7 @@ public class Resource : ScriptableObject{
         }
         else
         {
-            Debug.Log("changeStocks returns false");
+            this.Stock = 0;
             return false;
         }
     }
