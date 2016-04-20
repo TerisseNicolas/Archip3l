@@ -16,6 +16,8 @@ public class Briefing : InputSource
     private bool animationFlag;
     private bool animationLaunchedFlag;
 
+    private bool lockedScene;
+
     void Awake()
     {
         this.logoSprite = GameObject.Find("Logo");
@@ -34,16 +36,18 @@ public class Briefing : InputSource
 
         this.animationFlag = false;
         this.animationLaunchedFlag = false;
+        this.lockedScene = true;
     }
 
     void Start()
     {
         SoundPlayer.Instance.playBriefingLetterSound();
+        StartCoroutine(unlockScene());
     }
 
     void Update()
     {
-        if(this.animationFlag && !this.animationLaunchedFlag)
+        if(this.animationFlag && !this.animationLaunchedFlag && !lockedScene)
         {
             StartCoroutine(endAnimation());
             this.animationFlag = false;
@@ -55,6 +59,11 @@ public class Briefing : InputSource
         this.animationFlag = true;
     }
 
+    IEnumerator unlockScene()
+    {
+        yield return new WaitForSeconds(7);
+        this.lockedScene = false;
+    }
     IEnumerator endAnimation()
     {
         for (int i = 30; i>0; i--)
