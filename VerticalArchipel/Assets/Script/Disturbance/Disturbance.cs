@@ -125,7 +125,7 @@ public class Disturbance : InputSource
             this.Client.sendData("@3" + island.Split('_')[2] + "770");
             //TODO : check remove resource from the island
             Client.sendData("@2" + island.Split('_')[2] + "394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
-            main.addNotification("L'île " + island.Split('_')[2] + " vient de perdre " + quantityLost.ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
+            main.addNotification("L'île " + island.Split('_')[2] + " vient de perdre " + (-quantityLost).ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
             for (int i = 1; i <= 4; i++)
             {
                 if (("Disturbance-sous_ile_" + i.ToString()) != Disturbance.islandChosen)
