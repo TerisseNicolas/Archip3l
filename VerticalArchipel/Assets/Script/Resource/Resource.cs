@@ -41,6 +41,7 @@ public class Resource : ScriptableObject {
         }
         else
         {
+            this.Stock = 0;
             return false;
         }
     }
@@ -53,6 +54,7 @@ public class Resource : ScriptableObject {
         }
         else
         {
+            this.Production = 0;
             return false;
         }
     }

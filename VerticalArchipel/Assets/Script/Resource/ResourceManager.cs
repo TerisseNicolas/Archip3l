@@ -144,7 +144,7 @@ public class ResourceManager : MonoBehaviour
             //Island not concerned
             return false;
         }
-        Debug.Log("Stock update : " + e.message);
+        //Debug.Log("Stock update : " + e.message);
         Resource resource = this.getResource(resourceType);
         bool result = false;
         if (resource != null)
@@ -164,7 +164,7 @@ public class ResourceManager : MonoBehaviour
             }
         }
         //The board shouldn't notice the network of an gloabl stock update
-        if(this.ChangeResourceStockEvent != null && result)
+        if(this.ChangeResourceStockEvent != null) // && result)
         {
             this.ChangeResourceStockEvent(this, new ChangeResourceStockEventArgs { resourceType = resourceType, stock = value }); // resource.Stock });
         }

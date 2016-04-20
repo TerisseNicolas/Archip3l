@@ -24,6 +24,10 @@ public class ResourceView : MonoBehaviour {
                 if (t.name == "Value")
                     t.text = res.Stock.ToString();
             }
+            //if(res.TypeResource.ToString() =="Food")
+            //{
+            //    Debug.Log(res.Stock.ToString());
+            //}
         }
     }
 }

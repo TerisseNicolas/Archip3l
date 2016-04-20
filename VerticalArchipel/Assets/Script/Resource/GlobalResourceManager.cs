@@ -78,6 +78,10 @@ public class GlobalResourceManager : MonoBehaviour
             {
                 this.addResource(e.resourceType, e.stock);
             }
+            else
+            {
+                this.addResource(e.resourceType, -e.stock);
+            }
         }
     }
     public bool addResource(TypeResource resourceType, float quantity, float production = 0)

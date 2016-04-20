@@ -99,6 +99,9 @@ public class Client : MonoBehaviour
         this.ProcessMessage("serverinfo@23111@Airport");
         yield return new WaitForSeconds(1);
         this.ProcessMessage("serverinfo@24111@Airport");
+        yield return new WaitForSeconds(0.1f);
+        this.ProcessMessage("serverinfo@21355@Food@-8000");
+        
 
         //this.ProcessMessage("serverinfo@32441@100");
 
@@ -193,7 +196,7 @@ public class Client : MonoBehaviour
 
     private void ProcessMessage(string message)
     {
-        Debug.Log("Client processing : " + message);
+        //Debug.Log("Client processing : " + message);
         //Go to see the excell to get message format
 
         string[] split = message.Split('@');
