@@ -1,0 +1,11 @@
+Question;Answer;Explanation;Proposition0;Proposition1
+Dans tous les pays développés, la vente de médicaments progresse structurellement plus vite que le PIB.;Proposition0;En France par exemple, elle a progressé de 2,7% entre 2010 et 2011, par rapport à 2,1% pour le PIB;Proposition0;Proposition1
+En moyenne, un ménage français dépense plus d’argent pour les médicaments que pour les vêtements.;Proposition1;C’est toujours l’inverse avec par exemple, 47700 millions d’euros contre 34341 millions d’euros par an en 2012.;Proposition0;Proposition1
+En 2000, la France est le plus grand consommateur européen de médicaments, parmi les 8 classes thérapeutiques principales.;Proposition0;;Proposition0;Proposition1
+Une maladie orpheline est une maladie que développe un enfant orphelin.;Proposition1;On appelle maladie orpheline une maladie rare.;Proposition0;Proposition1
+La posologie correspond au poids du patient.;Proposition1;La posologie est la dose usuelle du médicament utilisé.;Proposition0;Proposition1
+La forme galénique d'un médicament se rapporte à des médicaments en forme de galets.;Proposition1;La forme galénique correspond à l’aspect physique final du médicament : comprimés, gélules, sachets, etc.;Proposition0;Proposition1
+Un liquide oral est synonyme de solution buvable dans le domaine médical.;Proposition1;Un liquide oral ne doit pas être avalé et ne doit donc pas être confondu avec une solution buvable.;Proposition0;Proposition1
+Un excipient est une substance auxiliaire contenue dans le médicament, servant à favoriser son absorption.;Proposition0;;Proposition0;Proposition1
+L'eau ou le saccharose peuvent parfois être utilisés comme excipients dans certains médicaments.;Proposition0;C'est le cas dans la formulation de certains sirops par exemple.;Proposition0;Proposition1
+La galénique est l'art de formuler des médicaments.;Proposition0;Cette appellation vient de Galien, médecin de l'Antiquité.;Proposition0;Proposition1

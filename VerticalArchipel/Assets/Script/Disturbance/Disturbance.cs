@@ -113,11 +113,8 @@ public class Disturbance : InputSource
             this.disturbanceText.text = "Vous n'avez choisi aucune île !\n\nEn conséquence, la perturbation s'abattra \nsur toutes les îles !";
             this.Client.sendData("@35770");
             //TODO : check remove resource from each island
-            Client.sendData("@20394@" + resourceLost.ToString() + "@" + "-" + quantityLost.ToString());
-            //Client.sendData("@22394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
-            //Client.sendData("@23394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
-            //Client.sendData("@24394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
-            main.addNotification("Toutes les îles viennent de perdre " + quantityLost.ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
+            Client.sendData("@25394@" + resourceLost.ToString() + "@" + "-" + quantityLost.ToString());
+            main.addNotification("Toutes les îles viennent de perdre " + (-quantityLost).ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
         }
         else
         {

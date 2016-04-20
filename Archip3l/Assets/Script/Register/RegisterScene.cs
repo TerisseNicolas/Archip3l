@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class RegisterScene : InputSource {
 
     static public Text teamName;
+    static public int level;    //collège : 0, lycée : 1
 
     private Client Client;
 
@@ -24,6 +25,7 @@ public class RegisterScene : InputSource {
     }
 
     void OnMouseDownSimulation(){
+
         if (this.name == "back")
         {
             if (RegisterScene.teamName.text != string.Empty)

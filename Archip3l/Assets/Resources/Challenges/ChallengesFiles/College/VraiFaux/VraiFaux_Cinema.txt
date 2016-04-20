@@ -1,0 +1,9 @@
+Question;Answer;Explanation;Proposition0;Proposition1
+Le cinéma est aussi couramment désigné comme le sixième art.;Proposition1; Il est couramment désigné comme le septième art, d'après l'expression du critique Ricciotto Canudo.;Proposition0;Proposition1
+Le terme cinéma est l’abréviation de cinématographe.;Proposition0;Le cinématographe est le nom donné par Léon Bouly à l’appareil de projection.;Proposition0;Proposition1
+Le terme de précinéma fait référence à la portion d'un film qui est visionnée avant le film lui-même.;Proposition1;Le terme précinéma désigne l'ensemble des procédés de recherches ayant menés à l'invention du cinéma.;Proposition0;Proposition1
+Les premières illusions d'images en mouvement furent produites par le biais de fentes ou de miroirs en rotation.;Proposition0;Au début du XIXème siècle, ces objets visaient à développer la curiosité scientifique des enfants de bonne famille.;Proposition0;Proposition1
+L'effet bêta est le phénomène qui permet au cerveau de percevoir le mouvement d'images animées.;Proposition0;Ce phénomène fut étudié au début du XXème siècle par Max Wertheimer.;Proposition0;Proposition1
+Les Frères Lumière ont été les premiers à réaliser des films.;Proposition1;Ils n'ont pas réalisé les premiers films mais les premières projections de vues photographiques animées.;Proposition0;Proposition1
+Les Frères Lumière étaient tous deux passionnés par le cinéma.;Proposition1;L'un des deux frères, Louis Lumière, n'aimait pas le cinéma mais y a consacré plus de dix ans de sa vie.;Proposition0;Proposition1
+L'un des frères Lumière, Louis Lumière, soutint le régime fasciste italien pendant la Seconde Guerre Mondiale.;Proposition0;Lors du quarantième anniversaire de l'invention du cinéma, Louis dédicace une photo à Benito Mussolini.;Proposition0;Proposition1
