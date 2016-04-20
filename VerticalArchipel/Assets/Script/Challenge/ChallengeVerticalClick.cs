@@ -67,8 +67,19 @@ public class ChallengeVerticalClick : InputSource
 
         //ENCODAGE : UTF8-16-LE
         //last line of file usually blank --> to be removed!
-        csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + ChallengeVerticalClick.typeChallenge.ToString() + "/" + ChallengeVerticalClick.typeChallenge.ToString() + "_" + tb.ToString());
-        Debug.Log("Challenges/ChallengesFiles/" + ChallengeVerticalClick.typeChallenge.ToString() + "/" + ChallengeVerticalClick.typeChallenge.ToString() + "_" + tb.ToString());
+        //csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + ChallengeVerticalClick.typeChallenge.ToString() + "/" + ChallengeVerticalClick.typeChallenge.ToString() + "_" + tb.ToString());
+
+        if (main.level == 0) //collège
+        {
+            csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/College/" + ChallengeVerticalClick.typeChallenge.ToString() + "/" + ChallengeVerticalClick.typeChallenge.ToString() + "_" + tb.ToString());
+            Debug.Log("college");
+        }
+        else
+        {
+            csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/Lycee/" + ChallengeVerticalClick.typeChallenge.ToString() + "/" + ChallengeVerticalClick.typeChallenge.ToString() + "_" + tb.ToString());
+            Debug.Log("lycee");
+        }
+        Debug.Log("File : " + typeChallenge.ToString() + "_" + tb.ToString());
         row = CSV_reader.GetRandomLine(csv.text);
 
 

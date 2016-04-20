@@ -1,0 +1,9 @@
+Question;Answer;Explanation;Proposition0;Proposition1
+Les mots fioul et pétrole sont des synonymes.;Proposition1;Le fioul est un combustible dérivé du pétrole.;Proposition0;Proposition1
+Les mots fioul et mazout sont des synonymes.;Proposition0;Tous deux correspondent au carburant notamment utilisé dans les chaudières.;Proposition0;Proposition1
+Le pétrole peut aussi entrer dans la composition de certains colorants.;Proposition0;;Proposition0;Proposition1
+La France fait partie des 10 pays plus gros producteurs de pétrole au monde.;Proposition1;Elle est 13ème dans la liste des plus gros consommateurs mondiaux.;Proposition0;Proposition1
+Il serait plus approprié de comparer un gisement de pétrole à une éponge qu'à un lac souterrain.;Proposition0;En effet, mélangé à de l'eau et à du gaz dissous, le pétrole occupe, les interstices microscopiques de roches poreuses.;Proposition0;Proposition1
+Les marées noires affectent principalement l'économie mais pas la faune et la flore.;Proposition1;Les marées noires perturbent fortement la faune et la flore marines.;Proposition0;Proposition1
+Le type de pétrole utilisé pour produire de l’essence est le pétrole riche en molécules lourdes.;Proposition1;De même que le GPL, l'essence est fabriquée à partir de pétrole raffiné, riches en molécules légères.;Proposition0;Proposition1
+Un système inspiré de la façon dont le sang coagule en cas de coupure est actuellement utilisé pour remédier aux fuites d'hydrocarbures.;Proposition0;Mis au point par des ingénieurs écossais, il repose sur l'utilisation de plaquettes artificielles.;Proposition0;Proposition1

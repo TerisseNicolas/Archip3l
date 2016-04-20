@@ -42,8 +42,8 @@ public class Game : MonoBehaviour
 
         this.ChallengerTimer = gameObject.GetComponent<ChallengeTimer>();
         //Todo : keep the good one
-        this.ChallengerTimer.Init(30f);
-        //this.ChallengerTimer.Init(5f);
+        //this.ChallengerTimer.Init(30f);
+        this.ChallengerTimer.Init(5f);
         this.ChallengerTimer.FinalTick += ChallengerTimer_FinalTick;
 
         this.GlobalResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
