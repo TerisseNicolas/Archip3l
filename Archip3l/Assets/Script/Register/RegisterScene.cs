@@ -10,10 +10,11 @@ using UnityEngine.SceneManagement;
 public class RegisterScene : InputSource {
 
     static public Text teamName;
-    static public int level;    //collège : 0, lycée : 1
+    static public int level = 0;    //collège : 0, lycée : 1
 
     private Client Client;
 
+    
     void Awake()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
@@ -22,6 +23,8 @@ public class RegisterScene : InputSource {
             RegisterScene.teamName = GameObject.Find("TeamNameValue").GetComponent<Text>();
             teamName.text = string.Empty;
         }
+        if (this.name == "college") //already selected
+            this.gameObject.GetComponent<BoxCollider>().enabled = false;
     }
 
     void OnMouseDownSimulation(){
@@ -45,6 +48,24 @@ public class RegisterScene : InputSource {
         {
             if (teamName.text != string.Empty)
                 RegisterScene.teamName.text += " ";
+        }
+        else if (this.name == "college")
+        {
+            this.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("ChoixNiveau/boutonCollegeValide");
+            GameObject.Find("lycee").GetComponent<BoxCollider>().enabled = true;
+            GameObject.Find("lycee").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("ChoixNiveau/boutonLyceeGrise");
+            RegisterScene.level = 0;
+        }
+        else if (this.name == "lycee")
+        {
+            if (GetComponent<SpriteRenderer>().sprite == null)
+                Debug.Log("null");
+            this.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("ChoixNiveau/boutonLyceeValide");
+            GameObject.Find("college").GetComponent<BoxCollider>().enabled = true;
+            GameObject.Find("college").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("ChoixNiveau/boutonCollegeGrise");
+            RegisterScene.level = 1;
         }
         else
             RegisterScene.teamName.text += this.name;
@@ -120,7 +141,8 @@ public class RegisterScene : InputSource {
         if (TouchTime == 0)
         {
             TouchTime = Time.time;
-            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("keyboard/" + this.name + "Clic");
+            if (this.name != "college" && this.name != "lycee")
+                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("keyboard/" + this.name + "Clic");
         }
 
     }
@@ -152,7 +174,8 @@ public class RegisterScene : InputSource {
         {
             TouchTime = 0;
         }
-        this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("keyboard/" + this.name);
+        if (this.name != "college" && this.name != "lycee")
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("keyboard/" + this.name);
 
     }
 
