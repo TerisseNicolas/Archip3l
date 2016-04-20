@@ -48,13 +48,13 @@ public class GlobalResourceManager : MonoBehaviour
         Resource resource = this.getResource(e.resourceType);
         if (resource != null)
         {
-            resource.changeProduction(e.production);
+            resource.changeProduction((int)e.production);
         }
         else
         {
             if (e.production >= 0)
             {
-                this.addResource(e.resourceType, e.production);
+                this.addResource(e.resourceType, (int)e.production);
             }
         }
     }
@@ -70,21 +70,21 @@ public class GlobalResourceManager : MonoBehaviour
                 this.resourceCountForScoreCurrent = this.resourceCountForScoreInit;
                 this.Client.sendData("@30505@" + 50.ToString());
             }
-            resource.changeStock(e.stock);
+            resource.changeStock((int)e.stock);
         }
         else
         {
             if (e.stock >= 0)
             {
-                this.addResource(e.resourceType, e.stock);
+                this.addResource(e.resourceType, (int)e.stock);
             }
             else
             {
-                this.addResource(e.resourceType, -e.stock);
+                this.addResource(e.resourceType, -(int)e.stock);
             }
         }
     }
-    public bool addResource(TypeResource resourceType, float quantity, float production = 0)
+    public bool addResource(TypeResource resourceType, int quantity, int production = 0)
     {
         bool flag = false;
         foreach (Resource item in this.Resources)

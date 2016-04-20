@@ -12,7 +12,6 @@ public class Enigma : InputSource
 {
     static public bool enigmaWindowOpen = false;
     static public string enigmaWindowName = string.Empty;
-    static public int enimgasToBeDone = 0;
 
     static public Text questionObject { get; private set; }
     static public Text resultObject { get; private set; }
@@ -20,7 +19,7 @@ public class Enigma : InputSource
     static public string question { get; private set; }
     static public string answer { get; private set; }
     static public string explainations { get; private set; }
-    static public int nbAnswers = 0;   //has to be 2
+    static public int nbAnswers = 0;   //has to be 2 to answer
 
     public TextAsset csv { get; private set; }
 
@@ -69,7 +68,6 @@ public class Enigma : InputSource
         if (this.name == "Question")
         {
             Enigma.nbAnswers = 0;
-            Enigma.enimgasToBeDone--;   //doing it just one time
             Enigma.questionObject = this.GetComponent<Text>();
             //CSV part
             //row[0] : question ; row[1] : answer ; row[2] : explainations
@@ -91,7 +89,7 @@ public class Enigma : InputSource
 
     IEnumerator wait(bool goodAnswer)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         
         for (int i = 0; i < 10; i++)
         {
@@ -102,32 +100,24 @@ public class Enigma : InputSource
 
         if (goodAnswer)
         {
-            //TODO: finish message
             Enigma.resultObject.text = "Bonne réponse !";
+            main.addNotification("Enigme réussie !");
             this.client.sendData("@35601@" + this.name);
         }
             
         else
         {
-            //TODO: finish message
             Enigma.resultObject.text = "Mauvaise réponse !";
+            main.addNotification("Enigme ratée !");
             this.client.sendData("@35602@" + this.name);
         }
 
 
-        yield return new WaitForSeconds(5);
-
-        if (Enigma.enimgasToBeDone > 0)
-        {
-            main.addEnigma();
-            Destroy(GameObject.Find("Enigma"));
-        }
-        else
-        {
-            Destroy(GameObject.Find("Enigma"), 4.1f);
-            yield return new WaitForSeconds(4);
-            Enigma.enigmaWindowOpen = false;
-        }
+        yield return new WaitForSeconds(4);
+        Enigma.enigmaWindowOpen = false;
+        Enigma.nbAnswers = 0;
+        Destroy(GameObject.Find("Enigma"));
+    
     }
 
    

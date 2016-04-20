@@ -51,13 +51,12 @@ public class ChallengeUpgrade : InputSource
 
         //ENCODAGE : UTF8-16-LE
         //last line of file usually blank --> to be removed!
-        csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
-        //TODO : uncomment
-        /*if (RegisterScene.level == 0)   //collège
-            csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/College" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
+        //csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
+        if (RegisterScene.level == 0)   //collège
+            csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/College/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
         else
-            csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/Lycee" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
-        */
+            csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/Lycee/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
+        
         Debug.Log("File : " + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
 
 
@@ -242,6 +241,30 @@ public class ChallengeUpgrade : InputSource
 
             if (goodAnswer)
             {
+                //TODO : check
+                //withdrawal of resources needed for the upgrading
+                switch (building.level)
+                {
+                    case 0:
+                        foreach (Tuple<TypeResource, int> tuple in building.upgrade1ResourceNeeded)
+                        {
+                            minorIsland.resourceManager.changeResourceStock(tuple.First, -tuple.Second);
+                        }
+                        break;
+                    case 1:
+                        foreach (Tuple<TypeResource, int> tuple in building.upgrade2ResourceNeeded)
+                        {
+                            minorIsland.resourceManager.changeResourceStock(tuple.First, -tuple.Second);
+                        }
+                        break;
+                    case 2:
+                        foreach (Tuple<TypeResource, int> tuple in building.upgrade3ResourceNeeded)
+                        {
+                            minorIsland.resourceManager.changeResourceStock(tuple.First, -tuple.Second);
+                        }
+                        break;
+                }
+
                 building.level += 1;
                 this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "345@" + building.resourceProduced.TypeResource.ToString() + "@" + building.resourceProduced.Production);
                 building.changeProduction(building.quantityProduced);

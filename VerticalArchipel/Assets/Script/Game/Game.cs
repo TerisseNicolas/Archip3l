@@ -28,13 +28,12 @@ public class Game : MonoBehaviour
 
         this.Timer = gameObject.GetComponent<Timer>();
         //this.Timer.Init(1f * 10f);
-        this.Timer.Init(13f * 60f);
+        this.Timer.Init(20f * 60f); //20 min de jeu
         this.Timer.FinalTick += Timer_FinalTick;
         this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
         this.Timer.PirateBoatsIncreaseTick += Timer_PirateBoatsIncreaseTick;
 
         this.TimerDisturbance = gameObject.GetComponent<DisturbanceTimer>();
-        //Todo : keep the good one
         //this.TimerDisturbance.Init(180f);
         this.TimerDisturbance.Init(10f);
         this.TimerDisturbance.FinalTick += TimerDisturbance_FinalTick;
@@ -42,8 +41,8 @@ public class Game : MonoBehaviour
 
         this.ChallengerTimer = gameObject.GetComponent<ChallengeTimer>();
         //Todo : keep the good one
-        this.ChallengerTimer.Init(30f);
-        //this.ChallengerTimer.Init(5f);
+        //this.ChallengerTimer.Init(30f);
+        this.ChallengerTimer.Init(5f);
         this.ChallengerTimer.FinalTick += ChallengerTimer_FinalTick;
 
         this.GlobalResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
@@ -139,10 +138,13 @@ public class Game : MonoBehaviour
                     this.TimerDisturbance.Init(180f);
                     //this.TimerDisturbance.Init(15f);
                     break;
-                case 3:
+                case 4:
+                case 5:
                     this.TimerDisturbance.Init(120f);
                     break;
-                case 4:
+                case 6:
+                case 7:
+                case 8:
                     this.TimerDisturbance.Init(60f);
                     break;
             }

@@ -47,13 +47,12 @@ public class ChallengeBuild : InputSource
 
         //ENCODAGE : UTF8-16-LE
         //last line of file usually blank --> to be removed!
-        csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + typeBuilding.ToString());
-        //TODO : uncomment
-        /*if (RegisterScene.level == 0)   //collège
-            csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/College" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
+        //csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + typeBuilding.ToString());
+        if (RegisterScene.level == 0)   //collège
+            csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/College/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + typeBuilding.ToString());
         else
-            csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/Lycee" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + myBuilding.TypeBuilding.ToString());
-        */
+            csv = Resources.Load<TextAsset>("Challenges/ChallengesFiles/Lycee/" + typeChallenge.ToString() + "/" + typeChallenge.ToString() + "_" + typeBuilding.ToString());
+        
         Debug.Log("File : " + typeChallenge.ToString() + "_" + typeBuilding.ToString());
 
         string[] row = CSV_reader.GetRandomLine(csv.text);

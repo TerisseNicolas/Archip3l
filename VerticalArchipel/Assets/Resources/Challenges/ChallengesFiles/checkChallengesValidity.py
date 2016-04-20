@@ -19,6 +19,8 @@ for challengeType in challengeTypesList:
 					print("quotation mark error in " + fileName)
 				if ('_' in line):
 					print("underscore present in " + fileName)
+				if (line == ''):
+					print("empty line in " + fileName)
 			challengeFile.close
 		except:
 			print("error in " + fileName)

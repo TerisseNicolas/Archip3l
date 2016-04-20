@@ -14,7 +14,7 @@ public class Resource : ScriptableObject {
         this.Stock = 0;
         this.Production = 0;
     }
-    public void init(TypeResource TypeResource, float quantity)
+    public void init(TypeResource TypeResource, int quantity)
     {
         init(TypeResource);
         if (quantity > 0)
@@ -23,7 +23,7 @@ public class Resource : ScriptableObject {
         }
         this.Production = 0;
     }
-    public void init(TypeResource TypeResource, float quantity, float production)
+    public void init(TypeResource TypeResource, int quantity, int production)
     {
         init(TypeResource, quantity);
         if(production > 0)
@@ -31,7 +31,7 @@ public class Resource : ScriptableObject {
             this.Production = (int)production;
         }
     }
-    public bool changeStock(float value)
+    public bool changeStock(int value)
     {
         //Debug.Log("Changing stock : " + this.TypeResource.ToString() + " stock " + this.Stock.ToString() + "production " + this.Production.ToString() + " value arg " + value.ToString() );
         if (this.Stock + value >= 0)
@@ -45,7 +45,7 @@ public class Resource : ScriptableObject {
             return false;
         }
     }
-    public bool changeProduction(float valueToAdd)
+    public bool changeProduction(int valueToAdd)
     {
         if (this.Production + valueToAdd >= 0)
         {
