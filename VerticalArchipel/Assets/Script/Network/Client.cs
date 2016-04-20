@@ -59,6 +59,7 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemStartOfGameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemEndOfGameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemTeamNameEvent;
+    public event EventHandler<MessageEventArgs> MessageSystemTeamLevelEvent;
 
 
     void Start()
@@ -79,7 +80,7 @@ public class Client : MonoBehaviour
         _thListener.Start();
 
         //todo : delete
-        //StartCoroutine("test");
+        StartCoroutine("test");
 
     }
 
@@ -101,6 +102,7 @@ public class Client : MonoBehaviour
         this.ProcessMessage("serverinfo@24111@Airport");
         yield return new WaitForSeconds(0.1f);
         this.ProcessMessage("serverinfo@21355@Food@-8000");
+        this.ProcessMessage("serverInfo@30005@1");
         
 
         //this.ProcessMessage("serverinfo@32441@100");
@@ -276,6 +278,9 @@ public class Client : MonoBehaviour
                 break;
             case 30004:
                 MessageEvent += MessageSystemTeamNameEvent;
+                break;
+            case 30005:
+                MessageEvent += MessageSystemTeamLevelEvent;
                 break;
             case 30006:
                 MessageEvent += MessageSystemStartInitOfGameEvent;

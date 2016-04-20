@@ -59,6 +59,7 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemStartOfGameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemEndOfGameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemTeamNameEvent;
+    public event EventHandler<MessageEventArgs> MessageSystemTeamLevelEvent;
 
 
     void Awake()
@@ -258,6 +259,9 @@ public class Client : MonoBehaviour
                 break;
             case 30004:
                 MessageEvent += MessageSystemTeamNameEvent;
+                break;
+            case 30005:
+                MessageEvent += MessageSystemTeamLevelEvent;
                 break;
             case 30006:
                 MessageEvent += MessageSystemStartInitOfGameEvent;

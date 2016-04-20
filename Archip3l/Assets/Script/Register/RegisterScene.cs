@@ -39,6 +39,7 @@ public class RegisterScene : InputSource {
             if (teamName.text != string.Empty)
             {
                 this.Client.sendData("@30004@" + RegisterScene.teamName.text);
+                this.Client.sendData("@30005@" + RegisterScene.level.ToString());
                 SceneSupervisor.Instance.loadUnlockingScenes();
             }
         }

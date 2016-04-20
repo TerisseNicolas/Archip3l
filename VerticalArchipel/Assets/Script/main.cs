@@ -13,6 +13,8 @@ public class main : MonoBehaviour
 
     static public int level = 0;    //TODO : initialize with Register's value (from Archipel) --> event Client
 
+    private Client Client;
+
     void Start()
     {
         //hiding challenges and notifications at the beginning
@@ -28,8 +30,15 @@ public class main : MonoBehaviour
             GameObject.Find("Notif" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
         }
 
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+        this.Client.MessageSystemTeamLevelEvent += Client_MessageSystemTeamLevelEvent;
     }
-    
+
+    private void Client_MessageSystemTeamLevelEvent(object sender, MessageEventArgs e)
+    {
+        main.level = Int32.Parse((string)e.message.Split('@').GetValue(2));
+    }
+
     static public void removeChallenge(GameObject go)
     {
         go.GetComponent<SpriteRenderer>().enabled = false;
