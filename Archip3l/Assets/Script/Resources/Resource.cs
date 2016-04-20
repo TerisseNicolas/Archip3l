@@ -5,9 +5,9 @@ using System;
 public class Resource : ScriptableObject{
 
     public TypeResource TypeResource { get; private set; }
-    public float Stock { get; private set; }
-    public float Production { get; private set; }
-    public float ProductionInit { get; private set; }
+    public int Stock { get; private set; }
+    public int Production { get; private set; }
+    public int ProductionInit { get; private set; }
 
     public void init(TypeResource TypeResource)
     {
@@ -16,7 +16,7 @@ public class Resource : ScriptableObject{
         this.Production = 0;
         this.ProductionInit = 0;
     }
-    public void init(TypeResource TypeResource, float quantity)
+    public void init(TypeResource TypeResource, int quantity)
     {
         init(TypeResource);
         if (quantity > 0)
@@ -24,14 +24,14 @@ public class Resource : ScriptableObject{
             this.Stock = quantity;
         }
     }
-    public void init(TypeResource TypeResource, float quantity, int production)
+    public void init(TypeResource TypeResource, int quantity, int production)
     {
         init(TypeResource, quantity);
         this.Production = production;
         this.ProductionInit = production;
     }
 
-    public bool changeProduction(float valueToAdd)
+    public bool changeProduction(int valueToAdd)
     {
         if (this.Production + valueToAdd >= 0)
         {
@@ -44,7 +44,7 @@ public class Resource : ScriptableObject{
             return false;
         }
     }
-    public bool changeStock(float value)
+    public bool changeStock(int value)
     {
         if (this.Stock + value >= 0)
         {

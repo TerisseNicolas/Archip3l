@@ -5,8 +5,8 @@ using System;
 public class Resource : ScriptableObject {
 
     public TypeResource TypeResource { get; private set; }
-    public float Stock { get; private set; }
-    public float Production { get; private set; }
+    public int Stock { get; private set; }
+    public int Production { get; private set; }
 
     public void init(TypeResource TypeResource)
     {

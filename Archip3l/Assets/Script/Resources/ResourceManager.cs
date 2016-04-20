@@ -82,7 +82,7 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    public bool addResource(TypeResource resourceType, float quantity, int production)
+    public bool addResource(TypeResource resourceType, int quantity, int production)
     {
         bool flag = false;
         foreach (Resource item in this.Resources)
@@ -106,7 +106,7 @@ public class ResourceManager : MonoBehaviour
     }
 
     //TODO: check send message to Vertical (production modified)
-    public bool changeResourceProduction(TypeResource resourceType, float value)
+    public bool changeResourceProduction(TypeResource resourceType, int value)
     {
         Resource resource = this.getResource(resourceType);
         int oldProd, newProd;
@@ -116,7 +116,7 @@ public class ResourceManager : MonoBehaviour
         this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "345@" + resource.TypeResource.ToString() + "@" + (newProd - oldProd).ToString());
         return result;
     }
-    public bool changeResourceStock(TypeResource resourceType, float value)
+    public bool changeResourceStock(TypeResource resourceType, int value)
     {
         Resource resource = this.getResource(resourceType);
         bool result = false;

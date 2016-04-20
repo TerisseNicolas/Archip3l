@@ -93,7 +93,7 @@ public class verticalTuto : InputSource
                 verticalTuto.islandsTutoText.SetActive(false);
                 verticalTuto.tutoTermine.SetActive(true);
                 this.Client.sendData("@40003");
-
+                steps = 0;
                 break;
         }
     }
