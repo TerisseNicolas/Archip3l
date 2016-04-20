@@ -58,7 +58,7 @@ public class Score : MonoBehaviour {
     private void Client_MessageChallengeFinalSuccessRateEvent(object sender, MessageEventArgs e)
     {
         int islandNumber = Int32.Parse(e.message.Split('@')[1][1].ToString());
-        int rate = Int32.Parse((string)e.message.Split('@').GetValue(2));
+        float rate = float.Parse((string)e.message.Split('@').GetValue(2));
         this.ChallengeSuccessRate[islandNumber - 1] = rate;
     }
 
@@ -80,7 +80,7 @@ public class Score : MonoBehaviour {
             {
                 string[] words = line.Split('@');
                 scores.Add(new Tuple<int, string, int, int, int, float>(Int32.Parse(words[0]), words[1], Int32.Parse(words[2]),
-                                                                      Int32.Parse(words[3]), Int32.Parse(words[4]), Int32.Parse(words[5])));
+                                                                      Int32.Parse(words[3]), Int32.Parse(words[4]), float.Parse(words[5])));
             }
             file.Close();
         }
@@ -139,11 +139,12 @@ public class Score : MonoBehaviour {
         int count = 1;
 
         float challengeSuccessRate = 0;
-        foreach(int c in this.ChallengeSuccessRate)
+        foreach(float c in this.ChallengeSuccessRate)
         {
             challengeSuccessRate += c;
         }
-        challengeSuccessRate /= 4;
+        challengeSuccessRate /= 4.0f;
+        challengeSuccessRate *= 100;
 
         List<Tuple<int, string, int, int, int, float>> temp = new List<Tuple<int, string, int, int, int, float>>();
         foreach (Tuple<int, string, int, int, int, float> item in this.scores)
@@ -174,7 +175,7 @@ public class Score : MonoBehaviour {
         string line;
         foreach (Tuple<int, string, int, int, int, float> item in this.scores)
         {
-            line = item.First.ToString() + "@" + item.Second + "@" + item.Third.ToString() + "@" + item.Fourth.ToString() + "@" + item.Fifth.ToString() + "@" + item.Sixth.ToString();
+            line = item.First.ToString() + "@" + item.Second + "@" + item.Third.ToString() + "@" + item.Fourth.ToString() + "@" + item.Fifth.ToString() + "@" + item.Sixth.ToString("F2");
             file.WriteLine(line);
         }
         file.Close();

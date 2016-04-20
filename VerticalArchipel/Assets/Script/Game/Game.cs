@@ -27,7 +27,7 @@ public class Game : MonoBehaviour
         this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
 
         this.Timer = gameObject.GetComponent<Timer>();
-        //this.Timer.Init(1f * 10f);
+        //this.Timer.Init(1f * 20f);
         this.Timer.Init(20f * 60f); //20 min de jeu
         this.Timer.FinalTick += Timer_FinalTick;
         this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
@@ -91,6 +91,8 @@ public class Game : MonoBehaviour
     {
         this.Client.sendData("@30002");
         this.Score.addScore(this.GlobalInfo.teamName);
+        //TODO delete this
+        //this.Client.ProcessMessage("@30000@BoardEndScene");
     }
     private void ChallengerTimer_FinalTick(object sender, System.EventArgs e)
     {

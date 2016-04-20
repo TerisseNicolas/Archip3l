@@ -75,7 +75,7 @@ public class CSV_reader : MonoBehaviour
 
     static public string[] GetRandomLine(string csvText)
     {
-        Debug.Log("ok");
+        //Debug.Log("ok");
         string[] lines = csvText.Split("\n"[0]);
 
         // finds the max width of row

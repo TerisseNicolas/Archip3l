@@ -25,7 +25,7 @@ public class ResourcesFilling : MonoBehaviour
         //fill total stats
         foreach (Resource resource in this.GRM.Resources)
         {
-            GameObject.Find(resource.TypeResource.ToString().ToLower() + "5").GetComponent<Text>().text = resource.Stock.ToString("F2");
+            GameObject.Find(resource.TypeResource.ToString().ToLower() + "5").GetComponent<Text>().text = resource.Stock.ToString();
         }
 
         //fill challenge success rate
@@ -34,11 +34,11 @@ public class ResourcesFilling : MonoBehaviour
         float value = 0;
         for(int i = 0; i <game.GetComponent<Score>().ChallengeSuccessRate.Count; i++)
         {
-            value = game.GetComponent<Score>().ChallengeSuccessRate[i];
+            value = game.GetComponent<Score>().ChallengeSuccessRate[i] * 100;
             totalSuccessRate += value;
-            GameObject.Find("goodAnswersValue" + (i + 1).ToString()).GetComponent<Text>().text = value.ToString();
+            GameObject.Find("goodAnswersValue" + (i + 1).ToString()).GetComponent<Text>().text = value.ToString("F2") + "%";
         }
-        GameObject.Find("goodAnswersValue5").GetComponent<Text>().text = (totalSuccessRate / 4).ToString();
+        GameObject.Find("goodAnswersValue5").GetComponent<Text>().text = (totalSuccessRate / 4).ToString("F2") +"%";
 
         //fill buildings
 

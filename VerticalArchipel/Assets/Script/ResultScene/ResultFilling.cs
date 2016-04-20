@@ -10,7 +10,7 @@ public class ResultFilling : MonoBehaviour {
     private string teamName;
     private string filePath;
 
-    private List<Tuple<int, string, int, int, int, int>> scores;
+    private List<Tuple<int, string, int, int, int, float>> scores;
 
     /* File structure
         -position
@@ -25,13 +25,13 @@ public class ResultFilling : MonoBehaviour {
     {
         this.filePath = "scores.txt";
         this.teamName = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>().teamName;
-        this.scores = new List<Tuple<int, string, int, int, int, int>>();
+        this.scores = new List<Tuple<int, string, int, int, int, float>>();
 
         this.loadPreviousScores();
 
         //fill the tab
         int count = 1;
-        foreach(Tuple<int, string, int, int, int, int> item in getFinalResult(this.teamName))
+        foreach(Tuple<int, string, int, int, int, float> item in getFinalResult(this.teamName))
         {
             GameObject.Find(count.ToString()).GetComponent<Text>().text = item.First.ToString();
             //fill team name
@@ -43,7 +43,7 @@ public class ResultFilling : MonoBehaviour {
             //fill buildings
             GameObject.Find("building" + count.ToString()).GetComponent<Text>().text = item.Fifth.ToString();
             //fill challenge success rate
-            GameObject.Find("challenge" + count.ToString()).GetComponent<Text>().text = item.Sixth.ToString() + " %";
+            GameObject.Find("challenge" + count.ToString()).GetComponent<Text>().text = item.Sixth.ToString("F2") + " %";
 
 
             count += 1;
@@ -59,8 +59,8 @@ public class ResultFilling : MonoBehaviour {
             while ((line = file.ReadLine()) != null)
             {
                 string[] words = line.Split('@');
-                scores.Add(new Tuple<int, string, int, int, int, int>(Int32.Parse(words[0]), words[1], Int32.Parse(words[2]),
-                                                                      Int32.Parse(words[3]), Int32.Parse(words[4]), Int32.Parse(words[5])));
+                scores.Add(new Tuple<int, string, int, int, int, float>(Int32.Parse(words[0]), words[1], Int32.Parse(words[2]),
+                                                                      Int32.Parse(words[3]), Int32.Parse(words[4]), float.Parse(words[5])));
             }
             file.Close();
         }
@@ -70,13 +70,13 @@ public class ResultFilling : MonoBehaviour {
             file.Close();
         }
     }
-    public List<Tuple<int, string, int, int, int, int>> getFinalResult(string teamName)
+    public List<Tuple<int, string, int, int, int, float>> getFinalResult(string teamName)
     {
         int count = 0;
         int limit = 10;
         bool flag = false;
-        List<Tuple<int, string, int, int, int, int>> final = new List<Tuple<int, string, int, int, int, int>>();
-        foreach (Tuple<int, string, int, int, int, int> item in this.scores)
+        List<Tuple<int, string, int, int, int, float>> final = new List<Tuple<int, string, int, int, int, float>>();
+        foreach (Tuple<int, string, int, int, int, float> item in this.scores)
         {
             if (count == limit)
             {

@@ -103,9 +103,11 @@ public class Client : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         this.ProcessMessage("serverinfo@21355@Food@-8000");
         this.ProcessMessage("serverInfo@30005@1");
-        
 
-        //this.ProcessMessage("serverinfo@32441@100");
+        this.ProcessMessage("serverinfo@31441@0.568");
+        this.ProcessMessage("serverinfo@32441@0.2563");
+        this.ProcessMessage("serverinfo@33441@0.7596");
+        this.ProcessMessage("serverinfo@34441@0.5");
 
     }
 
