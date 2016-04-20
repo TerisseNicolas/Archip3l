@@ -56,10 +56,19 @@ public class WheelIcon : InputSource
                         break;
                     case "CostValue1":
                         textInCanvas.text = constructionResourceNeeded[0].Second.ToString();
+                        if(constructionResourceNeeded[0].Second>island.resourceManager.getResource(constructionResourceNeeded[0].First).Stock)
+                            textInCanvas.color = Color.red;
+                        else
+                            textInCanvas.color = Color.green;
                         break;
                     case "CostValue2":
-                        if (constructionResourceNeeded.Count == 2)
+                        if (constructionResourceNeeded.Count == 2){
                             textInCanvas.text = constructionResourceNeeded[1].Second.ToString();
+                            if(constructionResourceNeeded[1].Second>island.resourceManager.getResource(constructionResourceNeeded[1].First).Stock)
+                                textInCanvas.color = Color.red;
+                            else
+                                textInCanvas.color = Color.green;
+                        }
                         else
                             textInCanvas.text = "-";
                         break;

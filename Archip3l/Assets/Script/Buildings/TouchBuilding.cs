@@ -50,12 +50,24 @@ public class TouchBuilding : InputSource
                             {
                                 case 0:
                                     textInCanvas.text = building.upgrade1ResourceNeeded[0].Second.ToString();
+                                    if(building.upgrade1ResourceNeeded[0].Second>island.resourceManager.getResource(building.upgrade1ResourceNeeded[0].First).Stock)
+                                        textInCanvas.color = Color.red;
+                                    else
+                                        textInCanvas.color = Color.green;
                                     break;
                                 case 1:
                                     textInCanvas.text = building.upgrade2ResourceNeeded[0].Second.ToString();
+                                    if(building.upgrade2ResourceNeeded[0].Second>island.resourceManager.getResource(building.upgrade2ResourceNeeded[0].First).Stock)
+                                        textInCanvas.color = Color.red;
+                                    else
+                                        textInCanvas.color = Color.green;
                                     break;
                                 case 2:
                                     textInCanvas.text = building.upgrade3ResourceNeeded[0].Second.ToString();
+                                    if(building.upgrade3ResourceNeeded[0].Second>island.resourceManager.getResource(building.upgrade3ResourceNeeded[0].First).Stock)
+                                        textInCanvas.color = Color.red;
+                                    else
+                                        textInCanvas.color = Color.green;
                                     break;
                                 default:
                                     textInCanvas.text = "-";
@@ -66,20 +78,35 @@ public class TouchBuilding : InputSource
                             switch (building.level)
                             {
                                 case 0:
-                                    if (building.upgrade1ResourceNeeded.Count == 2)
+                                    if (building.upgrade1ResourceNeeded.Count == 2){
                                         textInCanvas.text = building.upgrade1ResourceNeeded[1].Second.ToString();
+                                        if(building.upgrade1ResourceNeeded[1].Second>island.resourceManager.getResource(building.upgrade1ResourceNeeded[1].First).Stock)
+                                            textInCanvas.color = Color.red;
+                                        else
+                                            textInCanvas.color = Color.green;
+                                    }
                                     else
                                         textInCanvas.text = "-";
                                     break;
                                 case 1:
-                                    if (building.upgrade2ResourceNeeded.Count == 2)
+                                    if (building.upgrade2ResourceNeeded.Count == 2){
                                         textInCanvas.text = building.upgrade2ResourceNeeded[1].Second.ToString();
+                                        if(building.upgrade2ResourceNeeded[1].Second>island.resourceManager.getResource(building.upgrade2ResourceNeeded[1].First).Stock)
+                                            textInCanvas.color = Color.red;
+                                        else
+                                            textInCanvas.color = Color.green;
+                                    }
                                     else
                                         textInCanvas.text = "-";
                                     break;
                                 case 2:
-                                    if (building.upgrade3ResourceNeeded.Count == 2)
+                                    if (building.upgrade3ResourceNeeded.Count == 2){
                                         textInCanvas.text = building.upgrade3ResourceNeeded[1].Second.ToString();
+                                        if(building.upgrade3ResourceNeeded[1].Second>island.resourceManager.getResource(building.upgrade3ResourceNeeded[1].First).Stock)
+                                            textInCanvas.color = Color.red;
+                                        else
+                                            textInCanvas.color = Color.green;
+                                    }
                                     else
                                         textInCanvas.text = "-";
                                     break;
