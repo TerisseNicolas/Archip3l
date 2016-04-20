@@ -73,12 +73,7 @@ public class ChallengeBuild : InputSource
                 this.propositions[1] = row[4];
                 if (this.nbPropositions == 3)
                     this.propositions[2] = row[5];
-
-                //Debug.Log("Question : " + this.question);
-                //Debug.Log("Answer : " + this.answer);
-                //Debug.Log("Explainations : " + this.explainations);
-                //Debug.Log("Proposition0 : " + this.propositions[0]);
-                //Debug.Log("Proposition1 : " + this.propositions[1]);
+                
 
                 //graphic part
 
@@ -231,6 +226,7 @@ public class ChallengeBuild : InputSource
             //construction of building
             bool newBuilding = minorIsland.buildingManager.createBuilding(typeBuilding, minorIsland.placeOfBuildingConstruction);
 
+
             if (newBuilding == false)
             {
                 minorIsland.displayPopup("Le bâtiment " + Building.translateBuildingName(typeBuilding.ToString()) + " a déjà été créé !", 3);
@@ -242,15 +238,14 @@ public class ChallengeBuild : InputSource
                 if (goodAnswer)
                 {
                     minorIsland.displayPopup("Grâce à votre bonne réponse, la production du bâtiment " + Building.translateBuildingName(typeBuilding.ToString()) + " double !", 3, explainations);
-                    buildingConstructed.quantityProduced = Building.getQuantityResourceOrStatProduced(typeBuilding.ToString()) * 2;
+                    buildingConstructed.changeProduction(buildingConstructed.quantityProduced);
+                    
                 }
                 else
                 {
                     minorIsland.displayPopup("Mauvaise réponse ... ", 3, explainations);
-                    buildingConstructed.quantityProduced = Building.getQuantityResourceOrStatProduced(typeBuilding.ToString());
                 }
 
-                buildingConstructed.changeProduction(buildingConstructed.quantityProduced);
             }
         }
 

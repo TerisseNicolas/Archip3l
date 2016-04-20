@@ -46,8 +46,6 @@ public class Resource : ScriptableObject{
     }
     public bool changeStock(float value)
     {
-        //if (value <= 0)
-        //    Debug.Log("stock decremented");
         if (this.Stock + value >= 0)
         {
             this.Stock += value;

@@ -26,7 +26,8 @@ public class ResourceManager : MonoBehaviour
         //Add all resources
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
-            this.addResource(resourceType, 5, 0);
+            //TODO : put stock to 5
+            this.addResource(resourceType, 50, 0);
         }
 
         switch (this.minorIsland.nameMinorIsland)
@@ -103,10 +104,16 @@ public class ResourceManager : MonoBehaviour
             return true;
         }
     }
+
+    //TODO: check send message to Vertical (production modified)
     public bool changeResourceProduction(TypeResource resourceType, float value)
     {
         Resource resource = this.getResource(resourceType);
+        int oldProd, newProd;
+        oldProd = (int)resource.Production;
         bool result = resource.changeProduction(value);
+        newProd = (int)resource.Production;
+        this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "345@" + resource.TypeResource.ToString() + "@" + (newProd - oldProd).ToString());
         return result;
     }
     public bool changeResourceStock(TypeResource resourceType, float value)
@@ -173,8 +180,8 @@ public class ResourceManager : MonoBehaviour
             {
                 if (res.Production != 0)
                 {
-                    //if (this.minorIsland.nameMinorIsland.Contains("3"))
-                    //    Debug.Log(res.TypeResource.ToString() + " --> " + res.Stock);
+                    if (this.minorIsland.nameMinorIsland.Contains("3"))
+                        Debug.Log(res.TypeResource.ToString() + " --> " + res.Stock + " (Production: " + res.Production);
                     this.changeResourceStock(res.TypeResource, res.Production);
                     this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + res.Production);
                     yield return new WaitForSeconds(0.02f);

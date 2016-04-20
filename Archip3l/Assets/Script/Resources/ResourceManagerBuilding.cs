@@ -69,7 +69,6 @@ public class ResourceManagerBuilding : MonoBehaviour
     {
         foreach (Resource item in this.Resources)
         {
-            //Debug.Log("+++ " + item.Name);
             if (item.TypeResource == resourceType)
             {
                 return item;
@@ -84,9 +83,7 @@ public class ResourceManagerBuilding : MonoBehaviour
         {
             foreach (Resource res in this.Resources)
             {
-                //this.building.resourceManager.changeResourceStock(res.TypeResource, res.Production);
                 res.changeStock(res.Production);
-                //Debug.Log("Building : " + this.building.name + "\tProduction : " + res.Production + "\tStock  : " + res.Name + " : " + res.Stock);
             }
             yield return new WaitForSeconds(1f);
         }

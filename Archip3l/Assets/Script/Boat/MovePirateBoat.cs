@@ -40,7 +40,6 @@ public class MovePirateBoat : InputSource
     {
         System.Random rnd = new System.Random();
 
-        //Debug.Log(initPosition.ToString());
         this.direction = targetPosition - initPosition;
 
         transform.position = initPosition;

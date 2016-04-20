@@ -38,7 +38,6 @@ public class Building : InputSource
         this.TypeBuilding = TypeBuilding;
         this.buildState = 0;
         this.minorIsland = island;
-        this.quantityProduced = 0;
         this.constructionResourceNeeded = new List<Tuple<TypeResource, int>>();
         this.upgrade1ResourceNeeded = new List<Tuple<TypeResource, int>>();
         this.upgrade2ResourceNeeded = new List<Tuple<TypeResource, int>>();
@@ -49,11 +48,11 @@ public class Building : InputSource
         this.texturePath = "Building/Icons/wheelIcon_" + TypeBuilding.ToString();
 
         this.constructionResourceNeeded = getConstructionResourcesNeeded(TypeBuilding.ToString());
-
         switch (TypeBuilding)
         {
             case TypeBuilding.GoldMine:
                 this.resourceProduced.init(TypeResource.Gold, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Stone, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 60));
@@ -64,6 +63,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.StoneMine:
                 this.resourceProduced.init(TypeResource.Stone, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Food, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 60));
@@ -74,6 +74,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.OilPlant:
                 this.resourceProduced.init(TypeResource.Oil, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Wood, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Stone, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Wood, 60));
@@ -84,6 +85,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.Sawmill:
                 this.resourceProduced.init(TypeResource.Wood, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Stone, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Food, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Stone, 60));
@@ -94,6 +96,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.Factory:
                 this.resourceProduced.init(TypeResource.Manufacture, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Oil, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Oil, 60));
                 this.upgrade3ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Oil, 80));
@@ -101,6 +104,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.WindTurbine:
                 this.resourceProduced.init(TypeResource.Electricity, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Food, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Oil, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Food, 60));
@@ -111,6 +115,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.Farm:
                 this.resourceProduced.init(TypeResource.Food, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Wood, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 60));
@@ -121,6 +126,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.Harbor:
                 this.resourceProduced.init(TypeResource.Food, 0, 1);
+                this.quantityProduced = 1;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Wood, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Wood, 60));
@@ -131,6 +137,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.PowerPlant:
                 this.resourceProduced.init(TypeResource.Electricity, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Wood, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Oil, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Wood, 60));
@@ -141,6 +148,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.Lab:
                 this.resourceProduced.init(TypeResource.Health, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Food, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 60));
@@ -151,6 +159,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.Airport:
                 this.resourceProduced.init(TypeResource.Tourism, 0, 10);
+                this.quantityProduced = 10;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 100));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Food, 100));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 150));
@@ -161,6 +170,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.Hotel:
                 this.resourceProduced.init(TypeResource.Tourism, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Food, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 60));
@@ -171,6 +181,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.School:
                 this.resourceProduced.init(TypeResource.Education, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Stone, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Food, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Stone, 60));
@@ -181,6 +192,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.Church:
                 this.resourceProduced.init(TypeResource.Religion, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Wood, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Stone, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Wood, 60));
@@ -191,6 +203,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.Cinema:
                 this.resourceProduced.init(TypeResource.Happiness, 0, 5);
+                this.quantityProduced = 5;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 40));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Oil, 40));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 60));
@@ -201,6 +214,7 @@ public class Building : InputSource
                 break;
             case TypeBuilding.AmusementPark:
                 this.resourceProduced.init(TypeResource.Happiness, 0, 10);
+                this.quantityProduced = 10;
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 100));
                 this.upgrade1ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Oil, 100));
                 this.upgrade2ResourceNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 150));
@@ -230,8 +244,6 @@ public class Building : InputSource
             vector3.z = -6;
             anim_BuildingConstruction.transform.position = vector3;
         }
-        else
-            Debug.Log("toto");
         yield return new WaitForSeconds(this.constructionTime);
         this.buildState = 1;
         Destroy(go);
@@ -283,7 +295,9 @@ public class Building : InputSource
 
             yield return new WaitForSeconds(this.constructionTime);
             this.buildState = 1;
+            quantityProduced -= (int)this.resourceProduced.Production;
             this.changeProduction((int)this.resourceProduced.Production);
+
             //StartCoroutine("updateStocks");
             Destroy(buildingConstructionTransform.gameObject);
 
@@ -300,25 +314,21 @@ public class Building : InputSource
         {
             Debug.Log("Not enough resources");
         }
+
     }
     public bool changeProduction(int value)
     {
-        this.minorIsland.resourceManager.changeResourceProduction(this.resourceProduced.TypeResource, value);
-        return this.resourceProduced.changeProduction(value);
+        bool res = this.minorIsland.resourceManager.changeResourceProduction(this.resourceProduced.TypeResource, value);
+        if (res)
+            quantityProduced += value;
+        return res;
 
     }
     public bool changeStock(float value)
     {
         return this.minorIsland.resourceManager.changeResourceStock(this.resourceProduced.TypeResource, value);
     }
-    //IEnumerator updateStocks()
-    //{
-    //    for (;;)
-    //    {
-    //        this.changeStock(this.resourceProduced.Production);
-    //        yield return new WaitForSeconds(5f);
-    //    }
-    //}
+    
 
     void OnMouseDownSimulation()
     {
@@ -513,7 +523,7 @@ public class Building : InputSource
             case "Hotel":
                 return 5;
             case "Harbor":
-                return 10;
+                return 1;
             case "School":
                 return 5;
             case "Church":
