@@ -319,7 +319,7 @@ public class Tuto_MinorIsland : InputSource {
                 TouchTime = 0;
                 if (this.harborUpgraded && !this.exchangeResourceOpened)
                 {
-                    displayPopup("Voici la fenêtre d'échange de ressources. Vous pouvez y accéder à n'importe quel moment grâce à un appui long.", 5);
+                    displayPopup("Vous pouvez accéder à cette fenêtre à n'importe quel moment grâce à un appui long. Fermez la fenêtre.", 5);
                     this.createExchangeWindowTuto();
                 }
             }
