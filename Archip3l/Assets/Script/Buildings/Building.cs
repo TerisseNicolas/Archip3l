@@ -298,8 +298,6 @@ public class Building : InputSource
             quantityProduced -= (int)this.resourceProduced.Production;
             this.changeProduction((int)this.resourceProduced.Production);
 
-            //StartCoroutine("updateStocks");
-            Destroy(buildingConstructionTransform.gameObject);
 
             //Todo : score to add must be checked
             yield return new WaitForSeconds(Int32.Parse(minorIsland.nameMinorIsland.Split('_')[2])-1);
@@ -308,6 +306,9 @@ public class Building : InputSource
             this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "345@" + resourceProduced.TypeResource.ToString() + "@" + resourceProduced.Production);
             yield return new WaitForSeconds(0.1f);
             this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "111@" + this.TypeBuilding.ToString());
+
+            //StartCoroutine("updateStocks");
+            Destroy(buildingConstructionTransform.gameObject);
 
         }
         else
