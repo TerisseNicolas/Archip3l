@@ -1,8 +1,6 @@
 Question;Answer;Explanation;Proposition0;Proposition1
-Les tasses désignent un célèbre manège avec des véhicules en forme de tasses disposés sur un support rotatif.;Proposition0;Ce manège fut même l'objet de plusieurs brevets déposés en 1926, en 1940 et en 1956.;Proposition0;Proposition1
 La première grande roue construite était censée être une attraction rivale de la tour Eiffel.;Proposition0;La première fut conçue à l'occasion de l'exposition universelle de 1893, à Chicago.;Proposition0;Proposition1
 Des morceaux de la 1ère grande roue construite au monde furent réutilisés dans la construction d'un pont.;Proposition0;Il s'agissait d'un pont au-dessus de la rivière Kankakee (Chicago).;Proposition0;Proposition1
-Au Japon, il est fréquent que les gens se forcent à rire pour évacuer une peur irrationnelle ou lorsqu'ils viennent d'avoir peur.;Proposition0;;Proposition0;Proposition1
 L'homme est le seul être vivant capable de rire.;Proposition1;Des observations scientifiques récentes montrent que certains animaux connaissent également le rire.;Proposition0;Proposition1
 Les premiers Jeux Olympiques étaient initialement tenus dans le centre religieux d’Olympie, dans la Grèce antique.;Proposition0;Ce fut le cas du VIIIème siècle av. J.-C. au Vème siècle ap. J-C.;Proposition0;Proposition1
 Au cours du temps, les Jeux Olympiques ont été adaptés aux changements économiques, politiques et techniques du XXème siècle.;Proposition0;De ce fait, les Jeux Olympiques sont progressivement passés de l’amateurisme pur, au professionnalisme.;Proposition0;Proposition1
