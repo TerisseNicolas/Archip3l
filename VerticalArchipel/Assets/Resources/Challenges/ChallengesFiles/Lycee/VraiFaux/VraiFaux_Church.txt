@@ -2,10 +2,7 @@ Question;Answer;Explanation;Proposition0;Proposition1
 Le terme église, avec une minuscule, désigne l'institution qui regroupe les croyants d'une même confession.;Proposition1;Avec une minuscule, cela désigne le lieu de culte.;Proposition0;Proposition1
 En Grèce antique, l’église était une assemblée réservée aux citoyens et à laquelle les étrangers n’étaient pas admis.;Proposition0;Aujourd'hui, l’Église au sens chrétien est l’assemblée dans laquelle plus personne n’est étranger.;Proposition0;Proposition1
 Le terme apôtre est aussi utilisé pour désigner les témoins de la Résurrection de Jésus.;Proposition0;;Proposition0;Proposition1
-Dans le langage familier, un apôtre est une personne qui écoute aveuglément son maître à penser et propage activement ses idées.;Proposition0;;Proposition0;Proposition1
 Judas Iscariote n’est pas, selon la tradition chrétienne, l'un des douze apôtres de Jésus de Nazareth.;Proposition1;;Proposition0;Proposition1
-La Pentecôte est une fête chrétienne qui célèbre la venue du Saint-Esprit.;Proposition0;Cette fête tombe toujours un dimanche entre le 10 mai et le 13 juin.;Proposition0;Proposition1
-D'après l'Evangile, Judas désigne Jésus aux gardes tout en l'embrassant.;Proposition0;;Proposition0;Proposition1
 La communion désigne le premier repas du Christ avec ses disciples.;Proposition1;Ce n’est pas le premier mais le dernier repas.;Proposition0;Proposition1
 A la suite d'une confession, le pardon est toujours accordé par le prêtre.;Proposition1;En effet, le prêtre est libre d'accorder ou non l'absolution, synonyme du pardon.;Proposition0;Proposition1
 Un presbytre est une personne ayant un défaut de vision.;Proposition1;Ce terme désignait un conseiller de communauté chrétienne et est à l'origine de l'appellation actuelle de prêtre.;Proposition0;Proposition1

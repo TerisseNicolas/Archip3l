@@ -1,11 +1,11 @@
 Question;Answer;Explanation;Proposition0;Proposition1;Proposition2
-Par qui a été écrite la fable intitulée: Le chêne et le roseau ?;Proposition0;Cet auteur vécut au XVIIème siècle.;La Fontaine;Maupassant;Molière
-Quel est le fruit du chêne ?;Proposition1;;La noisette;Le gland;La noix
-Quelle est la longévité moyenne d'un abricotier ?;Proposition2;;10 ans;24 ans;43 ans
-Comment appelle-t-on un arbre qui perd ses feuilles à l'automne ?;Proposition0;;Caduc;Automnier;Nu
-De quoi qualifie-t-on un arbre dont le feuillage dure toute l'année ?;Proposition1;;Solide;Persistant;Tenace
-Lequel de ces arbres conserve ces feuilles toute l'année ?;Proposition1;;Cerisier;Citronnier;Abricotier
-Lequel de ces arbres perd ses feuilles en automne ?;Proposition2;;Cyprès;Cèdre;Châtaignier
-De quoi qualifie-t-on les arbres qui dominent par leur taille dans une forêt ?;Proposition0;;D'émergents;De géants;De couvrants
-Quel est l’âge moyen d'un chêne ?;Proposition2;;250 ans;500 ans;750 ans
-Quel est l'arbre le plus répandu en France ?;Proposition1;Après le chêne, c'est le pin qui vient en second.;Le pin;Le chêne;Le peuplier
+Par qui a ÈtÈ Ècrite la fable intitulÈe: Le chêÍne et le roseau ?;Proposition0;Cet auteur vÈcut au XVIIème sièËcle.;La Fontaine;Maupassant;MolièËre
+Quel est le fruit du chêÍne ?;Proposition1;;La noisette;Le gland;La noix
+Quelle est la longÈvitÈ moyenne d'un abricotier ?;Proposition2;;10 ans;24 ans;43 ans
+Comment appelle-t-on un arbre qui perd ses feuilles ‡ l'automne ?;Proposition0;;Caduc;Automnier;Nu
+De quoi qualifie-t-on un arbre dont le feuillage dure toute l'annÈe ?;Proposition1;;Solide;Persistant;Tenace
+Lequel de ces arbres conserve ces feuilles toute l'annÈe ?;Proposition1;;Cerisier;Citronnier;Abricotier
+Lequel de ces arbres perd ses feuilles en automne ?;Proposition2;;CyprèËs;CèËdre;Ch‚taignier
+De quoi qualifie-t-on les arbres qui dominent par leur taille dans une forêt ?;Proposition0;;D'Èmergents;De gÈants;De couvrants
+Quel est l'‚ge moyen d'un chêÍne ?;Proposition2;;250 ans;500 ans;750 ans
+Quel est l'arbre le plus rÈpandu en France ?;Proposition1;AprèËs le chêÍne, c'est le pin qui vient en second.;Le pin;Le chêÍne;Le peuplier
