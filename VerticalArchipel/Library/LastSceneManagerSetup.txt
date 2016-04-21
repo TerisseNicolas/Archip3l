@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/verticalUnlockingTuto.unity
-=======
-- path: Assets/Scenes/initScene.unity
->>>>>>> 041067ad62822deb8f3402438fdb1132aed39039
+- path: Assets/Scenes/briefingScene.unity
   isLoaded: 1
   isActive: 1
