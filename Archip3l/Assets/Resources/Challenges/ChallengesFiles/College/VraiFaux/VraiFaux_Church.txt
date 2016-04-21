@@ -8,4 +8,4 @@ La Pentecôte est une fête chrétienne qui célèbre la venue du Saint-Esprit.;
 D'après l'Evangile, Judas désigne Jésus aux gardes tout en l'embrassant.;Proposition0;;Proposition0;Proposition1
 La communion désigne le premier repas du Christ avec ses disciples.;Proposition1;Ce n’est pas le premier mais le dernier repas.;Proposition0;Proposition1
 A la suite d'une confession, le pardon est toujours accordé par le prêtre.;Proposition1;En effet, le prêtre est libre d'accorder ou non l'absolution, synonyme du pardon.;Proposition0;Proposition1
-Un presbytre est une personne ayant un défaut de vision.;Proposition1;Ce terme désignait un conseiller de communauté chrétienne et est à l'origine de l'appellation actuelle de prêtre.;Proposition0;Proposition1
+Un presbytère est une personne ayant un défaut de vision.;Proposition1;Ce terme désignait un conseiller de communauté chrétienne et est à l'origine de l'appellation actuelle de prêtre.;Proposition0;Proposition1

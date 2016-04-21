@@ -1,8 +1,0 @@
-Question;Answer;Explanation;Proposition0;Proposition1
-L’or est le plus malléable et ductile des métaux connus.;Proposition0;Il est à la fois dense et tendre.;Proposition0;Proposition1
-L’or, comme l’argent, est soluble dans l’acide nitrique.;Proposition1;Seuls l’argent et les métaux communs le sont.;Proposition0;Proposition1
-Une orfèvrerie est une bijouterie vendant de l’or.;Proposition1;L’orfèvrerie correspond à l’art du travail de l’or.;Proposition0;Proposition1
-La préciosité est un courant littéraire qui repose sur la volonté de se distinguer par l'apparence.;Proposition0;Ce mouvement est porté sur le fait de posséder de précieux bijoux ou encore de se distinguer par son savoir.;Proposition0;Proposition1
-Précieux est aussi le nom d'une commune française du département de la Loire.;Proposition0;;Proposition0;Proposition1
-La recherche d'or constitua l'une des raisons de la conquête du continent américain.;Proposition0;;Proposition0;Proposition1
-Dans une solution d'un acide seul, l'or peut être dissous.;Proposition1;;Proposition0;Proposition1

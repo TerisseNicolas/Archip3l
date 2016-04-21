@@ -562,8 +562,14 @@ public class MinorIsland : InputSource
             if (resourceCount > 0)
             {
                 System.Random rnd = new System.Random();
-                int index = rnd.Next(0, resourceCount);
-                Resource res = resourceManager.getResource(this.resourceManager.Resources[index].TypeResource);
+                int index;
+                Resource res;
+                do
+                {
+                    index = rnd.Next(0, resourceCount);
+                    res = resourceManager.getResource(this.resourceManager.Resources[index].TypeResource);
+                }
+                while (Enum.IsDefined(typeof(TypeResourceStat), res));
                 int quantity = rnd.Next(10, 20);
                 if (this.resourceManager.Resources[index].Stock >= quantity)
                 {

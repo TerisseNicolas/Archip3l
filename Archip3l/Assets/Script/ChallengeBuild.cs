@@ -209,8 +209,8 @@ public class ChallengeBuild : InputSource
 
     IEnumerator wait()
     {
-        yield return new WaitForSeconds(0.5f);
-        Color color;
+        yield return new WaitForSeconds(2f);
+        /*Color color;
         for (int i = 0; i < 100; i++)
         {
             yield return new WaitForSeconds(0.001f);
@@ -218,7 +218,7 @@ public class ChallengeBuild : InputSource
             color = background.material.color;
             color.a -= 0.01f;
             background.material.color = color;
-        }
+        }*/
 
 
         //minorIsland.buildingClicked is a string --> conversion necessary
