@@ -41,7 +41,7 @@ public class GlobalResourceManager : MonoBehaviour
         //Add all resources
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
-            this.addResource(resourceType, 0);
+            this.addResource(resourceType, 4*5);
         }
     }
 
