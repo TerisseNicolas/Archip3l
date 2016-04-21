@@ -1,4 +1,4 @@
 Question;Answer;Explanation;Proposition0;Proposition1;Proposition2
 Comment appelle-t-on deux mots qui se prononcent de la même façon mais qui ont une orthographe différente ?;Proposition2;;Synonymes;Antonymes;Homonymes
 En France, quel est l'âge de début d'instruction obligatoire ?;Proposition2;C’est également le cas au Canada par exemple. En Finlande, il est de 7 ans.;4 ans;5 ans;6 ans
-Maître international est un titre décerné aux meilleurs joueurs :;Proposition1;Il s'agit d'un titre accordé depuis 1950 à d'excellents joueurs et joueuses d'échecs.;de tarot;d’échecs;de dames
+Maître international est un titre décerné aux meilleurs joueurs de :;Proposition1;Il s'agit d'un titre accordé depuis 1950 à d'excellents joueurs et joueuses d'échecs.;Tarot;Échecs;Dames
