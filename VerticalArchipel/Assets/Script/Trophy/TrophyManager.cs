@@ -54,6 +54,7 @@ public class TrophyManager : MonoBehaviour
             if(this.airportsBuilt == 4)
             {
                 changeTrophyToObtained(this.Trophies[6]);
+                main.addNotification("Vous remportez la médaille AEROPORT !");
             }
         }
     }
