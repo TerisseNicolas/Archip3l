@@ -104,12 +104,12 @@ public class Disturbance : InputSource
         int quantityLost = (-1)*(ran.Next(0, 50));
         //random type of Resource
         TypeResource resourceLost;
-        aleat = ran.Next(0, Enum.GetNames(typeof(TypeResource)).Length);
         do
         {
+            aleat = ran.Next(0, Enum.GetNames(typeof(TypeResource)).Length);
             resourceLost = (TypeResource)Enum.Parse(typeof(TypeResource), Enum.GetNames(typeof(TypeResource))[aleat], true);
         }
-        while (Enum.IsDefined(typeof(TypeResourceStat), resourceLost));
+        while (Enum.IsDefined(typeof(TypeResourceStat), resourceLost.ToString()));
         /*-------------------*/
 
         if (Disturbance.islandChosen == string.Empty)

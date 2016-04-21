@@ -386,7 +386,7 @@ public class MinorIsland : InputSource
             exchangeWindowCanvas.transform.SetParent(GameObject.Find(this.nameMinorIsland).transform);
             exchangeWindowCanvas.name = "ExchangeWindowCanvas_" + this.nameMinorIsland;
             Vector3 vector3 = GameObject.Find("Virtual_" + this.nameMinorIsland).transform.position;
-            vector3.z = -2;
+            vector3.z = -4;
             exchangeWindowCanvas.transform.position = vector3;
 
             //rotation of image according to the place of the island
@@ -569,7 +569,7 @@ public class MinorIsland : InputSource
                     index = rnd.Next(0, resourceCount);
                     res = resourceManager.getResource(this.resourceManager.Resources[index].TypeResource);
                 }
-                while (Enum.IsDefined(typeof(TypeResourceStat), res));
+                while (Enum.IsDefined(typeof(TypeResourceStat), res.ToString()));
                 int quantity = rnd.Next(10, 20);
                 if (this.resourceManager.Resources[index].Stock >= quantity)
                 {
@@ -667,7 +667,7 @@ public class MinorIsland : InputSource
         var touch = metaGestureEventArgs.Touch;
         if (touch.InputSource == this) return;
         map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
-        if (TouchTime == 0 && !MinorIsland.exchangePerforming)
+        if (TouchTime == 0 /*&& !MinorIsland.exchangePerforming*/)
         {
             TouchTime = Time.time;
             this.positionTouched = touch.Position;
