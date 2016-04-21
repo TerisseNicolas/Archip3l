@@ -140,7 +140,7 @@ public class MovePirateBoat : InputSource
         }
         else
         {
-            SoundPlayer.Instance.playSinkingPirateShipSound();
+            SoundPlayer.Instance.playCrashPirateShipSound();
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

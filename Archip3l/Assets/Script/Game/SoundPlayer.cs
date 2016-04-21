@@ -105,4 +105,40 @@ public class SoundPlayer : MonoBehaviour {
     {
         this.Client.sendData("@30800@20");
     }
+    public void playCrashPirateShipSound()
+    {
+        this.Client.sendData("@30800@21");
+    }
+    public void playApplauseSound()
+    {
+        this.Client.sendData("@30800@22");
+    }
+    public void playPerturbationSound()
+    {
+        this.Client.sendData("@30800@23");
+    }
+    public void playTrophySound()
+    {
+        this.Client.sendData("@30800@24");
+    }
+    public void playEndGameSound()
+    {
+        this.Client.sendData("@30800@25");
+    }
+    public void playGrasshopperSound()
+    {
+        this.Client.sendData("@30800@26");
+    }
+    public void playPirateShipArrivalSound()
+    {
+        this.Client.sendData("@30800@27");
+    }
+    public void playThunderSound()
+    {
+        this.Client.sendData("@30800@28");
+    }
+    public void playLoadingSound()
+    {
+        this.Client.sendData("@30800@29");
+    }
 }

@@ -8,6 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class Loading : InputSource {
 
+    void Update()
+    {
+        SoundPlayer.Instance.playLoadingSound();
+    }
+
     void OnMouseDownSimulation()
     {
         SceneSupervisor.Instance.loadMenuScenes(false);;

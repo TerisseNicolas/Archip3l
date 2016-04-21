@@ -120,6 +120,7 @@ public class Game : MonoBehaviour
     {
         Debug.LogWarning("Launch pirate boats");
         this.Client.sendData("@40001");
+        SoundPlayer.Instance.playPirateShipArrivalSound();
     }
 
     private void TimerDisturbance_FinalTick(object sender, System.EventArgs e)
@@ -130,6 +131,7 @@ public class Game : MonoBehaviour
             Canvas disturbancePrefab = Resources.Load<Canvas>("Prefab/DisturbanceCanvas");
             Canvas disturbance = Instantiate(disturbancePrefab);
             disturbance.name = "Disturbance";
+            SoundPlayer.Instance.playPerturbationSound();
             
 
             this.DisturbanceCount += 1;

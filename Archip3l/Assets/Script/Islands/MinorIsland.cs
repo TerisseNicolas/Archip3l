@@ -416,10 +416,12 @@ public class MinorIsland : InputSource
         if (MinorIsland.DisturbanceCount%2 == 0)
         {
             animationTransform = Instantiate(grassHopperPrefab) as Transform;
+            SoundPlayer.Instance.playGrasshopperSound();
         }
         else
         {
             animationTransform = Instantiate(hurricanePrefab) as Transform;
+            SoundPlayer.Instance.playThunderSound();
         }
 
         animationTransform.name = "Disturbance_" + nameMinorIsland;
