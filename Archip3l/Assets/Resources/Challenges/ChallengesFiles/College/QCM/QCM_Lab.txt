@@ -1,4 +1,4 @@
 Question;Answer;Explanation;Proposition0;Proposition1;Proposition2
-Comment appelle-t-on la desse des soins ?;Proposition0;D'o la dfinition de ce terme aujourd'hui.;Panace;Aphrodite;Athna
-Lequel de ces dieux est galement considr comme mdecin ?;Proposition1;;Zeus;Apollon;Cupidon
-Comment appelle-t-on la desse de la sant ?;Proposition2;D'o le terme hygine aujourd'hui, si important dans le maintien d'une bonne sant.;Diane;Hra;Hygie
+Comment appelle-t-on la déesse des soins ?;Proposition0;D'où la définition de ce terme aujourd'hui.;Panacée;Aphrodite;Athéna
+Lequel de ces dieux est également considéré comme médecin ?;Proposition1;;Zeus;Apollon;Cupidon
+Comment appelle-t-on la déesse de la santé ?;Proposition2;D'où le terme hygiène aujourd'hui, si important dans le maintien d'une bonne santé.;Diane;Héra;Hygie
