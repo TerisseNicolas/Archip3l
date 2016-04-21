@@ -107,7 +107,7 @@ public class Disturbance : InputSource
         aleat = ran.Next(0, Enum.GetNames(typeof(TypeResource)).Length);
         do
         {
-            resourceLost = (TypeResource)Enum.Parse(typeof(TypeResource), Enum.GetNames(typeof(TypeResource))[aleat], true);
+            resourceLost = (TypeResource)Enum.Parse(typeof(TypeResource), Enum.GetNames(typeof(TypeResource))[aleat-1], true);
         }
         while (Enum.IsDefined(typeof(TypeResourceStat), resourceLost));
         /*-------------------*/
