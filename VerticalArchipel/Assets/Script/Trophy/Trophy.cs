@@ -48,9 +48,9 @@ public class Trophy : InputSource
             case "Trophy3": //TOTAL resources count > 500
                 return GRM.totalResourceCount > 2000;
             case "Trophy2": //TOTAL resources count > 1000
-                return this.Score.ScoreCount > 5000;
+                return GRM.totalResourceCount > 5000;
             case "Trophy1": //TOTAL resources count > 5000
-                return this.Score.ScoreCount > 10000;
+                return GRM.totalResourceCount > 10000;
                 // Airport requirement managed in the trophy manager
 
                 //return resourceManager.getResource(TypeResource.Gold).Stock > 10000;

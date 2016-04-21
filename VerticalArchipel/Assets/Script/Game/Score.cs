@@ -207,8 +207,9 @@ public class Score : MonoBehaviour {
         //For medals
         if(this.buildingBuilt.Contains((string)e.message.Split('@').GetValue(2)) == false)
         {
+            Debug.Log((string)e.message.Split('@').GetValue(2));
             this.buildingBuilt.Add((string)e.message.Split('@').GetValue(2));
-            if(this.buildingBuilt.Count == 16)
+            if(this.buildingBuilt.Count == 15)
             {
                 this.allBuildingBuilt = true;
             }
