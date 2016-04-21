@@ -183,11 +183,11 @@ public class ExchangeResource : InputSource
                                     this.Client.sendData("@2" + this.island.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + (-quantitySent).ToString());
 
                                     MinorIsland.exchangePerforming = true;
-                                    SpriteRenderer exchangeResourceAnimationPrefab = Resources.Load<SpriteRenderer>("Prefab/exchangeResourceAnimation/exchangeResourceAnimation_" + island.nameMinorIsland[island.nameMinorIsland.Length - 1].ToString()); // + "-" + to.text[to.text.Length - 1].ToString());
+                                    SpriteRenderer exchangeResourceAnimationPrefab = Resources.Load<SpriteRenderer>("Prefab/exchangeResourceAnimation/exchangeResourceAnimation_" + island.nameMinorIsland[island.nameMinorIsland.Length - 1].ToString()); 
                                     exchangeResourceAnimation = Instantiate(exchangeResourceAnimationPrefab);
                                     exchangeResourceAnimation.transform.parent = GameObject.Find(island.nameMinorIsland).transform;
                                     exchangeResourceAnimation.name = "ExchangeResourceAnimation_" + island.nameMinorIsland;
-                                    exchangeResourceAnimation.GetComponent<BoatMoving>().islandToSend = "sous_ile_" + to.text[to.text.Length -1].ToString();
+                                    exchangeResourceAnimation.GetComponent<BoatMoving>().islandToSend = "sous_ile_" + island.islandToSend[island.islandToSend.Length - 1].ToString();
                                     exchangeResourceAnimation.GetComponent<BoatMoving>().quantityCarried = quantitySent;
                                     exchangeResourceAnimation.GetComponent<BoatMoving>().resourceSent = tr.ToString();
                                     island.exchangeWindowPresent = false;
@@ -237,8 +237,21 @@ public class ExchangeResource : InputSource
         if (island.islandToSend != string.Empty)
         {
             refresh();
-            to.text = "Ile " + island.islandToSend[island.islandToSend.Length - 1].ToString();
-            //island.islandToSend = string.Empty;
+            switch(island.islandToSend[island.islandToSend.Length - 1].ToString())
+            {
+                case "1":
+                    to.text = "Ile Jaune";
+                    break;
+                case "2":
+                    to.text = "Ile Bleue";
+                    break;
+                case "3":
+                    to.text = "Ile Grise";
+                    break;
+                case "4":
+                    to.text = "Ile Marron";
+                    break;
+            }
         }
         if ((island.resource != string.Empty) && (island.islandToSend != string.Empty) && (this.quantityValue.text != "0"))
         {

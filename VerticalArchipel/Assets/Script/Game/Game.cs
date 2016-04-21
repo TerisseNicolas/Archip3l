@@ -34,8 +34,8 @@ public class Game : MonoBehaviour
         this.Timer.PirateBoatsIncreaseTick += Timer_PirateBoatsIncreaseTick;
 
         this.TimerDisturbance = gameObject.GetComponent<DisturbanceTimer>();
-        this.TimerDisturbance.Init(180f);
-        //this.TimerDisturbance.Init(10f);
+        //this.TimerDisturbance.Init(180f);
+        this.TimerDisturbance.Init(10f);
         this.TimerDisturbance.FinalTick += TimerDisturbance_FinalTick;
         this.DisturbanceCount = 0;
 

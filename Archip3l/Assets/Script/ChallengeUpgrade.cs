@@ -359,7 +359,7 @@ public class ChallengeUpgrade : InputSource
         var touch = metaGestureEventArgs.Touch;
         if (touch.InputSource == this) return;
         map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
-        if (TouchTime == 0 && !MinorIsland.exchangePerforming)
+        if (TouchTime == 0)
         {
             TouchTime = Time.time;
         }
