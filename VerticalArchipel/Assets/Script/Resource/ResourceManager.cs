@@ -29,8 +29,23 @@ public class ResourceManager : MonoBehaviour
         //TODO check same resource init as on archip3l
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
-            this.addResource(resourceType, 50, 0);
+            this.addResource(resourceType, 5, 0);
         }
+
+        //Do not duplicate in Global resource manager, because call the resource update event
+        this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@21355@Gold@10" }, TypeResource.Gold, 10);
+        this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@21355@Stone@5" }, TypeResource.Stone, 5);
+
+        this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@22355@Gold@5" }, TypeResource.Gold, 5);
+        this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@22355@Stone@10" }, TypeResource.Stone, 10);
+        this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@22355@Oil@20" }, TypeResource.Oil, 20);
+        this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@22355@Wood@10" }, TypeResource.Wood, 10);
+
+        this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@23355@Gold@5" }, TypeResource.Gold, 5);
+        this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@23355@Stone@10" }, TypeResource.Stone, 10);
+
+        this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@24355@Stone@5" }, TypeResource.Stone, 5);
+        this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@24355@Wood@10" }, TypeResource.Wood, 10);
 
         //Todo delete this instruction and the function
         //StartCoroutine("test");
