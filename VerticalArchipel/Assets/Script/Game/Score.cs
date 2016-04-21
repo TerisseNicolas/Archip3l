@@ -11,6 +11,9 @@ public class Score : MonoBehaviour {
     public int BuildingCount;
     public int MedalCount;
 
+    public bool allBuildingBuilt;
+    private List<string> buildingBuilt;
+
     private TrophyManager TrophyManager;
 
     public List<float> ChallengeSuccessRate;
@@ -26,6 +29,11 @@ public class Score : MonoBehaviour {
 
     private string filePath;
     private List<Tuple<int, string, int, int, int, float>> scores;
+
+    void Awake()
+    {
+        this.buildingBuilt = new List<string>();
+    }
 
     void Start()
     {
@@ -195,6 +203,16 @@ public class Score : MonoBehaviour {
     {
         //Debug.Log("New building built");
         this.BuildingCount += 1;
+
+        //For medals
+        if(this.buildingBuilt.Contains((string)e.message.Split('@').GetValue(2)) == false)
+        {
+            this.buildingBuilt.Add((string)e.message.Split('@').GetValue(2));
+            if(this.buildingBuilt.Count == 16)
+            {
+                this.allBuildingBuilt = true;
+            }
+        }
     }
     private void Client_MessageBuildingDestructionEvent(object sender, MessageEventArgs e)
     {

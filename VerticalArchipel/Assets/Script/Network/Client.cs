@@ -80,26 +80,26 @@ public class Client : MonoBehaviour
         _thListener.Start();
 
         //todo : delete
-        //StartCoroutine("test");
+        StartCoroutine("test");
 
     }
 
     IEnumerator test()
     {
         yield return new WaitForSeconds(1);
-        /*this.ProcessMessage("serverinfo@21111@Airport");
+        this.ProcessMessage("serverinfo@21111@Airport");
         yield return new WaitForSeconds(1);
         this.ProcessMessage("serverinfo@22111@Airport");
         yield return new WaitForSeconds(1);
         this.ProcessMessage("serverinfo@23111@Airport");
         yield return new WaitForSeconds(1);
-        this.ProcessMessage("serverinfo@24111@Airport");*/
+        this.ProcessMessage("serverinfo@24111@Airport");
 
-        /*yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1);
         this.ProcessMessage("serverinfo@21355@Gold@3000");
         yield return new WaitForSeconds(1);
-        this.ProcessMessage("serverinfo@23355@Wood@1501");*/
-        /*yield return new WaitForSeconds(0.1f);
+        this.ProcessMessage("serverinfo@23355@Wood@1501");
+        yield return new WaitForSeconds(0.1f);
         this.ProcessMessage("serverinfo@21355@Food@7000");
         yield return new WaitForSeconds(0.1f);
         this.ProcessMessage("serverinfo@31505@7600");
@@ -111,7 +111,7 @@ public class Client : MonoBehaviour
         this.ProcessMessage("serverinfo@31441@0.568");
         this.ProcessMessage("serverinfo@32441@0.2563");
         this.ProcessMessage("serverinfo@33441@0.7596");
-        this.ProcessMessage("serverinfo@34441@0.5");*/
+        this.ProcessMessage("serverinfo@34441@0.5");
 
     }
 
@@ -288,15 +288,15 @@ public class Client : MonoBehaviour
             case 30005:
                 MessageEvent += MessageSystemTeamLevelEvent;
                 break;
-            case 30006:
-                MessageEvent += MessageSystemStartInitOfGameEvent;
-                break;
-            case 30087:
-                MessageEvent += MessageSystemStartInitOfGameAnswerEvent;
-                break;
-            case 30306:
-                MessageEvent += MessageResourceInitEvent;
-                break;
+            //case 30006:
+            //    MessageEvent += MessageSystemStartInitOfGameEvent;
+            //    break;
+            //case 30087:
+            //    MessageEvent += MessageSystemStartInitOfGameAnswerEvent;
+            //    break;
+            //case 30306:
+            //    MessageEvent += MessageResourceInitEvent;
+            //    break;
             case 30800:
                 MessageEvent += MessageSoundEvent;
                 break;
