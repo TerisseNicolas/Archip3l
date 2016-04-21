@@ -1,12 +1,9 @@
 Question;Answer;Explanation;Proposition0;Proposition1
 Un aérogénérateur est un avion qui produit de l’électricité.;Proposition1;Il s’agit d’une éolienne produisant de l’électricité.;Proposition0;Proposition1
 Le vent est à l'origine une répartition inégale d'air à diverses températures, à la surface de la planète.;Proposition0;;Proposition0;Proposition1
-Un anémomètre est un outil servant à mesurer la taille des anémones dans l'eau.;Proposition1; Il s'agit d'un appareil permettant de mesurer la vitesse ou la pression du vent.;Proposition0;Proposition1
-Le vent est l'acteur principal de l'oxygénation des océans ainsi que des lacs de haute montagne, par agitation de leurs surfaces.;Proposition0;;Proposition0;Proposition1
+Le vent est l'acteur principal de l'oxygénation des océans ainsi que des lacs de haute montagne, par agitation de leur surface.;Proposition0;;Proposition0;Proposition1
 Le vent n'influe pas sur le déplacement des populations d’insectes volants ou sur la migration des oiseaux.;Proposition1;Cette influence a été remarquée scientifiquement. Le vent peut même façonner la forme des plantes.;Proposition0;Proposition1
-Le vent solaire est un type de vent qui se produit sous un temps ensoleillé.;Proposition1; Le vent solaire est le mouvement de gaz ou de particules polarisées provenant du Soleil.;Proposition0;Proposition1
 Le premier instrument de mesure du vent inventé fut la girouette.;Proposition0;Il s'agit d'une invention de la Grèce antique.;Proposition0;Proposition1
 Le vent et les courants marins sont deux choses indépendantes.;Proposition1;Il y a une relation d'interdépendance entre ces deux circulations de fluides.;Proposition0;Proposition1
-Le souffle est aussi le nom donné à une pathologie liée à une mauvaise circulation du sang dans les vaisseaux ou le cœur.;Proposition0;;Proposition0;Proposition1
 Pendant la nuit, la terre se refroidit plus vite que la mer.;Proposition0;La terre accumule moins de chaleur du Soleil que la mer et se refroidit donc plus vite la nuit venue.;Proposition0;Proposition1
 Pendant la nuit, l'air au-dessus de la terre est plus chaud que celui au-dessus de la mer.;Proposition1;Cela crée ce que l’on appelle des brises de terre.;Proposition0;Proposition1

@@ -1,9 +1,6 @@
 Question;Answer;Explanation;Proposition0;Proposition1
-Un hôtel particulier est un hôtel réservé par une seule personne.;Proposition1;Un hôtel particulier est une somptueuse demeure urbaine, souvent possession d'une grande famille.;Proposition0;Proposition1
-Un hôtel de ville est un hôtel situé dans une ville.;Proposition1;Il s'agit de la mairie de la ville.;Proposition0;Proposition1
-La société Michelin à l'origine du célèbre guide Michelin est tout d'abord un fabricant de pneumatiques.;Proposition0;;Proposition0;Proposition1
 Le terme vacances provient du latin vacare qui signifie être sans, en relation avec le fait de cesser ses activités habituelles.;Proposition0;;Proposition0;Proposition1
 Les premières vacances furent instaurées durant la période des moissons pour permettre le travail aux champs.;Proposition0;Cette tradition date du Moyen-Âge;Proposition0;Proposition1
-À Hong Kong, Singapour et Taïwan, les vacances sont de quinze jours par an.;Proposition1;Dans ces pays, les vacances sont de sept jours par an.;Proposition0;Proposition1
+À Hong Kong, Singapour et Taïwan, les vacances durent quinze jours par an.;Proposition1;Dans ces pays, les vacances durent sept jours par an.;Proposition0;Proposition1
 Au Moyen-âge, l'hôtellerie désigne une partie d'un monastère réservée à l'accueil et à l'hébergement des hôtes.;Proposition0;;Proposition0;Proposition1
 L’expression prendre ostel, en ancien français, signifie prendre un repas à l’extérieur.;Proposition1;L’expression signifie se loger.;Proposition0;Proposition1

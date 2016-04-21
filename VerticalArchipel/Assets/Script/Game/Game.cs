@@ -18,7 +18,7 @@ public class Game : MonoBehaviour
 
     private List<GameObject> ChallengesGameObjects;
 
-    private bool CoroutineInitOfGame = false;
+    //private bool CoroutineInitOfGame = false;
 
     void Start()
     {
@@ -34,8 +34,8 @@ public class Game : MonoBehaviour
         this.Timer.PirateBoatsIncreaseTick += Timer_PirateBoatsIncreaseTick;
 
         this.TimerDisturbance = gameObject.GetComponent<DisturbanceTimer>();
-        //this.TimerDisturbance.Init(180f);
-        this.TimerDisturbance.Init(10f);
+        this.TimerDisturbance.Init(180f);
+        //this.TimerDisturbance.Init(10f);
         this.TimerDisturbance.FinalTick += TimerDisturbance_FinalTick;
         this.DisturbanceCount = 0;
 
@@ -137,6 +137,7 @@ public class Game : MonoBehaviour
             {
                 case 1:
                 case 2:
+                case 3:
                     this.TimerDisturbance.Init(180f);
                     //this.TimerDisturbance.Init(15f);
                     break;
