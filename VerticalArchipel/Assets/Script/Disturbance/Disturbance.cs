@@ -144,7 +144,8 @@ public class Disturbance : InputSource
     IEnumerator wait()
     {
         yield return new WaitForSeconds(3);
-        main.addEnigma();
+        if (main.level == 1)
+            main.addEnigma();
     }
 
 

@@ -1,9 +1,5 @@
 Question;Answer;Explanation;Proposition0;Proposition1
 Un port à sec est un port dont les alentours se sont asséchés suite à une sécheresse ou autre.;Proposition1;Un port à sec est une solution de stationnement des bateaux à terre.;Proposition0;Proposition1
 Un port de marée est un port où l'on ne peut entrer qu'à marée haute.;Proposition0;A l'inverse, un port de toute marée est assez profond pour être disponible aux navires, quelle que soit la marée.;Proposition0;Proposition1
-Au XIXème siècle, le port franc qualifie aussi un lieu, proche du port, où l'on peut déposer des marchandises étrangères.;Proposition0;Le port franc était aussi un lieu où les marchandises déposées ne faisaient l’objet d’aucune taxe.;Proposition0;Proposition1
-L’expression avoir ses ports francs signifie ne pas avoir de secrets à garder.;Proposition1;L’expression avoir ses ports francs signifie pouvoir envoyer son courrier sans affranchissement.;Proposition0;Proposition1
 Le terme radelier est utilisé pour désigner des petits radeaux.;Proposition1;Un radelier est une personne chargée de former et de conduire les radeaux.;Proposition0;Proposition1
-Des lasers peuvent également être utilisés pour mesurer les caractéristiques de certaines vagues.;Proposition0;L'étude des vagues est, depuis les années 1990, réalisée à l'aide de lasers, radars ou bouées.;Proposition0;Proposition1
-Le mot pirate vient du latin pirata, celui qui tente la fortune, qui est entreprenant.;Proposition0;Au Moyen Âge, sa signification se restreint pour désigner des bandits qui parcourent les mers pour piller des navires.;Proposition0;Proposition1
 Au Moyen-Âge, le droit de représailles consiste à s’emparer d'une quantité de biens identique à celle dérobée.;Proposition0;Les armateurs ont obtenu ce droit de la part des suzerains de l'époque.;Proposition0;Proposition1

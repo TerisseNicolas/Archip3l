@@ -329,7 +329,6 @@ public class Tuto_MinorIsland : InputSource {
 
     void OnMouseDownSimulation()
     {
-
         //moving a building
         if (moveBuilding)
         {

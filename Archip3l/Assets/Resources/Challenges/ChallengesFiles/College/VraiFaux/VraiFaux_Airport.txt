@@ -1,10 +1,4 @@
 Question;Answer;Explanation;Proposition0;Proposition1
 Au XVIIIème siècle, le terme tourisme désigne le voyage que font les jeunes aristocrates britanniques à destination de Rome.;Proposition0;;Proposition0;Proposition1
-Un avion est un aéronef mais une montgolfière non.;Proposition1;Un aéronef désigne tout moyen de transport capable d'évoluer au sein de l'atmosphère terrestre.;Proposition0;Proposition1
-Pour équilibrer son poids, un aérostat utilise une force statique, alors qu’un aérodyne utilise une force dynamique.;Proposition0;;Proposition0;Proposition1
 La construction des premiers aéronefs fut inspirée des oiseaux avec la création d'engins à ailes battantes.;Proposition0;Ces engins s'appelaient les ornithoptères et leur modèle fut imaginé par Léonard de Vinci au XVème siècle.;Proposition0;Proposition1
-Une hélisurface correspond à la surface totale des pales d'un hélicoptère.;Proposition1;Une hélisurface (ou hélipont) est une zone d'atterrissage pour hélicoptères.;Proposition0;Proposition1
 Les compagnies aériennes sont facturées par les aéroports en fonction de la durée de leur stationnement.;Proposition0;C'est pourquoi les compagnies aériennes tentent de réduire au maximum le temps d'immobilisation d'un appareil au sol.;Proposition0;Proposition1
-Le taux de vapeur d'eau dans l'air varie en fonction de sa température.;Proposition0;Elle varie d'ailleurs remarquablement en fonction de l'altitude, directement liée à la température.;Proposition0;Proposition1
-L'air est un gaz incompressible.;Proposition1;L'air étant un gaz compressible, sa masse volumique est fonction de la pression, de la température et du taux d'humidité.;Proposition0;Proposition1
-Si l'on refroidit suffisamment les gaz constituants de l'air, ils finissent par passer à l'état liquide, puis à l'état solide.;Proposition0;Par exemple, l'oxygène devient solide à la température de 218 °C et l'azote se liquéfie à 195 °C.;Proposition0;Proposition1
