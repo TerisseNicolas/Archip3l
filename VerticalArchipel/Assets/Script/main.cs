@@ -184,5 +184,20 @@ public class main : MonoBehaviour
         }
     }
 
+    static public string getIslandName(string sousIle)
+    {
+        switch (sousIle)
+        {
+            case "sous_ile_1":
+                return "l'île Jaune";
+            case "sous_ile_2":
+                return "l'île Bleue";
+            case "sous_ile_3":
+                return "l'île Grise";
+            case "sous_ile_4":
+                return "l'île Marron";
+        }
+    }
+
 
 }

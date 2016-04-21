@@ -124,7 +124,8 @@ public class TrophyManager : MonoBehaviour
     }
     IEnumerator checkNewTrophyAvailable()
     {
-        for(;;)
+        yield return new WaitForSeconds(5f);
+        for (;;)
         {
             foreach (Trophy trophy in this.Trophies)
             {

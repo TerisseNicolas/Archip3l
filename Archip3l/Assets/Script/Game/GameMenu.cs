@@ -8,24 +8,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameMenu : InputSource
-{
-    private bool lockedScene;
-
-    void Awake()
-    {
-        this.lockedScene = true;
-    }
-
-    void Start()
-    {
-        StartCoroutine(unlockScene());
-    }
-
-    IEnumerator unlockScene()
-    {
-        yield return new WaitForSeconds(5);
-        this.lockedScene = false;
-    }
+{    
 
     void OnMouseDownSimulation()
     {
@@ -46,26 +29,23 @@ public class GameMenu : InputSource
                 break;
             //waitForVertical scene --> return to menu
             case "endWindowBackground":
-                if (!this.lockedScene)
+                switch (SceneManager.GetActiveScene().name)
                 {
-                    switch (SceneManager.GetActiveScene().name)
-                    {
-                        //from the menu, access to the result or credit scene
-                        case "waitForVerticalSceneMenu":
-                            SceneSupervisor.Instance.loadMenuScenes(true);
-                            break;
-                        //when end scene is on vertical
-                        case "waitForVerticalSceneEnd":
-                            SceneSupervisor.Instance.loadResultScenes(false);
-                            break;
-                        //when result scene is on vertical(at the end of the game)
-                        case "waitForVerticalSceneResult":
-                            SceneSupervisor.Instance.loadCreditScenes();
-                            break;
-                        case "waitForVerticalIndependentSceneResult":
-                            SceneSupervisor.Instance.loadMenuScenes(true);
-                            break;
-                    }
+                    //from the menu, access to the result or credit scene
+                    case "waitForVerticalSceneMenu":
+                        SceneSupervisor.Instance.loadMenuScenes(true);
+                        break;
+                    //when end scene is on vertical
+                    case "waitForVerticalSceneEnd":
+                        SceneSupervisor.Instance.loadResultScenes(false);
+                        break;
+                    //when result scene is on vertical(at the end of the game)
+                    case "waitForVerticalSceneResult":
+                        SceneSupervisor.Instance.loadCreditScenes();
+                        break;
+                    case "waitForVerticalIndependentSceneResult":
+                        SceneSupervisor.Instance.loadMenuScenes(true);
+                        break;
                 }
                 break;
         }
