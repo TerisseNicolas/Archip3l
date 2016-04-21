@@ -80,7 +80,7 @@ public class Client : MonoBehaviour
         _thListener.Start();
 
         //todo : delete
-        StartCoroutine("test");
+        //StartCoroutine("test");
 
     }
 
@@ -92,8 +92,15 @@ public class Client : MonoBehaviour
         this.ProcessMessage("serverinfo@22111@Airport");
         yield return new WaitForSeconds(1);
         this.ProcessMessage("serverinfo@23111@Airport");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
         this.ProcessMessage("serverinfo@24111@Airport");
+
+        yield return new WaitForSeconds(0.1f);
+        this.ProcessMessage("serverinfo@24111@GoldMine");
+        yield return new WaitForSeconds(0.1f);
+        this.ProcessMessage("serverinfo@24111@GoldMine");
+        yield return new WaitForSeconds(0.1f);
+        this.ProcessMessage("serverinfo@24111@SawMill");
 
         yield return new WaitForSeconds(1);
         this.ProcessMessage("serverinfo@21355@Gold@3000");

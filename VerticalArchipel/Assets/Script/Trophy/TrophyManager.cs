@@ -129,7 +129,7 @@ public class TrophyManager : MonoBehaviour
         {
             foreach (Trophy trophy in this.Trophies)
             {
-                if(trophy.requirementVerified(this.ResourceManager) && !trophy.active)
+                if(!trophy.active && trophy.requirementVerified(this.ResourceManager))
                 {
                     changeTrophyToObtained(trophy);
                 }
