@@ -196,6 +196,8 @@ public class main : MonoBehaviour
                 return "l'île Grise";
             case "sous_ile_4":
                 return "l'île Marron";
+            default:
+                return string.Empty;
         }
     }
 
