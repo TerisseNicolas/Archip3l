@@ -26,9 +26,10 @@ public class ResourceManager : MonoBehaviour
         this.client.MessageResourceProductionUpdateEvent += Client_MessageResourceProductionUpdateEvent;
 
         //Add all resources
+        //TODO check same resource init as on archip3l
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
-            this.addResource(resourceType, 0, 0);
+            this.addResource(resourceType, 50, 0);
         }
 
         //Todo delete this instruction and the function
@@ -170,7 +171,7 @@ public class ResourceManager : MonoBehaviour
         return result;
     }
 
-public Resource getResource(TypeResource resourceType)
+    public Resource getResource(TypeResource resourceType)
     {
         foreach (Resource item in this.Resources)
         {

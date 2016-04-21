@@ -288,15 +288,15 @@ public class Client : MonoBehaviour
             case 30005:
                 MessageEvent += MessageSystemTeamLevelEvent;
                 break;
-            case 30006:
-                MessageEvent += MessageSystemStartInitOfGameEvent;
-                break;
-            case 30087:
-                MessageEvent += MessageSystemStartInitOfGameAnswerEvent;
-                break;
-            case 30306:
-                MessageEvent += MessageResourceInitEvent;
-                break;
+            //case 30006:
+            //    MessageEvent += MessageSystemStartInitOfGameEvent;
+            //    break;
+            //case 30087:
+            //    MessageEvent += MessageSystemStartInitOfGameAnswerEvent;
+            //    break;
+            //case 30306:
+            //    MessageEvent += MessageResourceInitEvent;
+            //    break;
             case 30800:
                 MessageEvent += MessageSoundEvent;
                 break;

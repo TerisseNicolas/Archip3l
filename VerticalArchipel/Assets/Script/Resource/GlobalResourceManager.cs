@@ -117,6 +117,8 @@ public class GlobalResourceManager : MonoBehaviour
         }
         return null;
     }
+
+    //This function is never call but it's ok
     public IEnumerator initResources()
     {
         //Sync all resource before the start of the game

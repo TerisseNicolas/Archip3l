@@ -24,7 +24,7 @@ public class Game : MonoBehaviour
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemStartOfGameEvent += Client_MessageSystemStartOfGame;
-        this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
+        //this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
 
         this.Timer = gameObject.GetComponent<Timer>();
         //this.Timer.Init(1f * 20f);
@@ -45,8 +45,8 @@ public class Game : MonoBehaviour
         this.ChallengerTimer.Init(5f);
         this.ChallengerTimer.FinalTick += ChallengerTimer_FinalTick;
 
-        this.GlobalResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
-        this.GlobalResourceManager.MessageInitialized += GlobalResourceManager_MessageInitialized;
+        //this.GlobalResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
+        //this.GlobalResourceManager.MessageInitialized += GlobalResourceManager_MessageInitialized;
 
         this.Score = gameObject.GetComponent<Score>();
         this.GlobalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
@@ -63,11 +63,11 @@ public class Game : MonoBehaviour
     
     void Update()
     {
-        if(this.CoroutineInitOfGame)
-        {
-            StartCoroutine(this.GlobalResourceManager.initResources());
-            this.CoroutineInitOfGame = false;
-        }
+        //if(this.CoroutineInitOfGame)
+        //{
+        //    StartCoroutine(this.GlobalResourceManager.initResources());
+        //    this.CoroutineInitOfGame = false;
+        //}
     }
 
     private void Client_MessageSystemStartOfGame(object sender, MessageEventArgs e)
@@ -78,15 +78,15 @@ public class Game : MonoBehaviour
         this.ChallengerTimer.StartTimer();
         //this.Client_MessageSystemStartInitOfGame(this, null);
     }
-    private void Client_MessageSystemStartInitOfGame(object sender, MessageEventArgs e)
-    {
-        this.Client.sendData("@Start initializing game");
-        this.CoroutineInitOfGame = true;
-    }
-    private void GlobalResourceManager_MessageInitialized(object sender, System.EventArgs e)
-    {
-        this.Client.sendData("@30087");
-    }
+    //private void Client_MessageSystemStartInitOfGame(object sender, MessageEventArgs e)
+    //{
+    //    this.Client.sendData("@Start initializing game");
+    //    this.CoroutineInitOfGame = true;
+    //}
+    //private void GlobalResourceManager_MessageInitialized(object sender, System.EventArgs e)
+    //{
+    //    this.Client.sendData("@30087");
+    //}
     private void Timer_FinalTick(object sender, System.EventArgs e)
     {
         this.Client.sendData("@30002");
