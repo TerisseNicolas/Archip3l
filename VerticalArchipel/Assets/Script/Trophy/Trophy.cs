@@ -34,24 +34,27 @@ public class Trophy : InputSource
         this.trophyName = name;
     }
 
-    public bool requirementVerified(GlobalResourceManager resourceManager)
+    public bool requirementVerified(GlobalResourceManager GRM)
     {
         switch (this.trophyName)
         {
             //TODO : modify
-            case "Medal1": //6 types de batiments contruits
-                return resourceManager.getResource(TypeResource.Gold).Stock > 10000;
+            case "Medal3": //6 types de batiments contruits
+                return this.Score.BuildingCount >= 6;
             case "Medal2"://11 types de batiments contruits
-                return resourceManager.getResource(TypeResource.Food).Stock > 5000;
-            case "Medal3"://tous types de batiments contruits
-                return resourceManager.getResource(TypeResource.Wood).Stock > 2000;
-            case "Trophy1": //TOTAL resources count > 500
-                return this.Score.ScoreCount > 10000;
+                return this.Score.BuildingCount >= 11;
+            case "Medal1"://tous types de batiments contruits
+                return this.Score.allBuildingBuilt;
+            case "Trophy3": //TOTAL resources count > 500
+                return GRM.totalResourceCount > 2000;
             case "Trophy2": //TOTAL resources count > 1000
-                return this.Score.ScoreCount > 7500;
-            case "Trophy3": //TOTAL resources count > 5000
-                return this.Score.ScoreCount > 4000;
-            // Airport requirement managed in the trophy manager
+                return this.Score.ScoreCount > 5000;
+            case "Trophy1": //TOTAL resources count > 5000
+                return this.Score.ScoreCount > 10000;
+                // Airport requirement managed in the trophy manager
+
+                //return resourceManager.getResource(TypeResource.Gold).Stock > 10000;
+                //return resourceManager.getResource(TypeResource.Food).Stock > 5000;
         }
         return false;
     }

@@ -14,6 +14,8 @@ public class GlobalResourceManager : MonoBehaviour
 
     private Client Client;
 
+    public int totalResourceCount = 0;
+
     public event EventHandler<EventArgs> MessageInitialized;
 
     void Start()
@@ -82,6 +84,10 @@ public class GlobalResourceManager : MonoBehaviour
             {
                 this.addResource(e.resourceType, -(int)e.stock);
             }
+        }
+        if (this.totalResourceCount + (int)e.stock >= 0)
+        {
+            this.totalResourceCount += (int)e.stock;
         }
     }
     public bool addResource(TypeResource resourceType, int quantity, int production = 0)
