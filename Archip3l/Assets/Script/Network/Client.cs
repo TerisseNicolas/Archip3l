@@ -129,7 +129,7 @@ public class Client : MonoBehaviour
 
     public void sendData(string dataToSend)
     {
-        //Debug.Log("Sending : " + dataToSend);
+        Debug.Log("Sending : " + dataToSend);
         byte[] data = Encoding.Default.GetBytes(dataToSend);
         _client.Send(data, data.Length);
     }
