@@ -433,7 +433,7 @@ public class MinorIsland : InputSource
         animationTransform.name = "Disturbance_" + nameMinorIsland;
         animationTransform.transform.SetParent(this.transform.parent);
         animationTransform.position = this.transform.parent.position;
-        Vecteur3 pos = animationTransform.position;
+        Vector3 pos = animationTransform.position;
         pos.z = -5;
         animationTransform.position = pos;
         //rotation of image according to the place of the island
