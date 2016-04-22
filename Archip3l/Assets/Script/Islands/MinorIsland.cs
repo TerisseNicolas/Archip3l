@@ -38,7 +38,9 @@ public class MinorIsland : InputSource
     public bool moveBuilding = false;                   //moving a building
     public bool exchangeWindowPresent = false;          //exchangeWindow present on the island
     public bool disturbancePresent = false;
-    public string nameBuildingTouchCanvas;
+    public bool touchBuildingPresent = false;
+    public bool removeBuildingInfoPresent = false;
+    public string nameBuildingTouched;
     public string buildingClickedWheel;
 
     //for exchange resources window
@@ -323,13 +325,17 @@ public class MinorIsland : InputSource
 
     public void createBuildingTouch(Building building)
     {
-        this.nameBuildingTouchCanvas = building.name;
+        this.nameBuildingTouched = building.name;
+        Debug.Log("name : " + building.name);
+
+        this.touchBuildingPresent = true;
 
         Canvas touchBuildingCanvasPrefab = Resources.Load<Canvas>("Prefab/touchBuildingCanvas");
         Canvas touchBuildingCanvas = Instantiate(touchBuildingCanvasPrefab);
         touchBuildingCanvas.transform.SetParent(this.transform);
-        touchBuildingCanvas.name = "touchBuilding_" + this.nameBuildingTouchCanvas;
-        Vector3 pos = GameObject.Find(this.nameBuildingTouchCanvas).transform.position;
+        touchBuildingCanvas.name = "touchBuilding_" + this.nameBuildingTouched;
+        touchBuildingCanvas.transform.position = GameObject.Find(this.nameBuildingTouched).transform.position;
+        Vector3 pos = touchBuildingCanvas.transform.position;
         pos.z = -4;
         touchBuildingCanvas.transform.position = pos;
 
@@ -379,7 +385,7 @@ public class MinorIsland : InputSource
         
     void createExchangeWindow()
     {
-        if (!exchangeWindowPresent && !wheelPresent)
+        if (!exchangeWindowPresent && !wheelPresent && !touchBuildingPresent)
         {
             Canvas exchangeWindowCanvasPrefab = Resources.Load<Canvas>("Prefab/exchangeWindowCanvas");
             Canvas exchangeWindowCanvas = Instantiate(exchangeWindowCanvasPrefab);
@@ -426,7 +432,7 @@ public class MinorIsland : InputSource
 
         animationTransform.name = "Disturbance_" + nameMinorIsland;
         animationTransform.transform.SetParent(this.transform.parent);
-        animationTransform.position = this.transform.parent.position;
+        //animationTransform.position = this.transform.parent.position;
         //rotation of image according to the place of the island
         char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
         if (id == '1' || id == '2')
@@ -457,23 +463,20 @@ public class MinorIsland : InputSource
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(positionTouched.x, positionTouched.y, 0));
             pos.z = -3;
-            GameObject.Find(this.nameBuildingTouchCanvas).transform.position = pos;
+            GameObject.Find(this.nameBuildingTouched).transform.position = pos;
             this.moveBuilding = false;
-            this.nameBuildingTouchCanvas = string.Empty;
+            this.nameBuildingTouched = string.Empty;
         }
         else
         {
-            if (this.nameBuildingTouchCanvas != String.Empty)
+            if (GameObject.Find("touchBuilding_" + this.nameBuildingTouched) != null)
             {
-                if (!upgradeBuildingInfoPresent)
-                {
-                    Destroy(GameObject.Find("touchBuilding_" + this.nameBuildingTouchCanvas));
-                    this.nameBuildingTouchCanvas = String.Empty;
-                }
+                this.touchBuildingPresent = false;
+                Destroy(GameObject.Find("touchBuilding_" + this.nameBuildingTouched));
             }
             else
             {
-                if (!challengePresent && !exchangeWindowPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !disturbancePresent)
+                if (!challengePresent && !exchangeWindowPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !removeBuildingInfoPresent && !disturbancePresent)
                 {
                     if (!wheelPresent)  //if the wheel is not on the island
                     {
@@ -593,7 +596,7 @@ public class MinorIsland : InputSource
             if ((Time.time - TouchTime > 1) && (Time.time - TouchTime < 1.5))
             {
                 TouchTime = 0;
-                if (!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
+                if (!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !removeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
                     this.createExchangeWindow();
             }
         }
@@ -703,7 +706,7 @@ public class MinorIsland : InputSource
         }
         else if(Time.time - TouchTime < 1.5)
         {
-            if(!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
+            if(!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !removeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
                 this.createExchangeWindow();
         }
         TouchTime = 0;

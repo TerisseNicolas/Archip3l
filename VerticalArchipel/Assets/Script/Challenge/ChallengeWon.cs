@@ -44,7 +44,7 @@ public class ChallengeWon : InputSource
         string islandToSend = this.name.Split('-')[1];
         string resource = char.ToUpper(resourceWon[0]).ToString() + resourceWon.Substring(1);
         GameObject.Find("Network").GetComponent<Client>().sendData("@2" + islandToSend.Split('_')[2] + "394@" + resource + "@" + ChallengeWon.quantityWon.ToString());
-        main.addNotification(ChallengeWon.quantityWon.ToString() + " " + main.translateResourceName(resource) + " envoyés à "+ main.getIslandName(islandToSend) + " !");
+        main.addNotification(ChallengeWon.quantityWon.ToString() + " " + main.translateResourceName(resource) + " envoyés à l'île "+ main.getIslandName(islandToSend) + " !");
         ChallengeWon.challengeWonWindowPresent = false;
 
         ChallengeWon.challengeWonWindowPresent = false;
@@ -136,13 +136,9 @@ public class ChallengeWon : InputSource
         endTouch(id);
         if (Time.time - TouchTime < 0.5)
         {
-            TouchTime = 0;
             this.OnMouseDownSimulation();
         }
-        else if (Time.time - TouchTime < 1.5)
-        {
-            TouchTime = 0;
-        }
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

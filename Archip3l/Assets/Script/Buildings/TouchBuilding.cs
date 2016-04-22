@@ -15,11 +15,15 @@ public class TouchBuilding : InputSource
     public MinorIsland island;
     public Building building;
 
+    void Start()
+    {
+        island = GameObject.Find(this.transform.parent.parent.parent.name).GetComponent<MinorIsland>();
+        building = GameObject.Find(island.nameBuildingTouched).GetComponent<Building>();
+    }
+
     void OnMouseDownSimulation()
     {
         Vector3 pos;
-        island = GameObject.Find(this.transform.parent.parent.parent.name).GetComponent<MinorIsland>();
-        building = GameObject.Find(island.nameBuildingTouchCanvas).GetComponent<Building>();
 
         char id = island.nameMinorIsland[island.nameMinorIsland.Length - 1];
 
@@ -230,22 +234,21 @@ public class TouchBuilding : InputSource
                         }
                     }
                 }
-                Destroy(GameObject.Find(this.transform.parent.parent.name));
 
                 break;
             case "Remove":
                 if (this.building.name.Split('_')[3] == TypeBuilding.Harbor.ToString())
                 {
                     island.displayPopup("Impossible de supprimer le port !", 3);
-                    //StartCoroutine(this.island.destroyPopup(this.island.createPopup("Impossible de supprimer le port !"), 3));
                 }
                 else {
                     Canvas removeBuildingWindowCanvasPrefab = Resources.Load<Canvas>("Prefab/RemoveBuildingWindowCanvas");
                     Canvas removeBuildingWindowCanvas = Instantiate(removeBuildingWindowCanvasPrefab);
                     removeBuildingWindowCanvas.name = "RemoveBuildingWindowCanvas_" + building.name;
+                    island.removeBuildingInfoPresent = true;
                     removeBuildingWindowCanvas.transform.SetParent(this.transform.parent.parent.parent);  //parent : sous_ile
                     pos = GameObject.Find("sprite-" + island.nameMinorIsland).transform.position;
-                    pos.z = -2;
+                    pos.z = -4;
                     removeBuildingWindowCanvas.transform.position = pos;
                     //rotation of image according to the place of the island
                     if (id == '1' || id == '2')
@@ -286,7 +289,6 @@ public class TouchBuilding : InputSource
                                 break;
                         }
                     }
-                    Destroy(GameObject.Find(this.transform.parent.parent.name));
                 }
                 break;
             case "Move":
@@ -307,10 +309,13 @@ public class TouchBuilding : InputSource
                         //StartCoroutine(island.destroyPopup(island.createPopup("Appuyez sur l'endroit où placer le batiment"), 3));
                         island.moveBuilding = true;
                     }
-                    Destroy(GameObject.Find(this.transform.parent.parent.name));
                 }
                 break;
         }
+
+        island.touchBuildingPresent = false;
+
+        Destroy(GameObject.Find(this.transform.parent.parent.name));
     }
 
 

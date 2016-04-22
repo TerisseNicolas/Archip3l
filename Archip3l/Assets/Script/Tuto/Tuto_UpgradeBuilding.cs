@@ -16,7 +16,7 @@ public class Tuto_UpgradeBuilding : InputSource {
     {
         island = GameObject.Find(this.transform.parent.parent.parent.name).GetComponent<Tuto_MinorIsland>();
         Debug.Log(island.nameBuildingTouchCanvas);
-        building = island.building; //GameObject.Find(island.nameBuildingTouchCanvas).GetComponent<Tuto_Building>();
+        building = island.building; 
 
         if (this.name == "Upgrade")
         {

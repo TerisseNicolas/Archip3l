@@ -95,6 +95,7 @@ public class Disturbance : InputSource
     void finalAction()
     {
         Disturbance.actionMade = true;
+        this.counter.text = string.Empty;
         for (int i = 1; i <= 4; i++)
             GameObject.Find("Disturbance-sous_ile_" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
 
@@ -110,6 +111,7 @@ public class Disturbance : InputSource
             resourceLost = (TypeResource)Enum.Parse(typeof(TypeResource), Enum.GetNames(typeof(TypeResource))[aleat], true);
         }
         while (Enum.IsDefined(typeof(TypeResourceStat), resourceLost.ToString()));
+        //TODO : check if enough resources
         /*-------------------*/
 
         if (Disturbance.islandChosen == string.Empty)
@@ -126,7 +128,7 @@ public class Disturbance : InputSource
             this.Client.sendData("@3" + island.Split('_')[2] + "770");
             //TODO : check remove resource from the island
             Client.sendData("@2" + island.Split('_')[2] + "394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
-            main.addNotification(main.getIslandName(island) + " vient de perdre " + (-quantityLost).ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
+            main.addNotification("L'île " + main.getIslandName(island) + " vient de perdre " + (-quantityLost).ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
             for (int i = 1; i <= 4; i++)
             {
                 if (("Disturbance-sous_ile_" + i.ToString()) != Disturbance.islandChosen)
@@ -237,6 +239,7 @@ public class Disturbance : InputSource
         endTouch(id);
         if (Time.time - TouchTime < 1)
             this.OnMouseDownSimulation();
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

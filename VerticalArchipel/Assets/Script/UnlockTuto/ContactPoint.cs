@@ -156,18 +156,8 @@ public class ContactPoint : InputSource
         if (touch.InputSource == this) return;
         if (!map.TryGetValue(touch.Id, out id)) return;
         endTouch(id);
-        //if (Time.time - TouchTime < 0.5)
-        //{
-        //    TouchTime = 0;
-        //    this.ExitContactZone();
-        //    //this.ExitContactZone();
-        //}
-        //else if (Time.time - TouchTime < 1.5)
-        //{
-        //    TouchTime = 0;
-        //}
-        TouchTime = 0;
         this.ExitContactZone();
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

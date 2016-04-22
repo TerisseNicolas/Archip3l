@@ -21,10 +21,12 @@ public class UpgradeBuilding : InputSource
         this.Client = GameObject.Find("Network").GetComponent<Client>();
     }
 
+
     void OnMouseDownSimulation()
     {
-        island = GameObject.Find(this.transform.parent.parent.parent.name).GetComponent<MinorIsland>();
-        building = GameObject.Find(island.nameBuildingTouchCanvas).GetComponent<Building>();
+        island = this.transform.parent.parent.parent.gameObject.GetComponent<MinorIsland>();
+        building = GameObject.Find(island.nameBuildingTouched).GetComponent<Building>();
+        island.nameBuildingTouched = string.Empty;
 
         if (this.name == "Upgrade")
         {
@@ -47,7 +49,6 @@ public class UpgradeBuilding : InputSource
         }
 
         island.upgradeBuildingInfoPresent = false;
-        island.nameBuildingTouchCanvas = string.Empty;
         Destroy(GameObject.Find(this.transform.parent.parent.name));
     }
 
