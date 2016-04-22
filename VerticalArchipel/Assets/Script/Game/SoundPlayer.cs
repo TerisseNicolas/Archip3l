@@ -150,6 +150,9 @@ public class SoundPlayer : MonoBehaviour
                 case 29:
                     playLoadingSound();
                     break;
+                case 30:
+                    playStartGameSound();
+                    break;
             }
             this.soundId = 0;
         }
@@ -280,5 +283,9 @@ public class SoundPlayer : MonoBehaviour
     public void playLoadingSound()
     {
         MakeSound(loadingSound);
+    }
+    public void playStartGameSound()
+    {
+        MakeSound(startGameSound);
     }
 }
