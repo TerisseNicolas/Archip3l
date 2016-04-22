@@ -18,6 +18,8 @@ public class Loading : InputSource
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemChangeSceneEvent += Client_MessageSystemChangeSceneEvent;
+
+        StartCoroutine(music());
     }
 
     IEnumerator music()
