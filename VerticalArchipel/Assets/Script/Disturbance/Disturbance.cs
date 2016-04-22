@@ -91,57 +91,59 @@ public class Disturbance : InputSource
 
     void finalAction()
     {
-        Disturbance.actionMade = true;
-        this.counter.text = string.Empty;
-        for (int i = 1; i <= 4; i++)
-            GameObject.Find("Disturbance-sous_ile_" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
-
-        /*--------------- random effect on resource-----*/
-        System.Random ran = new System.Random();
-        int aleat;
-        int quantityLost = (-1)*(ran.Next(0, 50));
-        //random type of Resource
-        TypeResource resourceLost;
-        do
+        if (this.name.Contains("sous_ile_1"))
         {
-            aleat = ran.Next(0, Enum.GetNames(typeof(TypeResource)).Length);
-            resourceLost = (TypeResource)Enum.Parse(typeof(TypeResource), Enum.GetNames(typeof(TypeResource))[aleat], true);
-        }
-        while (Enum.IsDefined(typeof(TypeResourceStat), resourceLost.ToString()));
-        //TODO : check if enough resources
-        /*-------------------*/
-
-        if (Disturbance.islandChosen == string.Empty)
-        {
-            this.disturbanceText.text = "Vous n'avez choisi aucune île !\n\nEn conséquence, la perturbation s'abattra \nsur toutes les îles !";
-            this.Client.sendData("@35770");
-            //TODO : check remove resource from each island
-            Client.sendData("@25394@" + resourceLost.ToString() + "@" + "-" + quantityLost.ToString());
-            main.addNotification("Toutes les îles viennent de perdre " + (-quantityLost).ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
-        }
-        else
-        {
-            string island = Disturbance.islandChosen.Split('-')[1];
-            this.Client.sendData("@3" + island.Split('_')[2] + "770");
-            //TODO : check remove resource from the island
-            Client.sendData("@2" + island.Split('_')[2] + "394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
-            main.addNotification("L'île " + main.getIslandName(island) + " vient de perdre " + (-quantityLost).ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
+            Disturbance.actionMade = true;
+            this.counter.text = string.Empty;
             for (int i = 1; i <= 4; i++)
+                GameObject.Find("Disturbance-sous_ile_" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
+
+            /*--------------- random effect on resource-----*/
+            System.Random ran = new System.Random();
+            int aleat;
+            int quantityLost = (-1) * (ran.Next(0, 50));
+            //random type of Resource
+            TypeResource resourceLost;
+            do
             {
-                if (("Disturbance-sous_ile_" + i.ToString()) != Disturbance.islandChosen)
+                aleat = ran.Next(0, Enum.GetNames(typeof(TypeResource)).Length);
+                resourceLost = (TypeResource)Enum.Parse(typeof(TypeResource), Enum.GetNames(typeof(TypeResource))[aleat], true);
+            }
+            while (Enum.IsDefined(typeof(TypeResourceStat), resourceLost.ToString()));
+            //TODO : check if enough resources
+            /*-------------------*/
+
+            if (Disturbance.islandChosen == string.Empty)
+            {
+                this.disturbanceText.text = "Vous n'avez choisi aucune île !\n\nEn conséquence, la perturbation s'abattra \nsur toutes les îles !";
+                this.Client.sendData("@35770");
+                //TODO : check remove resource from each island
+                Client.sendData("@25394@" + resourceLost.ToString() + "@" + "-" + quantityLost.ToString());
+                main.addNotification("Toutes les îles viennent de perdre " + (-quantityLost).ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
+            }
+            else
+            {
+                string island = Disturbance.islandChosen.Split('-')[1];
+                this.Client.sendData("@3" + island.Split('_')[2] + "770");
+                Client.sendData("@2" + island.Split('_')[2] + "394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
+                main.addNotification("L'île " + main.getIslandName(island) + " vient de perdre des ressources ! (" + main.translateResourceName(resourceLost.ToString()) + ")");
+                for (int i = 1; i <= 4; i++)
                 {
-                    //GameObject.Find("Disturbance-sous_ile_" + i.ToString()).SetActive(false);
-                    GameObject.Find("Disturbance-sous_ile_" + i.ToString()).GetComponent<SpriteRenderer>().enabled = false;
+                    if (("Disturbance-sous_ile_" + i.ToString()) != Disturbance.islandChosen)
+                    {
+                        //GameObject.Find("Disturbance-sous_ile_" + i.ToString()).SetActive(false);
+                        GameObject.Find("Disturbance-sous_ile_" + i.ToString()).GetComponent<SpriteRenderer>().enabled = false;
+                    }
                 }
             }
+
+
+            StartCoroutine(wait());
+
+            Disturbance.disturbanceWindowOpen = false;
+            Disturbance.actionMade = false; //"remise à 0" de l'attribut static
+            Destroy(GameObject.Find("Disturbance"), 3.1f);
         }
-
-
-        StartCoroutine(wait());
-
-        Disturbance.disturbanceWindowOpen = false;
-        Disturbance.actionMade = false; //"remise à 0" de l'attribut static
-        Destroy(GameObject.Find("Disturbance"), 3.1f);
     }
 
     IEnumerator wait()

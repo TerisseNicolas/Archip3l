@@ -180,8 +180,8 @@ public class ResourceManager : MonoBehaviour
             {
                 if (res.Production != 0)
                 {
-                    if (this.minorIsland.nameMinorIsland.Contains("3"))
-                        Debug.Log(res.TypeResource.ToString() + " --> " + res.Stock + " (Production: " + res.Production);
+                    /*if (this.minorIsland.nameMinorIsland.Contains("3"))
+                        Debug.Log(res.TypeResource.ToString() + " --> " + res.Stock + " (Production: " + res.Production);*/
                     this.changeResourceStock(res.TypeResource, res.Production);
                     this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + res.Production);
                     yield return new WaitForSeconds(0.02f);
