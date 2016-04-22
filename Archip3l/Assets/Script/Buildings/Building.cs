@@ -309,6 +309,7 @@ public class Building : InputSource
 
             //StartCoroutine("updateStocks");
             Destroy(buildingConstructionTransform.gameObject);
+            SoundPlayer.Instance.playBuildingSound(this.TypeBuilding);
 
         }
         else
