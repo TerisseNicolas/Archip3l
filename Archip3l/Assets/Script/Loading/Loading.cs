@@ -10,7 +10,7 @@ public class Loading : InputSource {
 
     void Update()
     {
-        SoundPlayer.Instance.playLoadingSound();
+        //SoundPlayer.Instance.playLoadingSound();
     }
 
     void OnMouseDownSimulation()
