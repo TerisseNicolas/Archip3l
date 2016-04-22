@@ -217,7 +217,7 @@ public class ChallengeUpgrade : InputSource
 
     IEnumerator wait()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         /*Color color;
         for (int i = 0; i < 100; i++)
         {
