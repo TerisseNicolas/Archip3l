@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Loading : InputSource {
 
-    void Update()
+    void Start()
     {
         //SoundPlayer.Instance.playLoadingSound();
     }
