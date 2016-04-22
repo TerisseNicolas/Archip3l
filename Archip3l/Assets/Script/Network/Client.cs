@@ -182,7 +182,7 @@ public class Client : MonoBehaviour
         //Go to see the excell to get message format
 
         string[] split = message.Split('@');
-        if (! split[1].Contains("355"))
+        if (!(split[1].Contains("355")))
             Debug.Log("Client processing : " + message);
         this.MessageEvent = null;
 

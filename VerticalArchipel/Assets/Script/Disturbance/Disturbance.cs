@@ -83,7 +83,7 @@ public class Disturbance : InputSource
         }
 
         this.counter.text = string.Empty;
-        if (!Disturbance.actionMade)
+        if (Disturbance.islandChosen == string.Empty && !Disturbance.actionMade)
         {
             finalAction();
         }
@@ -91,7 +91,7 @@ public class Disturbance : InputSource
 
     void finalAction()
     {
-        if (this.name.Contains("sous_ile_1"))
+        if (this.name.Contains("sous_ile_1") && !Disturbance.actionMade)
         {
             Disturbance.actionMade = true;
             this.counter.text = string.Empty;
