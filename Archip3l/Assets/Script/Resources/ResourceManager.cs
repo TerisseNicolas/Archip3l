@@ -202,9 +202,9 @@ public class ResourceManager : MonoBehaviour
         foreach (Resource resource in this.Resources)
         {
             this.Client.sendData("@2" + islandNumber + "355@" + resource.TypeResource.ToString() + "@" + resource.Stock);
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.05f);
             this.Client.sendData("@2" + islandNumber + "345@" + resource.TypeResource.ToString() + "@" + resource.Production);
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 }

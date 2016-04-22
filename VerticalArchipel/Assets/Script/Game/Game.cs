@@ -14,6 +14,8 @@ public class Game : MonoBehaviour
     private Score Score;
     private GlobalInfo GlobalInfo;
 
+    private bool finished = false;
+
     public const int nbChallengesMax = 3;
 
     private List<GameObject> ChallengesGameObjects;
@@ -89,6 +91,7 @@ public class Game : MonoBehaviour
     //}
     private void Timer_FinalTick(object sender, System.EventArgs e)
     {
+        finished = true;
         this.Client.sendData("@30002");
         this.Score.addScore(this.GlobalInfo.teamName);
         //TODO delete this
@@ -96,18 +99,21 @@ public class Game : MonoBehaviour
     }
     private void ChallengerTimer_FinalTick(object sender, System.EventArgs e)
     {
-        for (int i = 0; i < nbChallengesMax; i++)
+        if (!finished)
         {
-            if (this.ChallengesGameObjects[i].GetComponent<SpriteRenderer>().enabled == false)
+            for (int i = 0; i < nbChallengesMax; i++)
             {
-                this.ChallengesGameObjects[i].GetComponent<SpriteRenderer>().enabled = true;
-                this.ChallengesGameObjects[i].GetComponent<BoxCollider>().enabled = true;
+                if (this.ChallengesGameObjects[i].GetComponent<SpriteRenderer>().enabled == false)
+                {
+                    this.ChallengesGameObjects[i].GetComponent<SpriteRenderer>().enabled = true;
+                    this.ChallengesGameObjects[i].GetComponent<BoxCollider>().enabled = true;
+                }
             }
-        }
 
         this.ChallengerTimer.Init(30f);
         //this.ChallengerTimer.Init(5f);
         this.ChallengerTimer.StartTimer();
+        }
     }
 
     private void Timer_PirateBoatsIncreaseTick(object sender, System.EventArgs e)

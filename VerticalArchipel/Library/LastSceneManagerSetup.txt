@@ -1,4 +1,8 @@
 sceneSetups:
-- path: Assets/Scenes/loading.unity
+<<<<<<< HEAD
+- path: Assets/Scenes/verticalPlayingScene.unity
+=======
+- path: Assets/Scenes/verticalUnlockingTuto.unity
+>>>>>>> a5b6946dd79018ba5a59175187faffa253db228c
   isLoaded: 1
   isActive: 1

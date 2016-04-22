@@ -14,9 +14,9 @@ public class Timer : MonoBehaviour
     public event EventHandler<EventArgs> PirateBoatsIncreaseTick;
     //TODO keep good values
     //temps RESTANT auquel sera appelé l'event :
-    private float startPirateBoats = 60f; //12*60f + 55f; //6 * 60f;
+    private float startPirateBoats = 8 * 60f;
     private bool launched = false;
-    private float increasePirateBoats = 60f; //3 * 60f;
+    private float increasePirateBoats = 3 * 60f;
     private bool increased = false;
 
     public void Init(float seconds)
