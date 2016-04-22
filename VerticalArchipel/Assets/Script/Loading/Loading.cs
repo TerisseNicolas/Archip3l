@@ -24,6 +24,7 @@ public class Loading : InputSource
 
     IEnumerator music()
     {
+        yield return new WaitForSeconds(2f);
         for(;;)
         {
             SoundPlayer.Instance.playLoadingSound();
