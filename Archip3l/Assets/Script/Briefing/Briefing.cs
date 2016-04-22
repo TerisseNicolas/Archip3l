@@ -41,7 +41,7 @@ public class Briefing : InputSource
 
     void Start()
     {
-        SoundPlayer.Instance.playBriefingLetterSound();
+        //SoundPlayer.Instance.playBriefingLetterSound();
         StartCoroutine(unlockScene());
     }
 
