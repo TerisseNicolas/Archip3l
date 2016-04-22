@@ -432,7 +432,7 @@ public class MinorIsland : InputSource
 
         animationTransform.name = "Disturbance_" + nameMinorIsland;
         animationTransform.transform.SetParent(this.transform.parent);
-        //animationTransform.position = this.transform.parent.position;
+        animationTransform.position = this.transform.parent.position;
         //rotation of image according to the place of the island
         char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
         if (id == '1' || id == '2')
