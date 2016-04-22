@@ -143,6 +143,7 @@ public class RemoveBuilding : InputSource
         endTouch(id);
         if (Time.time - TouchTime < 1)
             this.OnMouseDownSimulation();
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

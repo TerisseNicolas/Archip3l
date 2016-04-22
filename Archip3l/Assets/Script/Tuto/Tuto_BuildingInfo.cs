@@ -23,7 +23,6 @@ public class Tuto_BuildingInfo : InputSource {
             island.createTuto_ChallengeBuild(buildingClicked);
             island.harborBuilt = true;
         }
-        Debug.Log(this.transform.parent.parent.name);
         island.buildingInfoPresent = false;
         Destroy(GameObject.Find(this.transform.parent.parent.name));
     }

@@ -141,15 +141,11 @@ public class GameMenu : InputSource
         endTouch(id);
         if (Time.time - TouchTime < 1.5)
         {
-            TouchTime = 0;
             if (this.name == "Jouer" || this.name == "Credits" || this.name == "Classement" || this.name == "Quitter")
                 this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("menu/" + this.name);
             this.OnMouseDownSimulation();
         }
-        else if (Time.time - TouchTime < 3)
-        {
-            TouchTime = 0;            
-        }
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
