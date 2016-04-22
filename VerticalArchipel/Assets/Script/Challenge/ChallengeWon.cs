@@ -45,8 +45,11 @@ public class ChallengeWon : InputSource
         string resource = char.ToUpper(resourceWon[0]).ToString() + resourceWon.Substring(1);
         this.client.sendData("@2" + islandToSend.Split('_')[2] + "394@" + resource + "@" + ChallengeWon.quantityWon.ToString());
         main.addNotification(ChallengeWon.quantityWon.ToString() + " " + main.translateResourceName(resource) + " envoyés à "+ main.getIslandName(islandToSend) + " !");
+<<<<<<< HEAD
         GameObject.Find("Network").GetComponent<Client>().sendData("@2" + islandToSend.Split('_')[2] + "394@" + resource + "@" + ChallengeWon.quantityWon.ToString());
         main.addNotification(ChallengeWon.quantityWon.ToString() + " " + main.translateResourceName(resource) + " envoyés à l'île "+ main.getIslandName(islandToSend) + " !");
+=======
+>>>>>>> bb5098b0765e618c0fc0008ed778bbcef835c4c8
         ChallengeWon.challengeWonWindowPresent = false;
 
         ChallengeWon.challengeWonWindowPresent = false;
