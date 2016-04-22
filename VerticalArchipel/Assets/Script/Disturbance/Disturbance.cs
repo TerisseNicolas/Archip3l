@@ -24,8 +24,12 @@ public class Disturbance : InputSource
 
     void OnMouseDownSimulation()
     {
-        Disturbance.islandChosen = this.name;
-        finalAction();
+        if (this.counter.text != "0")
+        {
+            Disturbance.islandChosen = this.name;
+            this.counter.text = string.Empty;
+            finalAction();
+        }
     }
 
 
@@ -72,20 +76,13 @@ public class Disturbance : InputSource
 
     IEnumerator counterDecrement()
     {
-        for (int i = 10; i >= 0; i--)
+        for (int i = 10; i >= 0 && Disturbance.islandChosen == string.Empty && !Disturbance.actionMade; i--)
         {
-            if (Disturbance.islandChosen == string.Empty)
-            {
-                this.counter.text = i.ToString();
-                yield return new WaitForSeconds(1);
-            }
-            else
-            {
-                this.counter.text = string.Empty;
-                break;
-            }
+            this.counter.text = i.ToString();
+            yield return new WaitForSeconds(1);
         }
 
+        this.counter.text = string.Empty;
         if (!Disturbance.actionMade)
         {
             finalAction();
@@ -133,13 +130,13 @@ public class Disturbance : InputSource
             {
                 if (("Disturbance-sous_ile_" + i.ToString()) != Disturbance.islandChosen)
                 {
-                    GameObject.Find("Disturbance-sous_ile_" + i.ToString()).SetActive(false);
+                    //GameObject.Find("Disturbance-sous_ile_" + i.ToString()).SetActive(false);
+                    GameObject.Find("Disturbance-sous_ile_" + i.ToString()).GetComponent<SpriteRenderer>().enabled = false;
                 }
             }
         }
 
 
-        Disturbance.islandChosen = string.Empty;
         StartCoroutine(wait());
 
         Disturbance.disturbanceWindowOpen = false;
@@ -150,6 +147,7 @@ public class Disturbance : InputSource
     IEnumerator wait()
     {
         yield return new WaitForSeconds(3);
+        Disturbance.islandChosen = string.Empty;
         if (main.level == 1)
             main.addEnigma();
     }
