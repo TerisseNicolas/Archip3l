@@ -12,6 +12,7 @@ public class Score : MonoBehaviour {
     public int MedalCount;
 
     public bool allBuildingBuilt;
+    public int numberOfDifferentBuildingBuilt;
     private List<string> buildingBuilt;
 
     private TrophyManager TrophyManager;
@@ -33,6 +34,7 @@ public class Score : MonoBehaviour {
     void Awake()
     {
         this.buildingBuilt = new List<string>();
+        this.numberOfDifferentBuildingBuilt = 0;
     }
 
     void Start()
@@ -214,6 +216,7 @@ public class Score : MonoBehaviour {
                 this.allBuildingBuilt = true;
             }
         }
+        this.numberOfDifferentBuildingBuilt = this.buildingBuilt.Count;
     }
     private void Client_MessageBuildingDestructionEvent(object sender, MessageEventArgs e)
     {

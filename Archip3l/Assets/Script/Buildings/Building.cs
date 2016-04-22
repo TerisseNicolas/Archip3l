@@ -309,6 +309,7 @@ public class Building : InputSource
 
             //StartCoroutine("updateStocks");
             Destroy(buildingConstructionTransform.gameObject);
+            SoundPlayer.Instance.playBuildingSound(this.TypeBuilding.ToString());
 
         }
         else
@@ -333,7 +334,7 @@ public class Building : InputSource
 
     void OnMouseDownSimulation()
     {
-        if ((this.buildState == 1) && !MinorIsland.exchangePerforming && !minorIsland.wheelPresent && !minorIsland.touchBuildingPresent && !minorIsland.buildingInfoPresent && !minorIsland.challengePresent && !minorIsland.moveBuilding)
+        if ((this.buildState == 1) && !MinorIsland.exchangePerforming && !minorIsland.wheelPresent && !minorIsland.touchBuildingPresent && !minorIsland.exchangeWindowPresent && !minorIsland.buildingInfoPresent && !minorIsland.challengePresent && !minorIsland.moveBuilding)
         {
             minorIsland.createBuildingTouch(this);
         }

@@ -25,6 +25,57 @@ public class SoundPlayer : MonoBehaviour {
         AudioSource.PlayClipAtPoint(originalClip, transform.position, 10f);
     }
 
+    public void playBuildingSound(string typeBuilding)
+    {
+        switch(typeBuilding)
+        {
+            case "Airport":
+                playAirportSound();
+                break;
+            case "AmusementPark":
+                playAmusementParkSound();
+                break;
+            case "Church":
+                playChurchSound();
+                break;
+            case "Cinema":
+                playCinemaSound();
+                break;
+            case "Factory":
+                playFactorySound();
+                break;
+            case "Farm":
+                playFarmSound();
+                break;
+            case "Harbor":
+                playHarborSound();
+                break;
+            case "Hotel":
+                playHotelSound();
+                break;
+            case "Lab":
+                playLabSound();
+                break;
+            case "GoldMine":
+            case "StoneMine":
+                playMineSound();
+                break;
+            case "OilPlant":
+                playOilPlantSound();
+                break;
+            case "PowerPlant":
+                playPowerPlantSound();
+                break;
+            case "School":
+                playSchoolSound();
+                break;
+            case "SawMill":
+                playSawMilSound();
+                break;
+            
+        }
+    }
+
     public void playAirportSound()
     {
         this.Client.sendData("@30800@1");

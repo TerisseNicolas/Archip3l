@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 using TouchScript.InputSources;
 using TouchScript.Gestures;
@@ -28,7 +28,6 @@ public class RemoveBuilding : InputSource
             int value1 = building.constructionResourceNeeded[0].Second / 2;
             island.resourceManager.changeResourceStock(res1, value1);
             GameObject.Find("Network").GetComponent<Client>().sendData("@2" + island.nameMinorIsland.Split('_')[2] + "355@" + res1.ToString() + "@" + value1.ToString());
-
             TypeResource res2;
             int value2;
             if (building.constructionResourceNeeded.Count == 2)

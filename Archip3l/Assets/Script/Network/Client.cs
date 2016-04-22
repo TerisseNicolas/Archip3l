@@ -78,7 +78,7 @@ public class Client : MonoBehaviour
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
 
-        //StartCoroutine(test(10, "@23394@Gold@55"));
+        //StartCoroutine(test(10, "@40001"));
 
     }
 
@@ -129,7 +129,7 @@ public class Client : MonoBehaviour
 
     public void sendData(string dataToSend)
     {
-        //Debug.Log("Sending : " + dataToSend);
+        Debug.Log("Sending : " + dataToSend);
         byte[] data = Encoding.Default.GetBytes(dataToSend);
         _client.Send(data, data.Length);
     }
@@ -178,10 +178,12 @@ public class Client : MonoBehaviour
 
     private void ProcessMessage(string message)
     {
-        Debug.Log("Client processing : " + message);
+        //
         //Go to see the excell to get message format
 
         string[] split = message.Split('@');
+        if (! split[1].Contains("355"))
+            Debug.Log("Client processing : " + message);
         this.MessageEvent = null;
 
         int code = Int32.Parse(split[1]);

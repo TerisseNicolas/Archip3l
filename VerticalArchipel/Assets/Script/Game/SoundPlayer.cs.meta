@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a3cb4d47ce76c0842a78f3f18cf9aca6
-timeCreated: 1459013321
+timeCreated: 1461338817
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
@@ -21,14 +21,21 @@ MonoImporter:
   - powerPlantSound: {fileID: 8300000, guid: 57e34828ba0acae4fa80f116b37e707a, type: 3}
   - sawMillSound: {fileID: 8300000, guid: 4f6acd8166acf9c4f978f4f31a14f110, type: 3}
   - schoolSound: {fileID: 8300000, guid: 69af1845136309d45ad67f57697fa09b, type: 3}
-  - sinkingCargoShipSounf: {fileID: 8300000, guid: 60a22a5f658d5f64ab9dd5c903b22f15,
+  - sinkingCargoShipSound: {instanceID: 0}
+  - sinkingPirateShipSound: {fileID: 8300000, guid: 60a22a5f658d5f64ab9dd5c903b22f15,
       type: 3}
-  - sinkingPirateShipSound: {fileID: 8300000, guid: 798b857532c5dc747934ce11c12a72c2,
-      type: 3}
+  - crashPirateShipSound: {instanceID: 0}
+  - pirateShipArrivalSound: {instanceID: 0}
   - upgradeSound: {fileID: 8300000, guid: c54d512fe5542fa4eba548ba00d43088, type: 3}
   - windTurbineSound: {fileID: 8300000, guid: 49d4bbb42e03549469e56256107f7d95, type: 3}
+  - perturbationSound: {instanceID: 0}
+  - grasshopperSound: {instanceID: 0}
+  - thunderSound: {instanceID: 0}
+  - applauseSound: {instanceID: 0}
+  - trophySound: {instanceID: 0}
   - briefingLetterSound: {fileID: 8300000, guid: 6c2e0766b0cd3aa48845ef6172608aa7,
       type: 3}
+  - loadingSound: {instanceID: 0}
   - startGameSound: {instanceID: 0}
   - endGameSound: {instanceID: 0}
   executionOrder: 0
