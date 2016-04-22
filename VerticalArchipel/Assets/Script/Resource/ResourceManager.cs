@@ -32,6 +32,15 @@ public class ResourceManager : MonoBehaviour
             this.addResource(resourceType, 5, 0);
         }
 
+        StartCoroutine(SpecificResourceCoroutine());
+
+        //Todo delete this instruction and the function
+        //StartCoroutine("test");
+    }
+
+    IEnumerator SpecificResourceCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
         //Do not duplicate in Global resource manager, because call the resource update event
         this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@21355@Gold@10" }, TypeResource.Gold, 10);
         this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@21355@Stone@5" }, TypeResource.Stone, 5);
@@ -46,9 +55,6 @@ public class ResourceManager : MonoBehaviour
 
         this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@24355@Stone@5" }, TypeResource.Stone, 5);
         this.changeResourceStock(null, new MessageEventArgs { message = "dontCare@24355@Wood@10" }, TypeResource.Wood, 10);
-
-        //Todo delete this instruction and the function
-        //StartCoroutine("test");
     }
 
     void Update()
