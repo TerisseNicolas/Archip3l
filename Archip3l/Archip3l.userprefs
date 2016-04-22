@@ -6,7 +6,7 @@
       <File FileName="Assets/Script/ChallengeBuild.cs" Line="1" Column="1" />
       <File FileName="Assets/Script/Buildings/RemoveBuilding.cs" Line="1" Column="1" />
       <File FileName="Assets/Script/Resources/ResourceManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/Network/Client.cs" Line="30" Column="77" />
+      <File FileName="Assets/Script/Network/Client.cs" Line="1" Column="1" />
       <File FileName="Assets/Script/Game/SoundPlayer.cs" Line="27" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
