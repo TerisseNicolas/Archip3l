@@ -115,7 +115,7 @@ public class TrophyManager : MonoBehaviour
                 break;
             case "Airport":
                 //Score to add must be checked
-                this.Client.sendData("@30505@" + 500.ToString());
+                this.Client.sendData("@30505@" + 600.ToString());
                 break;
         }
         if (this.TrophyObtained != null)

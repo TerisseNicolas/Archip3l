@@ -5,6 +5,7 @@ using TouchScript.Gestures;
 using TouchScript.Hit;
 using TouchScript;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Loading : InputSource
 {
@@ -17,8 +18,17 @@ public class Loading : InputSource
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemChangeSceneEvent += Client_MessageSystemChangeSceneEvent;
-        SoundPlayer.Instance.playLoadingSound();
 
+        StartCoroutine(music());
+    }
+
+    IEnumerator music()
+    {
+        for(;;)
+        {
+            SoundPlayer.Instance.playLoadingSound();
+            yield return new WaitForSeconds(63f);
+        }
     }
 
     void Update()
