@@ -699,15 +699,14 @@ public class MinorIsland : InputSource
         this.begun = false;
         if (Time.time - TouchTime < 0.5)
         {
-            TouchTime = 0;
             this.OnMouseDownSimulation();
         }
         else if(Time.time - TouchTime < 1.5)
         {
-            TouchTime = 0;
             if(!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
                 this.createExchangeWindow();
         }
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

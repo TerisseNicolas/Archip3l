@@ -132,6 +132,7 @@ public class Trophy : InputSource
                 }
             }
             gameObject.GetComponent<SpriteRenderer>().sprite = wonSprite;
+            main.addNotification("Vous remportez un trophée !");
         }
     }
 

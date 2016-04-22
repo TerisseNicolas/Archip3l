@@ -360,6 +360,7 @@ public class ExchangeResource : InputSource
             send.sprite = Resources.Load<Sprite>("fenetreEchange/boutonEnvoyer");
         if (this.name == "Less" || this.name == "More")
             this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("fenetreEchange/" + this.name);
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

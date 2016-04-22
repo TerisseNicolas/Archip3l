@@ -269,7 +269,7 @@ public class Tuto_MinorIsland : InputSource {
         {
             Canvas exchangeWindowCanvasPrefab = Resources.Load<Canvas>("Prefab/Tuto/exchangeWindowCanvasTuto");
             Canvas exchangeWindowCanvas = Instantiate(exchangeWindowCanvasPrefab);
-            exchangeWindowCanvas.transform.parent = GameObject.Find(this.nameTuto_MinorIsland).transform;
+            exchangeWindowCanvas.transform.SetParent(GameObject.Find(this.nameTuto_MinorIsland).transform);
             exchangeWindowCanvas.name = "ExchangeWindowCanvas_" + this.nameTuto_MinorIsland;
             Vector3 vector3 = GameObject.Find("Virtual_" + this.nameTuto_MinorIsland).transform.position;
             vector3.z = -5.1f;
@@ -489,18 +489,17 @@ public class Tuto_MinorIsland : InputSource {
         this.begun = false;
         if (Time.time - TouchTime < 1)
         {
-            TouchTime = 0;
             this.OnMouseDownSimulation();
         }
         else if (Time.time - TouchTime < 3)
         {
-            TouchTime = 0;
             if (this.harborUpgraded && !this.exchangeResourceOpened)
             {
                 displayPopup("Voici la fenêtre d'échange de ressources. Vous pouvez y accéder à n'importe quel moment grâce à un appui long.", 5);
                 this.createExchangeWindowTuto();
             }
         }
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

@@ -158,8 +158,6 @@ public class Briefing : InputSource
         if (touch.InputSource == this) return;
         if (!map.TryGetValue(touch.Id, out id)) return;
         endTouch(id);
-        //if (Time.time - TouchTime < 1)
-        //    this.OnMouseDownSimulation();
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
