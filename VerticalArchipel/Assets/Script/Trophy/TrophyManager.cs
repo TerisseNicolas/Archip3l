@@ -95,6 +95,7 @@ public class TrophyManager : MonoBehaviour
     public void changeTrophyToObtained(Trophy trophy)
     {
         trophy.changeToObtained();
+        SoundPlayer.Instance.playTrophySound();
         switch(trophy.name)
         {
             case "Medal3":
