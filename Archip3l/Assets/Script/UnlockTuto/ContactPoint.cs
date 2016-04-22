@@ -158,13 +158,9 @@ public class ContactPoint : InputSource
         endTouch(id);
         if (Time.time - TouchTime < 300)
         {
-            TouchTime = 0;
             this.ExitContactZone();
         }
-        else
-        {
-            TouchTime = 0;
-        }
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

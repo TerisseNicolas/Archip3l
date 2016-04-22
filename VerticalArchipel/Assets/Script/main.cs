@@ -190,13 +190,13 @@ public class main : MonoBehaviour
         switch (sousIle)
         {
             case "sous_ile_1":
-                return "l'île Jaune";
+                return "Jaune";
             case "sous_ile_2":
-                return "l'île Bleue";
+                return "Bleue";
             case "sous_ile_3":
-                return "l'île Grise";
+                return "Grise";
             case "sous_ile_4":
-                return "l'île Marron";
+                return "Marron";
             default:
                 return string.Empty;
         }

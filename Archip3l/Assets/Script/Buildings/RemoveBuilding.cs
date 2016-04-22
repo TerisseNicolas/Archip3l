@@ -17,7 +17,8 @@ public class RemoveBuilding : InputSource
     void OnMouseDownSimulation()
     {
         island = GameObject.Find(this.transform.parent.parent.parent.name).GetComponent<MinorIsland>();
-        building = GameObject.Find(island.nameBuildingTouchCanvas).GetComponent<Building>();
+        building = GameObject.Find(island.nameBuildingTouched).GetComponent<Building>();
+        island.nameBuildingTouched = string.Empty;
 
         if (this.name == "Remove")
         {
@@ -41,22 +42,10 @@ public class RemoveBuilding : InputSource
             StartCoroutine(building.minorIsland.buildingManager.destroyBuilding(building.TypeBuilding));
         }
 
-        island.nameBuildingTouchCanvas = string.Empty;
+        island.removeBuildingInfoPresent = false;
         Destroy(GameObject.Find(this.transform.parent.parent.name));
     }
-
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 
 
     //-------------- TUIO -----------------------------------------------------------------------
