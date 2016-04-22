@@ -110,23 +110,22 @@ public class Disturbance : InputSource
                 resourceLost = (TypeResource)Enum.Parse(typeof(TypeResource), Enum.GetNames(typeof(TypeResource))[aleat], true);
             }
             while (Enum.IsDefined(typeof(TypeResourceStat), resourceLost.ToString()));
-            //TODO : check if enough resources
-            /*-------------------*/
 
             if (Disturbance.islandChosen == string.Empty)
             {
                 this.disturbanceText.text = "Vous n'avez choisi aucune île !\n\nEn conséquence, la perturbation s'abattra \nsur toutes les îles !";
-                this.Client.sendData("@35770");
-                //TODO : check remove resource from each island
+                StartCoroutine(envoiDataToutes(resourceLost, quantityLost));
+                /*this.Client.sendData("@35770");
                 Client.sendData("@25394@" + resourceLost.ToString() + "@" + "-" + quantityLost.ToString());
-                main.addNotification("Toutes les îles viennent de perdre " + (-quantityLost).ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
+                */main.addNotification("Toutes les îles viennent de perdre " + (-quantityLost).ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
             }
             else
             {
                 string island = Disturbance.islandChosen.Split('-')[1];
-                this.Client.sendData("@3" + island.Split('_')[2] + "770");
+                StartCoroutine(envoiDataUne(resourceLost, quantityLost, island));
+                /*this.Client.sendData("@3" + island.Split('_')[2] + "770");
                 Client.sendData("@2" + island.Split('_')[2] + "394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
-                main.addNotification("L'île " + main.getIslandName(island) + " vient de perdre des ressources ! (" + main.translateResourceName(resourceLost.ToString()) + ")");
+                */main.addNotification("L'île " + main.getIslandName(island) + " vient de perdre des ressources ! (" + main.translateResourceName(resourceLost.ToString()) + ")");
                 for (int i = 1; i <= 4; i++)
                 {
                     if (("Disturbance-sous_ile_" + i.ToString()) != Disturbance.islandChosen)
@@ -154,6 +153,22 @@ public class Disturbance : InputSource
             main.addEnigma();
     }
 
+    public IEnumerator envoiDataToutes(TypeResource resourceLost, int quantityLost)
+    {
+        this.Client.sendData("@35770");
+        yield return new WaitForSeconds(0.5f);
+        this.Client.sendData("@25394@" + resourceLost.ToString() + "@" + "-" + quantityLost.ToString());
+        yield return new WaitForSeconds(0.1f);
+    }
+
+    public IEnumerator envoiDataUne(TypeResource resourceLost, int quantityLost, string island)
+    {
+        this.Client.sendData("@3" + island.Split('_')[2] + "770");
+        yield return new WaitForSeconds(0.5f);
+        Client.sendData("@2" + island.Split('_')[2] + "394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
+        yield return new WaitForSeconds(0.1f);
+    }
+
 
     //-------------- TUIO -----------------------------------------------------------------------
 
@@ -162,21 +177,6 @@ public class Disturbance : InputSource
     float TouchTime;
 
     private MetaGesture gesture;
-    private Dictionary<int, int> map = new Dictionary<int, int>();
-
-    public override void CancelTouch(TouchPoint touch, bool @return)
-    {
-        base.CancelTouch(touch, @return);
-
-        map.Remove(touch.Id);
-        if (@return)
-        {
-            TouchHit hit;
-            if (!gesture.GetTargetHitResult(touch.Position, out hit)) return;
-            map.Add(touch.Id, beginTouch(processCoords(hit.RaycastHit.textureCoord), touch.Tags).Id);
-        }
-    }
-
 
     protected override void OnEnable()
     {
@@ -185,25 +185,10 @@ public class Disturbance : InputSource
         if (gesture)
         {
             gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchMoved += touchMovedhandler;
-            gesture.TouchCancelled += touchCancelledhandler;
             gesture.TouchEnded += touchEndedHandler;
         }
     }
-
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-
-        if (gesture)
-        {
-            gesture.TouchBegan -= touchBeganHandler;
-            gesture.TouchMoved -= touchMovedhandler;
-            gesture.TouchCancelled -= touchCancelledhandler;
-            gesture.TouchEnded -= touchEndedHandler;
-        }
-    }
+    
 
     private Vector2 processCoords(Vector2 value)
     {
@@ -212,44 +197,16 @@ public class Disturbance : InputSource
 
     private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
     {
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
         if (TouchTime == 0)
             TouchTime = Time.time;
     }
-
-    private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        int id;
-        TouchHit hit;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        if (!gesture.GetTargetHitResult(touch.Position, out hit)) return;
-        moveTouch(id, processCoords(hit.RaycastHit.textureCoord));
-    }
-
+    
     private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
     {
-        int id;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        endTouch(id);
         if (Time.time - TouchTime < 1)
             this.OnMouseDownSimulation();
         TouchTime = 0;
     }
-
-    private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        int id;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        cancelTouch(id);
-    }
-
+    
 }
 

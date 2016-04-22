@@ -11,7 +11,7 @@ public class main : MonoBehaviour
     public const int nbChallengesMax = 3;
     public const int nbNotificationsMax = 8;
 
-    static public int level = 0;    //TODO : initialize with Register's value (from Archipel) --> event Client
+    static public int level = 0;
 
     private Client Client;
 

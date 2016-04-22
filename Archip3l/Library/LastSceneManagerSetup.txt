@@ -1,4 +1,16 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/playingScene.unity
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+- path: Assets/Scenes/playingScene.unity
+=======
+- path: Assets/Scenes/unlockingTutoScene.unity
+>>>>>>> a5b6946dd79018ba5a59175187faffa253db228c
+=======
+- path: Assets/Scenes/unlockingTutoScene.unity
+>>>>>>> a5b6946dd79018ba5a59175187faffa253db228c
+>>>>>>> 549ea80da2cfb041c512caf1b16d4bbceb9ce17a
   isLoaded: 1
   isActive: 1

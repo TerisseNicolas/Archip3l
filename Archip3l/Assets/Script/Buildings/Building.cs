@@ -297,13 +297,14 @@ public class Building : InputSource
             this.buildState = 1;
             quantityProduced -= (int)this.resourceProduced.Production;
             this.changeProduction((int)this.resourceProduced.Production);
+            Debug.Log("-----------------" + this.resourceProduced.Production.ToString());
 
 
             //Todo : score to add must be checked
             yield return new WaitForSeconds(Int32.Parse(minorIsland.nameMinorIsland.Split('_')[2])-1);
             this.Client.sendData("@30505@" + 100.ToString());
             yield return new WaitForSeconds(0.1f);
-            this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "345@" + resourceProduced.TypeResource.ToString() + "@" + resourceProduced.Production);
+            //this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "345@" + resourceProduced.TypeResource.ToString() + "@" + resourceProduced.Production);
             yield return new WaitForSeconds(0.1f);
             this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "111@" + this.TypeBuilding.ToString());
 
@@ -547,20 +548,6 @@ public class Building : InputSource
     float TouchTime;
 
     private MetaGesture gesture;
-    private Dictionary<int, int> map = new Dictionary<int, int>();
-
-    public override void CancelTouch(TouchPoint touch, bool @return)
-    {
-        base.CancelTouch(touch, @return);
-
-        map.Remove(touch.Id);
-        if (@return)
-        {
-            TouchHit hit;
-            if (!gesture.GetTargetHitResult(touch.Position, out hit)) return;
-            map.Add(touch.Id, beginTouch(processCoords(hit.RaycastHit.textureCoord), touch.Tags).Id);
-        }
-    }
 
 
     protected override void OnEnable()
@@ -570,25 +557,11 @@ public class Building : InputSource
         if (gesture)
         {
             gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchMoved += touchMovedhandler;
-            gesture.TouchCancelled += touchCancelledhandler;
             gesture.TouchEnded += touchEndedHandler;
         }
     }
 
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-
-        if (gesture)
-        {
-            gesture.TouchBegan -= touchBeganHandler;
-            gesture.TouchMoved -= touchMovedhandler;
-            gesture.TouchCancelled -= touchCancelledhandler;
-            gesture.TouchEnded -= touchEndedHandler;
-        }
-    }
+    
 
     private Vector2 processCoords(Vector2 value)
     {
@@ -597,45 +570,17 @@ public class Building : InputSource
 
     private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
     {
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
         if (TouchTime == 0)
         {
             TouchTime = Time.time;
         }
     }
 
-    private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        int id;
-        TouchHit hit;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        if (!gesture.GetTargetHitResult(touch.Position, out hit)) return;
-        moveTouch(id, processCoords(hit.RaycastHit.textureCoord));
-    }
-
     private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
     {
-        int id;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        endTouch(id);
         if (Time.time - TouchTime < 1)
             this.OnMouseDownSimulation();
         TouchTime = 0;
-    }
-
-    private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        int id;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        cancelTouch(id);
     }
 
 }
