@@ -101,6 +101,7 @@ public class Tuto_TouchBuilding : InputSource
                 {
                     island.displayPopup("Appuyez sur l'endroit où placer le bâtiment", 3);
                     island.moveBuilding = true;
+                    Destroy(GameObject.Find(this.transform.parent.parent.name));
                 }
                 else
                 {
@@ -109,7 +110,6 @@ public class Tuto_TouchBuilding : InputSource
                     else
                         island.displayPopup("Maintenant, améliorez le port.", 5);
                 }
-                Destroy(GameObject.Find(this.transform.parent.parent.name));
                 break;
         }
     }
@@ -213,9 +213,9 @@ public class Tuto_TouchBuilding : InputSource
         endTouch(id);
         if (Time.time - TouchTime < 0.5)
         {
-            TouchTime = 0;
             this.OnMouseDownSimulation();
         }
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

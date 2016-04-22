@@ -158,6 +158,7 @@
      <Compile Include="Assets\Script\Types\TypeChallenge.cs" />
      <Compile Include="Assets\Script\Types\TypeDisturbance.cs" />
      <Compile Include="Assets\Script\Types\TypeResource.cs" />
+     <Compile Include="Assets\Script\Types\TypeResourceStat.cs" />
      <Compile Include="Assets\Script\UnlockTuto\ContactPoint.cs" />
      <Compile Include="Assets\Script\UnlockTuto\ContactPointLayer.cs" />
      <Compile Include="Assets\Script\UnlockTuto\Emitter.cs" />

@@ -23,7 +23,6 @@ public class Tuto_BuildingInfo : InputSource {
             island.createTuto_ChallengeBuild(buildingClicked);
             island.harborBuilt = true;
         }
-        Debug.Log(this.transform.parent.parent.name);
         island.buildingInfoPresent = false;
         Destroy(GameObject.Find(this.transform.parent.parent.name));
     }
@@ -133,6 +132,7 @@ public class Tuto_BuildingInfo : InputSource {
             this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("infoBatiments/" + this.name);
         if (Time.time - TouchTime < 1)
             this.OnMouseDownSimulation();
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

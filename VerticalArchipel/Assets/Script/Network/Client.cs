@@ -80,46 +80,13 @@ public class Client : MonoBehaviour
         _thListener.Start();
 
         //todo : delete
-        //StartCoroutine("test");
+        StartCoroutine("test");
 
     }
 
     IEnumerator test()
     {
-        yield return new WaitForSeconds(1);
-        this.ProcessMessage("serverinfo@21111@Airport");
-        yield return new WaitForSeconds(1);
-        this.ProcessMessage("serverinfo@22111@Airport");
-        yield return new WaitForSeconds(1);
-        this.ProcessMessage("serverinfo@23111@Airport");
-        yield return new WaitForSeconds(0.1f);
-        this.ProcessMessage("serverinfo@24111@Airport");
-
-        yield return new WaitForSeconds(0.1f);
-        this.ProcessMessage("serverinfo@24111@GoldMine");
-        yield return new WaitForSeconds(0.1f);
-        this.ProcessMessage("serverinfo@24111@GoldMine");
-        yield return new WaitForSeconds(0.1f);
-        this.ProcessMessage("serverinfo@24111@SawMill");
-
-        yield return new WaitForSeconds(1);
-        this.ProcessMessage("serverinfo@21355@Gold@3000");
-        yield return new WaitForSeconds(1);
-        this.ProcessMessage("serverinfo@23355@Wood@1501");
-        yield return new WaitForSeconds(0.1f);
-        this.ProcessMessage("serverinfo@21355@Food@7000");
-        yield return new WaitForSeconds(0.1f);
-        this.ProcessMessage("serverinfo@31505@7600");
-        
-        yield return new WaitForSeconds(0.1f);
-        this.ProcessMessage("serverinfo@21355@Food@-8000");
-        this.ProcessMessage("serverInfo@30005@1");
-
-        this.ProcessMessage("serverinfo@31441@0.568");
-        this.ProcessMessage("serverinfo@32441@0.2563");
-        this.ProcessMessage("serverinfo@33441@0.7596");
-        this.ProcessMessage("serverinfo@34441@0.5");
-
+        yield return new WaitForSeconds(1);        
     }
 
     public void loadPort()

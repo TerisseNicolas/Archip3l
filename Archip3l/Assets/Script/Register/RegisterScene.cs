@@ -168,15 +168,11 @@ public class RegisterScene : InputSource {
         endTouch(id);
         if (Time.time - TouchTime < 0.5)
         {
-            TouchTime = 0;
             this.OnMouseDownSimulation();
-        }
-        else if (Time.time - TouchTime < 1.5)
-        {
-            TouchTime = 0;
         }
         if (this.name != "college" && this.name != "lycee")
             this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("keyboard/" + this.name);
+        TouchTime = 0;
 
     }
 

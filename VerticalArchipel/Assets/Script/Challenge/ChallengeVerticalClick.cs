@@ -328,10 +328,7 @@ public class ChallengeVerticalClick : InputSource
             TouchTime = 0;
             this.OnMouseDownSimulation();
         }
-        else if (Time.time - TouchTime < 1.5)
-        {
-            TouchTime = 0;
-        }
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

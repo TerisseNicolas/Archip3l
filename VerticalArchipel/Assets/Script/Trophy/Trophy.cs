@@ -46,11 +46,11 @@ public class Trophy : InputSource
             case "Medal1"://tous types de batiments contruits
                 return this.Score.allBuildingBuilt;
             case "Trophy3": //TOTAL resources count > 500
-                return GRM.totalResourceCount > 2000;
+                return GRM.totalResourceCount > 4000;
             case "Trophy2": //TOTAL resources count > 1000
-                return GRM.totalResourceCount > 5000;
-            case "Trophy1": //TOTAL resources count > 5000
                 return GRM.totalResourceCount > 10000;
+            case "Trophy1": //TOTAL resources count > 5000
+                return GRM.totalResourceCount > 20000;
                 // Airport requirement managed in the trophy manager
 
                 //return resourceManager.getResource(TypeResource.Gold).Stock > 10000;
@@ -132,6 +132,7 @@ public class Trophy : InputSource
                 }
             }
             gameObject.GetComponent<SpriteRenderer>().sprite = wonSprite;
+            main.addNotification("Vous remportez un trophée !");
         }
     }
 
@@ -226,6 +227,7 @@ public class Trophy : InputSource
         endTouch(id);
         if (Time.time - TouchTime < 1)
             this.OnMouseDownSimulation();
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

@@ -359,7 +359,7 @@ public class ChallengeUpgrade : InputSource
         var touch = metaGestureEventArgs.Touch;
         if (touch.InputSource == this) return;
         map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
-        if (TouchTime == 0 && !MinorIsland.exchangePerforming)
+        if (TouchTime == 0)
         {
             TouchTime = Time.time;
         }
@@ -386,13 +386,9 @@ public class ChallengeUpgrade : InputSource
         endTouch(id);
         if (Time.time - TouchTime < 0.5)
         {
-            TouchTime = 0;
             this.OnMouseDownSimulation();
         }
-        else if (Time.time - TouchTime < 1.5)
-        {
-            TouchTime = 0;
-        }
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

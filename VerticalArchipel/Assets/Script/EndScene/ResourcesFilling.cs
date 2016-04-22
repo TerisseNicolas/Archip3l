@@ -8,6 +8,7 @@ public class ResourcesFilling : MonoBehaviour
 
 	void Start ()
     {
+        SoundPlayer.Instance.playApplauseSound();
         GameObject resourceObject = GameObject.Find("Resources");
         //resourceObject.transform.position = new Vector3(0, 0, 12);
         resourceObject.GetComponent<Canvas>().enabled = false;

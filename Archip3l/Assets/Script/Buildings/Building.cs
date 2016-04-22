@@ -333,7 +333,7 @@ public class Building : InputSource
 
     void OnMouseDownSimulation()
     {
-        if ((this.buildState == 1) && !MinorIsland.exchangePerforming && !minorIsland.wheelPresent && !minorIsland.buildingInfoPresent && !minorIsland.challengePresent && !minorIsland.moveBuilding && minorIsland.nameBuildingTouchCanvas == String.Empty)
+        if ((this.buildState == 1) && !MinorIsland.exchangePerforming && !minorIsland.wheelPresent && !minorIsland.touchBuildingPresent && !minorIsland.buildingInfoPresent && !minorIsland.challengePresent && !minorIsland.moveBuilding)
         {
             minorIsland.createBuildingTouch(this);
         }
@@ -624,6 +624,7 @@ public class Building : InputSource
         endTouch(id);
         if (Time.time - TouchTime < 1)
             this.OnMouseDownSimulation();
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

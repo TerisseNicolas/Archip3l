@@ -24,12 +24,21 @@ public class SoundPlayer : MonoBehaviour
     public AudioClip powerPlantSound;
     public AudioClip sawMillSound;
     public AudioClip schoolSound;
-    public AudioClip sinkingCargoShipSounf;
+    public AudioClip sinkingCargoShipSound;
     public AudioClip sinkingPirateShipSound;
+    public AudioClip crashPirateShipSound;
+    public AudioClip pirateShipArrivalSound;
     public AudioClip upgradeSound;
     public AudioClip windTurbineSound;
 
+    public AudioClip perturbationSound;
+    public AudioClip grasshopperSound;
+    public AudioClip thunderSound;
+    public AudioClip applauseSound;
+    public AudioClip trophySound;
+
     public AudioClip briefingLetterSound;
+    public AudioClip loadingSound;
 
     public AudioClip startGameSound;
     public AudioClip endGameSound;
@@ -114,6 +123,36 @@ public class SoundPlayer : MonoBehaviour
                 case 20:
                     playBriefingLetterSound();
                     break;
+                case 21:
+                    playCrashPirateShipSound();
+                    break;
+                case 22:
+                    playApplauseSound();
+                    break;
+                case 23:
+                    playPerturbationSound();
+                    break;
+                case 24:
+                    playTrophySound();
+                    break;
+                case 25:
+                    playEndGameSound();
+                    break;
+                case 26:
+                    playGrasshopperSound();
+                    break;
+                case 27:
+                    playPirateShipArrivalSound();
+                    break;
+                case 28:
+                    playThunderSound();
+                    break;
+                case 29:
+                    playLoadingSound();
+                    break;
+                case 30:
+                    playStartGameSound();
+                    break;
             }
             this.soundId = 0;
         }
@@ -191,7 +230,7 @@ public class SoundPlayer : MonoBehaviour
     }
     public void playSinkingCargoShipSound()
     {
-        MakeSound(sinkingCargoShipSounf);
+        MakeSound(sinkingCargoShipSound);
     }
     public void playSinkingPirateShipSound()
     {
@@ -208,5 +247,45 @@ public class SoundPlayer : MonoBehaviour
     public void playBriefingLetterSound()
     {
         MakeSound(briefingLetterSound);
+    }
+    public void playCrashPirateShipSound()
+    {
+        MakeSound(crashPirateShipSound);
+    }
+    public void playApplauseSound()
+    {
+        MakeSound(applauseSound);
+    }
+    public void playPerturbationSound()
+    {
+        MakeSound(perturbationSound);
+    }
+    public void playTrophySound()
+    {
+        MakeSound(trophySound);
+    }
+    public void playEndGameSound()
+    {
+        MakeSound(endGameSound);
+    }
+    public void playGrasshopperSound()
+    {
+        MakeSound(grasshopperSound);
+    }
+    public void playPirateShipArrivalSound()
+    {
+        MakeSound(pirateShipArrivalSound);
+    }
+    public void playThunderSound()
+    {
+        MakeSound(thunderSound);
+    }
+    public void playLoadingSound()
+    {
+        MakeSound(loadingSound);
+    }
+    public void playStartGameSound()
+    {
+        MakeSound(startGameSound);
     }
 }
