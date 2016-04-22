@@ -328,12 +328,14 @@ public class ExchangeResource : InputSource
         var touch = metaGestureEventArgs.Touch;
         if (touch.InputSource == this) return;
         map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
-        //this.OnMouseDownSimulation();
-        TouchTime = Time.time;
-        if (this.name == "Send")
-            send.sprite = Resources.Load<Sprite>("fenetreEchange/boutonEnvoyerClic");
-        if (this.name == "Less" || this.name == "More")
-            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("fenetreEchange/" + this.name + "Clic");
+        if (TouchTime == 0)
+        {
+            TouchTime = Time.time;
+            if (this.name == "Send")
+                send.sprite = Resources.Load<Sprite>("fenetreEchange/boutonEnvoyerClic");
+            if (this.name == "Less" || this.name == "More")
+                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("fenetreEchange/" + this.name + "Clic");
+        }
     }
 
     private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

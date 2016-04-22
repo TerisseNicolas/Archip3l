@@ -140,7 +140,7 @@ public class Tuto_WheelIcon : InputSource
         {
             this.OnMouseDownSimulation();
         }
-            TouchTime = 0;
+        TouchTime = 0;
     }
 
     private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

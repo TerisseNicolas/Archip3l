@@ -203,8 +203,8 @@ public class Trophy : InputSource
         var touch = metaGestureEventArgs.Touch;
         if (touch.InputSource == this) return;
         map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
-        //this.OnMouseDownSimulation();
-        TouchTime = Time.time;
+        if (TouchTime == 0)
+            TouchTime = Time.time;
     }
 
     private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

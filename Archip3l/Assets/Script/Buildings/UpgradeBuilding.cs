@@ -113,10 +113,12 @@ public class UpgradeBuilding : InputSource
         var touch = metaGestureEventArgs.Touch;
         if (touch.InputSource == this) return;
         map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
-        //this.OnMouseDownSimulation();
-        TouchTime = Time.time;
-        if (this.name == "Upgrade")
-            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("infoBatiments/" + this.name + "Clic");
+        if (TouchTime == 0)
+        {
+            TouchTime = Time.time;
+            if (this.name == "Upgrade")
+                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("infoBatiments/" + this.name + "Clic");
+        }
     }
 
     private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
