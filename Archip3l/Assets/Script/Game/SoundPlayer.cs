@@ -25,7 +25,7 @@ public class SoundPlayer : MonoBehaviour {
         AudioSource.PlayClipAtPoint(originalClip, transform.position, 10f);
     }
 
-    private void PlayBuildingSoung(string typeBuilding)
+    private void playBuildingSoung(string typeBuilding)
     {
         switch(typeBuilding)
         {
