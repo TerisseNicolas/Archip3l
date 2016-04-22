@@ -8,7 +8,6 @@ public class ResourcesFilling : MonoBehaviour
 
 	void Start ()
     {
-        SoundPlayer.Instance.playApplauseSound();
         GameObject resourceObject = GameObject.Find("Resources");
         //resourceObject.transform.position = new Vector3(0, 0, 12);
         resourceObject.GetComponent<Canvas>().enabled = false;
@@ -50,5 +49,6 @@ public class ResourcesFilling : MonoBehaviour
 
         //fill score
         GameObject.Find("totalScoreValue").GetComponent<Text>().text = game.GetComponent<Score>().ScoreCount.ToString();
-	}
+	    SoundPlayer.Instance.playApplauseSound();
+    }
 }

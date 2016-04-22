@@ -91,7 +91,7 @@ public class Disturbance : InputSource
 
     void finalAction()
     {
-        if (this.name.Contains("sous_ile_1") && !Disturbance.actionMade)
+        if (!Disturbance.actionMade)
         {
             Disturbance.actionMade = true;
             this.counter.text = string.Empty;
