@@ -20,7 +20,7 @@ public class ChallengeVertical : InputSource
 
     public void OnMouseDownSimulation()
     {
-        if (!ChallengeVertical.challengeWindowPresent && !Trophy.infoWindowPresent && !Enigma.enigmaWindowOpen && !Disturbance.disturbanceWindowOpen && !Island.infoIslandPresent)
+        if (!ChallengeVertical.challengeWindowPresent && !ChallengeWon.challengeWonWindowPresent && !Trophy.infoWindowPresent && !Enigma.enigmaWindowOpen && !Disturbance.disturbanceWindowOpen && !Island.infoIslandPresent)
         {
             ChallengeVertical.challengeWindowPresent = true;
 

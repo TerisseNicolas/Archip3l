@@ -80,7 +80,7 @@ public class Client : MonoBehaviour
         _thListener.Start();
 
         //todo : delete
-        StartCoroutine("test");
+        //StartCoroutine("test");
 
     }
 
