@@ -148,13 +148,12 @@ public class Score : MonoBehaviour {
         bool flag = false;
         int count = 1;
 
-        float challengeSuccessRate = 0;
+        float rate = 0;
         foreach(float c in this.ChallengeSuccessRate)
         {
-            challengeSuccessRate += c;
+            rate += c *100;
         }
-        challengeSuccessRate /= 4.0f;
-        challengeSuccessRate *= 100;
+        rate /= 4.0f;
 
         List<Tuple<int, string, int, int, int, float>> temp = new List<Tuple<int, string, int, int, int, float>>();
         foreach (Tuple<int, string, int, int, int, float> item in this.scores)
@@ -162,7 +161,7 @@ public class Score : MonoBehaviour {
             if ((item.Third <= this.ScoreCount) && !flag)
             {
                 flag = true;
-                temp.Add(new Tuple<int, string, int, int, int, float>(count, teamName, this.ScoreCount, this.MedalCount, this.BuildingCount, challengeSuccessRate));
+                temp.Add(new Tuple<int, string, int, int, int, float>(count, teamName, this.ScoreCount, this.MedalCount, this.BuildingCount, rate));
                 count += 1;
                 temp.Add(new Tuple<int, string, int, int, int, float>(count, item.Second, item.Third, item.Fourth, item.Fifth, item.Sixth));
             }
@@ -174,7 +173,7 @@ public class Score : MonoBehaviour {
         }
         if (!flag)
         {
-            temp.Add(new Tuple<int, string, int, int, int, float>(count, teamName, this.ScoreCount, this.MedalCount, this.BuildingCount, challengeSuccessRate));
+            temp.Add(new Tuple<int, string, int, int, int, float>(count, teamName, this.ScoreCount, this.MedalCount, this.BuildingCount, rate));
         }
         this.scores = temp;
         this.saveScores();
