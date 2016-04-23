@@ -27,7 +27,7 @@ public class ResourceManager : MonoBehaviour
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
             //TODO : put stock to 5
-            this.addResource(resourceType, 5, 0);
+            this.addResource(resourceType, 50, 0);
         }
 
         switch (this.minorIsland.nameMinorIsland)

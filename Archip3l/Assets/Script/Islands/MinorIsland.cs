@@ -581,7 +581,6 @@ public class MinorIsland : InputSource
                 if (this.resourceManager.Resources[index].Stock >= quantity)
                 {
                     this.resourceManager.changeResourceStock(this.resourceManager.Resources[index].TypeResource, -quantity);
-                    //TODO: check message sent
                     displayPopup("Les pirates vous ont volé : " + quantity + " de " + Resource.translateResourceName(this.resourceManager.Resources[index].TypeResource.ToString()) + " !", 3);
                     this.Client.sendData("@2" + this.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + (-quantity).ToString());
                 }

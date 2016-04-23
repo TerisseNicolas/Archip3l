@@ -269,15 +269,6 @@ public class Building : InputSource
 
         if (flag == true)
         {
-            //again, Harbor already created on islands
-            if (this.TypeBuilding != TypeBuilding.Harbor)
-            {
-                //withdrawal of resources needed for the construction
-                foreach (Tuple<TypeResource, int> item in this.constructionResourceNeeded)
-                {
-                    this.minorIsland.resourceManager.changeResourceStock(item.First, -item.Second);
-                }
-            }
 
             //texture
             //Texture2D texture = (Texture2D)AssetDatabase.LoadAssetAtPath(this.texturePath, typeof(Texture2D));
@@ -293,6 +284,19 @@ public class Building : InputSource
                 anim_BuildingConstruction.transform.SetParent(this.transform);
             }
 
+            //again, Harbor already created on islands
+            if (this.TypeBuilding != TypeBuilding.Harbor)
+            {
+                //withdrawal of resources needed for the construction
+                foreach (Tuple<TypeResource, int> item in this.constructionResourceNeeded)
+                {
+                    this.minorIsland.resourceManager.changeResourceStock(item.First, -item.Second);
+                    //TODO: check
+                    this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "355@" + item.First.ToString() + "@" + (-item.Second).ToString());
+                    yield return new WaitForSeconds(0.05f);
+                }
+            }
+
             yield return new WaitForSeconds(this.constructionTime);
             this.buildState = 1;
             quantityProduced -= (int)this.resourceProduced.Production;
@@ -300,17 +304,16 @@ public class Building : InputSource
 
 
 
-            //Todo : score to add must be checked
             yield return new WaitForSeconds(Int32.Parse(minorIsland.nameMinorIsland.Split('_')[2])-1);
             this.Client.sendData("@30505@" + 100.ToString());
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
             //this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "345@" + resourceProduced.TypeResource.ToString() + "@" + resourceProduced.Production);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
             this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "111@" + this.TypeBuilding.ToString());
 
             //StartCoroutine("updateStocks");
-            Destroy(buildingConstructionTransform.gameObject);
             SoundPlayer.Instance.playBuildingSound(this.TypeBuilding.ToString());
+            Destroy(buildingConstructionTransform.gameObject);
         }
         else
         {

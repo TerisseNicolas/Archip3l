@@ -66,7 +66,7 @@ public class ChallengeUpgrade : InputSource
         {
             this.question = row[0];
         }
-        catch (Exception e)
+        catch
         {
             error = true;
         }
@@ -234,33 +234,35 @@ public class ChallengeUpgrade : InputSource
         //ChallengeUpgrade.building.name is a string --> conversion necessary + split (name like: "sous_ile_X_nameBuilding")
         if (Enum.IsDefined(typeof(TypeBuilding), this.building.name.Split('_')[3]))
         {
-            //TypeBuilding typeBuilding = (TypeBuilding)Enum.Parse(typeof(TypeBuilding), minorIsland.buildingClicked, true);
-
-            TypeResource typeResourceProduced = (TypeResource)Enum.Parse(typeof(TypeResource), Building.getNameResourceOrStatProduced(building.TypeBuilding.ToString()), true);
-
 
             if (goodAnswer)
             {
-                //TODO : check
                 //withdrawal of resources needed for the upgrading
+                //TODO: check
                 switch (building.level)
                 {
                     case 0:
                         foreach (Tuple<TypeResource, int> tuple in building.upgrade1ResourceNeeded)
                         {
                             minorIsland.resourceManager.changeResourceStock(tuple.First, -tuple.Second);
+                            this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "355@" + tuple.First.ToString() + "@" + (-tuple.Second).ToString());
+                            yield return new WaitForSeconds(0.05f);
                         }
                         break;
                     case 1:
                         foreach (Tuple<TypeResource, int> tuple in building.upgrade2ResourceNeeded)
                         {
                             minorIsland.resourceManager.changeResourceStock(tuple.First, -tuple.Second);
+                            this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "355@" + tuple.First.ToString() + "@" + (-tuple.Second).ToString());
+                            yield return new WaitForSeconds(0.05f);
                         }
                         break;
                     case 2:
                         foreach (Tuple<TypeResource, int> tuple in building.upgrade3ResourceNeeded)
                         {
                             minorIsland.resourceManager.changeResourceStock(tuple.First, -tuple.Second);
+                            this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "355@" + tuple.First.ToString() + "@" + (-tuple.Second).ToString());
+                            yield return new WaitForSeconds(0.05f);
                         }
                         break;
                 }
