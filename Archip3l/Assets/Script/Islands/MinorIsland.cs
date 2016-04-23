@@ -326,7 +326,6 @@ public class MinorIsland : InputSource
     public void createBuildingTouch(Building building)
     {
         this.nameBuildingTouched = building.name;
-        Debug.Log("name : " + building.name);
 
         this.touchBuildingPresent = true;
 

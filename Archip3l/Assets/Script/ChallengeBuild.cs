@@ -60,7 +60,7 @@ public class ChallengeBuild : InputSource
         {
             this.question = row[0];
         }
-        catch (Exception e)
+        catch
         {
             error = true;
         }

@@ -297,7 +297,7 @@ public class Building : InputSource
             this.buildState = 1;
             quantityProduced -= (int)this.resourceProduced.Production;
             this.changeProduction((int)this.resourceProduced.Production);
-            Debug.Log("-----------------" + this.resourceProduced.Production.ToString());
+
 
 
             //Todo : score to add must be checked
