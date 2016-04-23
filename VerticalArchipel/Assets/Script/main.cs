@@ -17,7 +17,6 @@ public class main : MonoBehaviour
 
     void Start()
     {
-        //SoundPlayer.Instance.playStartGameSound();
         //hiding challenges and notifications at the beginning
         for (int i = 1; i <= nbChallengesMax; i++)
         {

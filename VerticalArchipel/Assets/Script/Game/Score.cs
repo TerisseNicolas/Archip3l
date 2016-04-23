@@ -18,6 +18,8 @@ public class Score : MonoBehaviour {
     private TrophyManager TrophyManager;
 
     public List<float> ChallengeSuccessRate;
+    public int verticalGoodAnwsers;
+    public int verticalAnswers;
 
     /* File structure
         -position
@@ -35,6 +37,9 @@ public class Score : MonoBehaviour {
     {
         this.buildingBuilt = new List<string>();
         this.numberOfDifferentBuildingBuilt = 0;
+
+        this.verticalAnswers = 0;
+        this.verticalGoodAnwsers = 0;
     }
 
     void Start()
@@ -153,7 +158,18 @@ public class Score : MonoBehaviour {
         {
             rate += c *100;
         }
-        rate /= 4.0f;
+
+        float verticalRate = 0;
+        if(this.verticalAnswers == 0)
+        {
+            verticalRate = 1;
+        }
+        else
+        {
+            verticalRate = this.verticalGoodAnwsers / this.verticalAnswers;
+        }
+        rate += verticalRate * 100;
+        rate /= 5.0f;
 
         List<Tuple<int, string, int, int, int, float>> temp = new List<Tuple<int, string, int, int, int, float>>();
         foreach (Tuple<int, string, int, int, int, float> item in this.scores)

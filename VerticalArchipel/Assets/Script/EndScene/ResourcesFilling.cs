@@ -29,26 +29,37 @@ public class ResourcesFilling : MonoBehaviour
         }
 
         //fill challenge success rate
-        GameObject game = GameObject.Find("Game");
+        Score score = GameObject.Find("Game").GetComponent<Score>();
         float totalSuccessRate = 0;
         float value = 0;
-        for(int i = 0; i <game.GetComponent<Score>().ChallengeSuccessRate.Count; i++)
+        for(int i = 0; i <score.ChallengeSuccessRate.Count; i++)
         {
-            value = game.GetComponent<Score>().ChallengeSuccessRate[i] * 100;
+            value = score.ChallengeSuccessRate[i] * 100;
             totalSuccessRate += value;
             GameObject.Find("goodAnswersValue" + (i + 1).ToString()).GetComponent<Text>().text = value.ToString("F2") + "%";
         }
-        GameObject.Find("goodAnswersValue5").GetComponent<Text>().text = (totalSuccessRate / 4).ToString("F2") +"%";
+        float verticalRate = 0;
+        if (score.verticalAnswers == 0)
+        {
+            verticalRate = 1;
+        }
+        else
+        {
+            verticalRate = (score.verticalGoodAnwsers / score.verticalAnswers);
+        }
+        GameObject.Find("goodAnswersValue0").GetComponent<Text>().text = (verticalRate * 100).ToString("F2") + "%";
+        totalSuccessRate += verticalRate * 100;
+        GameObject.Find("goodAnswersValue5").GetComponent<Text>().text = (totalSuccessRate / 5).ToString("F2") +"%";
 
         //fill buildings
 
-        GameObject.Find("buildingScoreValue").GetComponent<Text>().text = game.GetComponent<Score>().BuildingCount.ToString();
+        GameObject.Find("buildingScoreValue").GetComponent<Text>().text = score.BuildingCount.ToString();
 
         //fill Medals
-        GameObject.Find("medalScoreValue").GetComponent<Text>().text = game.GetComponent<Score>().MedalCount.ToString();
+        GameObject.Find("medalScoreValue").GetComponent<Text>().text = score.MedalCount.ToString();
 
         //fill score
-        GameObject.Find("totalScoreValue").GetComponent<Text>().text = game.GetComponent<Score>().ScoreCount.ToString();
+        GameObject.Find("totalScoreValue").GetComponent<Text>().text = score.ScoreCount.ToString();
 	    SoundPlayer.Instance.playApplauseSound();
     }
 }
