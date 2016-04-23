@@ -3,3 +3,10 @@ Un anémomètre est un outil servant à mesurer la taille des anémones dans l'e
 Le vent n'influe pas sur le déplacement des populations d’insectes volants ou sur la migration des oiseaux.;Proposition1;Cette influence a été remarquée scientifiquement. Le vent peut même façonner la forme des plantes.;Proposition0;Proposition1
 Le premier instrument de mesure du vent inventé fut la girouette.;Proposition0;Il s'agit d'une invention de la Grèce antique.;Proposition0;Proposition1
 Pendant la nuit, la terre se refroidit plus vite que la mer.;Proposition0;La terre accumule moins de chaleur du Soleil que la mer et se refroidit donc plus vite la nuit venue.;Proposition0;Proposition1
+La guitare est un instrument à vent.;Proposition1;C'est un instrument à cordes.;VRAI;FAUX
+La flûte est un instrument à vent.;Proposition0;;VRAI;FAUX
+La rouille est due à la corrosion du cuivre.;Proposition1;Il s'agit de la corrosion du fer uniquement.;VRAI;FAUX
+L'air est l'un des états de la matière.;Proposition1;Il y a trois états de la matière: solide, liquide, gazeux.;VRAI;FAUX
+La sublimation est le passage d'un corps de l'état solide à l'état gazeux.;Proposition0;;VRAI;FAUX
+La condensation est le passage d'un corps de l'état gazeux à l'état liquide.;Proposition0;;VRAI;FAUX
+Les gaz sont beaucoup plus denses que les solides et les liquides.;Proposition1;C'est l'inverse, les solides et liquides sont plus denses que les gaz.;VRAI;FAUX

@@ -4,3 +4,10 @@ Le maraîchage correspond à la culture de fruits et de fleurs.;Proposition1;Cel
 L’aquaponie est une activité consistant à faire se baigner des poneys.;Proposition1;C’est une forme d’agriculture associant culture de végétaux en symbiose avec l’élevage de poissons.;Proposition0;Proposition1
 Le fermage est l'activité consistant à nourrir des animaux dans une ferme.;Proposition1;Le fermage est une entente laissant au fermier la possibilité de cultiver une terre.;Proposition0;Proposition1
 On peut parfois qualifier le cri d'une panthère de miaulement.;Proposition0;En fonction de la tonalité et la force de son cri, une panthère rugit, feule ou miaule.;Proposition0;Proposition1
+Le grand scarabée peut porter jusqu'à 850 fois son propre poids.;Proposition0;;VRAI;FAUX
+Les araignées sont des insectes.;Proposition1;;VRAI;FAUX
+Contrairement aux autres félins, le guépard ne peut pas rentrer ses griffes.;Proposition0;;VRAI;FAUX
+Chez la hyène, les femmes sont les dominantes.;Proposition0;;VRAI;FAUX
+La hyène ne se nourrit pas des os des animaux, uniquement de leur viande.;Proposition1;La hyène est le seul mammifère également capable de se nourrir des os des animaux qu'elle trouve en les croquant, grâce à des sucs digestifs très concentrés.;VRAI;FAUX
+Une hyène en appétit peut avaler jusqu'à 14 kg de viande en un repas.;Proposition0;Toutefois, en temps normal, les hyènes se contentent d'environ 1,5 à 1,8 kg de viande par jour.;VRAI;FAUX
+La femelle de l'aigle est l'aiglette.;Proposition1;La femelle de l'aigle porte le même nom que le mâle.;VRAI;FAUX

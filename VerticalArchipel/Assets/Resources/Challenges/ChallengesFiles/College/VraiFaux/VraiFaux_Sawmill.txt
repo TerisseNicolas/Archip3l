@@ -3,3 +3,10 @@ Le débardoire est la zone dangereuse dans laquelle un arbre prêt à être abat
 Un chargeoir est le nom donné au lieu de dépôt des arbres coupés.;Proposition0;;Proposition0;Proposition1
 Un débardeur peut également désigner une personne dont le travail consiste à transporter des arbres, du lieu d'abattage au lieu de dépôt.;Proposition0;;Proposition0;Proposition1
 La rémunération d'un bûcheron ne dépend pas de la quantité de bois qu’il a abattu.;Proposition1;La rémunération d'un bûcheron est très variable et dépend de la quantité de son travail, du type de coupe et de la qualité des bois.;Proposition0;Proposition1
+Une plante peut naître à partir d'une graine ou d'un morceau de végétal adulte.;Proposition0;;VRAI;FAUX
+Le sapin ne fait pas de fleur.;Proposition1;Très irrégulière et imprévisible, la floraison du sapin peut parfois durer tout l'été.;VRAI;FAUX
+Le cocotier pousse en France métropolitaine.;Proposition1;Le cocotier pousse dans des lieux au climat tropical.;VRAI;FAUX
+La reproduction asexuée se fait entre deux individus mâle et femelle.;Proposition1;C'est la reproduction sexuée qui requiert deux individus mâle et femelle.;VRAI;FAUX
+La cellulose est un des principaux constituants du bois.;Proposition0;;VRAI;FAUX
+L'amidon est la forme principale de réserve de sucres des plantes.;Proposition0;;VRAI;FAUX
+Certaines plantes ont leurs racines à la surface de la terre.;Proposition0;;VRAI;FAUX
