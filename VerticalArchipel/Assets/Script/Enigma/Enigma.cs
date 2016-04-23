@@ -24,6 +24,7 @@ public class Enigma : InputSource
     public TextAsset csv { get; private set; }
 
     private Client client { get; set; }
+    private Score Score;
 
 
     void OnMouseDownSimulation()
@@ -55,6 +56,7 @@ public class Enigma : InputSource
     void Start()
     {
         this.client = GameObject.Find("Network").GetComponent<Client>();
+        this.Score = GameObject.Find("Game").GetComponent<Score>();
 
 
         if (this.name == "Answer")
@@ -103,6 +105,7 @@ public class Enigma : InputSource
             Enigma.resultObject.text = "Bonne réponse !";
             main.addNotification("Enigme réussie !");
             this.client.sendData("@35601@" + this.name);
+            this.Score.verticalGoodAnwsers += 1;
         }
             
         else
@@ -111,6 +114,7 @@ public class Enigma : InputSource
             main.addNotification("Enigme ratée !");
             this.client.sendData("@35602@" + this.name);
         }
+        this.Score.verticalAnswers += 1;
 
 
         yield return new WaitForSeconds(4);
