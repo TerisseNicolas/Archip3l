@@ -291,7 +291,6 @@ public class Building : InputSource
                 foreach (Tuple<TypeResource, int> item in this.constructionResourceNeeded)
                 {
                     this.minorIsland.resourceManager.changeResourceStock(item.First, -item.Second);
-                    //TODO: check
                     this.Client.sendData("@2" + minorIsland.nameMinorIsland.Split('_')[2] + "355@" + item.First.ToString() + "@" + (-item.Second).ToString());
                     yield return new WaitForSeconds(0.05f);
                 }

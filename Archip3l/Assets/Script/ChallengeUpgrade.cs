@@ -238,7 +238,6 @@ public class ChallengeUpgrade : InputSource
             if (goodAnswer)
             {
                 //withdrawal of resources needed for the upgrading
-                //TODO: check
                 switch (building.level)
                 {
                     case 0:

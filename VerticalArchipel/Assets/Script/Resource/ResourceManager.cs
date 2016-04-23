@@ -26,16 +26,13 @@ public class ResourceManager : MonoBehaviour
         this.client.MessageResourceProductionUpdateEvent += Client_MessageResourceProductionUpdateEvent;
 
         //Add all resources
-        //TODO check same resource init as on archip3l
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
             this.addResource(resourceType, 5, 0);
         }
 
         StartCoroutine(SpecificResourceCoroutine());
-
-        //Todo delete this instruction and the function
-        //StartCoroutine("test");
+        
     }
 
     IEnumerator SpecificResourceCoroutine()
