@@ -89,13 +89,12 @@ public class Game : MonoBehaviour
     //{
     //    this.Client.sendData("@30087");
     //}
-    private void Timer_FinalTick(object sender, System.EventArgs e)
+    public void Timer_FinalTick(object sender, System.EventArgs e)
     {
         finished = true;
         this.Client.sendData("@30002");
         this.Score.addScore(this.GlobalInfo.teamName);
-        //TODO delete this
-        //this.Client.ProcessMessage("@30000@BoardEndScene");
+        Debug.Log("OUT");
     }
     private void ChallengerTimer_FinalTick(object sender, System.EventArgs e)
     {
