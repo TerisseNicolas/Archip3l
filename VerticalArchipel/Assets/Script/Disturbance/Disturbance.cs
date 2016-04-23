@@ -139,7 +139,6 @@ public class Disturbance : InputSource
 
             StartCoroutine(wait());
 
-            Disturbance.disturbanceWindowOpen = false;
             Disturbance.actionMade = false; //"remise à 0" de l'attribut static
             Destroy(GameObject.Find("Disturbance"), 3.1f);
         }
@@ -151,6 +150,7 @@ public class Disturbance : InputSource
         Disturbance.islandChosen = string.Empty;
         if (main.level == 1)
             main.addEnigma();
+        Disturbance.disturbanceWindowOpen = false;
     }
 
     public IEnumerator envoiDataToutes(TypeResource resourceLost, int quantityLost)
