@@ -29,7 +29,7 @@ namespace TouchScript.Utils
             }
             catch (Exception ex)
             {
-                UnityEngine.Debug.LogException(ex);
+                //UnityEngine.Debug.LogException(ex);
                 return ex;
             }
             return null;

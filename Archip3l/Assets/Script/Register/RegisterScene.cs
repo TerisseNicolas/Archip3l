@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using TouchScript.InputSources;
 using System.Collections.Generic;
 using TouchScript.Gestures;
@@ -38,9 +39,10 @@ public class RegisterScene : InputSource {
         {
             if (teamName.text != string.Empty)
             {
-                this.Client.sendData("@30004@" + RegisterScene.teamName.text);
+                StartCoroutine(envoiData());
+                /*this.Client.sendData("@30004@" + RegisterScene.teamName.text);
                 this.Client.sendData("@30005@" + RegisterScene.level.ToString());
-                SceneSupervisor.Instance.loadUnlockingScenes();
+                SceneSupervisor.Instance.loadUnlockingScenes();*/
             }
         }
         else if (this.name == "PreviousScene")
@@ -74,8 +76,17 @@ public class RegisterScene : InputSource {
 
     }
 
-    // Use this for initialization
-    void Start () {
+    public IEnumerator envoiData()
+    {
+        this.Client.sendData("@30004@" + RegisterScene.teamName.text);
+        yield return new WaitForSeconds(0.5f);
+        this.Client.sendData("@30005@" + RegisterScene.level.ToString());
+        yield return new WaitForSeconds(0.1f);
+        SceneSupervisor.Instance.loadUnlockingScenes();
+    }
+
+        // Use this for initialization
+        void Start () {
 	}
 
 
@@ -86,20 +97,6 @@ public class RegisterScene : InputSource {
     float TouchTime;
 
     private MetaGesture gesture;
-    private Dictionary<int, int> map = new Dictionary<int, int>();
-
-    public override void CancelTouch(TouchPoint touch, bool @return)
-    {
-        base.CancelTouch(touch, @return);
-
-        map.Remove(touch.Id);
-        if (@return)
-        {
-            TouchHit hit;
-            if (!gesture.GetTargetHitResult(touch.Position, out hit)) return;
-            map.Add(touch.Id, beginTouch(processCoords(hit.RaycastHit.textureCoord), touch.Tags).Id);
-        }
-    }
 
 
     protected override void OnEnable()
@@ -109,25 +106,10 @@ public class RegisterScene : InputSource {
         if (gesture)
         {
             gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchMoved += touchMovedhandler;
-            gesture.TouchCancelled += touchCancelledhandler;
             gesture.TouchEnded += touchEndedHandler;
         }
     }
-
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-
-        if (gesture)
-        {
-            gesture.TouchBegan -= touchBeganHandler;
-            gesture.TouchMoved -= touchMovedhandler;
-            gesture.TouchCancelled -= touchCancelledhandler;
-            gesture.TouchEnded -= touchEndedHandler;
-        }
-    }
+    
 
     private Vector2 processCoords(Vector2 value)
     {
@@ -136,9 +118,6 @@ public class RegisterScene : InputSource {
 
     private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
     {
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
         if (TouchTime == 0)
         {
             TouchTime = Time.time;
@@ -147,25 +126,9 @@ public class RegisterScene : InputSource {
         }
 
     }
-
-    private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        int id;
-        TouchHit hit;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        if (!gesture.GetTargetHitResult(touch.Position, out hit)) return;
-        moveTouch(id, processCoords(hit.RaycastHit.textureCoord));
-    }
-
+    
     private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
     {
-        int id;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        endTouch(id);
         if (Time.time - TouchTime < 0.5)
         {
             this.OnMouseDownSimulation();
@@ -175,14 +138,6 @@ public class RegisterScene : InputSource {
         TouchTime = 0;
 
     }
-
-    private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        int id;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        cancelTouch(id);
-    }
+    
 
 }

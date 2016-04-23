@@ -78,7 +78,7 @@ public class Client : MonoBehaviour
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
 
-        //StartCoroutine(test(10, "@35770"));
+        //StartCoroutine(test(3, "@32770"));
 
     }
 
@@ -129,7 +129,7 @@ public class Client : MonoBehaviour
 
     public void sendData(string dataToSend)
     {
-        Debug.Log("Sending : " + dataToSend);
+        //Debug.Log("Sending : " + dataToSend);
         byte[] data = Encoding.Default.GetBytes(dataToSend);
         _client.Send(data, data.Length);
     }

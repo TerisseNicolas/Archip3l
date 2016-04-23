@@ -40,7 +40,6 @@ public class BoatMoving : InputSource
             //add resources to islandToSend
             TypeResource res = (TypeResource)System.Enum.Parse(typeof(TypeResource), resourceSent);
             islandReceiver.resourceManager.changeResourceStock(res, this.quantityCarried);
-            //TODO : update to be checked
             this.Client.sendData("@2" + islandReceiver.nameMinorIsland.Split('_')[2] + "355@" + islandReceiver.resourceManager.getResource(res).TypeResource.ToString() + "@" + this.quantityCarried.ToString());
             StartCoroutine(startBoatDisappearance());
         }
@@ -173,20 +172,6 @@ public class BoatMoving : InputSource
     float TouchTime;
 
     private MetaGesture gesture;
-    private Dictionary<int, int> map = new Dictionary<int, int>();
-
-    public override void CancelTouch(TouchPoint touch, bool @return)
-    {
-        base.CancelTouch(touch, @return);
-
-        map.Remove(touch.Id);
-        if (@return)
-        {
-            TouchHit hit;
-            if (!gesture.GetTargetHitResult(touch.Position, out hit)) return;
-            map.Add(touch.Id, beginTouch(processCoords(hit.RaycastHit.textureCoord), touch.Tags).Id);
-        }
-    }
 
 
     protected override void OnEnable()
@@ -196,26 +181,10 @@ public class BoatMoving : InputSource
         if (gesture)
         {
             gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchMoved += touchMovedhandler;
-            gesture.TouchCancelled += touchCancelledhandler;
             gesture.TouchEnded += touchEndedHandler;
         }
     }
-
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-
-        if (gesture)
-        {
-            gesture.TouchBegan -= touchBeganHandler;
-            gesture.TouchMoved -= touchMovedhandler;
-            gesture.TouchCancelled -= touchCancelledhandler;
-            gesture.TouchEnded -= touchEndedHandler;
-        }
-    }
-
+    
     private Vector2 processCoords(Vector2 value)
     {
         return new Vector2(value.x * Width, value.y * Height);
@@ -223,49 +192,15 @@ public class BoatMoving : InputSource
 
     private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
     {
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        map.Add(touch.Id, beginTouch(processCoords(touch.Hit.RaycastHit.textureCoord), touch.Tags).Id);
         if (TouchTime == 0)
         {
             TouchTime = Time.time;
         }
-
     }
-
-    private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        int id;
-        TouchHit hit;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        if (!gesture.GetTargetHitResult(touch.Position, out hit)) return;
-        moveTouch(id, processCoords(hit.RaycastHit.textureCoord));
-        if (this.appeared && !this.collided)
-        {
-            Vector3 positionTouched = Camera.main.ScreenToWorldPoint(touch.Position);
-            positionTouched.z = 0;
-            this.transform.position = positionTouched;
-        }
-    }
+    
 
     private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
     {
-        int id;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        endTouch(id);
         TouchTime = 0;
-    }
-
-    private void touchCancelledhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        int id;
-        var touch = metaGestureEventArgs.Touch;
-        if (touch.InputSource == this) return;
-        if (!map.TryGetValue(touch.Id, out id)) return;
-        cancelTouch(id);
     }
 }
