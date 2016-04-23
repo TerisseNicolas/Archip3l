@@ -33,10 +33,12 @@ public class ChallengeVerticalClick : InputSource
     public TextAsset csv { get; private set; }
 
     private Client client { get; set; }
+    private Score Score;
 
     void Start()
     {
         this.client = GameObject.Find("Network").GetComponent<Client>();
+        this.Score = GameObject.Find("Game").GetComponent<Score>();
         
     }
 
@@ -172,6 +174,7 @@ public class ChallengeVerticalClick : InputSource
             resultText.text = "Réponse correcte !";
             goodAnswer = true;
             main.addNotification("Vous venez de réussir un challenge !");
+            this.Score.verticalGoodAnwsers += 1;
             //this.client.sendData("@35401@Challenge" + this.typeChallenge.ToString());
         }
         else {
@@ -180,6 +183,9 @@ public class ChallengeVerticalClick : InputSource
             main.addNotification("Vous venez de rater un challenge ...");
             //this.client.sendData("@35402@Challenge" + this.typeChallenge.ToString());
         }
+        this.Score.verticalAnswers += 1;
+
+        Debug.Log(this.Score.verticalGoodAnwsers.ToString() + "/" + this.Score.verticalAnswers.ToString());
 
         //modify Propositions background
         if (typeChallenge == TypeChallenge.VraiFaux)

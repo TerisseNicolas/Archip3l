@@ -65,7 +65,7 @@ public class ResourceManager : MonoBehaviour
             {
                 changeResourceProduction(null, this._MessageResourceProductionUpdateEventEventArgs, (TypeResource)Enum.Parse(typeof(TypeResource), (string)this._MessageResourceProductionUpdateEventEventArgs.message.Split('@').GetValue(2)), Int32.Parse((string)this._MessageResourceProductionUpdateEventEventArgs.message.Split('@').GetValue(3)));
             }
-            catch(ArgumentException e) { }
+            catch(ArgumentException e) { Debug.Log(e.Message); }
                        
             this._MessageResourceProductionUpdateEvent = false;
         }
@@ -75,7 +75,7 @@ public class ResourceManager : MonoBehaviour
             {
                 changeResourceStock(null, this._MessageResourceStockUpdateEventEventArgs, (TypeResource)Enum.Parse(typeof(TypeResource), (string)this._MessageResourceStockUpdateEventEventArgs.message.Split('@').GetValue(2)), Int32.Parse((string)this._MessageResourceStockUpdateEventEventArgs.message.Split('@').GetValue(3)));
             }
-            catch(ArgumentException e) { }
+            catch(ArgumentException e) { Debug.Log(e.Message); }
             this._MessageResourceStockUpdateEvent = false;
         }
     }

@@ -13,7 +13,7 @@ public class ContactPoint : InputSource
     private ParticleSystem ParticleSystem;
     private ParticleSystem.EmissionModule ParticleSystemEmit;
 
-    private ContactPointLayer ContactPointLayer;
+    //private ContactPointLayer ContactPointLayer;
 
     public delegate void ContactPointTouchedEvent(object sender, EventArgs e);
     public event ContactPointTouchedEvent ContactTouched;
@@ -28,7 +28,7 @@ public class ContactPoint : InputSource
     {
         this.ParticleSystem = gameObject.GetComponentInChildren<ParticleSystem>();
         this.ParticleSystemEmit = this.ParticleSystem.emission;
-        this.ContactPointLayer = GameObject.Find("ContactPointLayer").GetComponent<ContactPointLayer>();
+        //this.ContactPointLayer = GameObject.Find("ContactPointLayer").GetComponent<ContactPointLayer>();
 
         this.SpriteRed = Resources.Load<Sprite>("unlock/boutonStart");
         this.SpriteGreen = Resources.Load<Sprite>("unlock/boutonStartClic");
