@@ -94,6 +94,7 @@ public class Game : MonoBehaviour
         finished = true;
         this.Client.sendData("@30002");
         this.Score.addScore(this.GlobalInfo.teamName);
+        Debug.Log("End of game");
     }
     private void ChallengerTimer_FinalTick(object sender, System.EventArgs e)
     {
