@@ -22,7 +22,6 @@ public class RemoveBuilding : InputSource
 
         if (this.name == "Remove")
         {
-            TypeBuilding typeBuilding = building.TypeBuilding;
             //regain of resources
             TypeResource res1 = building.constructionResourceNeeded[0].First;
             int value1 = building.constructionResourceNeeded[0].Second / 2;

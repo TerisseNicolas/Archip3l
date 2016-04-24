@@ -17,6 +17,7 @@ public class BoatMoving : InputSource
     public string resourceSent;
     public bool appeared = false;
     public bool collided = false;
+    public bool resetting = false;
     public Vector3 startPosition;
 
 	public GameObject sinkingTrail;
@@ -56,8 +57,12 @@ public class BoatMoving : InputSource
             }
             else
             {
+                resetting = true;
                 StartCoroutine(resetPosition());
-                island.displayPopup("Attention ! Vous venez de subir une collision, vous perdez donc la moitié des ressources à transmettre", 3);
+                if (col.name.Contains("Harbor"))
+                    island.displayPopup("Ce n'est pas le bon port ! Vous perdez donc la moitié des ressources à transmettre.", 3);
+                else
+                    island.displayPopup("Attention ! Vous venez de subir une collision, vous perdez donc la moitié des ressources à transmettre.", 3);
                 this.quantityCarried /= 2;
             }
         }
@@ -93,6 +98,7 @@ public class BoatMoving : InputSource
             this.GetComponent<SpriteRenderer>().color = color;
         }
         this.GetComponent<BoxCollider>().enabled = true;
+        resetting = false;
     }
 
 
@@ -181,6 +187,7 @@ public class BoatMoving : InputSource
         if (gesture)
         {
             gesture.TouchBegan += touchBeganHandler;
+            gesture.TouchMoved += touchMovedhandler;
             gesture.TouchEnded += touchEndedHandler;
         }
     }
@@ -197,6 +204,17 @@ public class BoatMoving : InputSource
             TouchTime = Time.time;
         }
     }
+
+    private void touchMovedhandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
+    {
+        var touch = metaGestureEventArgs.Touch;
+        if (this.appeared && !this.collided && !this.resetting)
+        {
+            Vector3 positionTouched = Camera.main.ScreenToWorldPoint(touch.Position);
+            positionTouched.z = 0;
+            this.transform.position = positionTouched;
+        }
+     }
     
 
     private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)

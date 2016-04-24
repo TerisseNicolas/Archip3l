@@ -78,17 +78,10 @@ public class Client : MonoBehaviour
         _continue = true;
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
-
-        //todo : delete
-        //StartCoroutine("test");
+        
 
     }
-
-    IEnumerator test()
-    {
-        yield return new WaitForSeconds(1);
-        ProcessMessage("@30005@1");       
-    }
+    
 
     public void loadPort()
     {

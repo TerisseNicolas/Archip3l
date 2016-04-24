@@ -26,7 +26,6 @@ public class ResourceManager : MonoBehaviour
         //Add all resources
         foreach (TypeResource resourceType in Enum.GetValues(typeof(TypeResource)))
         {
-            //TODO : put stock to 5
             this.addResource(resourceType, 5, 0);
         }
 
@@ -77,7 +76,6 @@ public class ResourceManager : MonoBehaviour
             TypeResource resourceType = (TypeResource) Enum.Parse(typeof(TypeResource), (string) e.message.Split('@')[2]);
             int quantity = Int32.Parse(e.message.Split('@')[3]);
             this.changeResourceStock(resourceType, quantity);
-            //TODO: check update
             this.Client.sendData("@2" + this.minorIsland.nameMinorIsland.Split('_')[2] + "355@" + resourceType.ToString() + "@" + quantity);
         }
     }
@@ -105,7 +103,6 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    //TODO: check send message to Vertical (production modified)
     public bool changeResourceProduction(TypeResource resourceType, int value)
     {
         Resource resource = this.getResource(resourceType);
