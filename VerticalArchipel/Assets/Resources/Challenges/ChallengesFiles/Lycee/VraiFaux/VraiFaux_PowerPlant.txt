@@ -1,3 +1,5 @@
 Question;Answer;Explanation;Proposition0;Proposition1
 L'électricité est un mot provenant du grec êlektron, signifiant ambre jaune.;Proposition0;Les Grecs Anciens avaient découvert qu’en frottant de l’ambre, cela produisait une attirance sur d’autres objets légers.;Proposition0;Proposition1
 Les notions d'énergies renouvelables apparaissent dès les années 1970-1980.;Proposition0;Ces notions sont apparues dans les années 1990-2000;Proposition0;Proposition1
+L'effet Joule est la manifestation thermique de la résistance électrique.;Proposition0;;VRAI;FAUX
+Le vecteur vitesse d'un point est l'expression mathématique de la dérivée du vecteur accélération par rapport au temps.;Proposition1;C'est l'inverse, le vecteur accélération est l'expression de la dérivée du vecteur vitesse par rapport au temps.;VRAI;FAUX

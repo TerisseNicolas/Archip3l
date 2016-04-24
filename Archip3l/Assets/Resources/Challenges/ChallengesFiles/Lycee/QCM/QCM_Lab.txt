@@ -1,11 +1,11 @@
 Question;Answer;Explanation;Proposition0;Proposition1;Proposition2
-Quel homme est considéré comme le père de la médecine et également le premier médecin ?;Proposition0;Après ce médecin grec, la première femme à avoir obtenu le diplôme de médecin est la russe Nadejda Souslova.;Hippocrate;Aristote;Platon
-Quel est le taux moyen de réussite du concours de médecine ?;Proposition1;;5,3%;12,5%;25,8%
-Lequel de ces domaines n'est pas évoqué dans le serment d'Hippocrate ?;Proposition2;;La séduction;L'avortement;Le cancer
-Comment appelle-t-on la déesse des soins ?;Proposition0;D'où la définition de ce terme aujourd'hui.;Panacée;Aphrodite;Athéna
-Lequel de ces dieux est également considéré comme médecin ?;Proposition1;;Zeus;Apollon;Cupidon
-Comment appelle-t-on la déesse de la santé ?;Proposition2;D'où le terme hygiène aujourd'hui, si important dans le maintien d'une bonne santé.;Diane;Héra;Hygie
-Comment appelle-t-on le phénomène par lequel un agent augmente le caractère actif, efficace ou allergène d'une autre substance ?;Proposition0;L'agent sensibilisant peut être un produit naturel, de synthèse ou même parfois la simple lumière du soleil.;La potentialisation;Le renforcement;La catalyse
-Comment appelle-t-on l'interaction entre deux médicaments dont l'activité pharmaceutique est opposée ?;Proposition1;L'administration simultanée des deux médicaments entraîne l'inhibition partielle ou complète de l'action de l'un d'entre eux.;La concurrence;L'antagonisme;La compétition
-Comment appelle-t-on un test réalisé dans un milieu interne à un organisme vivant ?;Proposition0;In vitro est utilisé pour un test en tube : en dehors de l'organisme vivant ou de la cellule.;In vivo;In vitro;In corpo
-Comment appelle-t-on un test effectué au moyen de calculs informatisés ou de modèles informatiques ?;Proposition2;Cette expression est surtout utilisée dans les domaines de la génomique et la bioinformatique.;In utero;In informatico;In silico
+Quel homme est considr comme le pre de la mdecine et galement le premier mdecin ?;Proposition0;Aprs ce mdecin grec, la premire femme à avoir obtenu le dipl™me de mdecin est la russe Nadejda Souslova.;Hippocrate;Aristote;Platon
+Quel est le taux moyen de russite du concours de mdecine ?;Proposition1;;5,3%;12,5%;25,8%
+Lequel de ces domaines n'est pas voqu dans le serment d'Hippocrate ?;Proposition2;;La sduction;L'avortement;Le cancer
+Comment appelle-t-on la desse des soins ?;Proposition0;D'o la dfinition de ce terme aujourd'hui.;Panace;Aphrodite;Athna
+Lequel de ces dieux est galement considr comme mdecin ?;Proposition1;;Zeus;Apollon;Cupidon
+Comment appelle-t-on la desse de la sant ?;Proposition2;D'o le terme hygine aujourd'hui, si important dans le maintien d'une bonne sant.;Diane;Hra;Hygie
+Comment appelle-t-on le phnomne par lequel un agent augmente le caractre actif, efficace ou allergne d'une autre substance ?;Proposition0;L'agent sensibilisant peut tre un produit naturel, de synthse ou mme parfois la simple lumire du soleil.;La potentialisation;Le renforcement;La catalyse
+Comment appelle-t-on l'interaction entre deux mdicaments dont l'activit pharmaceutique est oppose ?;Proposition1;L'administration simultane des deux mdicaments entra”ne l'inhibition partielle ou complte de l'action de l'un d'entre eux.;La concurrence;L'antagonisme;La comptition
+Comment appelle-t-on un test ralis dans un milieu interne ˆ un organisme vivant ?;Proposition0;In vitro est utilis pour un test en tube : en dehors de l'organisme vivant ou de la cellule.;In vivo;In vitro;In corpo
+Comment appelle-t-on un test effectu au moyen de calculs informatiss ou de modles informatiques ?;Proposition2;Cette expression est surtout utilise dans les domaines de la gnomique et la bioinformatique.;In utero;In informatico;In silico

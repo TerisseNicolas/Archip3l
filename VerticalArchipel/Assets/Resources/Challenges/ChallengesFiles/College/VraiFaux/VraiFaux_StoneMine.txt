@@ -9,6 +9,5 @@ La définition du poids d'un objet est l'attraction que celui-ci exerce sur la T
 En physique, g désigne l'intensité de la pesanteur.;Proposition0;;VRAI;FAUX
 En physique, la direction du poids est toujours verticale et son sens est orienté vers le bas.;Proposition0;;VRAI;FAUX
 Le poids d'un objet ne dépend pas de sa masse.;Proposition1;Il en dépend selon la formule P = m*g où m est la masse et P, le poids.;VRAI;FAUX
-La masse d'un objet ne dépend pas de sa localisation.;Proposition0;A l'inverse, le poids d'un objet peut varier selon l'altitude à laquelle il se situe.;VRAI;FAUX
 La chronophotographie permet d'étudier le mouvement d'un mobile au cours du temps.;Proposition0;;VRAI;FAUX
 La vitesse moyenne d'un mobile se calcule par la formule: v = d + t.;Proposition1;Sa vitesse moyenne se calcule par la formule: v = d/t.;VRAI;FAUX

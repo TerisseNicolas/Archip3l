@@ -2,7 +2,5 @@ Question;Answer;Explanation;Proposition0;Proposition1
 Une maison centrale est une maison construite à l'intérieure d'une centrale électrique.;Proposition1;Une maison centrale est un type de prison française accueillant les condamnés difficiles.;Proposition0;Proposition1
 Un fil conducteur permet la transmission du courant dans un circuit électrique.;Proposition0;;VRAI;FAUX
 Un interrupteur sert uniquement à commander la fermeture d'un circuit électrique.;Proposition1;Il peut aussi commander l'ouverture de ce circuit.;VRAI;FAUX
-Le vecteur vitesse d'un point est l'expression mathématique de la dérivée du vecteur accélération par rapport au temps.;Proposition1;C'est l'inverse, le vecteur accélération est l'expression de la dérivée du vecteur vitesse par rapport au temps.;VRAI;FAUX
 La période d'un courant est mesurée en secondes.;Proposition0;;VRAI;FAUX
 Nikola Tesla est un physicien célèbre ayant oeuvré dans le domaine de l'électricité.;Proposition0;;VRAI;FAUX
-L'effet Joule est la manifestation thermique de la résistance électrique.;Proposition0;;VRAI;FAUX

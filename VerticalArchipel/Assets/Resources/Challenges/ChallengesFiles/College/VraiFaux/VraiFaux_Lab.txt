@@ -3,7 +3,7 @@ En moyenne, un ménage français dépense plus d’argent pour les médicaments 
 En 2000, la France est le plus grand consommateur européen de médicaments, parmi les 8 classes thérapeutiques principales.;Proposition0;;Proposition0;Proposition1
 Un liquide oral est synonyme de solution buvable dans le domaine médical.;Proposition1;Un liquide oral ne doit pas être avalé et ne doit donc pas être confondu avec une solution buvable.;Proposition0;Proposition1
 Un écosystème est composé uniquement d'organismes hétérotrophes.;Proposition1;Les plantes font partie d'écosystèmes biologiques et sont pour la plupart autotrophes.;VRAI;FAUX
-Les organismes autotrophes tirent leur matière organique de dioxyde de carbone.;Proposition0;;VRAI;FAUX
+Les organismes autotrophes génèrent leur propre matière organique.;Proposition0;;VRAI;FAUX
 L'air ne contient pas de dioxyde de carbone.;Proposition1;;VRAI;FAUX
 L'air a une masse nulle.;Proposition1;;VRAI;FAUX
 Plus on monte en altitude, moins il y a de dioxygène dans l'air.;Proposition0;;VRAI;FAUX
