@@ -79,7 +79,6 @@ public class Client : MonoBehaviour
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
 
-<<<<<<< HEAD
         //StartCoroutine(test());
         
 
@@ -93,20 +92,6 @@ public class Client : MonoBehaviour
         ProcessMessage("dqsfsdf@30000@BoardResultScene");
 
     }
-    
-=======
-        //todo remove
-        //StartCoroutine(test(2, "serveur@30005@1"));
-
-    }
-
-    IEnumerator test(int temps, string mes)
-    {
-        yield return new WaitForSeconds(temps);
-        ProcessMessage(mes);
-    }
-
->>>>>>> 82b971f39207d6dc166732adcb13c4499f2b39e2
 
     public void loadPort()
     {
