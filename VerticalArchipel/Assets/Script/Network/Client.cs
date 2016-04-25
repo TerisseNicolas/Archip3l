@@ -78,7 +78,18 @@ public class Client : MonoBehaviour
         _continue = true;
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
+
+        //StartCoroutine(test());
         
+
+    }
+
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(11);
+        ProcessMessage("dsfs@30000@BoardEndScene");
+        yield return new WaitForSeconds(4);
+        ProcessMessage("dqsfsdf@30000@BoardResultScene");
 
     }
     
