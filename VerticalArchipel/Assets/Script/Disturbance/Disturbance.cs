@@ -117,7 +117,8 @@ public class Disturbance : InputSource
                 StartCoroutine(envoiDataToutes(resourceLost, quantityLost));
                 /*this.Client.sendData("@35770");
                 Client.sendData("@25394@" + resourceLost.ToString() + "@" + "-" + quantityLost.ToString());
-                */main.addNotification("Toutes les îles viennent de perdre " + (-quantityLost).ToString() + " de " + main.translateResourceName(resourceLost.ToString()));
+                */
+                main.addNotification("Toutes les îles viennent de perdre des ressources !(" + main.translateResourceName(resourceLost.ToString()) + ")");
             }
             else
             {

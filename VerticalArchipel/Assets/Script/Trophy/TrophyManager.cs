@@ -10,16 +10,23 @@ public class TrophyManager : MonoBehaviour
     private GlobalResourceManager ResourceManager;
     public event EventHandler<TrophyObtainedEventArgs> TrophyObtained;
 
+    private bool unlockAirport;
+
     public int airportsBuilt { get; private set; }
+
+    void Awake()
+    {
+        this.unlockAirport = false;
+        this.airportsBuilt = 0;
+        this.Trophies = new List<Trophy>();
+    }
 
     void Start()
     {
-        this.airportsBuilt = 0;
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         //this.Client.MessageTrophyWonEvent += Client_MessageTrophyWonEvent;
         this.Client.MessageBuildingConstructionEvent += Client_MessageBuildingConstructionEvent;
         this.ResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
-        this.Trophies = new List<Trophy>();
 
         //Trophy trophy1 = GameObject.Find("Medal1").GetComponent<Trophy>();  //new Trophy(1, "Trophée ressources", "Gain de ressources", 50, 50, null);
         //Trophy trophy2 = GameObject.Find("Medal2").GetComponent<Trophy>();  //new Trophy(2, "Trophée innovation", "Multiplication de la productivité par 1.5", 160, 50, null);
@@ -46,6 +53,15 @@ public class TrophyManager : MonoBehaviour
         StartCoroutine(checkNewTrophyAvailable());
     }
 
+    void Update()
+    {
+        if (this.unlockAirport)
+        {
+            this.unlockAirport = false;
+            changeTrophyToObtained(this.Trophies[6]);
+        }
+    }
+
     private void Client_MessageBuildingConstructionEvent(object sender, MessageEventArgs e)
     {
         if((string)e.message.Split('@').GetValue(2) == "Airport")
@@ -53,7 +69,7 @@ public class TrophyManager : MonoBehaviour
             this.airportsBuilt += 1;
             if(this.airportsBuilt == 4)
             {
-                changeTrophyToObtained(this.Trophies[6]);
+                this.unlockAirport = true;
                 main.addNotification("Vous remportez la médaille AEROPORT !");
             }
         }
