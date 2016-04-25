@@ -58,6 +58,7 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemStartInitOfGameAnswerEvent;
     public event EventHandler<MessageEventArgs> MessageSystemStartOfGameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemEndOfGameEvent;
+    public event EventHandler<MessageEventArgs> MessageSystemQuitApplication;
     public event EventHandler<MessageEventArgs> MessageSystemTeamNameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemTeamLevelEvent;
 
@@ -86,6 +87,8 @@ public class Client : MonoBehaviour
 
     IEnumerator test()
     {
+        yield return new WaitForSeconds(3);
+        ProcessMessage("ass@30100");
         yield return new WaitForSeconds(11);
         ProcessMessage("dsfs@30000@BoardEndScene");
         yield return new WaitForSeconds(4);
@@ -275,6 +278,9 @@ public class Client : MonoBehaviour
             //case 30306:
             //    MessageEvent += MessageResourceInitEvent;
             //    break;
+            case 30100:
+                MessageEvent += MessageSystemQuitApplication;
+                break;
             case 30800:
                 MessageEvent += MessageSoundEvent;
                 break;

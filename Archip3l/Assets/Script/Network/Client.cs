@@ -57,6 +57,7 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemStartInitOfGameAnswerEvent;
     public event EventHandler<MessageEventArgs> MessageSystemStartOfGameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemEndOfGameEvent;
+    public event EventHandler<MessageEventArgs> MessageSystemQuitApplication;
     public event EventHandler<MessageEventArgs> MessageSystemTeamNameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemTeamLevelEvent;
 
@@ -272,6 +273,9 @@ public class Client : MonoBehaviour
                 break;
             case 30306:
                 MessageEvent += MessageResourceInitEvent;
+                break;
+            case 30100:
+                MessageEvent += MessageSystemQuitApplication;
                 break;
             case 30800:
                 MessageEvent += MessageSoundEvent;

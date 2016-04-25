@@ -8,8 +8,13 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameMenu : InputSource
-{    
+{
+    private Client Client;
 
+    void Start()
+    {
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+    }
     void OnMouseDownSimulation()
     {
         switch(this.name)
@@ -25,7 +30,8 @@ public class GameMenu : InputSource
                 break;
             case "returnArrow":
             case "Quitter":
-                SceneSupervisor.Instance.loadLoadingScene();
+                //SceneSupervisor.Instance.loadLoadingScene();
+                StartCoroutine(quitGame());
                 break;
             //waitForVertical scene --> return to menu
             case "endWindowBackground":
@@ -49,6 +55,13 @@ public class GameMenu : InputSource
                 }
                 break;
         }
+    }
+
+    IEnumerator quitGame()
+    {
+        this.Client.sendData("@30100");
+        yield return new WaitForSeconds(0.5f);
+        Application.Quit();
     }
 
 
