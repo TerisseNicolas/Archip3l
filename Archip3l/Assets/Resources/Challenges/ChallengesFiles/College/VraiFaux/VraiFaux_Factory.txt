@@ -2,10 +2,10 @@ Question;Answer;Explanation;Proposition0;Proposition1
 Usiner signifie travailler dans une usine mais également travailler dur.;Proposition0;Il s'agit d'une expression popularisée au début du XXème siècle.;Proposition0;Proposition1
 Un charbonnier est un homme travaillant dans une mine de charbon.;Proposition1; Un charbonnier est un navire destiné à transporter exclusivement du charbon.;Proposition0;Proposition1
 Un manœuvre désigne un ouvrier spécialisé ?;Proposition1;Un manoeuvre désigne un ouvrier peu qualifié;Proposition0;Proposition1
-Une roue dentée est une sorte de disque avec de petites pointes autour, à base de nombreux engrenages du quotidien.;Proposition0;;VRAI;FAUX
-Les vélos utilisent des roues dentées pour fonctionner.;Proposition0;;VRAI;FAUX
-Dans un engrenage, il faut que les roues dentées soient toutes de la même taille.;Proposition1;;VRAI;FAUX
-La plus petite roue dentée d'un engrenange s'appelle un plateau.;Proposition1;La plus petite roue dentée d'un engrenange s'appelle un pignon.;VRAI;FAUX
-Si deux roues dentées s'entraînent mutuellement, alors elles tournent dans le même sens.;Proposition1;Elles tournent en sens inverse.;VRAI;FAUX
-Un mélange est homogène quand les constituants qu'il contient sont visibles à l'oeil nu et inégalement répartis.;Proposition1;Dans ce cas, il s'agit d'un mélange hétérogène.;VRAI;FAUX
-Pour séparer la pulpe d'un jus de fruits, on peut recourir à la filtration ou à la décantation.;Proposition0;;VRAI;FAUX
+Une roue dentée est une sorte de disque avec de petites pointes autour, à base de nombreux engrenages du quotidien.;Proposition0;;Proposition0;Proposition1
+Les vélos utilisent des roues dentées pour fonctionner.;Proposition0;;Proposition0;Proposition1
+Dans un engrenage, il faut que les roues dentées soient toutes de la même taille.;Proposition1;;Proposition0;Proposition1
+La plus petite roue dentée d'un engrenange s'appelle un plateau.;Proposition1;La plus petite roue dentée d'un engrenange s'appelle un pignon.;Proposition0;Proposition1
+Si deux roues dentées s'entraînent mutuellement, alors elles tournent dans le même sens.;Proposition1;Elles tournent en sens inverse.;Proposition0;Proposition1
+Un mélange est homogène quand les constituants qu'il contient sont visibles à l'oeil nu et inégalement répartis.;Proposition1;Dans ce cas, il s'agit d'un mélange hétérogène.;Proposition0;Proposition1
+Pour séparer la pulpe d'un jus de fruits, on peut recourir à la filtration ou à la décantation.;Proposition0;;Proposition0;Proposition1

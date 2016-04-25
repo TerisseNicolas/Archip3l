@@ -2,10 +2,10 @@ Question;Answer;Explanation;Proposition0;Proposition1
 Au XVIIIème siècle, le terme tourisme désigne le voyage que font les jeunes aristocrates britanniques à destination de Rome.;Proposition0;;Proposition0;Proposition1
 La construction des premiers aéronefs fut inspirée des oiseaux avec la création d'engins à ailes battantes.;Proposition0;Ces engins s'appelaient les ornithoptères et leur modèle fut imaginé par Léonard de Vinci au XVème siècle.;Proposition0;Proposition1
 Les compagnies aériennes sont facturées par les aéroports en fonction de la durée de leur stationnement.;Proposition0;C'est pourquoi les compagnies aériennes tentent de réduire au maximum le temps d'immobilisation d'un appareil au sol.;Proposition0;Proposition1
-Le tissage est une activité traditionnelle indienne.;Proposition0;;VRAI;FAUX
-Actuellement, le marché indien est en pleine stagnation.;Proposition1;Au contraire, il est en pleine expansion.;VRAI;FAUX
-Varsovie est la capitale du Portugal.;Proposition1;C'est la capitale de la Pologne.;VRAI;FAUX
-Le Sénégal est une ancienne colonie française.;Proposition0;;VRAI;FAUX
-Le Tchad est une ancienne colonie française.;Proposition0;;VRAI;FAUX
-Tonkin est une ville de Chine.;Proposition1;C'est une région du Nord du Vietnam.;VRAI;FAUX
-Le Japon est situé à l'Ouest de la Chine.;Proposition1;Il se situe à l'Est de la Chine.;VRAI;FAUX
+Le tissage est une activité traditionnelle indienne.;Proposition0;;Proposition0;Proposition1
+Actuellement, le marché indien est en pleine stagnation.;Proposition1;Au contraire, il est en pleine expansion.;Proposition0;Proposition1
+Varsovie est la capitale du Portugal.;Proposition1;C'est la capitale de la Pologne.;Proposition0;Proposition1
+Le Sénégal est une ancienne colonie française.;Proposition0;;Proposition0;Proposition1
+Le Tchad est une ancienne colonie française.;Proposition0;;Proposition0;Proposition1
+Tonkin est une ville de Chine.;Proposition1;C'est une région du Nord du Vietnam.;Proposition0;Proposition1
+Le Japon est situé à l'Ouest de la Chine.;Proposition1;Il se situe à l'Est de la Chine.;Proposition0;Proposition1

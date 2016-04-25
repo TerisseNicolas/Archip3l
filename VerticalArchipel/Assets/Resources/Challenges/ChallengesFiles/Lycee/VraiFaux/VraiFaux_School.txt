@@ -4,3 +4,10 @@ L'apparition de l'écriture distingue la Préhistoire de l'Histoire, car elle pe
 Il n’existe pas des gènes directement liés à la capacité d'apprentissage.;Proposition1;;Proposition0;Proposition1
 Des gènes liés aux comportements répétitifs mobilisés dans l'apprentissage seraient aussi liés aux phénomènes de dépendance.;Proposition0;;Proposition0;Proposition1
 En Belgique, les étudiants disposent de salles dédiées aux soirées étudiantes, conçues pour mieux supporter la saleté et résister aux vandalismes.;Proposition0;Parmi celles-ci, citons le Bunker à Namur, la Casa et le Coq Hardi à Louvain-la-Neuve et la Jefke à Bruxelles.;Proposition0;Proposition1
+Lors des deux guerres mondiales, les emprunts sont contractés envers la Suisse.;Proposition1;Ils sont contractés envers les Etats-Unis.;Proposition0;Proposition1
+Le traité de Versailles conclut que l'Allemagne est responsable de la guerre.;Proposition0;Il détermine, ce faisant, les sanctions prises à l'encontre de l'Allemagne et de ses alliés.;Proposition0;Proposition1
+La Société des Nations est créée suite au traité de Versailles.;Proposition0;;Proposition0;Proposition1
+L'attentat de Sarajevo a lieu le 28 juin 1939.;Proposition1;Il a lieu le 28 juin 1914.;Proposition0;Proposition1
+A la suite de la première guerre mondiale, l'Allemagne perd l'Alsace-Lorraine.;Proposition0;;Proposition0;Proposition1
+Un traité dicté par la force s'appelle un diktat.;Proposition0;;Proposition0;Proposition1
+Le bilan du traité de Versailles présage la paix.;Proposition1;Il présage un désir de revanche de la part de l'Allemagne et de ses alliés.;Proposition0;Proposition1

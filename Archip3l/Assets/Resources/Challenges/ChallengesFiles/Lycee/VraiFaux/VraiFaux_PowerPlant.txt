@@ -1,5 +1,12 @@
 Question;Answer;Explanation;Proposition0;Proposition1
 L'électricité est un mot provenant du grec êlektron, signifiant ambre jaune.;Proposition0;Les Grecs Anciens avaient découvert qu’en frottant de l’ambre, cela produisait une attirance sur d’autres objets légers.;Proposition0;Proposition1
 Les notions d'énergies renouvelables apparaissent dès les années 1970-1980.;Proposition0;Ces notions sont apparues dans les années 1990-2000;Proposition0;Proposition1
-L'effet Joule est la manifestation thermique de la résistance électrique.;Proposition0;;VRAI;FAUX
-Le vecteur vitesse d'un point est l'expression mathématique de la dérivée du vecteur accélération par rapport au temps.;Proposition1;C'est l'inverse, le vecteur accélération est l'expression de la dérivée du vecteur vitesse par rapport au temps.;VRAI;FAUX
+L'effet Joule est la manifestation thermique de la résistance électrique.;Proposition0;;Proposition0;Proposition1
+Le vecteur vitesse d'un point est l'expression mathématique de la dérivée du vecteur accélération par rapport au temps.;Proposition1;C'est l'inverse, le vecteur accélération est l'expression de la dérivée du vecteur vitesse par rapport au temps.;Proposition0;Proposition1
+Avec un oscillogramme, on peut déterminer la période et la fréquence d'un signal électrique.;Proposition0;;Proposition0;Proposition1
+Pour mesurer une tension, on utilise un ampèremètre.;Proposition1;On utilise un voltmètre pour cela.;Proposition0;Proposition1
+En électricité, U désigne la tension.;Proposition0;;Proposition0;Proposition1
+La résistance d'un dipôle est exprimée en Volt.;Proposition1;Elle est exprimée en Ohm.;Proposition0;Proposition1
+La loi d'Ohm est U=R.I;Proposition0;;Proposition0;Proposition1
+En électricité, la tension peut aussi être désignée par Z.;Proposition1;Z désigne l'impédance d'un dipôle.;Proposition0;Proposition1
+L'électricité constitue aussi bien l'influx nerveux que les éclairs d'un orage.;Proposition0;;Proposition0;Proposition1

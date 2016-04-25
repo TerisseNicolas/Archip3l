@@ -8,4 +8,4 @@ Contrairement à l'argile, la craie n'est pas une roche.;Proposition1;La craie e
 La craie peut parfois être utilisée en agriculture comme engrais.;Proposition0;Certains types de craie sont phosphatés et servent donc aussi d'engrais.;Proposition0;Proposition1
 Le terme diamant qualifiait initialement un état d'âme indomptable avant de désigner la roche la plus dure.;Proposition0;;Proposition0;Proposition1
 Après sa formation, il y a 4,5 milliards d’années, la surface de la Lune ressemblait à un bloc de roche.;Proposition1;La surface de la Lune ressemblait à un océan de magma;Proposition0;Proposition1
-La masse d'un objet ne dépend pas de sa localisation.;Proposition0;A l'inverse, le poids d'un objet peut varier selon l'altitude à laquelle il se situe.;VRAI;FAUX
+La masse d'un objet ne dépend pas de sa localisation.;Proposition0;A l'inverse, le poids d'un objet peut varier selon l'altitude à laquelle il se situe.;Proposition0;Proposition1

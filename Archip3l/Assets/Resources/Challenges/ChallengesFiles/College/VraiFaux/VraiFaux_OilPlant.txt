@@ -2,10 +2,10 @@ Question;Answer;Explanation;Proposition0;Proposition1
 Les mots fioul et pétrole sont des synonymes.;Proposition1;Le fioul est un combustible dérivé du pétrole.;Proposition0;Proposition1
 Les mots fioul et mazout sont des synonymes.;Proposition0;Tous deux correspondent au carburant notamment utilisé dans les chaudières.;Proposition0;Proposition1
 La France fait partie des 10 pays plus gros producteurs de pétrole au monde.;Proposition1;Elle est 13ème dans la liste des plus gros consommateurs mondiaux.;Proposition0;Proposition1
-L'échelle des pH d'une solution est comprise entre 1 et 15.;Proposition1;Elle est comprise en 0 et 14.;VRAI;FAUX
-Une solution acide a un pH supérieur à 7.;Proposition1;Une solution acide a un pH inférieur à 7.;VRAI;FAUX
-Le pH 7 est aussi appelé pH neutre.;Proposition0;;VRAI;FAUX
-Le pétrole était déjà utilisé dans l'Antiquité.;Proposition0;Il était employé par les civilisations mésopotamiennes dès 6000 av. JC en tant que produit pharmaceutique et cosmétique, comme combustible pour les lampes à huile ou encore pour le calfatage des bateaux.;VRAI;FAUX
-Au Moyen Age, les Byzantins puis les Vénitiens utilisèrent le pétrole pour incendier et couler les navires ennemis. ;Proposition0;;VRAI;FAUX
-Les 2 grands chocs pétroliers mondiaux eurent lieu en 1973 et 1979.;Proposition0;La guerre du Kippour entraîne le premier choc pétrolier en 1973 et en 1979, la révolution iranienne provoque un deuxième choc pétrolier.;VRAI;FAUX
-La France fut le premier pays producteur de barils de pétrole.;Proposition1;Les États-Unis produisirent les premiers barils de l’ère moderne, soit 274 tonnes en 1859. ;VRAI;FAUX
+L'échelle des pH d'une solution est comprise entre 1 et 15.;Proposition1;Elle est comprise en 0 et 14.;Proposition0;Proposition1
+Une solution acide a un pH supérieur à 7.;Proposition1;Une solution acide a un pH inférieur à 7.;Proposition0;Proposition1
+Le pH 7 est aussi appelé pH neutre.;Proposition0;;Proposition0;Proposition1
+Le pétrole était déjà utilisé dans l'Antiquité.;Proposition0;Il était employé par les civilisations mésopotamiennes dès 6000 av. JC en tant que produit pharmaceutique et cosmétique, comme combustible pour les lampes à huile ou encore pour le calfatage des bateaux.;Proposition0;Proposition1
+Au Moyen Age, les Byzantins puis les Vénitiens utilisèrent le pétrole pour incendier et couler les navires ennemis. ;Proposition0;;Proposition0;Proposition1
+Les 2 grands chocs pétroliers mondiaux eurent lieu en 1973 et 1979.;Proposition0;La guerre du Kippour entraîne le premier choc pétrolier en 1973 et en 1979, la révolution iranienne provoque un deuxième choc pétrolier.;Proposition0;Proposition1
+La France fut le premier pays producteur de barils de pétrole.;Proposition1;Les États-Unis produisirent les premiers barils de l’ère moderne, soit 274 tonnes en 1859. ;Proposition0;Proposition1

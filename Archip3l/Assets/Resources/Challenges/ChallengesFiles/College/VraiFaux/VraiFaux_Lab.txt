@@ -2,10 +2,10 @@ Question;Answer;Explanation;Proposition0;Proposition1
 En moyenne, un ménage français dépense plus d’argent pour les médicaments que pour les vêtements.;Proposition1;C’est toujours l’inverse avec par exemple, 47700 millions d’euros contre 34341 millions d’euros par an en 2012.;Proposition0;Proposition1
 En 2000, la France est le plus grand consommateur européen de médicaments, parmi les 8 classes thérapeutiques principales.;Proposition0;;Proposition0;Proposition1
 Un liquide oral est synonyme de solution buvable dans le domaine médical.;Proposition1;Un liquide oral ne doit pas être avalé et ne doit donc pas être confondu avec une solution buvable.;Proposition0;Proposition1
-Un écosystème est composé uniquement d'organismes hétérotrophes.;Proposition1;Les plantes font partie d'écosystèmes biologiques et sont pour la plupart autotrophes.;VRAI;FAUX
-Les organismes autotrophes génèrent leur propre matière organique.;Proposition0;;VRAI;FAUX
-L'air ne contient pas de dioxyde de carbone.;Proposition1;;VRAI;FAUX
-L'air a une masse nulle.;Proposition1;;VRAI;FAUX
-Plus on monte en altitude, moins il y a de dioxygène dans l'air.;Proposition0;;VRAI;FAUX
-Le sens de l'odorat est beaucoup plus développé chez l'Homme que chez le chien.;Proposition1;;VRAI;FAUX
-La vue et le cerveau sont indépendants l'un de l'autre.;Proposition1;;VRAI;FAUX
+Un écosystème est composé uniquement d'organismes hétérotrophes.;Proposition1;Les plantes font partie d'écosystèmes biologiques et sont pour la plupart autotrophes.;Proposition0;Proposition1
+Les organismes autotrophes génèrent leur propre matière organique.;Proposition0;;Proposition0;Proposition1
+L'air ne contient pas de dioxyde de carbone.;Proposition1;;Proposition0;Proposition1
+L'air a une masse nulle.;Proposition1;;Proposition0;Proposition1
+Plus on monte en altitude, moins il y a de dioxygène dans l'air.;Proposition0;;Proposition0;Proposition1
+Le sens de l'odorat est beaucoup plus développé chez l'Homme que chez le chien.;Proposition1;;Proposition0;Proposition1
+La vue et le cerveau sont indépendants l'un de l'autre.;Proposition1;;Proposition0;Proposition1
