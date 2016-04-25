@@ -263,7 +263,7 @@ public class ChallengeBuild : InputSource
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime;
+    float TouchTime = 0;
 
     private MetaGesture gesture;
 

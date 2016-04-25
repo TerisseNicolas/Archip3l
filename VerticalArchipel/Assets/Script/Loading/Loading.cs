@@ -53,7 +53,7 @@ public class Loading : InputSource
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime;
+    float TouchTime = 0;
 
     private MetaGesture gesture;
     private Dictionary<int, int> map = new Dictionary<int, int>();

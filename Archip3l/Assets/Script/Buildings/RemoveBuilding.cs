@@ -22,6 +22,7 @@ public class RemoveBuilding : InputSource
 
         if (this.name == "Remove")
         {
+            building.removed = true;
             //regain of resources
             TypeResource res1 = building.constructionResourceNeeded[0].First;
             int value1 = building.constructionResourceNeeded[0].Second / 2;
@@ -50,7 +51,7 @@ public class RemoveBuilding : InputSource
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime;
+    float TouchTime = 0;
 
     private MetaGesture gesture;
 

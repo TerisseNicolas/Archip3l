@@ -232,6 +232,7 @@ public class Score : MonoBehaviour {
             }
         }
         this.numberOfDifferentBuildingBuilt = this.buildingBuilt.Count;
+        Debug.Log("number of buildings : " + numberOfDifferentBuildingBuilt.ToString());
     }
     private void Client_MessageBuildingDestructionEvent(object sender, MessageEventArgs e)
     {

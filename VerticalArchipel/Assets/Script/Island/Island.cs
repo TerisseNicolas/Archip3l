@@ -31,13 +31,12 @@ public class Island : InputSource
     // Use this for initialization
     void Start()
     {
-
     }
+    
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     //returns le name of an island's speciality
@@ -62,7 +61,7 @@ public class Island : InputSource
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime;
+    float TouchTime = 0;
 
     private MetaGesture gesture;
 

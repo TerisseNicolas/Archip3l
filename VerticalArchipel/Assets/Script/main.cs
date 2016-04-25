@@ -18,7 +18,6 @@ public class main : MonoBehaviour
     void Start()
     {
         //this.Client = GameObject.Find("Network").GetComponent<Client>();
-
         main.level = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>().teamLevel;
 
 
@@ -35,7 +34,9 @@ public class main : MonoBehaviour
             GameObject.Find("Notif" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
         }
     }
+
     
+
 
     static public void removeChallenge(GameObject go)
     {

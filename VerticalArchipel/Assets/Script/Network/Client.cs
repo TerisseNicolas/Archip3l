@@ -86,11 +86,14 @@ public class Client : MonoBehaviour
 
     IEnumerator test()
     {
-        yield return new WaitForSeconds(11);
-        ProcessMessage("dsfs@30000@BoardEndScene");
-        yield return new WaitForSeconds(4);
-        ProcessMessage("dqsfsdf@30000@BoardResultScene");
-
+        yield return new WaitForSeconds(2);
+        ProcessMessage("toto@21111@Sawmill");
+        yield return new WaitForSeconds(1);
+        ProcessMessage("toto@21111@Goldmine");
+        yield return new WaitForSeconds(1);
+        ProcessMessage("toto@22111@Sawmill");
+        yield return new WaitForSeconds(1);
+        ProcessMessage("toto@24111@Goldmine");
     }
 
     public void loadPort()
