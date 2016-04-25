@@ -8,6 +8,7 @@ public class Anim_BuildingConstruction : MonoBehaviour
 
     void Start()
     {
+        transform.GetChild(0).transform.rotation = Quaternion.Euler(0,0,44);
         this.startQuaternion = transform.GetChild(0).rotation;
         this.interval = 0.02f;
 
@@ -20,7 +21,7 @@ public class Anim_BuildingConstruction : MonoBehaviour
             SoundPlayer.Instance.playConstructionSound();
             for (int i = 0; i < 23; i++)
             {
-                RotateLeft();
+                RotateRight();
                 yield return new WaitForSeconds(this.interval);
             }
             RotateInit();
@@ -28,9 +29,9 @@ public class Anim_BuildingConstruction : MonoBehaviour
         }
 
     }
-    void RotateLeft()
+    void RotateRight()
     {
-        transform.GetChild(0).transform.Rotate(Vector3.forward * 2);
+        transform.GetChild(0).transform.Rotate(Vector3.forward * (-2));
     }
     void RotateInit()
     {

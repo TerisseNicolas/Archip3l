@@ -8,8 +8,27 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameMenu : InputSource
-{    
+{
+    private Client Client;
+    private bool unlockedScene;
 
+    void Awake()
+    {
+        this.unlockedScene = false;
+    }
+
+    void Start()
+    {
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+        StartCoroutine(unlockScene());
+    }
+
+    IEnumerator unlockScene()
+    {
+        yield return new WaitForSeconds(5f);
+        this.unlockedScene = true;
+        Debug.Log("Unlocked");
+    }
     void OnMouseDownSimulation()
     {
         switch(this.name)
@@ -25,7 +44,8 @@ public class GameMenu : InputSource
                 break;
             case "returnArrow":
             case "Quitter":
-                SceneSupervisor.Instance.loadLoadingScene();
+                //SceneSupervisor.Instance.loadLoadingScene();
+                StartCoroutine(quitGame());
                 break;
             //waitForVertical scene --> return to menu
             case "endWindowBackground":
@@ -37,7 +57,10 @@ public class GameMenu : InputSource
                         break;
                     //when end scene is on vertical
                     case "waitForVerticalSceneEnd":
-                        SceneSupervisor.Instance.loadResultScenes(false);
+                        if(this.unlockedScene)
+                        {
+                            SceneSupervisor.Instance.loadResultScenes(false);
+                        }
                         break;
                     //when result scene is on vertical(at the end of the game)
                     case "waitForVerticalSceneResult":
@@ -49,6 +72,13 @@ public class GameMenu : InputSource
                 }
                 break;
         }
+    }
+
+    IEnumerator quitGame()
+    {
+        this.Client.sendData("@30100");
+        yield return new WaitForSeconds(0.5f);
+        Application.Quit();
     }
 
 
