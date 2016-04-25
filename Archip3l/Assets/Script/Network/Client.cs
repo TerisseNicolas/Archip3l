@@ -78,7 +78,7 @@ public class Client : MonoBehaviour
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
 
-        //StartCoroutine(test(3, "@32770"));
+        //StartCoroutine(test(2, "serveur@30005@0"));
 
     }
 

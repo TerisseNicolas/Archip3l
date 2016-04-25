@@ -13,10 +13,15 @@ public class main : MonoBehaviour
 
     static public int level = 0;
 
-    private Client Client;
+    //private Client Client;
 
     void Start()
     {
+        //this.Client = GameObject.Find("Network").GetComponent<Client>();
+
+        main.level = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>().teamLevel;
+
+
         //hiding challenges and notifications at the beginning
         for (int i = 1; i <= nbChallengesMax; i++)
         {
@@ -29,15 +34,8 @@ public class main : MonoBehaviour
             GameObject.Find("Notif" + i.ToString()).GetComponent<Text>().text = string.Empty;
             GameObject.Find("Notif" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
         }
-
-        this.Client = GameObject.Find("Network").GetComponent<Client>();
-        this.Client.MessageSystemTeamLevelEvent += Client_MessageSystemTeamLevelEvent;
     }
-
-    private void Client_MessageSystemTeamLevelEvent(object sender, MessageEventArgs e)
-    {
-        main.level = Int32.Parse((string)e.message.Split('@').GetValue(2));
-    }
+    
 
     static public void removeChallenge(GameObject go)
     {
