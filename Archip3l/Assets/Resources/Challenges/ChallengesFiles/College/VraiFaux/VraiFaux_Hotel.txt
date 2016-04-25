@@ -4,6 +4,6 @@ Un hôtel de ville est un hôtel situé dans une ville.;Proposition1;Il s'agit d
 Le terme vacances provient du latin vacare qui signifie être sans, en relation avec le fait de cesser ses activités habituelles.;Proposition0;;Proposition0;Proposition1
 À Hong Kong, Singapour et Taïwan, les vacances sont de quinze jours par an.;Proposition1;Dans ces pays, les vacances sont de sept jours par an.;Proposition0;Proposition1
 Au Moyen-âge, l'hôtellerie désigne une partie d'un monastère réservée à l'accueil et à l'hébergement des hôtes.;Proposition0;;Proposition0;Proposition1
-La Chine est un continent.;Proposition1;La Chine est un pays appartenant au continent asiatique.;VRAI;FAUX
-Le quartier des affaires à Paris s'appelle La Défense.;Proposition0;;VRAI;FAUX
-Le fleuve qui traverse Paris est le Rhône.;Proposition1;Le fleuve qui traverse Paris est la Seine.;VRAI;FAUX
+La Chine est un continent.;Proposition1;La Chine est un pays appartenant au continent asiatique.;Proposition0;Proposition1
+Le quartier des affaires à Paris s'appelle La Défense.;Proposition0;;Proposition0;Proposition1
+Le fleuve qui traverse Paris est le Rhône.;Proposition1;Le fleuve qui traverse Paris est la Seine.;Proposition0;Proposition1

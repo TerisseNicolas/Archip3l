@@ -2,10 +2,10 @@ Question;Answer;Explanation;Proposition0;Proposition1
 Une orfèvrerie est une bijouterie vendant de l’or.;Proposition1;L’orfèvrerie correspond à l’art du travail de l’or.;Proposition0;Proposition1
 Précieux est aussi le nom d'une commune française du département de la Loire.;Proposition0;;Proposition0;Proposition1
 La recherche d'or constitua l'une des raisons de la conquête du continent américain.;Proposition0;;Proposition0;Proposition1
-Le point de fusion de l'or est supérieur à 1000°C.;Proposition0;Il est de 1060°C.;VRAI;FAUX
-Le carat est une mesure de pureté de métaux précieux tels que l'or.;Proposition0;;VRAI;FAUX
-Plus le nombre de carats d'un bijou est élevé, moins sa quantité d'or est grande.;Proposition1;C'est l'inverse : plus le nombre de carats est élevé, plus la quantité d'or est importante.;VRAI;FAUX
-De l'or 24 carats est de l'or de faible pureté.;Proposition1;La mesure des carats se faisant par convention sur 24 g d'alliage, de l'or 24 carats signifie qu'il y a 24 g d'or dans 24 g d'alliage, donc que l'or est pur.;VRAI;FAUX
-Il est possible de purifier l'or jusqu'à un degré de pureté de 100%.;Proposition1;Il est possible de purifier l'or jusqu'à un degré de pureté de 99,999 %, grâce au procédé Wohlwill, et c'est le maximum de pureté atteint jusqu'à aujourd'hui.;VRAI;FAUX
-En France, la pièce de 100 euros est en or pur à 99,999 %.;Proposition0;;VRAI;FAUX
-La Monnaie Royale anglaise a créé la plus grande pièce d'investissement au monde, une pièce de 100 kg d'une valeur nominale d'un million de livres.;Proposition1;Cette pièce a été créée par la Monnaie Royale canadienne et est composée à 99,99% d’or.;VRAI;FAUX
+Le point de fusion de l'or est supérieur à 1000°C.;Proposition0;Il est de 1060°C.;Proposition0;Proposition1
+Le carat est une mesure de pureté de métaux précieux tels que l'or.;Proposition0;;Proposition0;Proposition1
+Plus le nombre de carats d'un bijou est élevé, moins sa quantité d'or est grande.;Proposition1;C'est l'inverse : plus le nombre de carats est élevé, plus la quantité d'or est importante.;Proposition0;Proposition1
+De l'or 24 carats est de l'or de faible pureté.;Proposition1;La mesure des carats se faisant par convention sur 24 g d'alliage, de l'or 24 carats signifie qu'il y a 24 g d'or dans 24 g d'alliage, donc que l'or est pur.;Proposition0;Proposition1
+Il est possible de purifier l'or jusqu'à un degré de pureté de 100%.;Proposition1;Il est possible de purifier l'or jusqu'à un degré de pureté de 99,999 %, grâce au procédé Wohlwill, et c'est le maximum de pureté atteint jusqu'à aujourd'hui.;Proposition0;Proposition1
+En France, la pièce de 100 euros est en or pur à 99,999 %.;Proposition0;;Proposition0;Proposition1
+La Monnaie Royale anglaise a créé la plus grande pièce d'investissement au monde, une pièce de 100 kg d'une valeur nominale d'un million de livres.;Proposition1;Cette pièce a été créée par la Monnaie Royale canadienne et est composée à 99,99% d’or.;Proposition0;Proposition1

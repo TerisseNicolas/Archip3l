@@ -8,10 +8,3 @@ Maître international est un titre décerné aux meilleurs joueurs :;Proposition
 Comment appelle-t-on une université ou une faculté dans les pays anglosaxons ?;Proposition0;;College;Highschool;Postgraduated school
 Comment appelle-t-on l'équivalent du baccalauréat en Allemagne ?;Proposition1;En Angleterre, il s'agit du A-Level.;A-level;Abitur;Bacca
 Quel est le pays accueillant le pourcentage le plus élevé d'étudiants étrangers ?;Proposition2;Après le Royaume-Uni, la France est troisième de ce classement, suivie de près par l'Allemagne.;France;Royaume-Uni;Etats-Unis
-Lors des deux guerres mondiales, les emprunts sont contractés envers la Suisse.;Proposition1;Ils sont contractés envers les Etats-Unis.;VRAI;FAUX
-Le traité de Versailles conclut que l'Allemagne est responsable de la guerre.;Proposition0;Il détermine, ce faisant, les sanctions prises à l'encontre de l'Allemagne et de ses alliés.;VRAI;FAUX
-La Société des Nations est créée suite au traité de Versailles.;Proposition0;;VRAI;FAUX
-L'attentat de Sarajevo a lieu le 28 juin 1939.;Proposition1;Il a lieu le 28 juin 1914.;VRAI;FAUX
-A la suite de la première guerre mondiale, l'Allemagne perd l'Alsace-Lorraine.;Proposition0;;VRAI;FAUX
-Un traité dicté par la force s'appelle un diktat.;Proposition0;;VRAI;FAUX
-Le bilan du traité de Versailles présage la paix.;Proposition1;Il présage un désir de revanche de la part de l'Allemagne et de ses alliés.;VRAI;FAUX

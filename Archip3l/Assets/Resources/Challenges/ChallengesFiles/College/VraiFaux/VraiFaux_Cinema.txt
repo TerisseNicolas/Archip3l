@@ -3,10 +3,10 @@ Le cinéma est aussi couramment désigné comme le sixième art.;Proposition1; I
 Le terme cinéma est l’abréviation de cinématographe.;Proposition0;Le cinématographe est le nom donné par Léon Bouly à l’appareil de projection.;Proposition0;Proposition1
 Les Frères Lumière ont été les premiers à réaliser des films.;Proposition1;Ils n'ont pas réalisé les premiers films mais les premières projections de vues photographiques animées.;Proposition0;Proposition1
 Les Frères Lumière étaient tous deux passionnés par le cinéma.;Proposition1;L'un des deux frères, Louis Lumière, n'aimait pas le cinéma mais y a consacré plus de dix ans de sa vie.;Proposition0;Proposition1
-Dans Astérix et Obélix, le petit chien blanc s'appelle Idolix.;Proposition1;Il s'appelle Idéfix.;VRAI;FAUX
-Les aventures de Rahan se déroulent à l'Antiquité.;Proposition1;Elles se déroulent à l'époque de la Préhistoire.;VRAI;FAUX
-Le scientifique qui partage les aventures de Tintin et du capitaine Haddock est le professeur Tournesol.;Proposition0;;VRAI;FAUX
-L'auteur de la série Harry Potter est J.F. Kennedy.;Proposition1;Leur auteur est J.K. Rowling;VRAI;FAUX
-Le nom de famille de Ron, le compagnon de Harry Potter, est Weasley.;Proposition0;;VRAI;FAUX
-Falbala est un personnage de la bande dessinée Tintin.;Proposition1;Falbala est un personnage de la bande dessinée Astérix et Obélix.;VRAI;FAUX
-Tintin, comme Astérix et Obélix, a un chien comme animal de compagnie.;Proposition0;Le chien de Tintin s'appelle Milou.;VRAI;FAUX
+Dans Astérix et Obélix, le petit chien blanc s'appelle Idolix.;Proposition1;Il s'appelle Idéfix.;Proposition0;Proposition1
+Les aventures de Rahan se déroulent à l'Antiquité.;Proposition1;Elles se déroulent à l'époque de la Préhistoire.;Proposition0;Proposition1
+Le scientifique qui partage les aventures de Tintin et du capitaine Haddock est le professeur Tournesol.;Proposition0;;Proposition0;Proposition1
+L'auteur de la série Harry Potter est J.F. Kennedy.;Proposition1;Leur auteur est J.K. Rowling;Proposition0;Proposition1
+Le nom de famille de Ron, le compagnon de Harry Potter, est Weasley.;Proposition0;;Proposition0;Proposition1
+Falbala est un personnage de la bande dessinée Tintin.;Proposition1;Falbala est un personnage de la bande dessinée Astérix et Obélix.;Proposition0;Proposition1
+Tintin, comme Astérix et Obélix, a un chien comme animal de compagnie.;Proposition0;Le chien de Tintin s'appelle Milou.;Proposition0;Proposition1
