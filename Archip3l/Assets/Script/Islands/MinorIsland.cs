@@ -154,7 +154,7 @@ public class MinorIsland : InputSource
         canvasChallenge.name = "Challenge_" + type.ToString() + "_" + this.nameMinorIsland;
         canvasChallenge.transform.SetParent(GameObject.Find(this.nameMinorIsland).transform);
         Vector3 vec = GameObject.Find("Virtual_" + this.nameMinorIsland).transform.position;
-        vec.z = -2;
+        vec.z = -5;
         canvasChallenge.transform.position = vec;
 
         //rotation if other side of the table
@@ -192,7 +192,7 @@ public class MinorIsland : InputSource
         challengeUpgrade.name = "Challenge_" + type.ToString() + "_" + this.nameMinorIsland;
         challengeUpgrade.transform.SetParent(GameObject.Find(this.nameMinorIsland).transform);
         Vector3 vec = GameObject.Find("Virtual_" + this.nameMinorIsland).transform.position;
-        vec.z = -2;
+        vec.z = -5;
         challengeUpgrade.transform.position = vec;
 
         //rotation if other side of the table
