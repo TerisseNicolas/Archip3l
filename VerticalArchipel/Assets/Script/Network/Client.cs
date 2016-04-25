@@ -87,7 +87,6 @@ public class Client : MonoBehaviour
 
     IEnumerator test()
     {
-<<<<<<< HEAD
         yield return new WaitForSeconds(2);
         ProcessMessage("toto@21111@Sawmill");
         yield return new WaitForSeconds(1);
@@ -96,15 +95,6 @@ public class Client : MonoBehaviour
         ProcessMessage("toto@22111@Sawmill");
         yield return new WaitForSeconds(1);
         ProcessMessage("toto@24111@Goldmine");
-=======
-        yield return new WaitForSeconds(3);
-        ProcessMessage("ass@30100");
-        yield return new WaitForSeconds(11);
-        ProcessMessage("dsfs@30000@BoardEndScene");
-        yield return new WaitForSeconds(4);
-        ProcessMessage("dqsfsdf@30000@BoardResultScene");
-
->>>>>>> 462d21c47916830eaa50ced63901ff4ee7111811
     }
 
     public void loadPort()
