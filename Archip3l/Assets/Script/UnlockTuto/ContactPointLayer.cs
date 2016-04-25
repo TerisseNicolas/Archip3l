@@ -16,7 +16,8 @@ public class ContactPointLayer : MonoBehaviour
 
     void Awake()
     {
-        this.NumberOfContact = 8;
+        //TODO set to 8 !!
+        this.NumberOfContact = 1;
         this.ActualContactActivated = 0;
         this.Completed = false;
         this.BoardCompleted = false;

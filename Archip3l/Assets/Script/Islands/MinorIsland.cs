@@ -455,7 +455,7 @@ public class MinorIsland : InputSource
         {
             result = this.nbGoodAnswersChallenges / this.nbAnswersChallenges;
         }
-        this.Client.sendData("@3" + this.nameMinorIsland.Split('_')[2] + "441@" + result.ToString());
+        this.Client.sendData("@3" + this.nameMinorIsland.Split('_')[2] + "441@" + result.ToString("F2"));
     }
 
     void OnMouseDownSimulation()
