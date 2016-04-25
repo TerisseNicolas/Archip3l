@@ -237,6 +237,9 @@ public class Building : InputSource
         var buildingUpgradeTransform = Instantiate(buildingUpgradePrefab) as Transform;
         buildingUpgradeTransform.name = "BuildingUpgradeAnimation_" + minorIsland.nameMinorIsland;
         Anim_BuildingUpgrade anim_BuildingConstruction = buildingUpgradeTransform.GetComponent<Anim_BuildingUpgrade>();
+        char id = minorIsland.nameMinorIsland[minorIsland.nameMinorIsland.Length - 1];
+        if (id == '1' || id == '2')
+            buildingUpgradeTransform.Rotate(Vector3.forward * 180);
         if (anim_BuildingConstruction != null)
         {
             anim_BuildingConstruction.transform.SetParent(this.transform);

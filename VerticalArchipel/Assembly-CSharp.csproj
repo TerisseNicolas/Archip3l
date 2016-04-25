@@ -64,6 +64,7 @@
      <Compile Include="Assets\Script\Game\InitScene.cs" />
      <Compile Include="Assets\Script\Game\SceneSupervisor.cs" />
      <Compile Include="Assets\Script\Game\Score.cs" />
+     <Compile Include="Assets\Script\Game\SecretBackdoor.cs" />
      <Compile Include="Assets\Script\Game\SoundPlayer.cs" />
      <Compile Include="Assets\Script\Game\SurvivorScript.cs" />
      <Compile Include="Assets\Script\Game\Timer.cs" />

@@ -47,7 +47,7 @@ public class ChallengeVerticalClick : InputSource
         ChallengeVerticalClick.typeChallenge = (TypeChallenge)Enum.Parse(typeof(TypeChallenge), this.transform.parent.name.Split('_')[1]);
         System.Random ran = new System.Random();
         int aleat;
-        ChallengeVerticalClick.quantityToWin = ran.Next(0, 50);
+        ChallengeVerticalClick.quantityToWin = ran.Next(20, 100);
         //random type of Building
         TypeBuilding tb;
         aleat = ran.Next(0, Enum.GetNames(typeof(TypeBuilding)).Length);

@@ -101,7 +101,7 @@ public class Disturbance : InputSource
             /*--------------- random effect on resource-----*/
             System.Random ran = new System.Random();
             int aleat;
-            int quantityLost = (-1) * (ran.Next(0, 50));
+            int quantityLost = (-1) * (ran.Next(50, 100));
             //random type of Resource
             TypeResource resourceLost;
             do
