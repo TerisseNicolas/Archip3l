@@ -49,9 +49,9 @@ public class Briefing : InputSource
     {
         if(this.animationFlag && !this.animationLaunchedFlag && !lockedScene)
         {
-            StartCoroutine(endAnimation());
             this.animationFlag = false;
             this.animationLaunchedFlag = true;
+            StartCoroutine(endAnimation());
         }
     }
     private void OnMouseDownSimulation()
