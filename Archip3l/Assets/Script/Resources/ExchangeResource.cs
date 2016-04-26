@@ -147,8 +147,8 @@ public class ExchangeResource : InputSource
                         listIslandsCanvas.transform.Rotate(Vector3.forward * 180);
                     break;
                 case "Close":
-                    Destroy(GameObject.Find(this.transform.parent.parent.name));
                     island.exchangeWindowPresent = false;
+                    Destroy(GameObject.Find(this.transform.parent.parent.name));
                     break;
                 case "Send":
                     if (to.text == "Ile X")
@@ -202,10 +202,14 @@ public class ExchangeResource : InputSource
         }
         else    //closure of other windows (listResources & listIslands)
         {
-            Destroy(GameObject.Find("listIslandsCanvas_" + island.nameMinorIsland));
-            Destroy(GameObject.Find("listResourcesCanvas_" + island.nameMinorIsland));
-
-            island.otherWindowOpen = false;
+            if (this.name == "Close")
+            {
+                island.otherWindowOpen = false;
+                island.exchangeWindowPresent = false;
+                Destroy(GameObject.Find("listIslandsCanvas_" + island.nameMinorIsland));
+                Destroy(GameObject.Find("listResourcesCanvas_" + island.nameMinorIsland));
+                Destroy(GameObject.Find(this.transform.parent.parent.name));
+            }
         }
 
     }
@@ -272,7 +276,7 @@ public class ExchangeResource : InputSource
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime;
+    float TouchTime = 0;
 
     private MetaGesture gesture;
 

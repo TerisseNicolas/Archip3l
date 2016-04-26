@@ -123,7 +123,7 @@ public class BoatMoving : InputSource
         this.GetComponent<SpriteRenderer>().color = color;
         for (int i = 0; i < 100; i++)
         {
-            yield return new WaitForSeconds(0.03f);
+            yield return new WaitForSeconds(0.00005f);
             color = this.GetComponent<SpriteRenderer>().color;
             color.a += 0.01f;
             this.GetComponent<SpriteRenderer>().color = color;
@@ -138,7 +138,7 @@ public class BoatMoving : InputSource
         Color color;
         for (int i = 0; i < 100; i++)
         {
-            yield return new WaitForSeconds(0.03f);
+            yield return new WaitForSeconds(0.00005f);
             color = this.GetComponent<SpriteRenderer>().color;
             color.a -= 0.01f;
             this.GetComponent<SpriteRenderer>().color = color;
@@ -175,7 +175,7 @@ public class BoatMoving : InputSource
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime;
+    float TouchTime = 0;
 
     private MetaGesture gesture;
 

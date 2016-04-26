@@ -25,6 +25,8 @@ public class Building : InputSource
     private string texturePath;
     public int level;       //possible levels : 0-1-2-3
 
+    public bool removed = false;
+
     private Client Client;
 
     public Transform buildingConstructionPrefab;
@@ -339,7 +341,7 @@ public class Building : InputSource
 
     void OnMouseDownSimulation()
     {
-        if ((this.buildState == 1) && !MinorIsland.exchangePerforming && !minorIsland.wheelPresent && !minorIsland.touchBuildingPresent && !minorIsland.exchangeWindowPresent && !minorIsland.buildingInfoPresent && !minorIsland.challengePresent && !minorIsland.moveBuilding)
+        if ((this.buildState == 1) && !MinorIsland.exchangePerforming && !minorIsland.wheelPresent && !minorIsland.touchBuildingPresent && !minorIsland.exchangeWindowPresent && !minorIsland.buildingInfoPresent && !minorIsland.challengePresent && !minorIsland.moveBuilding && !minorIsland.removeBuildingInfoPresent && !this.removed)
         {
             minorIsland.createBuildingTouch(this);
         }
@@ -550,7 +552,7 @@ public class Building : InputSource
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime;
+    float TouchTime = 0;
 
     private MetaGesture gesture;
 

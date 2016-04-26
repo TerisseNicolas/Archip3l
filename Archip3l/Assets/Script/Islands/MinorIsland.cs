@@ -117,6 +117,17 @@ public class MinorIsland : InputSource
             startCanvas.GetComponentInChildren<SpriteRenderer>().color = color;
             StartCoroutine(this.startFade());
         }
+
+        //todo remove
+        StartCoroutine(toto());
+
+    }
+
+    public IEnumerator toto()
+    {
+        yield return new WaitForSeconds(3);
+        Debug.Log("go");
+        TouchTime = 500;
     }
 
     public IEnumerator startFade()
@@ -517,11 +528,13 @@ public class MinorIsland : InputSource
                         if (!buildingInfoPresent)       //if the wheel is on the island, but not the buildingInfo
                         {
                             //destruction of the wheel if clic somewhere else in the island
-                            Destroy(GameObject.Find("WheelCanvas_" + nameMinorIsland));
                             this.wheelPresent = false;
+                            Destroy(GameObject.Find("WheelCanvas_" + nameMinorIsland));
                         }
                     }
                 }
+                else
+                    Debug.Log("touch bloqué par bool");
             }
         }
 
@@ -617,7 +630,7 @@ public class MinorIsland : InputSource
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime;
+    float TouchTime = 0;
 
     private MetaGesture gesture;
 
@@ -642,13 +655,12 @@ public class MinorIsland : InputSource
     private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
     {
         var touch = metaGestureEventArgs.Touch;
-        if (TouchTime == 0 /*&& !MinorIsland.exchangePerforming*/)
+        if (TouchTime == 0)
         {
             TouchTime = Time.time;
             this.positionTouched = touch.Position;
             this.begun = true;
         }
-
     }
     
     private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
