@@ -11,12 +11,13 @@ public class main : MonoBehaviour
     public const int nbChallengesMax = 3;
     public const int nbNotificationsMax = 8;
 
-    static public int level = 0;
+    static public int level;
 
     //private Client Client;
 
     void Start()
     {
+        level = 0;
         //this.Client = GameObject.Find("Network").GetComponent<Client>();
         main.level = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>().teamLevel;
 

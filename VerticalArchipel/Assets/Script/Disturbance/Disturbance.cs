@@ -158,7 +158,7 @@ public class Disturbance : InputSource
     {
         this.Client.sendData("@35770");
         yield return new WaitForSeconds(0.5f);
-        this.Client.sendData("@25394@" + resourceLost.ToString() + "@" + "-" + quantityLost.ToString());
+        this.Client.sendData("@25394@" + resourceLost.ToString() + "@"  + quantityLost.ToString());
         yield return new WaitForSeconds(0.1f);
     }
 

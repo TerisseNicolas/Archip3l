@@ -45,7 +45,7 @@ public class ResourcesFilling : MonoBehaviour
         }
         else
         {
-            verticalRate = (score.verticalGoodAnwsers / score.verticalAnswers);
+            verticalRate = ((float) score.verticalGoodAnwsers) / score.verticalAnswers;
         }
         GameObject.Find("goodAnswersValue0").GetComponent<Text>().text = (verticalRate * 100).ToString("F2") + "%";
         totalSuccessRate += verticalRate * 100;
