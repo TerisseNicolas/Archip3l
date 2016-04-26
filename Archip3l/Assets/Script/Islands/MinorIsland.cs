@@ -57,6 +57,13 @@ public class MinorIsland : InputSource
     //fixes coroutine bug
     private bool coroutineDisturbance = false;
 
+    //todo: check or remove
+    void FixedUpdate()
+    {
+        if (TouchTime != 0 && Time.time - TouchTime > 10)
+            TouchTime = 0;
+    }
+
     void Awake()
     {
 
@@ -117,18 +124,10 @@ public class MinorIsland : InputSource
             startCanvas.GetComponentInChildren<SpriteRenderer>().color = color;
             StartCoroutine(this.startFade());
         }
-
-        //todo remove
-        StartCoroutine(toto());
+        
 
     }
-
-    public IEnumerator toto()
-    {
-        yield return new WaitForSeconds(3);
-        Debug.Log("go");
-        TouchTime = 500;
-    }
+    
 
     public IEnumerator startFade()
     {
@@ -630,7 +629,7 @@ public class MinorIsland : InputSource
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime = 0;
+    public float TouchTime = 0;
 
     private MetaGesture gesture;
 
