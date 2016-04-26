@@ -11,10 +11,12 @@ public class GameMenu : InputSource
 {
     private Client Client;
     private bool unlockedScene;
+    private bool QuitApplication;
 
     void Awake()
     {
         this.unlockedScene = false;
+        this.QuitApplication = false;
     }
 
     void Start()
@@ -45,7 +47,7 @@ public class GameMenu : InputSource
             case "returnArrow":
             case "Quitter":
                 //SceneSupervisor.Instance.loadLoadingScene();
-                StartCoroutine(quitGame());
+                this.QuitApplication = true;
                 break;
             //waitForVertical scene --> return to menu
             case "endWindowBackground":
@@ -74,10 +76,19 @@ public class GameMenu : InputSource
         }
     }
 
+    void Update()
+    {
+        if(this.QuitApplication)
+        {
+            StartCoroutine(quitGame());
+            this.QuitApplication = false;
+        }
+    }
+
     IEnumerator quitGame()
     {
         this.Client.sendData("@30100");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         Application.Quit();
     }
 
