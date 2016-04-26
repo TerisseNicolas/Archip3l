@@ -40,9 +40,9 @@ public class Trophy : InputSource
         {
             //TODO : modify
             case "Medal3": //6 types de batiments contruits
-                return this.Score.numberOfDifferentBuildingBuilt >= 6;
+                return this.Score.numberOfDifferentBuildingBuilt >= 8;
             case "Medal2"://11 types de batiments contruits
-                return this.Score.numberOfDifferentBuildingBuilt >= 11;
+                return this.Score.numberOfDifferentBuildingBuilt >= 12;
             case "Medal1"://tous types de batiments contruits
                 return this.Score.allBuildingBuilt;
             case "Trophy3": //TOTAL resources count > 500
