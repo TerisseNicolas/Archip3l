@@ -6,7 +6,7 @@ public class PirateBoatManager : MonoBehaviour
 {
     private float initInterval = 10f;
     private float interval;
-    private float raisingRate = 0.999f;
+    private float raisingRate = 0.998f;
     private int boatId = 0;
 
     public Transform pirateBoatPrefab;

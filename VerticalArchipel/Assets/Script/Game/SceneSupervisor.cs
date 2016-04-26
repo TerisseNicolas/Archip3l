@@ -7,11 +7,15 @@ public class SceneSupervisor : MonoBehaviour {
     private Client Client;
     private string sceneName = string.Empty;
 
+    private bool quitApplication;
+
     void Start()
     {
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemChangeSceneEvent += Client_MessageSystemChangeSceneEvent;
         this.Client.MessageSystemQuitApplication += Client_MessageSystemQuitApplication;
+
+        this.quitApplication = false;
     }
 
     void Update()
@@ -47,6 +51,10 @@ public class SceneSupervisor : MonoBehaviour {
             }
             this.sceneName = string.Empty;
         }
+        if(this.quitApplication)
+        {
+            Application.Quit();
+        }
     }
 
     private void Client_MessageSystemChangeSceneEvent(object sender, MessageEventArgs e)
@@ -55,6 +63,6 @@ public class SceneSupervisor : MonoBehaviour {
     }
     private void Client_MessageSystemQuitApplication(object sender, MessageEventArgs e)
     {
-        Application.Quit();
+        this.quitApplication = true;
     }
 }
