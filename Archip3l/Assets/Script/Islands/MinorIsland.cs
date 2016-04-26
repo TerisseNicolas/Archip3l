@@ -592,7 +592,7 @@ public class MinorIsland : InputSource
                     res = resourceManager.getResource(this.resourceManager.Resources[index].TypeResource);
                 }
                 while (Enum.IsDefined(typeof(TypeResourceStat), res.ToString()));
-                int quantity = rnd.Next(10, 100);
+                int quantity = rnd.Next(10, 200);
                 if (this.resourceManager.Resources[index].Stock >= quantity)
                 {
                     this.resourceManager.changeResourceStock(this.resourceManager.Resources[index].TypeResource, -quantity);

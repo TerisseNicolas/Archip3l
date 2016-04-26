@@ -45,6 +45,8 @@ public class GameMenu : InputSource
                 SceneSupervisor.Instance.loadResultScenes(true);
                 break;
             case "returnArrow":
+                SceneSupervisor.Instance.loadLoadingScene();
+                break;
             case "Quitter":
                 //SceneSupervisor.Instance.loadLoadingScene();
                 this.QuitApplication = true;

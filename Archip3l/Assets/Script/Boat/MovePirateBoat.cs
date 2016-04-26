@@ -119,6 +119,7 @@ public class MovePirateBoat : InputSource
 	IEnumerator ShipSinking()
 	{
 		sinking = true;
+		this.GetComponent<BoxCollider> ().enabled = false;
 		Instantiate (sinkingTrail, transform.position, Quaternion.identity);
 		GetComponent<Animator> ().SetInteger ("animBoat", 1);
 		GetComponent<Animator> ().Play ("sinking");

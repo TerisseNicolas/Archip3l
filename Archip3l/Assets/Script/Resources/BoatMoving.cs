@@ -52,8 +52,8 @@ public class BoatMoving : InputSource
                 island.displayPopup("Suite aux dommages subis, votre bateau coule, ainsi que toutes les ressources transportées ...", 3);
                 MinorIsland.exchangePerforming = false;
                 //SINK ANIMATION
+                StartCoroutine(SinkingCargo());
                 StartCoroutine(startBoatDisappearance());
-				StartCoroutine(SinkingCargo());
             }
             else
             {

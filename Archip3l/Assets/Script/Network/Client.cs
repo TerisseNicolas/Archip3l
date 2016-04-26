@@ -79,7 +79,12 @@ public class Client : MonoBehaviour
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
 
+<<<<<<< HEAD
         //StartCoroutine(test());
+=======
+        StartCoroutine(test(5, "serveur@40001"));
+
+>>>>>>> e9ac45c5160eb74cf077f8f979273af8171bf833
     }
 
     IEnumerator test()
