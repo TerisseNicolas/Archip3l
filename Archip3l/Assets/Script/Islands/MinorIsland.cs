@@ -85,16 +85,17 @@ public class MinorIsland : InputSource
             this.resourceManager = resourceManager;
         }
 
-        this.Client = GameObject.Find("Network").GetComponent<Client>();
-        this.Client.MessageDisturbanceEvent += Client_MessageDisturbanceEvent;
-        this.Client.MessageSystemEndOfGameEvent += Client_MessageSystemEndOfGameEvent;
-
         displayPopup("C'est parti !", 3);
 
     }
 
     public void Start()
     {
+
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+        this.Client.MessageDisturbanceEvent += Client_MessageDisturbanceEvent;
+        this.Client.MessageSystemEndOfGameEvent += Client_MessageSystemEndOfGameEvent;
+
         Vector3 harborPosition;
         switch (this.nameMinorIsland)
         {
@@ -456,16 +457,18 @@ public class MinorIsland : InputSource
 
     private void Client_MessageSystemEndOfGameEvent(object sender, MessageEventArgs e)
     {
+        //Debug.Log("island " + nbGoodAnswersChallenges.ToString() + " / " + nbAnswersChallenges.ToString());
         float result = 0;
         if (nbAnswersChallenges == 0)
         {
-            result = 1;
+            result = 1f;
         }
         else
         {
-            result = this.nbGoodAnswersChallenges / this.nbAnswersChallenges;
+            result = ((float) this.nbGoodAnswersChallenges) / this.nbAnswersChallenges;
         }
-        this.Client.sendData("@3" + this.nameMinorIsland.Split('_')[2] + "441@" + result.ToString("F2"));
+        //Debug.Log(result.ToString("F4"));
+        this.Client.sendData("@3" + this.nameMinorIsland.Split('_')[2] + "441@" + result.ToString("F4"));
     }
 
     void OnMouseDownSimulation()

@@ -79,14 +79,13 @@ public class Client : MonoBehaviour
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
 
-        //StartCoroutine(test(5, "serveur@35770@0"));
-
+        //StartCoroutine(test());
     }
 
-    IEnumerator test(int temps, string mes)
+    IEnumerator test()
     {
-        yield return new WaitForSeconds(temps);
-        ProcessMessage(mes);
+        yield return new WaitForSeconds(50f);
+        ProcessMessage("xxx@30002");
     }
 
  public void loadPort()

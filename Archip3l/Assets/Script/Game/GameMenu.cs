@@ -29,7 +29,7 @@ public class GameMenu : InputSource
     {
         yield return new WaitForSeconds(5f);
         this.unlockedScene = true;
-        Debug.Log("Unlocked");
+        //Debug.Log("Unlocked");
     }
     void OnMouseDownSimulation()
     {
