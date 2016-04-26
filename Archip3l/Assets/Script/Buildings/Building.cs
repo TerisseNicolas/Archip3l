@@ -394,8 +394,8 @@ public class Building : InputSource
                 constructionResourcesNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Food, 10));
                 break;
             case "Airport":
-                constructionResourcesNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 200));
-                constructionResourcesNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Food, 200));
+                constructionResourcesNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 500));
+                constructionResourcesNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Food, 500));
                 break;
             case "Hotel":
                 constructionResourcesNeeded.Add(new Tuple<TypeResource, int>(TypeResource.Gold, 20));
