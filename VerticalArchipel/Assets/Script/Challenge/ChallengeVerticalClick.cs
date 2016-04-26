@@ -29,6 +29,7 @@ public class ChallengeVerticalClick : InputSource
     static public bool goodAnswer { get; private set; }
     static public Canvas canvasChallenge { get; private set; }
     static public GameObject canvasChallengeObject { get; private set; }
+    static public bool answered = false;
 
     public TextAsset csv { get; private set; }
 
@@ -166,50 +167,54 @@ public class ChallengeVerticalClick : InputSource
 
     public void OnMouseDownSimulation()
     {
-        string clickedText = this.name.Split('_')[0];
-
-        //modify Result.text     
-        if (clickedText == answer)
+        if (ChallengeVerticalClick.answered == false)
         {
-            resultText.text = "Réponse correcte !";
-            goodAnswer = true;
-            main.addNotification("Vous venez de réussir un challenge !");
-            this.Score.verticalGoodAnwsers += 1;
-            //this.client.sendData("@35401@Challenge" + this.typeChallenge.ToString());
-        }
-        else {
-            resultText.text = "Réponse incorrecte !";
-            goodAnswer = false;
-            main.addNotification("Vous venez de rater un challenge ...");
-            //this.client.sendData("@35402@Challenge" + this.typeChallenge.ToString());
-        }
-        this.Score.verticalAnswers += 1;
+            ChallengeVerticalClick.answered = true;
+            string clickedText = this.name.Split('_')[0];
 
-        Debug.Log(this.Score.verticalGoodAnwsers.ToString() + "/" + this.Score.verticalAnswers.ToString());
-
-        //modify Propositions background
-        if (typeChallenge == TypeChallenge.VraiFaux)
-        {
-            foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
+            //modify Result.text     
+            if (clickedText == answer)
             {
-                if (background.name == answer + "_background")
-                    background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + answer + "Clic");
-                else if (background.name.Contains("_background"))
-                    background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + background.name.Split('_')[0] + "Grise");
+                resultText.text = "Réponse correcte !";
+                goodAnswer = true;
+                main.addNotification("Vous venez de réussir un challenge !");
+                this.Score.verticalGoodAnwsers += 1;
+                //this.client.sendData("@35401@Challenge" + this.typeChallenge.ToString());
             }
-        }
-        else
-        {
-            foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
-            {
-                if (background.name == answer + "_background")
-                    background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + answer + "Clic");
-                else if (background.name.Contains("_background"))
-                    background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + background.name.Split('_')[0] + "Grise");
+            else {
+                resultText.text = "Réponse incorrecte !";
+                goodAnswer = false;
+                main.addNotification("Vous venez de rater un challenge ...");
+                //this.client.sendData("@35402@Challenge" + this.typeChallenge.ToString());
             }
-        }
+            this.Score.verticalAnswers += 1;
 
-        StartCoroutine(wait());
+            //Debug.Log(this.Score.verticalGoodAnwsers.ToString() + "/" + this.Score.verticalAnswers.ToString());
+
+            //modify Propositions background
+            if (typeChallenge == TypeChallenge.VraiFaux)
+            {
+                foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
+                {
+                    if (background.name == answer + "_background")
+                        background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + answer + "Clic");
+                    else if (background.name.Contains("_background"))
+                        background.sprite = Resources.Load<Sprite>("Challenges/VraiFaux/case" + background.name.Split('_')[0] + "Grise");
+                }
+            }
+            else
+            {
+                foreach (Image background in canvasChallenge.GetComponentsInChildren<Image>())
+                {
+                    if (background.name == answer + "_background")
+                        background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + answer + "Clic");
+                    else if (background.name.Contains("_background"))
+                        background.sprite = Resources.Load<Sprite>("Challenges/QCM/case" + background.name.Split('_')[0] + "Grise");
+                }
+            }
+
+            StartCoroutine(wait());
+        }
 
     }
 
@@ -241,6 +246,7 @@ public class ChallengeVerticalClick : InputSource
 
 
         ChallengeVertical.challengeWindowPresent = false;
+        ChallengeVerticalClick.answered = false;
 
         Destroy(GameObject.Find("Challenge_" + typeChallenge));
 
