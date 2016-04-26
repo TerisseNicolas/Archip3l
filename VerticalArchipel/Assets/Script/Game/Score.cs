@@ -159,16 +159,16 @@ public class Score : MonoBehaviour {
             rate += c *100;
         }
 
-        float verticalRate = 0;
+        float verticalRate = 0f;
         if(this.verticalAnswers == 0)
         {
-            verticalRate = 1;
+            verticalRate = 1f;
         }
         else
         {
-            verticalRate = this.verticalGoodAnwsers / this.verticalAnswers;
+            verticalRate = ((float) this.verticalGoodAnwsers) / this.verticalAnswers;
         }
-        rate += verticalRate * 100;
+        rate += verticalRate * 100f;
         rate /= 5.0f;
 
         List<Tuple<int, string, int, int, int, float>> temp = new List<Tuple<int, string, int, int, int, float>>();
