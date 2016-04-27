@@ -38,11 +38,7 @@ public class Trophy : InputSource
     {
         switch (this.trophyName)
         {
-<<<<<<< HEAD
-            case "Medal3": //6 types de batiments contruits
-=======
             case "Medal3": //8 types de batiments contruits
->>>>>>> bd84ae15d79aa1a3f4ddb614697116821db527fa
                 return this.Score.numberOfDifferentBuildingBuilt >= 8;
             case "Medal2"://12 types de batiments contruits
                 return this.Score.numberOfDifferentBuildingBuilt >= 12;
