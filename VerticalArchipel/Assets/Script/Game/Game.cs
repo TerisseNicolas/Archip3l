@@ -29,23 +29,16 @@ public class Game : MonoBehaviour
         //this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
 
         this.Timer = gameObject.GetComponent<Timer>();
-<<<<<<< HEAD
         //t o d o remove
         //this.Timer.Init(1f * 30f);
         this.Timer.Init(20f * 60f);
-=======
-        this.Timer.Init(20f * 60f); //20 min de jeu
->>>>>>> bd84ae15d79aa1a3f4ddb614697116821db527fa
         this.Timer.FinalTick += Timer_FinalTick;
         this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
         this.Timer.PirateBoatsIncreaseTick += Timer_PirateBoatsIncreaseTick;
 
         this.TimerDisturbance = gameObject.GetComponent<DisturbanceTimer>();
-<<<<<<< HEAD
         //t o d o remove
         //this.TimerDisturbance.Init(10f);
-=======
->>>>>>> bd84ae15d79aa1a3f4ddb614697116821db527fa
         this.TimerDisturbance.Init(180f);
         this.TimerDisturbance.FinalTick += TimerDisturbance_FinalTick;
         this.DisturbanceCount = 0;
