@@ -156,7 +156,7 @@ public class Score : MonoBehaviour {
         float rate = 0;
         foreach(float c in this.ChallengeSuccessRate)
         {
-            rate += c *100;
+            rate += (c *100);
         }
 
         float verticalRate = 0f;
@@ -168,7 +168,7 @@ public class Score : MonoBehaviour {
         {
             verticalRate = ((float) this.verticalGoodAnwsers) / this.verticalAnswers;
         }
-        rate += verticalRate * 100f;
+        rate += (verticalRate * 100f);
         rate /= 5.0f;
 
         List<Tuple<int, string, int, int, int, float>> temp = new List<Tuple<int, string, int, int, int, float>>();
