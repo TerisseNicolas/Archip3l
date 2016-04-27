@@ -1,0 +1,515 @@
+[33mcommit 07235baa774aa49f787cb43aa7c0f91cd572741a[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Tue Apr 26 17:06:49 2016 +0200
+
+    pb level maybe solved
+
+[33mcommit 4e05f6e58a5e04db6d8ff1b2d0ed5d093ce497a5[m
+Merge: 743c66d 2c8c978
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Tue Apr 26 15:21:46 2016 +0200
+
+    merged
+
+[33mcommit 743c66d98fda9577ff635a4ca9b551ea821aa33d[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Tue Apr 26 15:21:08 2016 +0200
+
+    nothing
+
+[33mcommit 2c8c978e4c38acb386a21f1e5326d0ce5e6f726e[m
+Merge: 0bc6bda 5ebae8d
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Tue Apr 26 14:59:49 2016 +0200
+
+    Merge branch 'master' of https://github.com/TerisseNicolas/Archip3l
+
+[33mcommit 0bc6bdaafbad5384685f3b61c5a3dd4af5ecaa2a[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Tue Apr 26 14:59:40 2016 +0200
+
+    Tophies conditions
+
+[33mcommit 5ebae8d473a7f250fdd029aa8891cfd994d119dc[m
+Merge: c086f4d b78812c
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Tue Apr 26 14:49:47 2016 +0200
+
+    Merge branch 'master' of https://github.com/TerisseNicolas/Archip3l
+
+[33mcommit c086f4d1a4398c36dea8b43ba39c6e2787613f63[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Tue Apr 26 14:49:40 2016 +0200
+
+    modified airport cost
+
+[33mcommit b78812c35c747428aa75349933f513d8916f9183[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Tue Apr 26 14:47:01 2016 +0200
+
+    Same challenge value endScene and resultScene
+
+[33mcommit dffff37d7d865ad2e62b26dc5f4dcbcd89916f2a[m
+Merge: cd47843 e9ac45c
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Tue Apr 26 14:32:58 2016 +0200
+
+    Mrge
+
+[33mcommit cd478438f7fae72728eca25da9c531104a865fe0[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Tue Apr 26 14:31:57 2016 +0200
+
+    Fix rate on archipel
+
+[33mcommit e9ac45c5160eb74cf077f8f979273af8171bf833[m
+Merge: f4f7375 e9ed55c
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Tue Apr 26 14:24:20 2016 +0200
+
+    merged
+
+[33mcommit f4f7375554353253691495a4a132d0d2e965ff3c[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Tue Apr 26 14:23:35 2016 +0200
+
+    nothing
+
+[33mcommit e9ed55c2de1be97541c9dbed3cbc65eaacc6c8a9[m
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Tue Apr 26 14:05:29 2016 +0200
+
+    icons vertical
+
+[33mcommit 5389c1b4a2d5f2dc80c9066c3138eb9a8dea8585[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Tue Apr 26 12:03:36 2016 +0200
+
+    fix challenge vertical multiple clicks
+
+[33mcommit 128e1745b7893599edc81cc3df5f4dfac3a1860c[m
+Merge: 077d5a8 38b51e6
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Tue Apr 26 11:52:04 2016 +0200
+
+    merged
+
+[33mcommit 077d5a8f9b3ebceadcd8f25efde01da20f8a8d03[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Tue Apr 26 11:51:27 2016 +0200
+
+    added reset script if pb
+
+[33mcommit 38b51e6b875fb8068aadb5673916b960bb60f746[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Tue Apr 26 11:50:40 2016 +0200
+
+    Fix main thread for quitting
+
+[33mcommit 718c2814f87c30c97d23f67af2a368eb46a97ca8[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Tue Apr 26 10:39:14 2016 +0200
+
+    New pirate boat rising Rate
+
+[33mcommit 8885e0fdbe9913bfb0301bf46fe994ea60f02b7d[m
+Merge: bd9ca78 dd14e3c
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Tue Apr 26 10:30:33 2016 +0200
+
+    Merge
+
+[33mcommit dd14e3c237133479f530fb9ed898406982ef355e[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Mon Apr 25 21:20:06 2016 +0200
+
+    fix merge
+
+[33mcommit 5ed2ae509e622d8dac3a9cd1effc4686b2a8ecb9[m
+Merge: e0c2e8a 462d21c
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Mon Apr 25 21:15:08 2016 +0200
+
+    merge
+
+[33mcommit e0c2e8ab0f8df52b7c6c16cdc52f220f09a3f973[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Mon Apr 25 21:13:51 2016 +0200
+
+    nothing important
+
+[33mcommit bd9ca787f6b88f6f925094d892ba96191b070eda[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Mon Apr 25 21:11:42 2016 +0200
+
+    Nothing
+
+[33mcommit 462d21c47916830eaa50ced63901ff4ee7111811[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Mon Apr 25 20:46:30 2016 +0200
+
+    Fix challenge rate sent (0% - 100%)
+
+[33mcommit a0c99d5bbdd7b1c3c24f4bb2b4071321a82db0dd[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Mon Apr 25 20:32:22 2016 +0200
+
+    Secure first scene touch after end of game
+
+[33mcommit 49d8eb08389b51c8c020df2805679b7cf37a6b3f[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Mon Apr 25 20:20:59 2016 +0200
+
+    Merge ok
+
+[33mcommit fc6a77fa52fa0493729eded6ab17a167bedcc57b[m
+Merge: a73b96c 31d662d
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Mon Apr 25 20:19:07 2016 +0200
+
+    Merge
+
+[33mcommit a73b96c90f4dbf65c73ea21345ab8f565c250f86[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Mon Apr 25 20:17:59 2016 +0200
+
+    Quit game
+
+[33mcommit 31d662db5c745fc30834d26697e4d9a02b686708[m
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Mon Apr 25 20:02:30 2016 +0200
+
+    fixes
+
+[33mcommit 23915b4aff2929704fcb30016f278f4999ce27a4[m
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Mon Apr 25 18:05:06 2016 +0200
+
+    challenges files
+
+[33mcommit 5a3dbc0d7b89e2e31eadbc7fc8631385ca39c333[m
+Merge: 31a3169 2e3c544
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Mon Apr 25 17:59:33 2016 +0200
+
+    merge
+
+[33mcommit 31a3169d7bb440b2d3bc2fb7824a91d50e521762[m
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Mon Apr 25 17:57:24 2016 +0200
+
+    fixes
+
+[33mcommit 2e3c544a86e3f84c3f7d4b99d7f094dc11d12ffd[m
+Merge: 7d67677 ecac80e
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Mon Apr 25 15:49:54 2016 +0200
+
+    fix
+
+[33mcommit 7d67677da442badae5f869587815030098a003f6[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Mon Apr 25 15:45:43 2016 +0200
+
+    accents fix
+
+[33mcommit ecac80e77f8e39679828a078a877b254df8031c4[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Mon Apr 25 15:39:09 2016 +0200
+
+    Merge fix
+
+[33mcommit cdb9203acb88ca00aa631cbc5c63cce79ec29ba6[m
+Merge: 8fd4111 82b971f
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Mon Apr 25 15:30:46 2016 +0200
+
+    merge
+
+[33mcommit 8fd4111bfdd31462853a26277aab34276f32fe14[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Mon Apr 25 15:30:12 2016 +0200
+
+    Check challenge rate
+
+[33mcommit 82b971f39207d6dc166732adcb13c4499f2b39e2[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Mon Apr 25 15:15:07 2016 +0200
+
+    fix challenges (merci herehau)
+
+[33mcommit 0db831ee70aa596126b274e57e6d349d10a803f3[m
+Merge: edba077 cf0b338
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Mon Apr 25 15:06:12 2016 +0200
+
+    merged
+
+[33mcommit edba0774a4ee08399e31e49f92833f906794c71c[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Mon Apr 25 15:05:37 2016 +0200
+
+    fixes
+
+[33mcommit cf0b3383e78c43f1f54f4e24676de3a694d65e78[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Mon Apr 25 14:47:07 2016 +0200
+
+    Airport trophy fix
+
+[33mcommit df92b583e6b68428ae67f2395e0e7bd0b0993eeb[m
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Sun Apr 24 22:09:59 2016 +0200
+
+    tri des challenges
+
+[33mcommit a955c4288a445286f632f5f059b6eaaa12a1fff9[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Sun Apr 24 18:29:37 2016 +0200
+
+    clean?
+
+[33mcommit 6b02b2d41701d1b915e098ff6f8121de340d7530[m
+Merge: 1e39b85 26c70cd
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sun Apr 24 14:03:12 2016 +0200
+
+    Merge
+
+[33mcommit 1e39b85c0c68c60757c26ae7a636bcbd8cdd2196[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sun Apr 24 13:58:21 2016 +0200
+
+    SecretEscape test
+
+[33mcommit 26c70cd1a44b416b64d82b553bfda67b3fbdacca[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Sat Apr 23 21:15:47 2016 +0200
+
+    cleaned
+
+[33mcommit 357cbb1da3ebfd3fd27be923f59225a9a1364827[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Sat Apr 23 21:00:28 2016 +0200
+
+    little fixes
+
+[33mcommit 14a3f443887fccd159a1bb4ec1e6bb061b8dd2c6[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Sat Apr 23 20:22:03 2016 +0200
+
+    fixed detail
+
+[33mcommit 362dfc128aabdd44101146a97a84784db5f7d896[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sat Apr 23 19:26:25 2016 +0200
+
+    Cleaning
+
+[33mcommit 130e833979b0cd26bf980384aed13a8c666e4b33[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sat Apr 23 19:22:14 2016 +0200
+
+    Secret abording ;)
+
+[33mcommit f2b6fd7fc5bc074e2114c75ae350f8ce67a1396c[m
+Merge: 7efe308 f47e251
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Sat Apr 23 18:17:14 2016 +0200
+
+    merged
+
+[33mcommit 7efe308b121f1d83384392767835a2d49b2982b6[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Sat Apr 23 18:14:43 2016 +0200
+
+    update challenge
+
+[33mcommit f47e2515e6e67494a1514075af077d5d4a13829c[m
+Merge: 1b8e85a 7a71b1a
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sat Apr 23 13:21:57 2016 +0200
+
+    Merge
+
+[33mcommit 1b8e85a39dd0af85c0bedc22e47e2f122440b12c[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sat Apr 23 13:20:52 2016 +0200
+
+    ^^
+
+[33mcommit 3d4e2ba3c59a1f2a59397ea4361ae57c2b43b55b[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sat Apr 23 13:19:54 2016 +0200
+
+    Update rate of good answers on vertical with enigmas
+
+[33mcommit 7a71b1ab50c6cb91cd7bb2ba7e74c486a40834b1[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Sat Apr 23 13:17:10 2016 +0200
+
+    fix boolean
+
+[33mcommit c8e486373171e02ecc09e8a9ad2f10c065c15012[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sat Apr 23 13:11:22 2016 +0200
+
+    Vertical success rate
+
+[33mcommit 020f4c40b2afd01cc303797e1dd315591d395a86[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sat Apr 23 12:35:59 2016 +0200
+
+    Fix succesRate in resultScene
+
+[33mcommit 10c311dcf3b8ba1ba2384bef34591bb7569a2b65[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sat Apr 23 11:46:38 2016 +0200
+
+    Vertical tuto spotlights fix ?
+
+[33mcommit bf22db9098d9557a0162fdd2d54c112a8c4b7fdf[m
+Merge: b2a4964 9789612
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sat Apr 23 11:32:13 2016 +0200
+
+    Merge
+
+[33mcommit b2a4964db8b6e7c72a0723baf6e0ea4e4c3625c7[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Sat Apr 23 11:30:04 2016 +0200
+
+    commit
+
+[33mcommit 9789612a319303bd06cc9a0c8dbf02dcfccba24f[m
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Sat Apr 23 00:26:25 2016 +0200
+
+    modifs spotlights
+
+[33mcommit 5f830233923ed7d0e981f6358cd1eb71b6472e4d[m
+Merge: 877ee6f 549ea80
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Sat Apr 23 00:14:32 2016 +0200
+
+    merge
+
+[33mcommit 549ea80da2cfb041c512caf1b16d4bbceb9ce17a[m
+Merge: 9465834 a5b6946
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Sat Apr 23 00:10:31 2016 +0200
+
+    merged
+
+[33mcommit 94658343210409c15662af7d2a3e0c1d87b3bd23[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Sat Apr 23 00:10:05 2016 +0200
+
+    putaiiiiin
+
+[33mcommit 877ee6fa970f2c64ea5d5bae106f77f652acb54f[m
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Sat Apr 23 00:03:57 2016 +0200
+
+     l
+
+[33mcommit a5b6946dd79018ba5a59175187faffa253db228c[m
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Fri Apr 22 21:19:40 2016 +0200
+
+    boutons unlock
+
+[33mcommit 132b72df1643f8f27793b999715193ca4a2dd160[m
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Fri Apr 22 21:10:09 2016 +0200
+
+    notif verticam
+
+[33mcommit c40cb5e118dc0acab5d5c455c9c1dc030f49f01e[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Fri Apr 22 19:53:36 2016 +0200
+
+    Merge
+
+[33mcommit bc8db6ae7a5ace929596aa8833304fcc82127d76[m
+Merge: 7dd5fb6 ed18ae4
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Fri Apr 22 19:52:59 2016 +0200
+
+    Merge branch 'master' of https://github.com/TerisseNicolas/Archip3l
+
+[33mcommit 7dd5fb6ccd0876c6eb95316fdefe2bc3dca41b2a[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Fri Apr 22 19:52:52 2016 +0200
+
+    fix tuio
+
+[33mcommit ed18ae49c2b9410d26bbaad10bd2773df17e68bc[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Fri Apr 22 19:01:16 2016 +0200
+
+    Fix merge
+
+[33mcommit d211ff089dafd69eb62b476eb42c18c7815c224e[m
+Merge: 53da94c 344bc40
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Fri Apr 22 18:59:27 2016 +0200
+
+    Merge
+
+[33mcommit 53da94cd3fbfbfaea227410dfb490856bd00f3f7[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Fri Apr 22 18:57:49 2016 +0200
+
+    VS
+
+[33mcommit 344bc40311d0eecbff1bb011d276ef54a224d1ce[m
+Merge: 740221f 4ff71bb
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Fri Apr 22 18:56:12 2016 +0200
+
+    merged
+
+[33mcommit cd3670573d63977ae5cd64c7fb5070ae77e7d30e[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Fri Apr 22 18:55:43 2016 +0200
+
+    Moi
+
+[33mcommit 740221fde5f04e527e584cd1951fecef1a2b5ce6[m
+Author: Baptiste Amato <baptiste.amato@gmail.com>
+Date:   Fri Apr 22 18:55:29 2016 +0200
+
+    alex
+
+[33mcommit 4ff71bb3540c9c8346d7c34cec3e7d6fc6a34861[m
+Merge: 86499dc f368e4b
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Fri Apr 22 18:42:21 2016 +0200
+
+    merge
+
+[33mcommit 86499dcdec39eb6a15d8921290cc6df8664dfc6a[m
+Author: alexballet <brasilialex64@hotmail.fr>
+Date:   Fri Apr 22 18:41:50 2016 +0200
+
+    modifs
+
+[33mcommit f368e4b6e4974eae43efd0f1d41446848e0ba877[m
+Merge: 26fb71e c465f0b
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Fri Apr 22 18:39:50 2016 +0200
+
+    Commit
+
+[33mcommit 26fb71ecc6dfaa8d0e3828fcab6f7f9bf536edba[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Fri Apr 22 18:38:41 2016 +0200
+
+    Commit
+
+[33mcommit aa0a5749771d968483b44da0f7ff9d221690c264[m
+Author: Terisse Nicolas <nicolas.terisse@gmail.com>
+Date:   Fri Apr 22 18:37:41 2016 +0200
+
+    Large file (== 10 commit xd)

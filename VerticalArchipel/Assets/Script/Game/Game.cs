@@ -30,7 +30,7 @@ public class Game : MonoBehaviour
 
         this.Timer = gameObject.GetComponent<Timer>();
         //todo remove
-        this.Timer.Init(1f * 60f);
+        this.Timer.Init(1f * 30f);
         //this.Timer.Init(20f * 60f); //20 min de jeu
         this.Timer.FinalTick += Timer_FinalTick;
         this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
