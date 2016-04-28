@@ -80,7 +80,7 @@ public class Client : MonoBehaviour
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
 
-        StartCoroutine(test());
+        //StartCoroutine(test());
         
 
     }
