@@ -80,15 +80,9 @@ public class Client : MonoBehaviour
         _thListener.Start();
 
 
-        //StartCoroutine(test());
 
     }
-
-    IEnumerator test()
-    {
-        yield return new WaitForSeconds(50f);
-        ProcessMessage("xxx@30002");
-    }
+    
 
  public void loadPort()
     {

@@ -87,21 +87,6 @@ public class Client : MonoBehaviour
 
     }
 
-    IEnumerator test()
-    {
-        yield return new WaitForSeconds(35);
-        ProcessMessage("xxx@30000@BoardEndScene");
-        yield return new WaitForSeconds(5);
-        ProcessMessage("xxx@30000@BoardResultScene");
-        //ProcessMessage("toto@21111@Sawmill");
-        //yield return new WaitForSeconds(1);
-        //ProcessMessage("toto@21111@Goldmine");
-        //yield return new WaitForSeconds(1);
-        //ProcessMessage("toto@22111@Sawmill");
-        //yield return new WaitForSeconds(1);
-        //ProcessMessage("toto@24111@Goldmine");
-    }
-
     public void loadPort()
     {
         string line;

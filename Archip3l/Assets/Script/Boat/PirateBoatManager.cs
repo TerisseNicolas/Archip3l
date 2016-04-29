@@ -42,8 +42,6 @@ public class PirateBoatManager : MonoBehaviour
 
         this.interval = this.initInterval;
 
-        //For tests
-        //this.Client_MessagePiratesIncreaseRateEvent(this, null);
     }
     void Update()
     {

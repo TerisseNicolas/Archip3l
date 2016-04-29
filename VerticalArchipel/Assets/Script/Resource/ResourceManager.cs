@@ -88,19 +88,7 @@ public class ResourceManager : MonoBehaviour
         this._MessageResourceStockUpdateEvent = true;
         this._MessageResourceStockUpdateEventEventArgs = e;
     }
-
-    /*IEnumerator test()
-    {
-        yield return new WaitForSeconds(2);
-        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@22355@Gold@45" }, TypeResource.Gold, 45);
-        yield return new WaitForSeconds(2);
-        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@23355@Tourism@2" }, TypeResource.Tourism, 2);
-        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@24355@Tourism@7" }, TypeResource.Tourism, 7);
-        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@23355@Tourism@15" }, TypeResource.Tourism, 120);
-        yield return new WaitForSeconds(2);
-        changeResourceStock(null, new MessageEventArgs { message = "serverinfo@22355@Gold@45" }, TypeResource.Gold, 45);
-    }*/
-
+    
     public bool addResource(TypeResource resourceType, int quantity, int production = 0)
     {
         bool flag = false;
