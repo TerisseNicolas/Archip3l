@@ -2,6 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.IO;
+
 public class Game : MonoBehaviour
 {
     private Timer Timer;
@@ -16,6 +23,9 @@ public class Game : MonoBehaviour
 
     private bool finished = false;
 
+    private int nbMinutes;
+    private string filePath;
+
     public const int nbChallengesMax = 3;
 
     private List<GameObject> ChallengesGameObjects;
@@ -28,9 +38,11 @@ public class Game : MonoBehaviour
         this.Client.MessageSystemStartOfGameEvent += Client_MessageSystemStartOfGame;
         //this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
 
+        this.filePath = "minutes.txt";
+        loadTime();
         this.Timer = gameObject.GetComponent<Timer>();
         //todo remove
-        this.Timer.Init(1f * 60f);
+        this.Timer.Init(nbMinutes * 60f);
         //this.Timer.Init(20f * 60f); //20 min de jeu
         this.Timer.FinalTick += Timer_FinalTick;
         this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
@@ -70,6 +82,24 @@ public class Game : MonoBehaviour
         //    StartCoroutine(this.GlobalResourceManager.initResources());
         //    this.CoroutineInitOfGame = false;
         //}
+    }
+
+    private void loadTime(){
+        string line;
+        if (File.Exists(this.filePath))
+        {
+            StreamReader file = new StreamReader(this.filePath);
+            while ((line = file.ReadLine()) != null)
+            {
+                nbMinutes = Int32.Parse(line);
+            }
+            file.Close();
+        }
+        else
+        {
+            StreamWriter file = new StreamWriter(this.filePath);
+            file.Close();
+        }
     }
 
     private void Client_MessageSystemStartOfGame(object sender, MessageEventArgs e)
