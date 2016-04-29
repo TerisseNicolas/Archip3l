@@ -5,18 +5,18 @@ using TouchScript.Gestures;
 using TouchScript.Hit;
 using TouchScript;
 
-public class SecretBackdoor : InputSource
+public class SecretBackdoorTuto : InputSource
 {
-    private Game Game;
+    private Client Client;
 
-	void Start ()
+    void Start()
     {
-        this.Game = GameObject.Find("Game").GetComponent<Game>();
-	}
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
 
+    }
     private void OnMouseDownSimulation()
     {
-        this.Game.Timer_FinalTick(this, null);
+        this.Client.sendData("@90000");
     }
 
     //-------------- TUIO -----------------------------------------------------------------------
