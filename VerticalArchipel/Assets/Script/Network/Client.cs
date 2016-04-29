@@ -15,8 +15,7 @@ public class Client : MonoBehaviour
     private bool _continue;
     private Thread _thListener;
 
-    private string filePath1;
-    private string filePath2;
+    private List<string> configs;
 
     private int sendingPort = 1523;
     private int listeningPort = 5050;
@@ -62,14 +61,14 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemTeamNameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemTeamLevelEvent;
 
+    public event EventHandler<MessageEventArgs> MessageSystemTutoAbort;
+
 
     void Start()
     {
+        loadConfigs();
+        
 
-        this.filePath1 = "port.txt";
-        this.filePath2 = "ip.txt";
-        loadPort();
-        loadIP();
         DontDestroyOnLoad(transform.gameObject);
 
         _client = new UdpClient();
@@ -79,61 +78,47 @@ public class Client : MonoBehaviour
         _continue = true;
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
-
-        //StartCoroutine(test());
         
-
     }
 
-    IEnumerator test()
+    public void loadConfigs()
     {
-        yield return new WaitForSeconds(2);
-        ProcessMessage("toto@21111@Sawmill");
-        yield return new WaitForSeconds(1);
-        ProcessMessage("toto@21111@Goldmine");
-        yield return new WaitForSeconds(1);
-        ProcessMessage("toto@22111@Sawmill");
-        yield return new WaitForSeconds(1);
-        ProcessMessage("toto@24111@Goldmine");
-    }
+        configs = new List<string>();
+        configs.Add("sendingPort.txt");
+        configs.Add("listeningPort.txt");
+        configs.Add("serverIP.txt");
 
-    public void loadPort()
-    {
-        string line;
-        if (File.Exists(this.filePath1))
+        foreach(string filePath in configs)
         {
-            StreamReader file = new StreamReader(this.filePath1);
-            while ((line = file.ReadLine()) != null)
+            string line;
+            if (File.Exists(filePath))
             {
-                listeningPort = Int32.Parse(line);
+                StreamReader file = new StreamReader(filePath);
+                while ((line = file.ReadLine()) != null)
+                {
+                    switch (filePath.Split('.')[0])
+                    {
+                        case "sendingPort":
+                            sendingPort = Int32.Parse(line);
+                            break;
+                        case "listeningPort":
+                            listeningPort = Int32.Parse(line);
+                            break;
+                        case "serverIP":
+                            serverIP = line;
+                            break;
+                    }                    
+                }
+                file.Close();
             }
-            file.Close();
-        }
-        else
-        {
-            StreamWriter file = new StreamWriter(this.filePath1);
-            file.Close();
-        }
-    }
-
-    public void loadIP()
-    {
-        string line;
-        if (File.Exists(this.filePath2))
-        {
-            StreamReader file = new StreamReader(this.filePath2);
-            while ((line = file.ReadLine()) != null)
+            else
             {
-                serverIP = line;
+                StreamWriter file = new StreamWriter(filePath);
+                file.Close();
             }
-            file.Close();
-        }
-        else
-        {
-            StreamWriter file = new StreamWriter(this.filePath2);
-            file.Close();
-        }
+        }        
     }
+    
 
     public void sendData(string dataToSend)
     {
@@ -324,6 +309,9 @@ public class Client : MonoBehaviour
                 break;
             case 40003:
                 MessageEvent += MessageTutoCompleteEvent;
+                break;
+            case 90000:
+                MessageEvent += MessageSystemTutoAbort;
                 break;
         }
 

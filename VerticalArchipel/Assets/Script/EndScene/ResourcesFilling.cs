@@ -30,6 +30,7 @@ public class ResourcesFilling : MonoBehaviour
 
         //fill challenge success rate
         Score score = GameObject.Find("Game").GetComponent<Score>();
+        GlobalInfo globalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
         float totalSuccessRate = 0;
         float value = 0;
         for(int i = 0; i <score.ChallengeSuccessRate.Count; i++)
@@ -50,6 +51,8 @@ public class ResourcesFilling : MonoBehaviour
         GameObject.Find("goodAnswersValue0").GetComponent<Text>().text = (verticalRate * 100).ToString("F2") + "%";
         totalSuccessRate += verticalRate * 100;
         GameObject.Find("goodAnswersValue5").GetComponent<Text>().text = (totalSuccessRate / 5).ToString("F2") +"%";
+        score.finalChallengeRate = (((float) totalSuccessRate) / 5f);
+        score.addScore(globalInfo.teamName);
 
         //fill buildings
 

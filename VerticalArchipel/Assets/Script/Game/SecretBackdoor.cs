@@ -12,7 +12,6 @@ public class SecretBackdoor : InputSource
 	void Start ()
     {
         this.Game = GameObject.Find("Game").GetComponent<Game>();
-	
 	}
 
     private void OnMouseDownSimulation()
@@ -48,7 +47,7 @@ public class SecretBackdoor : InputSource
 
     private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
     {
-        if (Time.time - TouchTime < 1)
+        if ((Time.time - TouchTime < 10) && (Time.time - TouchTime > 3))
             this.OnMouseDownSimulation();
         TouchTime = 0;
     }

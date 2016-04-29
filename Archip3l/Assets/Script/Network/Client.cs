@@ -15,12 +15,12 @@ public class Client : MonoBehaviour
     private bool _continue;
     private Thread _thListener;
 
-    private string filePath1;
-    private string filePath2;
+    private List<string> configs;
 
     private int sendingPort = 1523;
     private int listeningPort = 5050;
     private string serverIP = "172.18.136.49";
+    //private string serverIP = "192.168.1.91";
 
     //All events raised
     private delegate void DelegateEvent(object send, EventArgs e);
@@ -30,7 +30,7 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageBuildingUpgradeEvent;
     public event EventHandler<MessageEventArgs> MessageBuildingDestructionEvent;
 
-    public event EventHandler<MessageEventArgs> MessageTrophyWonEvent;
+    //public event EventHandler<MessageEventArgs> MessageTrophyWonEvent;
 
     public event EventHandler<MessageEventArgs> MessageResourceInitEvent;
     public event EventHandler<MessageEventArgs> MessageResourceProductionUpdateEvent;
@@ -61,14 +61,14 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemTeamNameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemTeamLevelEvent;
 
+    public event EventHandler<MessageEventArgs> MessageSystemTutoAbort;
 
-    void Awake()
+
+    void Start()
     {
+        loadConfigs();
 
-        this.filePath1 = "port.txt";
-        this.filePath2 = "ip.txt";
-        loadPort();
-        loadIP();
+
         DontDestroyOnLoad(transform.gameObject);
 
         _client = new UdpClient();
@@ -84,50 +84,62 @@ public class Client : MonoBehaviour
 
     }
 
+
+    public void loadConfigs()
+    {
+        configs = new List<string>();
+        configs.Add("sendingPort.txt");
+        configs.Add("listeningPort.txt");
+        configs.Add("serverIP.txt");
+
+        foreach (string filePath in configs)
+        {
+            string line;
+            if (File.Exists(filePath))
+            {
+                StreamReader file = new StreamReader(filePath);
+                while ((line = file.ReadLine()) != null)
+                {
+                    switch (filePath.Split('.')[0])
+                    {
+                        case "sendingPort":
+                            sendingPort = Int32.Parse(line);
+                            break;
+                        case "listeningPort":
+                            listeningPort = Int32.Parse(line);
+                            break;
+                        case "serverIP":
+                            serverIP = line;
+                            break;
+                    }
+                }
+                file.Close();
+            }
+            else
+            {
+                StreamWriter file = new StreamWriter(filePath);
+                file.Close();
+            }
+        }
+    }
+
     IEnumerator test()
     {
-        yield return new WaitForSeconds(50f);
-        ProcessMessage("xxx@30002");
+        yield return new WaitForSeconds(5);
+        ProcessMessage("xxx@90000");
+        //yield return new WaitForSeconds(35);
+        //ProcessMessage("xxx@30000@BoardEndScene");
+        //yield return new WaitForSeconds(5);
+        //ProcessMessage("xxx@30000@BoardResultScene");
+        //ProcessMessage("toto@21111@Sawmill");
+        //yield return new WaitForSeconds(1);
+        //ProcessMessage("toto@21111@Goldmine");
+        //yield return new WaitForSeconds(1);
+        //ProcessMessage("toto@22111@Sawmill");
+        //yield return new WaitForSeconds(1);
+        //ProcessMessage("toto@24111@Goldmine");
     }
-
- public void loadPort()
-    {
-        string line;
-        if (File.Exists(this.filePath1))
-        {
-            StreamReader file = new StreamReader(this.filePath1);
-            while ((line = file.ReadLine()) != null)
-            {
-                listeningPort = Int32.Parse(line);
-            }
-            file.Close();
-        }
-        else
-        {
-            StreamWriter file = new StreamWriter(this.filePath1);
-            file.Close();
-        }
-    }
-
-    public void loadIP()
-    {
-        string line;
-        if (File.Exists(this.filePath2))
-        {
-            StreamReader file = new StreamReader(this.filePath2);
-            while ((line = file.ReadLine()) != null)
-            {
-                serverIP = line;
-                //Debug.Log(serverIP);
-            }
-            file.Close();
-        }
-        else
-        {
-            StreamWriter file = new StreamWriter(this.filePath2);
-            file.Close();
-        }
-    }
+    
 
     public void sendData(string dataToSend)
     {
@@ -180,12 +192,10 @@ public class Client : MonoBehaviour
 
     private void ProcessMessage(string message)
     {
-        //
+        //Debug.Log("Client processing : " + message);
         //Go to see the excell to get message format
 
         string[] split = message.Split('@');
-        if (!(split[1].Contains("355")))
-            Debug.Log("Client processing : " + message);
         this.MessageEvent = null;
 
         int code = Int32.Parse(split[1]);
@@ -193,12 +203,12 @@ public class Client : MonoBehaviour
         //Raise event
         switch (code)
         {
-            case 11221:
-            case 12221:
-            case 12321:
-            case 12421:
-                MessageEvent += MessageTrophyWonEvent;
-                break;
+            //case 11221:
+            //case 12221:
+            //case 12321:
+            //case 12421:
+            //    MessageEvent += MessageTrophyWonEvent;
+            //    break;
             case 21111:
             case 22111:
             case 23111:
@@ -266,15 +276,15 @@ public class Client : MonoBehaviour
             case 30005:
                 MessageEvent += MessageSystemTeamLevelEvent;
                 break;
-            case 30006:
-                MessageEvent += MessageSystemStartInitOfGameEvent;
-                break;
-            case 30087:
-                MessageEvent += MessageSystemStartInitOfGameAnswerEvent;
-                break;
-            case 30306:
-                MessageEvent += MessageResourceInitEvent;
-                break;
+            //case 30006:
+            //    MessageEvent += MessageSystemStartInitOfGameEvent;
+            //    break;
+            //case 30087:
+            //    MessageEvent += MessageSystemStartInitOfGameAnswerEvent;
+            //    break;
+            //case 30306:
+            //    MessageEvent += MessageResourceInitEvent;
+            //    break;
             case 30100:
                 MessageEvent += MessageSystemQuitApplication;
                 break;
@@ -320,6 +330,9 @@ public class Client : MonoBehaviour
                 break;
             case 40003:
                 MessageEvent += MessageTutoCompleteEvent;
+                break;
+            case 90000:
+                MessageEvent += MessageSystemTutoAbort;
                 break;
         }
 

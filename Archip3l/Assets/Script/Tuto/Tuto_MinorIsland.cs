@@ -32,6 +32,8 @@ public class Tuto_MinorIsland : InputSource {
     public string buildingClicked;
     public int numPopup = 0;
 
+    public bool abort = false;
+
     //steps of tuto
     public bool harborBuilt = false;
     public bool harborMoved = false;
@@ -59,8 +61,6 @@ public class Tuto_MinorIsland : InputSource {
             this.tuto_buildingManager = mytuto_buildingManager;
         }
 
-        this.Client = GameObject.Find("Network").GetComponent<Client>();
-        this.Client.MessageTutoCompleteEvent += Client_MessageTutoCompleteEvent;
         this.verticalTutoCompleted = false;
 
         this.startEndAnimationFlag = false;
@@ -68,6 +68,9 @@ public class Tuto_MinorIsland : InputSource {
 
     public void Start()
     {
+
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+        this.Client.MessageTutoCompleteEvent += Client_MessageTutoCompleteEvent;
         if (nameTuto_MinorIsland == "sous_ile_1")
         {
 
@@ -75,9 +78,17 @@ public class Tuto_MinorIsland : InputSource {
             startCanvas = Instantiate(startCanvasPrefab);
             startCanvas.name = "StartCanvas";
             StartCoroutine(this.startFade());
+
+            this.Client.MessageSystemTutoAbort += Client_MessageSystemTutoAbort;
+
         }
         displayPopup("Bienvenue dans le tutoriel. \nPour commencer, appuyez n'importe où puis créez le port.", 10);
 
+    }
+
+    private void Client_MessageSystemTutoAbort(object sender, MessageEventArgs e)
+    {
+        abort = true;
     }
 
     public IEnumerator startFade()
@@ -323,6 +334,11 @@ public class Tuto_MinorIsland : InputSource {
                     this.createExchangeWindowTuto();
                 }
             }
+        }
+
+        if (abort)
+        {
+            SceneSupervisor.Instance.loadLoadingScences();
         }
     }
 

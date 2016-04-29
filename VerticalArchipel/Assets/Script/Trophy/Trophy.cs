@@ -38,18 +38,17 @@ public class Trophy : InputSource
     {
         switch (this.trophyName)
         {
-            //TODO : modify
-            case "Medal3": //6 types de batiments contruits
+            case "Medal3": //8 types de batiments contruits
                 return this.Score.numberOfDifferentBuildingBuilt >= 8;
-            case "Medal2"://11 types de batiments contruits
+            case "Medal2"://12 types de batiments contruits
                 return this.Score.numberOfDifferentBuildingBuilt >= 12;
             case "Medal1"://tous types de batiments contruits
                 return this.Score.allBuildingBuilt;
-            case "Trophy3": //TOTAL resources count > 500
+            case "Trophy3": //TOTAL resources count > 6000
                 return GRM.totalResourceCount > 6000;
-            case "Trophy2": //TOTAL resources count > 1000
+            case "Trophy2": //TOTAL resources count > 15000
                 return GRM.totalResourceCount > 15000;
-            case "Trophy1": //TOTAL resources count > 5000
+            case "Trophy1": //TOTAL resources count > 30000
                 return GRM.totalResourceCount > 30000;
                 // Airport requirement managed in the trophy manager
 

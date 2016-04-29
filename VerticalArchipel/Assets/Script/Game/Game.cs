@@ -1,12 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
-using System;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading;
 using System.IO;
 
 public class Game : MonoBehaviour
@@ -21,9 +15,9 @@ public class Game : MonoBehaviour
     private Score Score;
     private GlobalInfo GlobalInfo;
 
+    private float vGameTimer = 20 * 60f;
     private bool finished = false;
 
-    private int nbMinutes;
     private string filePath;
 
     public const int nbChallengesMax = 3;
@@ -32,31 +26,38 @@ public class Game : MonoBehaviour
 
     //private bool CoroutineInitOfGame = false;
 
+    private List<string> constants;
+
+    public float vDisturbanceTimer = 180f;
+    public float vChallengeTimer = 30f;
+
+
     void Start()
     {
+        loadConstants();
+
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemStartOfGameEvent += Client_MessageSystemStartOfGame;
         //this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
 
-        this.filePath = "minutes.txt";
-        loadTime();
         this.Timer = gameObject.GetComponent<Timer>();
+
         //todo remove
-        this.Timer.Init(nbMinutes * 60f);
-        //this.Timer.Init(20f * 60f); //20 min de jeu
+     
+       this.Timer.Init(vGameTimer);
+
         this.Timer.FinalTick += Timer_FinalTick;
         this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
         this.Timer.PirateBoatsIncreaseTick += Timer_PirateBoatsIncreaseTick;
 
         this.TimerDisturbance = gameObject.GetComponent<DisturbanceTimer>();
-        //todo remove
-        this.TimerDisturbance.Init(10f);
-        //this.TimerDisturbance.Init(180f);
+
+        this.TimerDisturbance.Init(vDisturbanceTimer);
         this.TimerDisturbance.FinalTick += TimerDisturbance_FinalTick;
         this.DisturbanceCount = 0;
 
         this.ChallengerTimer = gameObject.GetComponent<ChallengeTimer>();
-        this.ChallengerTimer.Init(30f);
+        this.ChallengerTimer.Init(vChallengeTimer);
         this.ChallengerTimer.FinalTick += ChallengerTimer_FinalTick;
 
         //this.GlobalResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
@@ -74,7 +75,46 @@ public class Game : MonoBehaviour
 
         Client_MessageSystemStartOfGame(this, null);
     }
-    
+
+    public void loadConstants()
+    {
+        constants = new List<string>();
+        constants.Add("vGameTimer.txt");
+        constants.Add("vDisturbanceTimer.txt");
+        constants.Add("vChallengeTimer.txt");
+
+        foreach (string filePath in constants)
+        {
+            string line;
+            if (File.Exists(filePath))
+            {
+                StreamReader file = new StreamReader(filePath);
+                while ((line = file.ReadLine()) != null)
+                {
+                    switch (filePath.Split('.')[0])
+                    {
+                        case "vGameTimer":
+                            vGameTimer = float.Parse(line);
+                            break;
+                        case "vDisturbanceTimer":
+                            vDisturbanceTimer = float.Parse(line);
+                            break;
+                        case "vChallengeTimer":
+                            vChallengeTimer = float.Parse(line);
+                            break;
+                    }
+                }
+                file.Close();
+            }
+            else
+            {
+                StreamWriter file = new StreamWriter(filePath);
+                file.Close();
+            }
+        }
+    }
+
+
     void Update()
     {
         //if(this.CoroutineInitOfGame)
@@ -82,24 +122,6 @@ public class Game : MonoBehaviour
         //    StartCoroutine(this.GlobalResourceManager.initResources());
         //    this.CoroutineInitOfGame = false;
         //}
-    }
-
-    private void loadTime(){
-        string line;
-        if (File.Exists(this.filePath))
-        {
-            StreamReader file = new StreamReader(this.filePath);
-            while ((line = file.ReadLine()) != null)
-            {
-                nbMinutes = Int32.Parse(line);
-            }
-            file.Close();
-        }
-        else
-        {
-            StreamWriter file = new StreamWriter(this.filePath);
-            file.Close();
-        }
     }
 
     private void Client_MessageSystemStartOfGame(object sender, MessageEventArgs e)
@@ -123,7 +145,7 @@ public class Game : MonoBehaviour
     {
         finished = true;
         this.Client.sendData("@30002");
-        this.Score.addScore(this.GlobalInfo.teamName);
+        //this.Score.addScore(this.GlobalInfo.teamName);
         Debug.Log("End of game");
     }
     private void ChallengerTimer_FinalTick(object sender, System.EventArgs e)
