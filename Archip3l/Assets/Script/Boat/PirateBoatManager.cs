@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using TouchScript.InputSources;
 
 public class PirateBoatManager : MonoBehaviour
 {
     private float initInterval = 10f;
     private float interval;
-    private float raisingRate = 0.998f;
+    private float raisingRate = 0.99f;
     private int boatId = 0;
+
+    private List<string> constants;
 
     public Transform pirateBoatPrefab;
     private Client Client; 
@@ -30,6 +34,9 @@ public class PirateBoatManager : MonoBehaviour
 
     void Awake()
     {
+
+        loadConstants();
+
         rnd = new System.Random();
         this.island1 = GameObject.Find("sous_ile_1").GetComponent<MinorIsland>();
         this.island2 = GameObject.Find("sous_ile_2").GetComponent<MinorIsland>();
@@ -43,6 +50,42 @@ public class PirateBoatManager : MonoBehaviour
         this.interval = this.initInterval;
 
     }
+
+    public void loadConstants()
+    {
+        constants = new List<string>();
+        constants.Add("initInterval.txt");
+        constants.Add("raisingRate.txt");
+
+        foreach (string filePath in constants)
+        {
+            string line;
+            if (File.Exists(filePath))
+            {
+                StreamReader file = new StreamReader(filePath);
+                while ((line = file.ReadLine()) != null)
+                {
+                    switch (filePath.Split('.')[0])
+                    {
+                        case "initInterval":
+                            initInterval = float.Parse(line);
+                            break;
+                        case "raisingRate":
+                            raisingRate = float.Parse(line);
+                            break;
+                    }
+                }
+                file.Close();
+            }
+            else
+            {
+                StreamWriter file = new StreamWriter(filePath);
+                file.Close();
+            }
+        }
+    }
+
+
     void Update()
     {
         if (GameObject.Find("Explosion1(Clone)") != null)

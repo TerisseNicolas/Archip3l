@@ -27,7 +27,7 @@ public class GameMenu : InputSource
 
     IEnumerator unlockScene()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(30f);
         this.unlockedScene = true;
         //Debug.Log("Unlocked");
     }
