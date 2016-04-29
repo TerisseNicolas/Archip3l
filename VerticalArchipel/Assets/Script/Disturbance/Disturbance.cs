@@ -133,6 +133,8 @@ public class Disturbance : InputSource
                     {
                         //GameObject.Find("Disturbance-sous_ile_" + i.ToString()).SetActive(false);
                         GameObject.Find("Disturbance-sous_ile_" + i.ToString()).GetComponent<SpriteRenderer>().enabled = false;
+                        GameObject.Find("icon_Disturbance-sous_ile_" + i.ToString()).GetComponent<SpriteRenderer>().enabled = false;
+
                     }
                 }
             }
