@@ -17,7 +17,7 @@ public class main : MonoBehaviour
 
     void Start()
     {
-        level = 0;
+        main.level = 0;
         //this.Client = GameObject.Find("Network").GetComponent<Client>();
         main.level = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>().teamLevel;
 

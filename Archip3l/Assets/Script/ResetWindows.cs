@@ -26,7 +26,7 @@ public class ResetWindows : InputSource
 	void Update () {
         if (this.begun)
         {
-            if ((Time.time - TouchTime > 10) && (Time.time - TouchTime < 11))
+            if ((Time.time - TouchTime > 5) && (Time.time - TouchTime < 7))
             {
                 TouchTime = 0;
                 island.TouchTime = 0;

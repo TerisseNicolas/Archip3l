@@ -13,7 +13,6 @@ using TouchScript;
 
 public class ChallengeVerticalClick : InputSource
 {
-    static public bool challengeWindowPresent = false;
 
     static public string[] row { get; set; }
     static public string resourceToWin { get; set; }

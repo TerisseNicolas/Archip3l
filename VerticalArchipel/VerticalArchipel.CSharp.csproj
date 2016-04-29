@@ -103,6 +103,7 @@
     <Compile Include="Assets\Script\Network\Client.cs" />
     <Compile Include="Assets\Script\Network\trigger.cs" />
     <Compile Include="Assets\Script\Notification.cs" />
+    <Compile Include="Assets\Script\ResetWindows.cs" />
     <Compile Include="Assets\Script\Resource\GlobalResourceManager.cs" />
     <Compile Include="Assets\Script\Resource\Resource.cs" />
     <Compile Include="Assets\Script\Resource\ResourceManager.cs" />
