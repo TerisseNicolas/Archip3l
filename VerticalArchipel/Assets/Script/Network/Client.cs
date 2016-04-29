@@ -62,6 +62,8 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemTeamNameEvent;
     public event EventHandler<MessageEventArgs> MessageSystemTeamLevelEvent;
 
+    public event EventHandler<MessageEventArgs> MessageSystemTutoAbort;
+
 
     void Start()
     {
@@ -80,7 +82,7 @@ public class Client : MonoBehaviour
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
 
-        StartCoroutine(test());
+        //StartCoroutine(test());
         
 
     }
@@ -327,6 +329,9 @@ public class Client : MonoBehaviour
                 break;
             case 40003:
                 MessageEvent += MessageTutoCompleteEvent;
+                break;
+            case 90000:
+                MessageEvent += MessageSystemTutoAbort;
                 break;
         }
 
