@@ -63,6 +63,8 @@ public class Client : MonoBehaviour
 
     public event EventHandler<MessageEventArgs> MessageSystemTutoAbort;
 
+    public event EventHandler<MessageEventArgs> MessageSystemDebug;
+
 
     void Start()
     {

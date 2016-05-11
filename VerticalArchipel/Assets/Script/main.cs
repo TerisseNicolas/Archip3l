@@ -13,8 +13,6 @@ public class main : MonoBehaviour
 
     static public int level;
 
-    //private Client Client;
-
     void Start()
     {
         main.level = 0;
@@ -35,9 +33,6 @@ public class main : MonoBehaviour
             GameObject.Find("Notif" + i.ToString()).GetComponent<BoxCollider>().enabled = false;
         }
     }
-
-    
-
 
     static public void removeChallenge(GameObject go)
     {
