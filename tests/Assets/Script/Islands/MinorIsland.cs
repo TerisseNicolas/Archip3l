@@ -1,0 +1,666 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using System;
+using TouchScript.Gestures;
+using TouchScript.Hit;
+using TouchScript;
+using TouchScript.InputSources;
+
+public class MinorIsland : InputSource
+{
+    public BuildingManager buildingManager { get; private set; }
+    public ResourceManager resourceManager { get; private set; }
+
+    private Client Client;
+
+    public Transform grassHopperPrefab;
+    public Transform hurricanePrefab;
+    static int DisturbanceCount = 0;
+
+    public Transform buildingManagerPrefab;
+    public Transform resourceManagerPrefab;
+
+    public string nameMinorIsland;
+    private bool begun = false;
+
+    public int nbGoodAnswersChallenges = 0;
+    public int nbAnswersChallenges = 0;
+
+    //communication with WheelIcon, BuildingInfo & ChallengeBuild scripts + Popups & TouchBuilding
+    public Vector2 positionTouched;
+    public Vector2 placeOfBuildingConstruction;
+    public bool wheelPresent = false;                   //wheel present on the island
+    public bool buildingInfoPresent = false;            //buildingInfo present on the island
+    public bool upgradeBuildingInfoPresent = false;     //upgradeBuildingInfo present on the island
+    public bool challengePresent = false;               //challenge present on the island
+    public bool moveBuilding = false;                   //moving a building
+    public bool exchangeWindowPresent = false;          //exchangeWindow present on the island
+    public bool disturbancePresent = false;
+    public bool touchBuildingPresent = false;
+    public bool removeBuildingInfoPresent = false;
+    public string nameBuildingTouched;
+    public string buildingClickedWheel;
+
+    //for exchange resources window
+    public bool otherWindowOpen = false;     //choice of Island or Resource
+    public string resource = string.Empty;
+    public string islandToSend = string.Empty;
+
+    //impossible to perform 2 resource exchanges at the same time
+    static public bool exchangePerforming = false;
+
+    public Canvas startCanvas;
+    public int numPopup = 0;
+
+    //fixes coroutine bug
+    private bool coroutineDisturbance = false;
+
+    //todo: check or remove
+    void FixedUpdate()
+    {
+        if (TouchTime != 0 && Time.time - TouchTime > 10)
+            TouchTime = 0;
+    }
+
+    void Awake()
+    {
+
+        var buildingManagerTransform = Instantiate(buildingManagerPrefab) as Transform;
+        BuildingManager buildingManager = buildingManagerTransform.GetComponent<BuildingManager>();
+        if (buildingManager != null)
+        {
+            buildingManager.init(this);
+            buildingManager.transform.SetParent(this.transform);
+            this.buildingManager = buildingManager;
+        }
+
+        var resourceManagerTransform = Instantiate(resourceManagerPrefab) as Transform;
+        ResourceManager resourceManager = resourceManagerTransform.GetComponent<ResourceManager>();
+        if (resourceManager != null)
+        {
+            resourceManager.init(this);
+            resourceManager.transform.SetParent(this.transform);
+            this.resourceManager = resourceManager;
+        }
+
+        displayPopup("C'est parti !", 3);
+
+    }
+
+    public void Start()
+    {
+
+        this.Client = GameObject.Find("Network").GetComponent<Client>();
+        this.Client.MessageDisturbanceEvent += Client_MessageDisturbanceEvent;
+        this.Client.MessageSystemEndOfGameEvent += Client_MessageSystemEndOfGameEvent;
+
+        Vector3 harborPosition;
+        switch (this.nameMinorIsland)
+        {
+            case "sous_ile_1":
+                harborPosition = new Vector3(-83, 84, -3);
+                break;
+            case "sous_ile_2":
+                harborPosition = new Vector3(130, 110, -3);
+                break;
+            case "sous_ile_3":
+                harborPosition = new Vector3(-107, -69, -3);
+                break;
+            default:
+                harborPosition = new Vector3(106, -71, -3);
+                break;
+        }
+        buildingManager.createBuilding(TypeBuilding.Harbor, harborPosition);
+
+
+        if (nameMinorIsland == "sous_ile_1")
+        {
+            Canvas startCanvasPrefab = Resources.Load<Canvas>("Prefab/StartCanvas");
+            startCanvas = Instantiate(startCanvasPrefab);
+            startCanvas.name = "StartCanvas";
+            Color color = startCanvas.GetComponentInChildren<SpriteRenderer>().color;
+            color.a = 1;
+            startCanvas.GetComponentInChildren<SpriteRenderer>().color = color;
+            StartCoroutine(this.startFade());
+        }
+        
+
+    }
+    
+
+    public IEnumerator startFade()
+    {
+        SpriteRenderer sp = startCanvas.GetComponentInChildren<SpriteRenderer>();
+        Color color;
+        for (int i = 0; i < 200; i++)
+        {
+            yield return new WaitForSeconds(0.01f);
+            color = sp.color;
+            color.a -= 0.005f;
+            sp.color = color;
+        }
+        Destroy(GameObject.Find("StartCanvas"));
+    }
+
+    public void createChallengeBuild(string buildingClicked)
+    {
+
+        GameObject.Find(nameMinorIsland).GetComponent<MeshCollider>().enabled = false;
+
+        //random type of ChallengeBuild
+        TypeChallenge type;
+        System.Random ran = new System.Random();
+        int aleat = ran.Next(0, 2);
+        if (aleat == 0)
+            type = TypeChallenge.VraiFaux;
+        else
+            type = TypeChallenge.QCM;
+
+
+        Canvas challengePrefab = Resources.Load<Canvas>("Prefab/Challenges/Build_Challenge_" + type.ToString());
+        Canvas canvasChallenge = Instantiate(challengePrefab);
+
+        canvasChallenge.name = "Challenge_" + type.ToString() + "_" + this.nameMinorIsland;
+        canvasChallenge.transform.SetParent(GameObject.Find(this.nameMinorIsland).transform);
+        Vector3 vec = GameObject.Find("Virtual_" + this.nameMinorIsland).transform.position;
+        vec.z = -5;
+        canvasChallenge.transform.position = vec;
+
+        //rotation if other side of the table
+        char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
+        if (id == '1' || id == '2')
+            canvasChallenge.transform.Rotate(Vector3.forward * 180);
+
+
+        GameObject background = canvasChallenge.transform.Find("background").gameObject;
+        background.GetComponent<ChallengeBuild>().init(type, this, (TypeBuilding)System.Enum.Parse(typeof(TypeBuilding), buildingClicked));
+        
+
+
+        GameObject.Find(nameMinorIsland).GetComponent<MeshCollider>().enabled = true;
+    }
+
+    public void createChallengeUpgrade(Building building)
+    {
+
+        GameObject.Find(nameMinorIsland).GetComponent<MeshCollider>().enabled = false;
+
+        //random type of ChallengeUpgrade
+        TypeChallenge type;
+        System.Random ran = new System.Random();
+        int aleat = ran.Next(0, 2);
+        if (aleat == 0)
+            type = TypeChallenge.VraiFaux;
+        else
+            type = TypeChallenge.QCM;
+
+
+        Canvas challengePrefab = Resources.Load<Canvas>("Prefab/Challenges/Upgrade_Challenge_" + type.ToString());
+        Canvas challengeUpgrade = Instantiate(challengePrefab);
+
+        challengeUpgrade.name = "Challenge_" + type.ToString() + "_" + this.nameMinorIsland;
+        challengeUpgrade.transform.SetParent(GameObject.Find(this.nameMinorIsland).transform);
+        Vector3 vec = GameObject.Find("Virtual_" + this.nameMinorIsland).transform.position;
+        vec.z = -5;
+        challengeUpgrade.transform.position = vec;
+
+        //rotation if other side of the table
+        char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
+        if (id == '1' || id == '2')
+            challengeUpgrade.transform.Rotate(Vector3.forward * 180);
+
+        GameObject background = challengeUpgrade.transform.Find("background").gameObject;
+        background.GetComponent<ChallengeUpgrade>().init(type, this, building);
+
+
+
+        GameObject.Find(nameMinorIsland).GetComponent<MeshCollider>().enabled = true;
+    }
+
+    public void displayPopup(string popupText, int time)
+    {
+        if (popupText != string.Empty)
+            StartCoroutine(destroyPopup(createPopup(popupText), time));
+    }
+
+    //surcharge: for building (explaination displayed at the end of previous popup)
+    public void displayPopup(string popupText, int time, string explaination)
+    {
+        if (popupText != string.Empty)
+            StartCoroutine(destroyPopup(createPopup(popupText), time, explaination));
+    }
+
+    //returns the name of the Popup (GameObject) created
+    public string createPopup(string popupText)
+    {
+        if (GameObject.Find("PopupCanvas" + "_" + this.nameMinorIsland) != null)
+        {
+            GameObject.Find("PopupCanvas" + "_" + this.nameMinorIsland).GetComponentInChildren<Popup>().touched = true;
+            Destroy(GameObject.Find("PopupCanvas" + "_" + this.nameMinorIsland));
+        }
+
+        Canvas popupCanvasPrefab = Resources.Load<Canvas>("Prefab/PopupCanvas");
+        Canvas popupCanvas = Instantiate(popupCanvasPrefab);
+        popupCanvas.name = "PopupCanvas" + "_" + this.nameMinorIsland;
+        this.numPopup++;
+        popupCanvas.transform.SetParent(GameObject.Find(this.nameMinorIsland).transform);
+        Vector3 vector3 = GameObject.Find("sprite-" + this.nameMinorIsland).transform.position;
+        vector3.z = -2;
+        popupCanvas.transform.position = vector3;
+
+        //rotation of image according to the place of the island
+        char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
+        if (id == '1' || id == '2')
+            popupCanvas.transform.Rotate(Vector3.forward * 180);
+
+        popupCanvas.GetComponentInChildren<Text>().text = popupText;
+
+        //name + island passed to get the Canvas to destroy
+        popupCanvas.GetComponentInChildren<Popup>().namePopupCanvas = popupCanvas.name;
+        popupCanvas.GetComponentInChildren<Popup>().island = this;
+
+        return popupCanvas.name;
+    }
+        
+
+    //destroy popup after a certain time
+    public IEnumerator destroyPopup(string namePopup, int timer)
+    {
+        Popup popup = GameObject.Find(namePopup).GetComponentInChildren<Popup>();
+        SpriteRenderer popupImage = GameObject.Find(namePopup).GetComponentInChildren<SpriteRenderer>();
+
+        yield return new WaitForSeconds(timer);
+        Color color;
+        for (int i = 0; i < 100; i++)
+        {
+            yield return new WaitForSeconds(0.01f);
+            if (!popup.touched)
+            {
+                color = popupImage.color;
+                color.a -= 0.01f;
+                popupImage.color = color;
+            }
+            else
+                break;
+
+        }
+        if (!popup.touched)
+            Destroy(GameObject.Find(namePopup));
+    }
+
+    //surcharge: for buildings (display explaination after previous popup)
+    //destroy popup after a certain time
+    public IEnumerator destroyPopup(string namePopup, int timer, string explaination)
+    {
+        Popup popup = GameObject.Find(namePopup).GetComponentInChildren<Popup>();
+        SpriteRenderer popupImage = GameObject.Find(namePopup).GetComponentInChildren<SpriteRenderer>();
+
+        yield return new WaitForSeconds(timer);
+        Color color;
+        for (int i = 0; i < 100; i++)
+        {
+            yield return new WaitForSeconds(0.01f);
+            if (!popup.touched)
+            {
+                color = popupImage.color;
+                color.a -= 0.01f;
+                popupImage.color = color;
+            }
+            else
+                break;
+
+        }
+        if (!popup.touched)
+            Destroy(GameObject.Find(namePopup));
+
+        yield return new WaitForSeconds(0.5f);
+        displayPopup(explaination, 10);
+    }
+        
+
+    public void removeAllPopups()
+    {
+        for (int i = 0; i < this.numPopup; i++)
+        {
+
+            if (GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameMinorIsland) != null)
+            {
+                GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameMinorIsland).GetComponentInChildren<Popup>().touched = true;
+                //StartCoroutine(forceDestroyPopup("PopupCanvas" + i.ToString() + "_" + nameMinorIsland, 0));
+                Destroy(GameObject.Find("PopupCanvas" + i.ToString() + "_" + nameMinorIsland));
+            }
+        }
+    }
+
+    public void createBuildingTouch(Building building)
+    {
+        this.nameBuildingTouched = building.name;
+
+        this.touchBuildingPresent = true;
+
+        Canvas touchBuildingCanvasPrefab = Resources.Load<Canvas>("Prefab/touchBuildingCanvas");
+        Canvas touchBuildingCanvas = Instantiate(touchBuildingCanvasPrefab);
+        touchBuildingCanvas.transform.SetParent(this.transform);
+        touchBuildingCanvas.name = "touchBuilding_" + this.nameBuildingTouched;
+        touchBuildingCanvas.transform.position = GameObject.Find(this.nameBuildingTouched).transform.position;
+        Vector3 pos = touchBuildingCanvas.transform.position;
+        pos.z = -4;
+        touchBuildingCanvas.transform.position = pos;
+
+        //Exception: moving and removing are impossible for Harbor
+        if (building.TypeBuilding == TypeBuilding.Harbor)
+        {
+            foreach (SpriteRenderer sr in touchBuildingCanvas.GetComponentsInChildren<SpriteRenderer>())
+            {
+                switch (sr.name)
+                {
+                    case "Move":
+                        sr.sprite = Resources.Load<Sprite>("wheelAppuiBatiment/boutonDeplacer_disabled");
+                        break;
+                    case "Remove":
+                        sr.sprite = Resources.Load<Sprite>("wheelAppuiBatiment/boutonSupprimer_disabled");
+                        break;
+                }
+            }
+        }
+
+        //last level of upgrade : 3
+        if (building.level == 3)
+        {
+            foreach (SpriteRenderer sr in touchBuildingCanvas.GetComponentsInChildren<SpriteRenderer>())
+            {
+                if (sr.name == "Upgrade")
+                {
+                    sr.sprite = Resources.Load<Sprite>("wheelAppuiBatiment/boutonAmeliorer_disabled");
+                    sr.GetComponent<BoxCollider>().enabled = false;
+                }
+            }
+        }
+
+        foreach (TouchBuilding touchBuilding in touchBuildingCanvas.GetComponentsInChildren<TouchBuilding>())
+        {
+            touchBuilding.island = this;
+            touchBuilding.building = building;
+        }
+        //touchBuildingCanvas.GetComponent<TouchBuilding>().island = this;
+
+        //rotation of image according to the place of the island
+        char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
+        if (id == '1' || id == '2')
+            touchBuildingCanvas.transform.Rotate(Vector3.forward * 180);
+
+    }
+        
+    void createExchangeWindow()
+    {
+        if (!exchangeWindowPresent && !wheelPresent && !touchBuildingPresent)
+        {
+            Canvas exchangeWindowCanvasPrefab = Resources.Load<Canvas>("Prefab/exchangeWindowCanvas");
+            Canvas exchangeWindowCanvas = Instantiate(exchangeWindowCanvasPrefab);
+            exchangeWindowCanvas.transform.SetParent(GameObject.Find(this.nameMinorIsland).transform);
+            exchangeWindowCanvas.name = "ExchangeWindowCanvas_" + this.nameMinorIsland;
+            Vector3 vector3 = GameObject.Find("Virtual_" + this.nameMinorIsland).transform.position;
+            vector3.z = -4;
+            exchangeWindowCanvas.transform.position = vector3;
+
+            //rotation of image according to the place of the island
+            char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
+            if (id == '1' || id == '2')
+                exchangeWindowCanvas.transform.Rotate(Vector3.forward * 180);
+
+            this.exchangeWindowPresent = true;
+        }
+    }
+
+    private void Client_MessageDisturbanceEvent(object sender, MessageEventArgs e)
+    {
+        char islandNumber = (char)e.message.Split('@')[1][1];
+
+        if (this.nameMinorIsland.Contains(islandNumber.ToString()) || islandNumber == '5')
+        {
+            MinorIsland.DisturbanceCount += 1;
+            this.coroutineDisturbance = true;
+        }
+    }
+
+    private IEnumerator disturbanceAnimation()
+    {
+
+        Transform animationTransform;
+        if (MinorIsland.DisturbanceCount%2 == 0)
+        {
+            animationTransform = Instantiate(grassHopperPrefab) as Transform;
+            SoundPlayer.Instance.playGrasshopperSound();
+        }
+        else
+        {
+            animationTransform = Instantiate(hurricanePrefab) as Transform;
+            SoundPlayer.Instance.playThunderSound();
+        }
+
+        animationTransform.name = "Disturbance_" + nameMinorIsland;
+        animationTransform.transform.SetParent(this.transform.parent);
+        animationTransform.position = this.transform.parent.position;
+        Vector3 pos = animationTransform.position;
+        pos.z = -5;
+        animationTransform.position = pos;
+        //rotation of image according to the place of the island
+        char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
+        if (id == '1' || id == '2')
+            animationTransform.Rotate(Vector3.forward * 180);
+        yield return new WaitForSeconds(10);
+        
+        Destroy(animationTransform.gameObject);
+    }
+
+    private void Client_MessageSystemEndOfGameEvent(object sender, MessageEventArgs e)
+    {
+        //Debug.Log("island " + nbGoodAnswersChallenges.ToString() + " / " + nbAnswersChallenges.ToString());
+        float result = 0;
+        if (nbAnswersChallenges == 0)
+        {
+            result = 1f;
+        }
+        else
+        {
+            result = ((float) this.nbGoodAnswersChallenges) / this.nbAnswersChallenges;
+        }
+        //Debug.Log(result.ToString("F4"));
+        this.Client.sendData("@3" + this.nameMinorIsland.Split('_')[2] + "441@" + result.ToString("F4"));
+    }
+
+    void OnMouseDownSimulation()
+    {
+        //moving a building
+        if (moveBuilding)
+        {
+            Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(positionTouched.x, positionTouched.y, 0));
+            pos.z = -3;
+            GameObject.Find(this.nameBuildingTouched).transform.position = pos;
+            this.moveBuilding = false;
+            this.nameBuildingTouched = string.Empty;
+        }
+        else
+        {
+            if (GameObject.Find("touchBuilding_" + this.nameBuildingTouched) != null)
+            {
+                this.touchBuildingPresent = false;
+                Destroy(GameObject.Find("touchBuilding_" + this.nameBuildingTouched));
+            }
+            else
+            {
+                if (!challengePresent && !exchangeWindowPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !removeBuildingInfoPresent && !disturbancePresent)
+                {
+                    if (!wheelPresent)  //if the wheel is not on the island
+                    {
+                        //Wheel appearance
+                        this.placeOfBuildingConstruction = this.positionTouched;
+                        Canvas prefabWheelCanvas = Resources.Load<Canvas>("Prefab/WheelCanvas");
+                        Canvas wheelCanvas = Instantiate(prefabWheelCanvas);
+                        wheelCanvas.name = "WheelCanvas_" + nameMinorIsland;
+                        //parent : island
+                        wheelCanvas.transform.SetParent(GameObject.Find(nameMinorIsland).transform);
+                        SpriteRenderer wheelImage = wheelCanvas.GetComponentInChildren<SpriteRenderer>();
+                        //position of wheel where it was clicked on
+                        Vector3 pos = Camera.main.ScreenToWorldPoint(this.positionTouched);
+                        pos.z = -1;
+                        wheelImage.transform.position = pos;
+                        //rotation of image according to the place of the island
+                        char id = this.nameMinorIsland[this.nameMinorIsland.Length - 1];
+                        if (id == '1' || id == '2')
+                            wheelImage.transform.Rotate(Vector3.forward * 180);
+
+                        //disable specific buildings
+                        List<string> list = getDisabledBuildings(this.nameMinorIsland);
+                        foreach (SpriteRenderer sr in wheelImage.GetComponentsInChildren<SpriteRenderer>())
+                        {
+                            if (list.Contains(sr.name))
+                            {
+                                sr.sprite = Resources.Load<Sprite>("Building/Icons_Disabled/" + sr.name + "_disabled");
+                                sr.GetComponent<BoxCollider>().enabled = false;
+                            }
+                        }
+
+                        this.wheelPresent = true;
+                    }
+                    else
+                    {
+                        if (!buildingInfoPresent)       //if the wheel is on the island, but not the buildingInfo
+                        {
+                            //destruction of the wheel if clic somewhere else in the island
+                            this.wheelPresent = false;
+                            Destroy(GameObject.Find("WheelCanvas_" + nameMinorIsland));
+                        }
+                    }
+                }
+                else
+                    Debug.Log("touch bloqué par bool");
+            }
+        }
+
+    }
+
+    //disabled building: default disabled (because of Islands specializations) + building already built on the Island
+    private List<string> getDisabledBuildings(string nameMinorIsland)
+    {
+        List<string> list = new List<string>();
+        switch (this.nameMinorIsland)
+        {
+            case "sous_ile_1":
+                list.Add("wheelIcon_OilPlant");
+                list.Add("wheelIcon_StoneMine");
+                list.Add("wheelIcon_Sawmill");
+                break;
+            case "sous_ile_2":
+                list.Add("wheelIcon_GoldMine");
+                list.Add("wheelIcon_StoneMine");
+                list.Add("wheelIcon_Sawmill");
+                break;
+            case "sous_ile_3":
+                list.Add("wheelIcon_OilPlant");
+                list.Add("wheelIcon_GoldMine");
+                list.Add("wheelIcon_Sawmill");
+                break;
+            case "sous_ile_4":
+                list.Add("wheelIcon_OilPlant");
+                list.Add("wheelIcon_GoldMine");
+                list.Add("wheelIcon_StoneMine");
+                break;
+        }
+        foreach (Building building in this.buildingManager.buildingList)
+        {
+            list.Add("wheelIcon_" + building.TypeBuilding.ToString());
+        }
+        return list;
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.name.Contains("PirateBoat"))
+        {
+            int resourceCount = this.resourceManager.Resources.Count;
+            if (resourceCount > 0)
+            {
+                System.Random rnd = new System.Random();
+                int index;
+                Resource res;
+                do
+                {
+                    index = rnd.Next(0, resourceCount);
+                    res = resourceManager.getResource(this.resourceManager.Resources[index].TypeResource);
+                }
+                while (Enum.IsDefined(typeof(TypeResourceStat), res.ToString()));
+                int quantity = rnd.Next(10, 200);
+                if (this.resourceManager.Resources[index].Stock >= quantity)
+                {
+                    this.resourceManager.changeResourceStock(this.resourceManager.Resources[index].TypeResource, -quantity);
+                    displayPopup("Les pirates vous ont volé : " + quantity + " de " + Resource.translateResourceName(this.resourceManager.Resources[index].TypeResource.ToString()) + " !", 3);
+                    this.Client.sendData("@2" + this.nameMinorIsland.Split('_')[2] + "355@" + res.TypeResource.ToString() + "@" + (-quantity).ToString());
+                }
+            }
+            collider.gameObject.GetComponent<MovePirateBoat>().destroyBoat(false);
+
+        }
+    }
+
+    void Update()
+    {
+        if (this.begun)
+        {
+            if ((Time.time - TouchTime > 1) && (Time.time - TouchTime < 1.5))
+            {
+                TouchTime = 0;
+                if (!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !removeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
+                    this.createExchangeWindow();
+            }
+        }
+
+        if(this.coroutineDisturbance)
+        {
+            disturbancePresent = true;
+            StartCoroutine(disturbanceAnimation());
+            this.coroutineDisturbance = false;
+            disturbancePresent = false;
+        }
+    }
+
+    
+
+    //-------------- TUIO -----------------------------------------------------------------------
+
+    public int Width = 512;
+    public int Height = 512;
+    public float TouchTime = 0;
+
+    private TapGesture gesture;
+    private LongPressGesture longGesture;
+
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        gesture = GetComponent<TapGesture>();
+        gesture.Tapped += pressedHandler;
+        longGesture = GetComponent<LongPressGesture>();
+        longGesture.LongPressed += longPressedHandler;
+    }
+
+    private void longPressedHandler(object sender, EventArgs e)
+    {
+        createExchangeWindow();
+    }
+
+    protected override void OnDisable()
+    {
+        gesture.Tapped -= pressedHandler;
+        longGesture.LongPressed -= longPressedHandler;
+    }
+
+    private void pressedHandler(object sender, EventArgs e)
+    {
+        positionTouched = gesture.ScreenPosition;
+        this.OnMouseDownSimulation();
+    }
+}
