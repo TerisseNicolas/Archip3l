@@ -6,8 +6,7 @@ using TouchScript.Gestures;
 using TouchScript.Hit;
 using System.Collections.Generic;
 using TouchScript;
-
-
+using System;
 
 public class ExchangeResource : InputSource
 {
@@ -278,45 +277,20 @@ public class ExchangeResource : InputSource
     public int Height = 512;
     float TouchTime = 0;
 
-    private MetaGesture gesture;
+    private TapGesture gesture;
+
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        gesture = GetComponent<MetaGesture>();
-        if (gesture)
-        {
-            gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchEnded += touchEndedHandler;
-        }
-    }
-    
-    private Vector2 processCoords(Vector2 value)
-    {
-        return new Vector2(value.x * Width, value.y * Height);
+        gesture = GetComponent<TapGesture>();
+        gesture.Tapped += pressedHandler;
     }
 
-    private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
+
+    private void pressedHandler(object sender, EventArgs e)
     {
-        if (TouchTime == 0)
-        {
-            TouchTime = Time.time;
-            if (this.name == "Send")
-                send.sprite = Resources.Load<Sprite>("fenetreEchange/boutonEnvoyerClic");
-            if (this.name == "Less" || this.name == "More")
-                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("fenetreEchange/" + this.name + "Clic");
-        }
+        this.OnMouseDownSimulation();
     }
 
-    private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (Time.time - TouchTime < 1)
-            this.OnMouseDownSimulation();
-        if (this.name == "Send")
-            send.sprite = Resources.Load<Sprite>("fenetreEchange/boutonEnvoyer");
-        if (this.name == "Less" || this.name == "More")
-            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("fenetreEchange/" + this.name);
-        TouchTime = 0;
-    }
-    
 }

@@ -6,6 +6,7 @@ using TouchScript;
 using TouchScript.InputSources;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;
 
 public class GameMenu : InputSource
 {
@@ -101,47 +102,21 @@ public class GameMenu : InputSource
     public int Height = 512;
     float TouchTime = 0;
 
-    private MetaGesture gesture;
+    private TapGesture gesture;
+
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        gesture = GetComponent<MetaGesture>();
-        if (gesture)
-        {
-            gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchEnded += touchEndedHandler;
-        }
+        gesture = GetComponent<TapGesture>();
+        gesture.Tapped += pressedHandler;
     }
-    
 
-    private Vector2 processCoords(Vector2 value)
+
+    private void pressedHandler(object sender, EventArgs e)
     {
-        return new Vector2(value.x * Width, value.y * Height);
+        this.OnMouseDownSimulation();
     }
 
-    private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (TouchTime == 0)
-        {
-            TouchTime = Time.time;
-            if (this.name == "Jouer" || this.name == "Credits" || this.name == "Classement" || this.name == "Quitter")
-                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("menu/" + this.name + "Clic");
-        }
-
-    }
-    
-
-    private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (Time.time - TouchTime < 1.5)
-        {
-            if (this.name == "Jouer" || this.name == "Credits" || this.name == "Classement" || this.name == "Quitter")
-                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("menu/" + this.name);
-            this.OnMouseDownSimulation();
-        }
-        TouchTime = 0;
-    }
-    
 
 }

@@ -7,7 +7,7 @@ using TouchScript.Gestures;
 using TouchScript.Hit;
 using System.Collections.Generic;
 using TouchScript;
-
+using System;
 
 public class Tuto_ExchangeResource : InputSource
 {
@@ -44,38 +44,20 @@ public class Tuto_ExchangeResource : InputSource
     public int Height = 512;
     float TouchTime = 0;
 
-    private MetaGesture gesture;
+    private TapGesture gesture;
 
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        gesture = GetComponent<MetaGesture>();
-        if (gesture)
-        {
-            gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchEnded += touchEndedHandler;
-        }
+        gesture = GetComponent<TapGesture>();
+        gesture.Tapped += pressedHandler;
     }
 
-    
-    private Vector2 processCoords(Vector2 value)
-    {
-        return new Vector2(value.x * Width, value.y * Height);
-    }
 
-    private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
+    private void pressedHandler(object sender, EventArgs e)
     {
-        if (TouchTime == 0)
-            TouchTime = Time.time;
-    }
-    
-
-    private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (Time.time - TouchTime < 1)
-            this.OnMouseDownSimulation();
-        TouchTime = 0;
+        this.OnMouseDownSimulation();
     }
 }
 

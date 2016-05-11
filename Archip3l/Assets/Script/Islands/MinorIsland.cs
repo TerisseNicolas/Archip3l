@@ -56,13 +56,7 @@ public class MinorIsland : InputSource
 
     //fixes coroutine bug
     private bool coroutineDisturbance = false;
-
-    //todo: check or remove
-    void FixedUpdate()
-    {
-        if (TouchTime != 0 && Time.time - TouchTime > 10)
-            TouchTime = 0;
-    }
+    
 
     void Awake()
     {
@@ -607,16 +601,6 @@ public class MinorIsland : InputSource
 
     void Update()
     {
-        if (this.begun)
-        {
-            if ((Time.time - TouchTime > 1) && (Time.time - TouchTime < 1.5))
-            {
-                TouchTime = 0;
-                if (!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !removeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
-                    this.createExchangeWindow();
-            }
-        }
-
         if(this.coroutineDisturbance)
         {
             disturbancePresent = true;
@@ -634,50 +618,33 @@ public class MinorIsland : InputSource
     public int Height = 512;
     public float TouchTime = 0;
 
-    private MetaGesture gesture;
+    private TapGesture gesture;
+    private LongPressGesture longGesture;
+
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        gesture = GetComponent<MetaGesture>();
-        if (gesture)
-        {
-            gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchEnded += touchEndedHandler;
-        }
+        gesture = GetComponent<TapGesture>();
+        gesture.Tapped += pressedHandler;
+        longGesture = GetComponent<LongPressGesture>();
+        longGesture.LongPressed += longPressedHandler;
     }
 
-    
-
-    private Vector2 processCoords(Vector2 value)
+    private void longPressedHandler(object sender, EventArgs e)
     {
-        return new Vector2(value.x * Width, value.y * Height);
+        createExchangeWindow();
     }
 
-    private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
+    protected override void OnDisable()
     {
-        var touch = metaGestureEventArgs.Touch;
-        if (TouchTime == 0)
-        {
-            TouchTime = Time.time;
-            this.positionTouched = touch.Position;
-            this.begun = true;
-        }
+        gesture.Tapped -= pressedHandler;
+        longGesture.LongPressed -= longPressedHandler;
     }
-    
-    private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
+
+    private void pressedHandler(object sender, EventArgs e)
     {
-        this.begun = false;
-        if (Time.time - TouchTime < 0.5)
-        {
-            this.OnMouseDownSimulation();
-        }
-        else if(Time.time - TouchTime < 1.5)
-        {
-            if(!wheelPresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !removeBuildingInfoPresent && !challengePresent && !moveBuilding && !exchangeWindowPresent)
-                this.createExchangeWindow();
-        }
-        TouchTime = 0;
+        positionTouched = gesture.ScreenPosition;
+        this.OnMouseDownSimulation();
     }
-    
 }
