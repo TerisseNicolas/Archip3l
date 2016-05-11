@@ -137,38 +137,21 @@ public class Tuto_Building : InputSource
     public int Height = 512;
     float TouchTime = 0;
 
-    private MetaGesture gesture;
+    private TapGesture gesture;
 
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        gesture = GetComponent<MetaGesture>();
-        if (gesture)
-        {
-            gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchEnded += touchEndedHandler;
-        }
+        gesture = GetComponent<TapGesture>();
+        gesture.Tapped += pressedHandler;
     }
 
-    
-    private Vector2 processCoords(Vector2 value)
+
+    private void pressedHandler(object sender, EventArgs e)
     {
-        return new Vector2(value.x * Width, value.y * Height);
+        this.OnMouseDownSimulation();
     }
 
-    private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (TouchTime == 0)
-            TouchTime = Time.time;
-    }
-
-    private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (Time.time - TouchTime < 1)
-            this.OnMouseDownSimulation();
-        TouchTime = 0;
-    }
-    
 }
 
