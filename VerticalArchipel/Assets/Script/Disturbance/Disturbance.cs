@@ -10,7 +10,7 @@ using TouchScript;
 
 
 
-public class Disturbance : InputSource
+public class Disturbance : OneTap
 {
     static public bool disturbanceWindowOpen = false;
 
@@ -22,7 +22,7 @@ public class Disturbance : InputSource
 
     private Client Client;
 
-    void OnMouseDownSimulation()
+    protected override void OnMouseDownSimulation()
     {
         if (this.counter.text != "0")
         {
@@ -171,45 +171,5 @@ public class Disturbance : InputSource
         Client.sendData("@2" + island.Split('_')[2] + "394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
         yield return new WaitForSeconds(0.1f);
     }
-
-
-    //-------------- TUIO -----------------------------------------------------------------------
-
-    public int Width = 512;
-    public int Height = 512;
-    float TouchTime = 0;
-
-    private MetaGesture gesture;
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        gesture = GetComponent<MetaGesture>();
-        if (gesture)
-        {
-            gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchEnded += touchEndedHandler;
-        }
-    }
-    
-
-    private Vector2 processCoords(Vector2 value)
-    {
-        return new Vector2(value.x * Width, value.y * Height);
-    }
-
-    private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (TouchTime == 0)
-            TouchTime = Time.time;
-    }
-    
-    private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (Time.time - TouchTime < 1)
-            this.OnMouseDownSimulation();
-        TouchTime = 0;
-    }
-    
 }
 

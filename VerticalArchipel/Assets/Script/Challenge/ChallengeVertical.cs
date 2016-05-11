@@ -11,14 +11,12 @@ using TouchScript;
 
 
 
-public class ChallengeVertical : InputSource
+public class ChallengeVertical : OneTap
 {
     static public bool challengeWindowPresent = false;
-    static public string challengeWindowName = string.Empty;  
-    
+    static public string challengeWindowName = string.Empty;
 
-
-    public void OnMouseDownSimulation()
+    protected override void OnMouseDownSimulation()
     {
         if (!ChallengeVertical.challengeWindowPresent && !ChallengeWon.challengeWonWindowPresent && !Trophy.infoWindowPresent && !Enigma.enigmaWindowOpen && !Disturbance.disturbanceWindowOpen && !Island.infoIslandPresent)
         {
@@ -38,52 +36,6 @@ public class ChallengeVertical : InputSource
             canvasChallenge.GetComponentInChildren<ChallengeVerticalClick>().init();
             ChallengeVertical.challengeWindowName = canvasChallenge.name;
             main.removeChallenge(this.gameObject);
-        }
-            
+        }       
     }
-    
-
-
-    //-------------- TUIO -----------------------------------------------------------------------
-
-    public int Width = 512;
-    public int Height = 512;
-    float TouchTime = 0;
-
-    private MetaGesture gesture;
-
-
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        gesture = GetComponent<MetaGesture>();
-        if (gesture)
-        {
-            gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchEnded += touchEndedHandler;
-        }
-    }
-    
-
-    private Vector2 processCoords(Vector2 value)
-    {
-        return new Vector2(value.x * Width, value.y * Height);
-    }
-
-    private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (TouchTime == 0)
-            TouchTime = Time.time;
-    }
-
-    private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (Time.time - TouchTime < 0.5)
-        {
-            this.OnMouseDownSimulation();
-        }
-        TouchTime = 0;
-    }
-    
 }

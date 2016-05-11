@@ -81,7 +81,6 @@
     <Compile Include="Assets\Script\Disturbance\DisturbanceTimerView.cs" />
     <Compile Include="Assets\Script\EndScene\ResourcesFilling.cs" />
     <Compile Include="Assets\Script\Enigma\Enigma.cs" />
-    <Compile Include="Assets\Script\Enigma\EnigmaManager.cs" />
     <Compile Include="Assets\Script\Game\Cleaner.cs" />
     <Compile Include="Assets\Script\Game\Game.cs" />
     <Compile Include="Assets\Script\Game\GlobalInfo.cs" />
@@ -99,6 +98,7 @@
     <Compile Include="Assets\Script\Loading\Loading.cs" />
     <Compile Include="Assets\Script\Miscellaneous\CSV_reader.cs" />
     <Compile Include="Assets\Script\Miscellaneous\NetDebugger.cs" />
+    <Compile Include="Assets\Script\Miscellaneous\OneTap.cs" />
     <Compile Include="Assets\Script\Miscellaneous\Tuple.cs" />
     <Compile Include="Assets\Script\Network\Client.cs" />
     <Compile Include="Assets\Script\Network\trigger.cs" />

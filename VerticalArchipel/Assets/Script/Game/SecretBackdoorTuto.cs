@@ -4,6 +4,7 @@ using TouchScript.InputSources;
 using TouchScript.Gestures;
 using TouchScript.Hit;
 using TouchScript;
+using System;
 
 public class SecretBackdoorTuto : InputSource
 {
@@ -21,34 +22,22 @@ public class SecretBackdoorTuto : InputSource
 
     //-------------- TUIO -----------------------------------------------------------------------
 
-    public int Width = 512;
-    public int Height = 512;
-    float TouchTime = 0;
-
-    private MetaGesture gesture;
+    private LongPressGesture longGesture;
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        gesture = GetComponent<MetaGesture>();
-        if (gesture)
-        {
-            gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchEnded += touchEndedHandler;
-        }
+        longGesture = GetComponent<LongPressGesture>();
+        longGesture.LongPressed += longPressedHandler;
     }
 
-    private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
+    private void longPressedHandler(object sender, EventArgs e)
     {
-        if (TouchTime == 0)
-            TouchTime = Time.time;
+        OnMouseDownSimulation();
     }
 
-
-    private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
+    protected override void OnDisable()
     {
-        if ((Time.time - TouchTime < 10) && (Time.time - TouchTime > 3))
-            this.OnMouseDownSimulation();
-        TouchTime = 0;
+        longGesture.LongPressed -= longPressedHandler;
     }
 }

@@ -8,7 +8,7 @@ using System.Collections;
 using TouchScript;
 
 
-public class Enigma : InputSource
+public class Enigma : OneTap
 {
     static public bool enigmaWindowOpen = false;
     static public string enigmaWindowName = string.Empty;
@@ -27,7 +27,7 @@ public class Enigma : InputSource
     private Score Score;
 
 
-    void OnMouseDownSimulation()
+    protected override void OnMouseDownSimulation()
     {
         if (this.name == Enigma.answerObject.text)  //touch the same number --> remove it
         {
@@ -173,46 +173,4 @@ public class Enigma : InputSource
             nbLineBreakAdded++;
         }
     }
-
-
-    //-------------- TUIO -----------------------------------------------------------------------
-
-    public int Width = 512;
-    public int Height = 512;
-    float TouchTime = 0;
-
-    private MetaGesture gesture;
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        gesture = GetComponent<MetaGesture>();
-        if (gesture)
-        {
-            gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchEnded += touchEndedHandler;
-        }
-    }
-
-    
-
-    private Vector2 processCoords(Vector2 value)
-    {
-        return new Vector2(value.x * Width, value.y * Height);
-    }
-
-    private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (TouchTime == 0)
-            TouchTime = Time.time;
-    }
-    
-
-    private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (Time.time - TouchTime < 1)
-            this.OnMouseDownSimulation();
-        TouchTime = 0;
-    }
-
 }

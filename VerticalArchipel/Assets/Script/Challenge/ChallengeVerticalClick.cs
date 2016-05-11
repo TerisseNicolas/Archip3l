@@ -11,7 +11,7 @@ using TouchScript;
 
 
 
-public class ChallengeVerticalClick : InputSource
+public class ChallengeVerticalClick : OneTap
 {
 
     static public string[] row { get; set; }
@@ -164,7 +164,7 @@ public class ChallengeVerticalClick : InputSource
 
 
 
-    public void OnMouseDownSimulation()
+    protected override void OnMouseDownSimulation()
     {
         if (ChallengeVerticalClick.answered == false)
         {
@@ -249,49 +249,5 @@ public class ChallengeVerticalClick : InputSource
 
         Destroy(GameObject.Find("Challenge_" + typeChallenge));
 
-    }
-
-
-        //-------------- TUIO -----------------------------------------------------------------------
-
-    public int Width = 512;
-    public int Height = 512;
-    float TouchTime = 0;
-
-    private MetaGesture gesture;
-
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        gesture = GetComponent<MetaGesture>();
-        if (gesture)
-        {
-            gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchEnded += touchEndedHandler;
-        }
-    }
-    
-
-    private Vector2 processCoords(Vector2 value)
-    {
-        return new Vector2(value.x * Width, value.y * Height);
-    }
-
-    private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (TouchTime == 0)
-            TouchTime = Time.time;
-    }
-
-    private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        if (Time.time - TouchTime < 0.5)
-        {
-            TouchTime = 0;
-            this.OnMouseDownSimulation();
-        }
-        TouchTime = 0;
-    }
-    
+    }  
 }

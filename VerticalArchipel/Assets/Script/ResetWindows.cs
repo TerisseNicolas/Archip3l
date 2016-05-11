@@ -13,16 +13,9 @@ public class ResetWindows : InputSource
 {
 
     private bool begun = false;
-
-    
-	
-	void Update () {
-
-        if (this.begun)
-        {
-            if ((Time.time - TouchTime > 5) && (Time.time - TouchTime < 7))
-            {
-                TouchTime = 0;
+    	
+	void reset ()
+    {
                 Debug.Log("resetting");
 
                 Trophy.infoWindowPresent = false;
@@ -50,8 +43,6 @@ public class ResetWindows : InputSource
                         obj.name.Contains("challengeWon"))
                             Destroy(obj);
                 }
-            }
-        }
 
 
     }
@@ -59,43 +50,23 @@ public class ResetWindows : InputSource
 
     //-------------- TUIO -----------------------------------------------------------------------
 
-    public int Width = 512;
-    public int Height = 512;
-    float TouchTime = 0;
+    private LongPressGesture longGesture;
 
-    private MetaGesture gesture;
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        gesture = GetComponent<MetaGesture>();
-        if (gesture)
-        {
-            gesture.TouchBegan += touchBeganHandler;
-            gesture.TouchEnded += touchEndedHandler;
-        }
+        longGesture = GetComponent<LongPressGesture>();
+        longGesture.LongPressed += longPressedHandler;
     }
 
-
-
-    private Vector2 processCoords(Vector2 value)
+    private void longPressedHandler(object sender, EventArgs e)
     {
-        return new Vector2(value.x * Width, value.y * Height);
+        reset();
     }
 
-    private void touchBeganHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
+    protected override void OnDisable()
     {
-        if (TouchTime == 0)
-        {
-            TouchTime = Time.time;
-            this.begun = true;
-        }
+        longGesture.LongPressed -= longPressedHandler;
     }
-
-    private void touchEndedHandler(object sender, MetaGestureEventArgs metaGestureEventArgs)
-    {
-        this.begun = false;
-        TouchTime = 0;
-    }
-
 }
