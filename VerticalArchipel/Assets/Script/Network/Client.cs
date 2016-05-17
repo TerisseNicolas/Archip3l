@@ -17,10 +17,9 @@ public class Client : MonoBehaviour
 
     private List<string> configs;
 
-    private int sendingPort = 1523;
-    private int listeningPort = 5050;
-    private string serverIP = "172.18.136.49";
-    //private string serverIP = "192.168.1.91";
+    private int sendingPort = 0;
+    private int listeningPort = 0;
+    private string serverIP = "0.0.0.0";
 
     //All events raised
     private delegate void DelegateEvent(object send, EventArgs e);
@@ -68,10 +67,10 @@ public class Client : MonoBehaviour
 
     void Start()
     {
-        loadConfigs();
-        
-
-        DontDestroyOnLoad(transform.gameObject);
+        //loadConfigs();
+        sendingPort = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.networkSendingPort));
+        listeningPort = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.networkListeningPort));
+        serverIP = ConstantsLoader.getConstant(TypeConstant.networkServerIP);
 
         _client = new UdpClient();
         _client.Connect(this.serverIP, this.sendingPort);
@@ -81,46 +80,7 @@ public class Client : MonoBehaviour
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
         
-    }
-
-    public void loadConfigs()
-    {
-        configs = new List<string>();
-        configs.Add("sendingPort.txt");
-        configs.Add("listeningPort.txt");
-        configs.Add("serverIP.txt");
-
-        foreach(string filePath in configs)
-        {
-            string line;
-            if (File.Exists(filePath))
-            {
-                StreamReader file = new StreamReader(filePath);
-                while ((line = file.ReadLine()) != null)
-                {
-                    switch (filePath.Split('.')[0])
-                    {
-                        case "sendingPort":
-                            sendingPort = Int32.Parse(line);
-                            break;
-                        case "listeningPort":
-                            listeningPort = Int32.Parse(line);
-                            break;
-                        case "serverIP":
-                            serverIP = line;
-                            break;
-                    }                    
-                }
-                file.Close();
-            }
-            else
-            {
-                StreamWriter file = new StreamWriter(filePath);
-                file.Close();
-            }
-        }        
-    }
-    
+    }    
 
     public void sendData(string dataToSend)
     {

@@ -1,0 +1,9 @@
+networkListeningPort=5050
+networkSendingPort=1523
+networkServerIP=192.168.1.2
+pirateBoatsStart=240
+pirateBoatsIncreaseRate=120
+timerGame=1200
+timerChallenge=3
+timerDisturbance=4
+fileScores=scores.txt

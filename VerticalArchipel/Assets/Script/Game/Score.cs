@@ -58,7 +58,7 @@ public class Score : MonoBehaviour {
         this.TrophyManager.TrophyObtained += TrophyManager_TrophyObtained;
 
         this.ScoreCount = 0;
-        this.filePath = "scores.txt";
+        this.filePath = ConstantsLoader.getConstant(TypeConstant.fileScores);
 
         this.scores = new List<Tuple<int, string, int, int, int, float>>();
         this.ChallengeSuccessRate = new List<float>();

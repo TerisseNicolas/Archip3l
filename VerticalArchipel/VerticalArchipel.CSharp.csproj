@@ -82,6 +82,7 @@
     <Compile Include="Assets\Script\EndScene\ResourcesFilling.cs" />
     <Compile Include="Assets\Script\Enigma\Enigma.cs" />
     <Compile Include="Assets\Script\Game\Cleaner.cs" />
+    <Compile Include="Assets\Script\Game\ConstantsLoader.cs" />
     <Compile Include="Assets\Script\Game\Game.cs" />
     <Compile Include="Assets\Script\Game\GlobalInfo.cs" />
     <Compile Include="Assets\Script\Game\InitScene.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Assets\Script\Types\TypeBuilding.cs" />
     <Compile Include="Assets\Script\Types\TypeBuildingStat.cs" />
     <Compile Include="Assets\Script\Types\TypeChallenge.cs" />
+    <Compile Include="Assets\Script\Types\TypeConstant.cs" />
     <Compile Include="Assets\Script\Types\TypeDisturbance.cs" />
     <Compile Include="Assets\Script\Types\TypeResource.cs" />
     <Compile Include="Assets\Script\Types\TypeResourceStat.cs" />

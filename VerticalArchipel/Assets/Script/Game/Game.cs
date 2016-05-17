@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 public class Game : MonoBehaviour
 {
@@ -12,11 +13,8 @@ public class Game : MonoBehaviour
     private Client Client;
     private GlobalResourceManager GlobalResourceManager;
 
-    private Score Score;
-    private GlobalInfo GlobalInfo;
-
-    private float vGameTimer = 20 * 60f;
-    private bool finished = false;
+    //private Score Score;
+    //private GlobalInfo GlobalInfo;
 
     private string filePath;
 
@@ -28,14 +26,13 @@ public class Game : MonoBehaviour
 
     private List<string> constants;
 
-    public float vDisturbanceTimer = 180f;
-    public float vChallengeTimer = 30f;
-
+    public float vDisturbanceTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerDisturbance)); // 180f;
+    public float vChallengeTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerChallenge)); // 30f;
+    private float vGameTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerGame)); // 20 * 60f;
+    private bool finished = false;
 
     void Start()
     {
-        loadConstants();
-
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageSystemStartOfGameEvent += Client_MessageSystemStartOfGame;
         //this.Client.MessageSystemStartInitOfGameEvent += Client_MessageSystemStartInitOfGame;
@@ -63,8 +60,8 @@ public class Game : MonoBehaviour
         //this.GlobalResourceManager = GameObject.Find("Resources").GetComponent<GlobalResourceManager>();
         //this.GlobalResourceManager.MessageInitialized += GlobalResourceManager_MessageInitialized;
 
-        this.Score = gameObject.GetComponent<Score>();
-        this.GlobalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
+        //this.Score = gameObject.GetComponent<Score>();
+        //this.GlobalInfo = GameObject.Find("GlobalInfo").GetComponent<GlobalInfo>();
 
 
         this.ChallengesGameObjects = new List<GameObject>();
@@ -75,45 +72,6 @@ public class Game : MonoBehaviour
 
         Client_MessageSystemStartOfGame(this, null);
     }
-
-    public void loadConstants()
-    {
-        constants = new List<string>();
-        constants.Add("vGameTimer.txt");
-        constants.Add("vDisturbanceTimer.txt");
-        constants.Add("vChallengeTimer.txt");
-
-        foreach (string filePath in constants)
-        {
-            string line;
-            if (File.Exists(filePath))
-            {
-                StreamReader file = new StreamReader(filePath);
-                while ((line = file.ReadLine()) != null)
-                {
-                    switch (filePath.Split('.')[0])
-                    {
-                        case "vGameTimer":
-                            vGameTimer = float.Parse(line);
-                            break;
-                        case "vDisturbanceTimer":
-                            vDisturbanceTimer = float.Parse(line);
-                            break;
-                        case "vChallengeTimer":
-                            vChallengeTimer = float.Parse(line);
-                            break;
-                    }
-                }
-                file.Close();
-            }
-            else
-            {
-                StreamWriter file = new StreamWriter(filePath);
-                file.Close();
-            }
-        }
-    }
-
 
     void Update()
     {

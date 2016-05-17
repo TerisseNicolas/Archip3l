@@ -12,7 +12,7 @@ using TouchScript.InputSources;
 public class ResetWindows : InputSource
 {
 
-    private bool begun = false;
+    //private bool begun = false;
     	
 	void reset ()
     {

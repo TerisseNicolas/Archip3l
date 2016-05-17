@@ -15,20 +15,10 @@ public class Timer : MonoBehaviour
     public event EventHandler<EventArgs> PirateBoatsStartTick;
     public event EventHandler<EventArgs> PirateBoatsIncreaseTick;
 
-
-    private List<string> constants;
-
-
-    private float startPirateBoats = 7 * 60f + 35f;
-
+    private float startPirateBoats = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.pirateBoatsStart));
     private bool launched = false;
-    private float increasePirateBoats = 3 * 60f;
+    private float increasePirateBoats = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.pirateBoatsIncreaseRate));
     private bool increased = false;
-
-    public void Start()
-    {
-        loadConstants();
-    }
 
     public void Init(float seconds)
     {
@@ -47,40 +37,6 @@ public class Timer : MonoBehaviour
         if(this.FinalTick != null)
         {
             FinalTick(this, new EventArgs());
-        }
-    }
-
-    public void loadConstants()
-    {
-        constants = new List<string>();
-        constants.Add("startPirateBoats.txt");
-        constants.Add("increasePirateBoats.txt");
-
-        foreach (string filePath in constants)
-        {
-            string line;
-            if (File.Exists(filePath))
-            {
-                StreamReader file = new StreamReader(filePath);
-                while ((line = file.ReadLine()) != null)
-                {
-                    switch (filePath.Split('.')[0])
-                    {
-                        case "startPirateBoats":
-                            startPirateBoats = float.Parse(line);
-                            break;
-                        case "raisingRate":
-                            increasePirateBoats = float.Parse(line);
-                            break;
-                    }
-                }
-                file.Close();
-            }
-            else
-            {
-                StreamWriter file = new StreamWriter(filePath);
-                file.Close();
-            }
         }
     }
 
