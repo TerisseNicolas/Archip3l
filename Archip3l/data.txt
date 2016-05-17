@@ -1,0 +1,5 @@
+networkListeningPort=5050
+networkSendingPort=1523
+networkServerIP=192.168.1.2
+pirateBoatsInitInterval=10
+pirateBoatsRaisingRate=0.90
