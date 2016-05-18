@@ -613,11 +613,6 @@ public class MinorIsland : InputSource
     
 
     //-------------- TUIO -----------------------------------------------------------------------
-
-    public int Width = 512;
-    public int Height = 512;
-    public float TouchTime = 0;
-
     private TapGesture gesture;
     private LongPressGesture longGesture;
 

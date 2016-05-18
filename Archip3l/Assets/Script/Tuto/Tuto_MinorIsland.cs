@@ -323,7 +323,7 @@ public class Tuto_MinorIsland : InputSource {
 
         /*------- open exchangeWindow after 1 sec --------*/
 
-        if (this.begun)
+        /*if (this.begun)
         {
             if ((Time.time - TouchTime > 1) && (Time.time - TouchTime < 1.5))
             {
@@ -334,7 +334,7 @@ public class Tuto_MinorIsland : InputSource {
                     this.createExchangeWindowTuto();
                 }
             }
-        }
+        }*/
 
         if (abort)
         {
@@ -417,11 +417,29 @@ public class Tuto_MinorIsland : InputSource {
 
     //-------------- TUIO -----------------------------------------------------------------------
 
-    public int Width = 512;
-    public int Height = 512;
-    float TouchTime = 0;
+    //public int Width = 512;
+    //public int Height = 512;
+    //float TouchTime = 0;
+
+    //private TapGesture gesture;
+
+
+    //protected override void OnEnable()
+    //{
+    //    base.OnEnable();
+    //    gesture = GetComponent<TapGesture>();
+    //    gesture.Tapped += pressedHandler;
+    //}
+
+
+    //private void pressedHandler(object sender, EventArgs e)
+    //{
+    //    positionTouched = gesture.ScreenPosition;
+    //    this.OnMouseDownSimulation();
+    //}
 
     private TapGesture gesture;
+    private LongPressGesture longGesture;
 
 
     protected override void OnEnable()
@@ -429,8 +447,24 @@ public class Tuto_MinorIsland : InputSource {
         base.OnEnable();
         gesture = GetComponent<TapGesture>();
         gesture.Tapped += pressedHandler;
+        longGesture = GetComponent<LongPressGesture>();
+        longGesture.LongPressed += longPressedHandler;
     }
 
+    private void longPressedHandler(object sender, EventArgs e)
+    {
+        if (this.harborUpgraded && !this.exchangeResourceOpened)
+        {
+            displayPopup("Vous pouvez accéder à cette fenêtre à n'importe quel moment grâce à un appui long. Fermez la fenêtre.", 5);
+            this.createExchangeWindowTuto();
+        }
+    }
+
+    protected override void OnDisable()
+    {
+        gesture.Tapped -= pressedHandler;
+        longGesture.LongPressed -= longPressedHandler;
+    }
 
     private void pressedHandler(object sender, EventArgs e)
     {

@@ -9,6 +9,7 @@ public class ContactPointLayer : MonoBehaviour
     private int ActualContactActivated;
     private bool Completed;
     private bool BoardCompleted;
+    private bool done;
 
     private Client Client;
 
@@ -16,10 +17,12 @@ public class ContactPointLayer : MonoBehaviour
 
     void Awake()
     {
-        this.NumberOfContact = 8;
+        //TODO set to 8
+        this.NumberOfContact = 1;
         this.ActualContactActivated = 0;
         this.Completed = false;
         this.BoardCompleted = false;
+        this.done = false;
 
         this.Client = GameObject.Find("Network").GetComponent<Client>();
         this.Client.MessageUnlockTutoEvent += Client_MessageUnlockTutoEvent;
@@ -35,8 +38,9 @@ public class ContactPointLayer : MonoBehaviour
 
     void Update()
     {
-        if(this.BoardCompleted && this.Completed)
+        if(this.BoardCompleted && this.Completed && !this.done)
         {
+            this.done = true;
             StartCoroutine(holdAndChangeScene());
         }
     }

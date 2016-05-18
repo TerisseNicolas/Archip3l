@@ -34,8 +34,11 @@ public class Server : MonoBehaviour
 
     void Awake()
     {
-        this.filePath = "port.txt";
-        loadPort();
+
+        DontDestroyOnLoad(transform.gameObject);
+
+        //this.filePath = "port.txt";
+        //loadPort();
 
         _broadcaster = new UdpClient();
         _broadcaster.EnableBroadcast = true;
@@ -44,6 +47,12 @@ public class Server : MonoBehaviour
         this.StartServer();
     }
 
+    void Start()
+    {
+        this.listeningPort = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.networkListeningPort));
+    }
+
+    //Todo delete
     public void loadPort()
     {
         string line;
