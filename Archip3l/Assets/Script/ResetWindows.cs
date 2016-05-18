@@ -29,7 +29,6 @@ public class ResetWindows : InputSource
             if ((Time.time - TouchTime > 5) && (Time.time - TouchTime < 7))
             {
                 TouchTime = 0;
-                island.TouchTime = 0;
                 Debug.Log("resetting");
 
                 //set all booleans of windows to false
