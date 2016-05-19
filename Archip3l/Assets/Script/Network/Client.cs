@@ -8,6 +8,7 @@ using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Diagnostics;
 
 public class Client : MonoBehaviour
 {
@@ -15,11 +16,11 @@ public class Client : MonoBehaviour
     private bool _continue;
     private Thread _thListener;
 
-    private List<string> configs;
-
     private int sendingPort = 0;
     private int listeningPort = 0;
     private string serverIP = "0.0.0.0";
+
+    private Queue<string> messagesToSend;
 
     //All events raised
     private delegate void DelegateEvent(object send, EventArgs e);
@@ -61,32 +62,51 @@ public class Client : MonoBehaviour
     public event EventHandler<MessageEventArgs> MessageSystemTeamLevelEvent;
 
     public event EventHandler<MessageEventArgs> MessageSystemTutoAbort;
-
     public event EventHandler<MessageEventArgs> MessageSystemDebug;
+
+    void Awake()
+    {
+        this.messagesToSend = new Queue<string>();
+    }
 
 
     void Start()
     {
-        //loadConfigs();
         sendingPort = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.networkSendingPort));
         listeningPort = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.networkListeningPort));
         serverIP = ConstantsLoader.getConstant(TypeConstant.networkServerIP);
 
         _client = new UdpClient();
         _client.Connect(this.serverIP, this.sendingPort);
-        Debug.Log("Starting client...");
+        UnityEngine.Debug.Log("Starting client...");
 
         _continue = true;
         _thListener = new Thread(new ThreadStart(ThreadListener));
         _thListener.Start();
-        
-    }    
+
+        StartCoroutine(sendingProcess());        
+    }
 
     public void sendData(string dataToSend)
     {
         //Debug.Log("Sending : " + dataToSend);
-        byte[] data = Encoding.Default.GetBytes(dataToSend);
-        _client.Send(data, data.Length);
+        this.messagesToSend.Enqueue(dataToSend);        
+    }
+
+    private IEnumerator sendingProcess()
+    {
+        string message;
+        for (;;)
+        {
+            if(this.messagesToSend.Count > 0)
+            {
+                message = this.messagesToSend.Dequeue();
+                byte[] data = Encoding.Default.GetBytes(message);
+                //UnityEngine.Debug.Log("Sending : " + message + "      " + Stopwatch.GetTimestamp().ToString());
+                _client.Send(data, data.Length);
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     private void StopClient()
@@ -107,7 +127,7 @@ public class Client : MonoBehaviour
         }
         catch
         {
-            Debug.Log("Unable to establish connect to UDP " + this.listeningPort + " port. Verify your network configuration.");
+            UnityEngine.Debug.Log("Unable to establish connect to UDP " + this.listeningPort + " port. Verify your network configuration.");
             return;
         }
 
