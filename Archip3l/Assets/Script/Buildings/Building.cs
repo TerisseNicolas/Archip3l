@@ -280,6 +280,8 @@ public class Building : InputSource
             //GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(texturePath);
 
+            char id = minorIsland.nameMinorIsland[minorIsland.nameMinorIsland.Length - 1];
+
             //Animation
             var buildingConstructionTransform = Instantiate(buildingConstructionPrefab) as Transform;
             buildingConstructionTransform.name = "BuildingAnnimation_" + minorIsland.nameMinorIsland;

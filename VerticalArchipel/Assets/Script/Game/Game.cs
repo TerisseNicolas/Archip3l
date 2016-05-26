@@ -26,13 +26,10 @@ public class Game : MonoBehaviour
 
     private List<string> constants;
 
-    //public float vDisturbanceTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerDisturbance)); // 180f;
-    //public float vChallengeTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerChallenge)); // 30f;
-    //private float vGameTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerGame)); // 20 * 60f;
+    public float vDisturbanceTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerDisturbance)); // 180f;
+    public float vChallengeTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerChallenge)); // 30f;
+    private float vGameTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerGame)); // 20 * 60f;
 
-    public float vDisturbanceTimer = 180f;
-    public float vChallengeTimer = 30f;
-    private float vGameTimer = 20 * 60f;
 
     private bool finished = false;
 
