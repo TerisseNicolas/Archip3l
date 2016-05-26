@@ -48,7 +48,6 @@ public class Tuto_UpgradeBuilding : InputSource {
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime = 0;
 
     private TapGesture gesture;
 

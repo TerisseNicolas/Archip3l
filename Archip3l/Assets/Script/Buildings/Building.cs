@@ -341,7 +341,7 @@ public class Building : InputSource
 
     void OnMouseDownSimulation()
     {
-        if ((this.buildState == 1) && !MinorIsland.exchangePerforming && !minorIsland.wheelPresent && !minorIsland.touchBuildingPresent && !minorIsland.exchangeWindowPresent && !minorIsland.buildingInfoPresent && !minorIsland.challengePresent && !minorIsland.moveBuilding && !minorIsland.removeBuildingInfoPresent && !this.removed)
+        if ((this.buildState == 1) && !minorIsland.wheelPresent && !minorIsland.touchBuildingPresent && !minorIsland.exchangeWindowPresent && !minorIsland.buildingInfoPresent && !minorIsland.challengePresent && !minorIsland.moveBuilding && !minorIsland.removeBuildingInfoPresent && !this.removed)
         {
             minorIsland.createBuildingTouch(this);
         }

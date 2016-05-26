@@ -58,7 +58,7 @@ public class Tuto_BuildingManager : MonoBehaviour
         }
         Destroy(obj);
         tuto_minorIsland.harborRemoved = true;
-        tuto_minorIsland.displayPopup("Vous avez fini le tutoriel.\n Veuillez attendre que tous les joueurs soient prêts avant de démarrer.", 30);
+        tuto_minorIsland.displayPopup("Vous avez fini le tutoriel.\n Veuillez attendre les autres joueurs.", 30);
 
     }
 }
