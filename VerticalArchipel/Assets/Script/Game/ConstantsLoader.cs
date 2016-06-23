@@ -7,11 +7,11 @@ using System.IO;
 public class ConstantsLoader : MonoBehaviour {
 
     public static Dictionary<TypeConstant, string> constantValues = new Dictionary<TypeConstant, string>();
-    private string path = "data.txt";
+    private static string path = "data.txt";
 
 	void Awake()
     {
-        if(!this.loadData())
+        if(!ConstantsLoader.loadData())
         {
             Debug.LogWarning("Could not load all constants!!!");
         }
@@ -25,18 +25,21 @@ public class ConstantsLoader : MonoBehaviour {
         //}
     }
 
-    private bool loadData()
-    {
-        string line = "   ";
 
-        if (File.Exists(this.path))
+    public static bool loadData()
+    {
+        //Debug.Log("load");
+        string line = "   ";
+        Dictionary<TypeConstant, string> constantValuesTemp = new Dictionary<TypeConstant, string>();
+
+        if (File.Exists(ConstantsLoader.path))
         {
             StreamReader file = new StreamReader(path);
             while (((line = file.ReadLine()) != null)  && (line.Length > 2))
             {
                 try
                 {
-                    ConstantsLoader.constantValues.Add((TypeConstant)Enum.Parse(typeof(TypeConstant), line.Split('=')[0]), line.Split('=')[1]);
+                    constantValuesTemp.Add((TypeConstant)Enum.Parse(typeof(TypeConstant), line.Split('=')[0]), line.Split('=')[1]);
                 }
                 catch (ArgumentException)
                 {
@@ -46,6 +49,7 @@ public class ConstantsLoader : MonoBehaviour {
 
             }
             file.Close();
+            ConstantsLoader.constantValues = constantValuesTemp;
             return true;
         }
         else

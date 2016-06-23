@@ -32,7 +32,6 @@ public class verticalTuto : OneTap
     {
         if (this.name == "verticalBackground")
         {
-            Debug.Log("in");
             verticalTuto.notificationsTuto.SetActive(true);
             verticalTuto.notificationsTutoText.SetActive(true);
         }
@@ -133,6 +132,9 @@ public class verticalTuto : OneTap
             verticalTuto.notificationsTutoText.SetActive(false);
             verticalTuto.tutoTermine = GameObject.Find("tutoTermine");
             verticalTuto.tutoTermine.SetActive(false);
+
+            //Reload constants for the next game
+            ConstantsLoader.loadData();
         }
 
         this.Client = GameObject.Find("Network").GetComponent<Client>();
