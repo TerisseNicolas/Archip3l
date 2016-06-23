@@ -29,18 +29,26 @@ public class GameMenu : InputSource
 
     IEnumerator unlockScene()
     {
-        Text count1 = (Text)GameObject.Find("textCount1").GetComponent<Text>();
-        Text count2 = (Text)GameObject.Find("textCount2").GetComponent<Text>();
-        int count;
-        for (count = 30; count > 0; count--)
+        if (this.name == "waitForVerticalSceneEnd")
         {
-            count1.text = count.ToString();
-            count2.text = count.ToString();
-            yield return new WaitForSeconds(1);
+            Text count1 = (Text)GameObject.Find("textCount1").GetComponent<Text>();
+            Text count2 = (Text)GameObject.Find("textCount2").GetComponent<Text>();
+            int count;
+            for (count = 30; count > 0; count--)
+            {
+                count1.text = count.ToString();
+                count2.text = count.ToString();
+                yield return new WaitForSeconds(1);
+            }
+            count1.enabled = false;
+            count2.enabled = false;
+            this.unlockedScene = true;
         }
-        count1.enabled = false;
-        count2.enabled = false;
-        this.unlockedScene = true;
+        else
+        {
+            yield return new WaitForSeconds(30f);
+            this.unlockedScene = true;
+        }
     }
 
     void OnMouseDownSimulation()

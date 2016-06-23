@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
 <<<<<<< HEAD
+<!-- Written by QtCreator 3.6.1, 2016-06-23T17:20:43. -->
+=======
+<<<<<<< HEAD
 <!-- Written by QtCreator 3.3.1, 2016-06-23T15:33:45. -->
 =======
 <!-- Written by QtCreator 3.6.1, 2016-06-23T16:25:30. -->
 >>>>>>> 3aef2f39a167753457d7ee48b0a2a97290c73237
+>>>>>>> abe0c17fa0ef742588e6677b3cda0b624b9dcf78
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -416,11 +420,16 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Archipel_parametres</value>
+<<<<<<< HEAD
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Archipel_parametres2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/Alxd/Desktop/ARCHIPEL/Unity/Archip3l/Archipel_parametres/Archipel_parametres.pro</value>
+=======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
 <<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Nicolas/Documents/Ecole/Concours connexion/Archip3l/Archipel_parametres/Archipel_parametres.pro</value>
 =======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/Alxd/Desktop/ARCHIPEL/Archipel_parametres/Archipel_parametres.pro</value>
+>>>>>>> abe0c17fa0ef742588e6677b3cda0b624b9dcf78
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
 >>>>>>> 3aef2f39a167753457d7ee48b0a2a97290c73237
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>

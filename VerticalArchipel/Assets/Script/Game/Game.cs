@@ -43,7 +43,7 @@ public class Game : MonoBehaviour
 
         //todo remove
      
-       this.Timer.Init(vGameTimer);
+        this.Timer.Init(vGameTimer);
 
         this.Timer.FinalTick += Timer_FinalTick;
         this.Timer.PirateBoatsStartTick += Timer_PirateBoatsStartTick;
