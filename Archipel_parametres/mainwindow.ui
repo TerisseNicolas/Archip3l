@@ -113,22 +113,5 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections>
-  <connection>
-   <sender>applyButton</sender>
-   <signal>released()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>205</x>
-     <y>600</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>199</x>
-     <y>331</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

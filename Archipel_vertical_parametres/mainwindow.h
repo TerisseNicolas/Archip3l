@@ -20,13 +20,14 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    void closeEvent(QCloseEvent *event);
+    bool verify();
 
 private:
     Ui::MainWindow *ui;
 
 public slots:
     void clearScores();
+    void applyChanges();
 };
 
 #endif // MAINWINDOW_H

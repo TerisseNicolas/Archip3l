@@ -14,7 +14,7 @@
    <string>Paramètres</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -91,12 +91,12 @@
        <item row="18" column="0">
         <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>Pirate Boat Increase Rate</string>
+          <string>Pirate Boat Increase Time</string>
          </property>
         </widget>
        </item>
        <item row="18" column="1">
-        <widget class="QLineEdit" name="pirateBoatsIncreaseRate"/>
+        <widget class="QLineEdit" name="pirateBoatsIncreaseTime"/>
        </item>
        <item row="23" column="0">
         <widget class="QLabel" name="label_6">
@@ -160,22 +160,5 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections>
-  <connection>
-   <sender>applyButton</sender>
-   <signal>released()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>205</x>
-     <y>600</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>199</x>
-     <y>331</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

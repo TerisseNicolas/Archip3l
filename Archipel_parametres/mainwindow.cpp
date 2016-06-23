@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    connect(ui->applyButton, SIGNAL(released()), this, SLOT(applyChanges()));
+
     QXmlStreamReader Rxml;
 
         QString filename = "parametres.xml";
@@ -134,18 +136,19 @@ MainWindow::MainWindow(QWidget *parent) :
         }
 }
 
-void MainWindow::closeEvent(QCloseEvent *event)
-{
 
-    QString filename = "parametres.xml";
-    QFile file(filename);
-    file.open(QIODevice::WriteOnly);
+void MainWindow::applyChanges() {
 
-    QXmlStreamWriter xmlWriter(&file);
-    xmlWriter.setAutoFormatting(true);
-    xmlWriter.writeStartDocument();
+    if(verify()){
+        QString filename = "parametres.xml";
+        QFile file(filename);
+        file.open(QIODevice::WriteOnly);
 
-    xmlWriter.writeStartElement("Archipel");
+        QXmlStreamWriter xmlWriter(&file);
+        xmlWriter.setAutoFormatting(true);
+        xmlWriter.writeStartDocument();
+
+        xmlWriter.writeStartElement("Archipel");
 
         xmlWriter.writeStartElement("networkListeningPort");
         xmlWriter.writeTextElement("Value", ui->networkListeningPort->text());
@@ -167,24 +170,60 @@ void MainWindow::closeEvent(QCloseEvent *event)
         xmlWriter.writeTextElement("Value", ui->pirateBoatsIncreaseRate->text());
         xmlWriter.writeEndElement();
 
-    xmlWriter.writeEndElement();
+        xmlWriter.writeEndElement();
 
-    file.close();
-
-    delete ui;
+        file.close();
+    }
 }
 
-void MainWindow::clearScores() {
-    qDebug()<<"lel";
+bool MainWindow::verify() {
+    QRegExp rxIP("[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}");
+    QRegExpValidator regValidatorIP( rxIP, 0 );
 
-    QMessageBox messageBox(QMessageBox::Question, tr("Erase scores"),
-                               tr("Are you sure you want to erase all the stored scores ?"),
-                               QMessageBox::Yes | QMessageBox::No);
-        int ret = messageBox.exec();
+    bool v = true;
 
-    QString filename = "scores.txt";
-    QFile file(filename);
-    file.open(QFile::WriteOnly|QFile::Truncate);
+    if(ui->networkListeningPort->text().toInt() && ui->networkListeningPort->text().toInt()<65000){
+        ui->networkListeningPort->setStyleSheet("QLineEdit { background: rgb(0, 255, 0); }");
+    }
+    else{
+        ui->networkListeningPort->setStyleSheet("QLineEdit { background: rgb(255, 0, 0); }");
+        v=false;
+    }
 
-    file.close();
+    if(ui->networkSendingPort->text().toInt() && ui->networkSendingPort->text().toInt()<65000){
+        ui->networkSendingPort->setStyleSheet("QLineEdit { background: rgb(0, 255, 0); }");
+    }
+    else{
+        ui->networkSendingPort->setStyleSheet("QLineEdit { background: rgb(255, 0, 0); }");
+        v=false;
+    }
+
+    QString t = ui->networkServerIP->text();
+    int pos = 0;
+
+    if(regValidatorIP.validate(t,pos)==QRegExpValidator::Acceptable){
+        ui->networkServerIP->setStyleSheet("QLineEdit { background: rgb(0, 255, 0); }");
+    }
+    else{
+        ui->networkServerIP->setStyleSheet("QLineEdit { background: rgb(255, 0, 0); }");
+        v=false;
+    }
+
+    if(ui->pirateBoatsInitInterval->text().toInt() && ui->pirateBoatsInitInterval->text().toInt()<65000){
+        ui->pirateBoatsInitInterval->setStyleSheet("QLineEdit { background: rgb(0, 255, 0); }");
+    }
+    else{
+        ui->pirateBoatsInitInterval->setStyleSheet("QLineEdit { background: rgb(255, 0, 0); }");
+        v=false;
+    }
+
+    if(ui->pirateBoatsIncreaseRate->text().toDouble() && ui->pirateBoatsIncreaseRate->text().toDouble()<=1){
+        ui->pirateBoatsIncreaseRate->setStyleSheet("QLineEdit { background: rgb(0, 255, 0); }");
+    }
+    else{
+        ui->pirateBoatsIncreaseRate->setStyleSheet("QLineEdit { background: rgb(255, 0, 0); }");
+        v=false;
+    }
+
+    return v;
 }
