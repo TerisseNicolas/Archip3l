@@ -24,20 +24,23 @@ public class verticalTuto : OneTap
     static public GameObject notificationsTutoText;
     static public GameObject tutoTermine;
 
-    static public int steps = 0;
+    static public int steps = 1;
 
     private Client Client;
 
+    void Start()
+    {
+        if (this.name == "verticalBackground")
+        {
+            Debug.Log("in");
+            verticalTuto.notificationsTuto.SetActive(true);
+            verticalTuto.notificationsTutoText.SetActive(true);
+        }
+    }
     protected override void OnMouseDownSimulation()
     {
         switch(verticalTuto.steps)
         {
-            case 0:
-                verticalTuto.notificationsTuto.SetActive(true);
-                verticalTuto.notificationsTutoText.SetActive(true);
-                verticalTuto.steps++;
-                GameObject.Find("verticalBackground").GetComponent<BoxCollider>().enabled = false;
-                break;
             case 1:
                 if (this.name == "NotificationsTuto")
                 {

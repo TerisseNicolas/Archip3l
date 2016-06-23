@@ -1,6 +1,6 @@
 networkListeningPort=5050
 networkSendingPort=1523
-networkServerIP=192.168.1.2
+networkServerIP=192.168.1.3
 pirateBoatsStart=240
 pirateBoatsIncreaseRate=120
 timerGame=1200

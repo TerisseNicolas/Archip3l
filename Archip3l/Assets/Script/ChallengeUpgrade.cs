@@ -37,6 +37,7 @@ public class ChallengeUpgrade : InputSource
 
         this.building = myBuilding;
         this.minorIsland = island;
+
         this.typeChallenge = tc;
         if (typeChallenge == TypeChallenge.QCM)
             this.nbPropositions = 3;
