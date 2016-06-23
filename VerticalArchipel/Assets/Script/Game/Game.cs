@@ -29,6 +29,8 @@ public class Game : MonoBehaviour
     public float vDisturbanceTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerDisturbance)); // 180f;
     public float vChallengeTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerChallenge)); // 30f;
     private float vGameTimer = Int32.Parse(ConstantsLoader.getConstant(TypeConstant.timerGame)); // 20 * 60f;
+
+
     private bool finished = false;
 
     void Start()

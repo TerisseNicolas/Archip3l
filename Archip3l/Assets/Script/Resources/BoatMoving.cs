@@ -53,7 +53,7 @@ public class BoatMoving : InputSource
                 MinorIsland.exchangePerforming = false;
                 //SINK ANIMATION
                 StartCoroutine(SinkingCargo());
-                StartCoroutine(startBoatDisappearance());
+                //StartCoroutine(startBoatDisappearance());
             }
             else
             {
@@ -72,7 +72,8 @@ public class BoatMoving : InputSource
 	{
 		Instantiate (sinkingTrail, transform.position, Quaternion.identity);
 		GetComponent<Animator> ().SetInteger ("animCargo", 1);
-		yield return new WaitForSeconds (1f);
+        Destroy(GameObject.Find("cyclone"));
+        yield return new WaitForSeconds (1f);
 		Destroy (gameObject);
 		yield return new WaitForSeconds (1f);
 		Destroy (sinkingTrail);
@@ -152,7 +153,8 @@ public class BoatMoving : InputSource
         while(!this.collided)
         {
             yield return new WaitForSeconds(0.001f);
-            cyclone.transform.Rotate(Vector3.back, 2);
+            if (cyclone)
+                cyclone.transform.Rotate(Vector3.back, 2);
         }
     }
 

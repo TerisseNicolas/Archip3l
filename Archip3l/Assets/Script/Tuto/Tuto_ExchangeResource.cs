@@ -42,7 +42,6 @@ public class Tuto_ExchangeResource : InputSource
 
     public int Width = 512;
     public int Height = 512;
-    float TouchTime = 0;
 
     private TapGesture gesture;
 
