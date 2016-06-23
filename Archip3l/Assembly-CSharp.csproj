@@ -60,6 +60,7 @@
      <Compile Include="Assets\Script\ChallengeBuild.cs" />
      <Compile Include="Assets\Script\ChallengeUpgrade.cs" />
      <Compile Include="Assets\Script\Game\Cleaner.cs" />
+     <Compile Include="Assets\Script\Game\ConstantsLoader.cs" />
      <Compile Include="Assets\Script\Game\Game.cs" />
      <Compile Include="Assets\Script\Game\GameMenu.cs" />
      <Compile Include="Assets\Script\Game\GlobalInfo.cs" />
@@ -167,6 +168,7 @@
      <Compile Include="Assets\Script\Types\TypeBuilding.cs" />
      <Compile Include="Assets\Script\Types\TypeBuildingStat.cs" />
      <Compile Include="Assets\Script\Types\TypeChallenge.cs" />
+     <Compile Include="Assets\Script\Types\TypeConstant.cs" />
      <Compile Include="Assets\Script\Types\TypeResource.cs" />
      <Compile Include="Assets\Script\Types\TypeResourceStat.cs" />
      <Compile Include="Assets\Script\UnlockTuto\ContactPoint.cs" />
