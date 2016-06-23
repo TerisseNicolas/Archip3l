@@ -75,15 +75,6 @@ public class Game : MonoBehaviour
         Client_MessageSystemStartOfGame(this, null);
     }
 
-    void Update()
-    {
-        //if(this.CoroutineInitOfGame)
-        //{
-        //    StartCoroutine(this.GlobalResourceManager.initResources());
-        //    this.CoroutineInitOfGame = false;
-        //}
-    }
-
     private void Client_MessageSystemStartOfGame(object sender, MessageEventArgs e)
     {
         Debug.Log("Starting game");

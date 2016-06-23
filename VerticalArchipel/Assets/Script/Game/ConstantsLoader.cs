@@ -6,7 +6,7 @@ using System.IO;
 
 public class ConstantsLoader : MonoBehaviour {
 
-    private static Dictionary<TypeConstant, string> constantValues = new Dictionary<TypeConstant, string>();
+    public static Dictionary<TypeConstant, string> constantValues = new Dictionary<TypeConstant, string>();
     private string path = "data.txt";
 
 	void Awake()
@@ -24,6 +24,7 @@ public class ConstantsLoader : MonoBehaviour {
         //    Debug.Log(constant.ToString() + " - " + getConstant(constant));
         //}
     }
+
     private bool loadData()
     {
         string line = "   ";

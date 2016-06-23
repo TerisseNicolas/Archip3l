@@ -8,6 +8,7 @@
 #include <QFile>
 #include <QLineEdit>
 #include <QXmlStreamWriter>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -24,7 +25,7 @@ public:
 private:
     Ui::MainWindow *ui;
 
-private slots:
+public slots:
     void clearScores();
 };
 
