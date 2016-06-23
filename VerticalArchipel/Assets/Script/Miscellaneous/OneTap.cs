@@ -20,12 +20,14 @@ public abstract class OneTap : InputSource
     {
         base.OnEnable();
         gesture = GetComponent<TapGesture>();
-        gesture.Tapped += pressedHandler;
+        if (gesture)
+            gesture.Tapped += pressedHandler;
     }
 
     protected override void OnDisable()
     {
-        gesture.Tapped -= pressedHandler;
+        if (gesture)
+            gesture.Tapped -= pressedHandler;
     }
 
     private void pressedHandler(object sender, EventArgs e)

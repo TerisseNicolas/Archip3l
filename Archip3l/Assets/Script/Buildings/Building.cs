@@ -280,6 +280,8 @@ public class Building : InputSource
             //GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(texturePath);
 
+            char id = minorIsland.nameMinorIsland[minorIsland.nameMinorIsland.Length - 1];
+
             //Animation
             var buildingConstructionTransform = Instantiate(buildingConstructionPrefab) as Transform;
             buildingConstructionTransform.name = "BuildingAnnimation_" + minorIsland.nameMinorIsland;
@@ -341,7 +343,7 @@ public class Building : InputSource
 
     void OnMouseDownSimulation()
     {
-        if ((this.buildState == 1) && !MinorIsland.exchangePerforming && !minorIsland.wheelPresent && !minorIsland.touchBuildingPresent && !minorIsland.exchangeWindowPresent && !minorIsland.buildingInfoPresent && !minorIsland.challengePresent && !minorIsland.moveBuilding && !minorIsland.removeBuildingInfoPresent && !this.removed)
+        if ((this.buildState == 1) && !minorIsland.wheelPresent && !minorIsland.touchBuildingPresent && !minorIsland.exchangeWindowPresent && !minorIsland.buildingInfoPresent && !minorIsland.challengePresent && !minorIsland.moveBuilding && !minorIsland.removeBuildingInfoPresent && !this.removed)
         {
             minorIsland.createBuildingTouch(this);
         }
