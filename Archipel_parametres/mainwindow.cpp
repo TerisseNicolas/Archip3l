@@ -73,7 +73,7 @@ MainWindow::MainWindow(QWidget *parent) :
                             }
                         }
                     }
-                    else if(Rxml.name() == "pirateBoatsStart")
+                    else if(Rxml.name() == "pirateBoatsInitInterval")
                     {
                         while(!Rxml.atEnd()){
                             if(Rxml.isEndElement()){
@@ -82,7 +82,7 @@ MainWindow::MainWindow(QWidget *parent) :
                             }
                             else if(Rxml.isStartElement()){
                                  if(Rxml.name() == "Value"){
-                                     ui->pirateBoatsStart->setText(Rxml.readElementText());
+                                     ui->pirateBoatsInitInterval->setText(Rxml.readElementText());
                                  }
                                  Rxml.readNext();
                             }
@@ -101,78 +101,6 @@ MainWindow::MainWindow(QWidget *parent) :
                             else if(Rxml.isStartElement()){
                                  if(Rxml.name() == "Value"){
                                      ui->pirateBoatsIncreaseRate->setText(Rxml.readElementText());
-                                 }
-                                 Rxml.readNext();
-                            }
-                            else{
-                                Rxml.readNext();
-                            }
-                        }
-                    }
-                    else if(Rxml.name() == "timerGame")
-                    {
-                        while(!Rxml.atEnd()){
-                            if(Rxml.isEndElement()){
-                                Rxml.readNext();
-                                break;
-                            }
-                            else if(Rxml.isStartElement()){
-                                 if(Rxml.name() == "Value"){
-                                     ui->timerGame->setText(Rxml.readElementText());
-                                 }
-                                 Rxml.readNext();
-                            }
-                            else{
-                                Rxml.readNext();
-                            }
-                        }
-                    }
-                    else if(Rxml.name() == "timerChallenge")
-                    {
-                        while(!Rxml.atEnd()){
-                            if(Rxml.isEndElement()){
-                                Rxml.readNext();
-                                break;
-                            }
-                            else if(Rxml.isStartElement()){
-                                 if(Rxml.name() == "Value"){
-                                     ui->timerChallenge->setText(Rxml.readElementText());
-                                 }
-                                 Rxml.readNext();
-                            }
-                            else{
-                                Rxml.readNext();
-                            }
-                        }
-                    }
-                    else if(Rxml.name() == "timerDisturbance")
-                    {
-                        while(!Rxml.atEnd()){
-                            if(Rxml.isEndElement()){
-                                Rxml.readNext();
-                                break;
-                            }
-                            else if(Rxml.isStartElement()){
-                                 if(Rxml.name() == "Value"){
-                                     ui->timerDisturbance->setText(Rxml.readElementText());
-                                 }
-                                 Rxml.readNext();
-                            }
-                            else{
-                                Rxml.readNext();
-                            }
-                        }
-                    }
-                    else if(Rxml.name() == "fileScores")
-                    {
-                        while(!Rxml.atEnd()){
-                            if(Rxml.isEndElement()){
-                                Rxml.readNext();
-                                break;
-                            }
-                            else if(Rxml.isStartElement()){
-                                 if(Rxml.name() == "Value"){
-                                     ui->fileScores->setText(Rxml.readElementText());
                                  }
                                  Rxml.readNext();
                             }
@@ -205,9 +133,8 @@ MainWindow::MainWindow(QWidget *parent) :
         }
 }
 
-MainWindow::~MainWindow()
+void MainWindow::closeEvent(QCloseEvent *event)
 {
-
     QString filename = "parametres.xml";
     QFile file(filename);
     file.open(QIODevice::WriteOnly);
@@ -230,28 +157,12 @@ MainWindow::~MainWindow()
         xmlWriter.writeTextElement("Value", ui->networkServerIP->text());
         xmlWriter.writeEndElement();
 
-        xmlWriter.writeStartElement("pirateBoatsStart");
-        xmlWriter.writeTextElement("Value", ui->pirateBoatsStart->text());
+        xmlWriter.writeStartElement("pirateBoatsInitInterval");
+        xmlWriter.writeTextElement("Value", ui->pirateBoatsInitInterval->text());
         xmlWriter.writeEndElement();
 
         xmlWriter.writeStartElement("pirateBoatsIncreaseRate");
         xmlWriter.writeTextElement("Value", ui->pirateBoatsIncreaseRate->text());
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeStartElement("timerGame");
-        xmlWriter.writeTextElement("Value", ui->timerGame->text());
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeStartElement("timerChallenge");
-        xmlWriter.writeTextElement("Value", ui->timerChallenge->text());
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeStartElement("timerDisturbance");
-        xmlWriter.writeTextElement("Value", ui->timerDisturbance->text());
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeStartElement("fileScores");
-        xmlWriter.writeTextElement("Value", ui->fileScores->text());
         xmlWriter.writeEndElement();
 
     xmlWriter.writeEndElement();

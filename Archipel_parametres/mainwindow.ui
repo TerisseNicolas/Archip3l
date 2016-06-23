@@ -14,7 +14,7 @@
    <string>Paramètres</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -81,12 +81,12 @@
        <item row="14" column="0">
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>Pirate Boats Start Time</string>
+          <string>Pirate Boats Init Interval</string>
          </property>
         </widget>
        </item>
        <item row="14" column="1">
-        <widget class="QLineEdit" name="pirateBoatsStart"/>
+        <widget class="QLineEdit" name="pirateBoatsInitInterval"/>
        </item>
        <item row="18" column="0">
         <widget class="QLabel" name="label_5">
@@ -95,62 +95,22 @@
          </property>
         </widget>
        </item>
-       <item row="18" column="1">
-        <widget class="QLineEdit" name="pirateBoatsIncreaseRate"/>
-       </item>
-       <item row="23" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Game Timer (s)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="1">
-        <widget class="QLineEdit" name="timerGame"/>
-       </item>
-       <item row="28" column="0">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>Challenge Timer</string>
-         </property>
-        </widget>
-       </item>
-       <item row="28" column="1">
-        <widget class="QLineEdit" name="timerChallenge"/>
-       </item>
-       <item row="33" column="0">
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Disturbance Timer</string>
-         </property>
-        </widget>
-       </item>
-       <item row="33" column="1">
-        <widget class="QLineEdit" name="timerDisturbance"/>
-       </item>
-       <item row="38" column="0">
-        <widget class="QLabel" name="label_9">
-         <property name="text">
-          <string>Scores File</string>
-         </property>
-        </widget>
-       </item>
-       <item row="38" column="1">
-        <widget class="QLineEdit" name="fileScores"/>
-       </item>
-       <item row="40" column="1">
+       <item row="36" column="1">
         <widget class="QPushButton" name="applyButton">
          <property name="text">
           <string>Apply</string>
          </property>
         </widget>
        </item>
-       <item row="41" column="1">
+       <item row="37" column="1">
         <widget class="QPushButton" name="pushButton">
          <property name="text">
           <string>Clear Scores</string>
          </property>
         </widget>
+       </item>
+       <item row="18" column="1">
+        <widget class="QLineEdit" name="pirateBoatsIncreaseRate"/>
        </item>
       </layout>
      </item>
