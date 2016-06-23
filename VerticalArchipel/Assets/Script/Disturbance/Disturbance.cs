@@ -118,7 +118,7 @@ public class Disturbance : OneTap
                 /*this.Client.sendData("@35770");
                 Client.sendData("@25394@" + resourceLost.ToString() + "@" + "-" + quantityLost.ToString());
                 */
-                main.addNotification("Toutes les îles viennent de perdre des ressources !(" + main.translateResourceName(resourceLost.ToString()) + ")");
+                main.addNotification("Toutes les îles viennent de perdre des ressources (" + main.translateResourceName(resourceLost.ToString()) + ") !");
             }
             else
             {
@@ -126,7 +126,7 @@ public class Disturbance : OneTap
                 StartCoroutine(envoiDataUne(resourceLost, quantityLost, island));
                 /*this.Client.sendData("@3" + island.Split('_')[2] + "770");
                 Client.sendData("@2" + island.Split('_')[2] + "394@" + resourceLost.ToString() + "@" + quantityLost.ToString());
-                */main.addNotification("L'île " + main.getIslandName(island) + " vient de perdre des ressources ! (" + main.translateResourceName(resourceLost.ToString()) + ")");
+                */main.addNotification("L'île " + main.getIslandName(island) + " vient de perdre des ressources (" + main.translateResourceName(resourceLost.ToString()) + ") !");
                 for (int i = 1; i <= 4; i++)
                 {
                     if (("Disturbance-sous_ile_" + i.ToString()) != Disturbance.islandChosen)
