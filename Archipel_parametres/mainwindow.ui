@@ -7,13 +7,16 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>664</height>
+    <height>514</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Paramètres</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
