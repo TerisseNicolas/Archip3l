@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
         QFile file(filename);
         if (file.open(QFile::ReadOnly | QFile::Text))
         {
+            qDebug()<<"toto";
             Rxml.setDevice(&file);
             Rxml.readNext();
 
@@ -135,6 +136,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
+
     QString filename = "parametres.xml";
     QFile file(filename);
     file.open(QIODevice::WriteOnly);
@@ -173,6 +175,13 @@ void MainWindow::closeEvent(QCloseEvent *event)
 }
 
 void MainWindow::clearScores() {
+    qDebug()<<"lel";
+
+    QMessageBox messageBox(QMessageBox::Question, tr("Erase scores"),
+                               tr("Are you sure you want to erase all the stored scores ?"),
+                               QMessageBox::Yes | QMessageBox::No);
+        int ret = messageBox.exec();
+
     QString filename = "scores.txt";
     QFile file(filename);
     file.open(QFile::WriteOnly|QFile::Truncate);

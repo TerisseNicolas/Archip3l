@@ -95,22 +95,15 @@
          </property>
         </widget>
        </item>
+       <item row="18" column="1">
+        <widget class="QLineEdit" name="pirateBoatsIncreaseRate"/>
+       </item>
        <item row="36" column="1">
         <widget class="QPushButton" name="applyButton">
          <property name="text">
           <string>Apply</string>
          </property>
         </widget>
-       </item>
-       <item row="37" column="1">
-        <widget class="QPushButton" name="pushButton">
-         <property name="text">
-          <string>Clear Scores</string>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="1">
-        <widget class="QLineEdit" name="pirateBoatsIncreaseRate"/>
        </item>
       </layout>
      </item>

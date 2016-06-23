@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    connect(ui->clearButton, SIGNAL(released()), this, SLOT(clearScores()));
+
     QXmlStreamReader Rxml;
 
         QString filename = "parametres.xml";
@@ -14,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
         QFile file(filename);
         if (file.open(QFile::ReadOnly | QFile::Text))
         {
+            qDebug()<<"toto";
             Rxml.setDevice(&file);
             Rxml.readNext();
 
@@ -205,7 +208,7 @@ MainWindow::MainWindow(QWidget *parent) :
         }
 }
 
-MainWindow::~MainWindow()
+void MainWindow::closeEvent(QCloseEvent *event)
 {
 
     QString filename = "parametres.xml";
@@ -262,6 +265,13 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::clearScores() {
+    qDebug()<<"lel";
+
+    QMessageBox messageBox(QMessageBox::Question, tr("Erase scores"),
+                               tr("Are you sure you want to erase all the stored scores ?"),
+                               QMessageBox::Yes | QMessageBox::No);
+        int ret = messageBox.exec();
+
     QString filename = "scores.txt";
     QFile file(filename);
     file.open(QFile::WriteOnly|QFile::Truncate);

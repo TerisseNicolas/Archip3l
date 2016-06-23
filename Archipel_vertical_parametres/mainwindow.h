@@ -8,6 +8,7 @@
 #include <QFile>
 #include <QLineEdit>
 #include <QXmlStreamWriter>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -19,12 +20,12 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    void closeEvent(QCloseEvent *event);
 
 private:
     Ui::MainWindow *ui;
 
-private slots:
+public slots:
     void clearScores();
 };
 
