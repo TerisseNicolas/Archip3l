@@ -7,6 +7,7 @@ using TouchScript.InputSources;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class GameMenu : InputSource
 {
@@ -28,10 +29,20 @@ public class GameMenu : InputSource
 
     IEnumerator unlockScene()
     {
-        yield return new WaitForSeconds(30f);
+        Text count1 = (Text)GameObject.Find("textCount1").GetComponent<Text>();
+        Text count2 = (Text)GameObject.Find("textCount2").GetComponent<Text>();
+        int count;
+        for (count = 30; count > 0; count--)
+        {
+            count1.text = count.ToString();
+            count2.text = count.ToString();
+            yield return new WaitForSeconds(1);
+        }
+        count1.enabled = false;
+        count2.enabled = false;
         this.unlockedScene = true;
-        //Debug.Log("Unlocked");
     }
+
     void OnMouseDownSimulation()
     {
         switch(this.name)
