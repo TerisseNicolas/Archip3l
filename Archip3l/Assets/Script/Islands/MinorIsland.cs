@@ -389,7 +389,7 @@ public class MinorIsland : InputSource
         
     void createExchangeWindow()
     {
-        if (!exchangeWindowPresent && !wheelPresent && !touchBuildingPresent)
+        if (!exchangeWindowPresent && !removeBuildingInfoPresent && !disturbancePresent && !wheelPresent && !touchBuildingPresent && !challengePresent && !buildingInfoPresent && !upgradeBuildingInfoPresent && !moveBuilding)
         {
             Canvas exchangeWindowCanvasPrefab = Resources.Load<Canvas>("Prefab/exchangeWindowCanvas");
             Canvas exchangeWindowCanvas = Instantiate(exchangeWindowCanvasPrefab);
