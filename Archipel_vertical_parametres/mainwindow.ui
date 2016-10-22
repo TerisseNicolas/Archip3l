@@ -6,156 +6,142 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>664</height>
+    <width>528</width>
+    <height>346</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Paramètres</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>381</width>
-      <height>651</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <layout class="QFormLayout" name="formLayout">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetDefaultConstraint</enum>
-       </property>
-       <property name="fieldGrowthPolicy">
-        <enum>QFormLayout::ExpandingFieldsGrow</enum>
-       </property>
-       <property name="rowWrapPolicy">
-        <enum>QFormLayout::DontWrapRows</enum>
-       </property>
-       <property name="labelAlignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <property name="horizontalSpacing">
-        <number>-1</number>
-       </property>
-       <property name="verticalSpacing">
-        <number>-1</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Listening Port</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="networkListeningPort">
-         <property name="placeholderText">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Sending Port</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QLineEdit" name="networkSendingPort"/>
-       </item>
-       <item row="9" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Server IP</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="1">
-        <widget class="QLineEdit" name="networkServerIP"/>
-       </item>
-       <item row="14" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Pirate Boats Start Time</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="1">
-        <widget class="QLineEdit" name="pirateBoatsStart"/>
-       </item>
-       <item row="18" column="0">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Pirate Boat Increase Time</string>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="1">
-        <widget class="QLineEdit" name="pirateBoatsIncreaseTime"/>
-       </item>
-       <item row="23" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Game Timer (s)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="1">
-        <widget class="QLineEdit" name="timerGame"/>
-       </item>
-       <item row="28" column="0">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>Challenge Timer (s)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="28" column="1">
-        <widget class="QLineEdit" name="timerChallenge"/>
-       </item>
-       <item row="33" column="0">
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Disturbance Timer (s)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="33" column="1">
-        <widget class="QLineEdit" name="timerDisturbance"/>
-       </item>
-       <item row="38" column="0">
-        <widget class="QLabel" name="label_9">
-         <property name="text">
-          <string>Scores File</string>
-         </property>
-        </widget>
-       </item>
-       <item row="38" column="1">
-        <widget class="QLineEdit" name="fileScores"/>
-       </item>
-       <item row="40" column="1">
-        <widget class="QPushButton" name="applyButton">
-         <property name="text">
-          <string>Apply</string>
-         </property>
-        </widget>
-       </item>
-       <item row="41" column="1">
-        <widget class="QPushButton" name="clearButton">
-         <property name="text">
-          <string>Clear Scores</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Listening Port</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="networkListeningPort">
+        <property name="placeholderText">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Sending Port</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="networkSendingPort"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Server IP</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="networkServerIP"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Pirate Boats Start Time (s)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="pirateBoatsStart"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Pirate Boat Increase Time (s)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="pirateBoatsIncreaseTime"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Game Timer (s)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="timerGame"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Challenge Timer (s)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="timerChallenge"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Disturbance Timer (s)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="timerDisturbance"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Scores File</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="fileScores"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMinimumSize</enum>
+      </property>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="clearButton">
+        <property name="text">
+         <string>Clear Scores</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="applyButton">
+        <property name="text">
+         <string>Apply</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

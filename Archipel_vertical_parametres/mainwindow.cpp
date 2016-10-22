@@ -238,7 +238,7 @@ void MainWindow::applyChanges()
         xmlWriter.writeTextElement("Value", ui->pirateBoatsStart->text());
         xmlWriter.writeEndElement();
 
-        xmlWriter.writeStartElement("pirateBoatsIncreaseRate");
+        xmlWriter.writeStartElement("pirateBoatsIncreaseTime");
         xmlWriter.writeTextElement("Value", ui->pirateBoatsIncreaseTime->text());
         xmlWriter.writeEndElement();
 
