@@ -10,6 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Archipel_vertical_parametres
 TEMPLATE = app
+CONFIG += static
 
 
 SOURCES += main.cpp\
