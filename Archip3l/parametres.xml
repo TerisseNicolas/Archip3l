@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Archipel>
+    <networkSendingPort>
+        <Value>7070</Value>
+    </networkSendingPort>
+    <networkListeningPort>
+        <Value>8080</Value>
+    </networkListeningPort>
+    <networkServerIP>
+        <Value>127.0.0.1</Value>
+    </networkServerIP>
+    <pirateBoatsInitInterval>
+        <Value>10</Value>
+    </pirateBoatsInitInterval>
+    <pirateBoatsIncreaseRate>
+        <Value>0.2</Value>
+    </pirateBoatsIncreaseRate>
+</Archipel>

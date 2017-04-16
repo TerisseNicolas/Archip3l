@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.IO;
+using System.Xml.Serialization;
+using System.Xml;
 
 public class ConstantsLoader : MonoBehaviour {
 
     private static Dictionary<TypeConstant, string> constantValues = new Dictionary<TypeConstant, string>();
-    private string path = "data.txt";
+    //private string path = "data.txt";
+    private string path = "parametres.xml";
 
-	void Awake()
+    void Awake()
     {
         if(!this.loadData())
         {
@@ -19,32 +22,26 @@ public class ConstantsLoader : MonoBehaviour {
 
     void Start()
     {
-        //foreach(TypeConstant constant in Enum.GetValues(typeof(TypeConstant)))
+        //foreach (TypeConstant constant in Enum.GetValues(typeof(TypeConstant)))
         //{
         //    Debug.Log(constant.ToString() + " - " + getConstant(constant));
         //}
     }
     private bool loadData()
     {
-        string line = "   ";
-
         if (File.Exists(this.path))
         {
-            StreamReader file = new StreamReader(path);
-            while (((line = file.ReadLine()) != null)  && (line.Length > 2))
-            {
-                try
-                {
-                    ConstantsLoader.constantValues.Add((TypeConstant)Enum.Parse(typeof(TypeConstant), line.Split('=')[0]), line.Split('=')[1]);
-                }
-                catch (ArgumentException)
-                {
-                    Debug.Log("An element with this key already exists.");
-                    return false;
-                }
+            ArchipelConstants constants = null;
+            XmlSerializer serializer = new XmlSerializer(typeof(ArchipelConstants));
+            StreamReader reader = new StreamReader(this.path);
+            constants = (ArchipelConstants)serializer.Deserialize(reader);
+            reader.Close();
 
-            }
-            file.Close();
+            ConstantsLoader.constantValues.Add(TypeConstant.networkListeningPort, constants.networkListeningPort.value);
+            ConstantsLoader.constantValues.Add(TypeConstant.networkSendingPort, constants.networkSendingPort.value);
+            ConstantsLoader.constantValues.Add(TypeConstant.networkServerIP, constants.networkServerIP.value);
+            ConstantsLoader.constantValues.Add(TypeConstant.pirateBoatsInitInterval, constants.pirateBoatsInitInterval.value);
+            ConstantsLoader.constantValues.Add(TypeConstant.pirateBoatsRaisingRate, constants.pirateBoatsIncreaseRate.value);
             return true;
         }
         else
@@ -65,5 +62,32 @@ public class ConstantsLoader : MonoBehaviour {
             Debug.Log("Dictionary key not found.");
             return string.Empty;
         }
+    }
+
+    [Serializable()]
+    public class ArchipelConstantValue
+    {
+        [System.Xml.Serialization.XmlElement("Value")]
+        public string value { get; set; }
+    }
+
+    [Serializable()]
+    [System.Xml.Serialization.XmlRoot("Archipel")]
+    public class ArchipelConstants
+    {
+        [System.Xml.Serialization.XmlElement("networkListeningPort")]
+        public ArchipelConstantValue networkListeningPort { get; set; }
+
+        [System.Xml.Serialization.XmlElement("networkSendingPort")]
+        public ArchipelConstantValue networkSendingPort { get; set; }
+
+        [System.Xml.Serialization.XmlElement("networkServerIP")]
+        public ArchipelConstantValue networkServerIP { get; set; }
+
+        [System.Xml.Serialization.XmlElement("pirateBoatsInitInterval")]
+        public ArchipelConstantValue pirateBoatsInitInterval { get; set; }
+
+        [System.Xml.Serialization.XmlElement("pirateBoatsIncreaseRate")]
+        public ArchipelConstantValue pirateBoatsIncreaseRate { get; set; }
     }
 }
