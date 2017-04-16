@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Archipel>
+    <networkListeningPort>
+        <Value>8080</Value>
+    </networkListeningPort>
+    <networkSendingPort>
+        <Value>7070</Value>
+    </networkSendingPort>
+    <networkServerIP>
+        <Value>127.0.0.1</Value>
+    </networkServerIP>
+    <pirateBoatsStart>
+        <Value>50</Value>
+    </pirateBoatsStart>
+    <pirateBoatsIncreaseTime>
+        <Value>100</Value>
+    </pirateBoatsIncreaseTime>
+    <timerGame>
+        <Value>200</Value>
+    </timerGame>
+    <timerChallenge>
+        <Value>25</Value>
+    </timerChallenge>
+    <timerDisturbance>
+        <Value>25</Value>
+    </timerDisturbance>
+    <fileScores>
+        <Value>scores.txt</Value>
+    </fileScores>
+</Archipel>
